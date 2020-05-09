@@ -4,12 +4,12 @@ public class Place {
 	private String name;
 	private Genders gender;
 	private Numbers number;
-	private Item[] items;
+	private String[] items;
 
 	public Place() {
 	}
 
-	public Place(String name, Genders gender, Numbers number, Item[] items) {
+	public Place(String name, Genders gender, Numbers number, String[] items) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
@@ -40,11 +40,11 @@ public class Place {
 		this.number = number;
 	}
 
-	public Item[] getItems() {
+	public String[] getItems() {
 		return items;
 	}
 
-	public void setItems(Item[] items) {
+	public void setItems(String[] items) {
 		this.items = items;
 	}
 }

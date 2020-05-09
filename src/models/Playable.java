@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Playable extends Subject {
 	private int healthPoints;
-	private List<Item> items;
+	private List<String> items;
 
 	public Playable() {
 	}
@@ -13,7 +13,7 @@ public class Playable extends Subject {
 	public Playable(String name, Genders gender) {
 		super(name, gender);
 		healthPoints = 100;
-		items = new LinkedList<Item>();
+		items = new LinkedList<String>();
 	}
 
 	public int getHealthPoints() {
@@ -24,11 +24,11 @@ public class Playable extends Subject {
 		this.healthPoints = healthPoints;
 	}
 
-	public List<Item> getItems() {
+	public List<String> getItems() {
 		return items;
 	}
 
-	public void setItems(List<Item> items) {
+	public void setItems(List<String> items) {
 		this.items = items;
 	}
 

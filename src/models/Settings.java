@@ -1,15 +1,14 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Settings {
 	private String welcome;
-	private String character;
+	private Playable character;
 
 	public Settings() {
 	}
 
-	public Settings(String welcome, String character) {
+	public Settings(String welcome, Playable character) {
 		this.welcome = welcome;
 		this.character = character;
 	}
@@ -22,11 +21,11 @@ public class Settings {
 		this.welcome = welcome;
 	}
 
-	public String getCharacter() {
+	public Playable getCharacter() {
 		return character;
 	}
 
-	public void setCharacter(String character) {
+	public void setCharacter(Playable character) {
 		this.character = character;
 	}
 }

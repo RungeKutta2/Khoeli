@@ -2,8 +2,8 @@ package models;
 
 public class Connection {
 	private Directions direction;
-	private Location location;
-	private NonPlayable obstacles;
+	private String location;
+	private String obstacles;
 
 	public Connection() {
 	}
@@ -16,19 +16,19 @@ public class Connection {
 		this.direction = direction;
 	}
 
-	public Location getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 
-	public NonPlayable getObstacles() {
+	public String getObstacles() {
 		return obstacles;
 	}
 
-	public void setObstacles(NonPlayable obstacles) {
+	public void setObstacles(String obstacles) {
 		this.obstacles = obstacles;
 	}
 }

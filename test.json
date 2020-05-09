@@ -1,7 +1,12 @@
 {
   "settings": {
     "welcome": "Te encuentras en un muelle. Es de noche pero la luna ilumina todo el lugar. En el suelo hay algunos objetos, y sientes muchas ganas de ir hacia una taberna.",
-    "character": "Guybrush Threepwood"
+    "character": {
+    	"healthPoints": 100,
+    	"items": [],
+    	"name": "Pancito",
+    	"gender": "male"
+    }
   },
   "locations": [
     {
@@ -47,6 +52,7 @@
   ],
   "npcs": [
     {
+      "id": "ghost_pirate",
       "name": "pirata fantasma",
       "gender": "male",
       "number": "singular",
@@ -64,14 +70,11 @@
   ],
   "items": [
     {
+      "id": "crossbar",
       "name": "barreta",
       "gender": "female",
       "number": "singular",
-      "actions": [{
-        "name": "use",
-        "synonyms": ["usar","utilizar"]
-        }
-      ],
+      "actions": ["use"],
       "effects_over": [
         "npcs",
         "self",
@@ -79,14 +82,11 @@
       ]
     },
     {
+      "id": "beerrita",
       "name": "rociador con cerveza de raiz",
       "gender": "male",
       "number": "singular",
-      "actions": [{
-        "name": "use",
-        "synonyms": ["usar","utilizar"]
-        }
-      ],
+      "actions": ["use"],
       "effects_over": [
         "npcs",
         "self",
@@ -94,14 +94,11 @@
       ]
     },
     {
+      "id": "espejo_con_espacios",
       "name": "espejo",
       "gender": "male",
       "number": "singular",
-      "actions": [{
-        "name": "use",
-        "synonyms": ["usar","utilizar"]
-        }
-      ],
+      "actions": ["use"],
       "effects_over": [
         "npcs",
         "self",
@@ -122,5 +119,17 @@
       "thing": "espejo",
       "description": "¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!"
     }
+  ],
+  "actions": [
+  	{
+  		"name": "use",
+  		"synonyms": [
+  			"usar",
+  			"utilizar",
+  			"emplear",
+  			"mandale mecha"
+  		]
+  	}	
   ]
+
 }

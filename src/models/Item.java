@@ -1,10 +1,11 @@
 package models;
 
 public class Item implements Obstacle {
+	private String id;
 	private String name;
 	private Genders gender;
 	private Numbers number;
-	private Action[] actions;
+	private String[] actions;
 	private String[] effects_over;
 
 	public Item() {
@@ -14,7 +15,8 @@ public class Item implements Obstacle {
 		this.name = name;
 	}
 	
-	public Item(String name, Genders gender, Numbers number, Action[] actions) {
+	public Item(String id,String name, Genders gender, Numbers number, String[] actions) {
+		this.id=id;
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
@@ -51,11 +53,11 @@ public class Item implements Obstacle {
 		this.number = number;
 	}
 
-	public Action[] getActions() {
+	public String[] getActions() {
 		return actions;
 	}
 
-	public void setActions(Action[] actions) {
+	public void setActions(String[] actions) {
 		this.actions = actions;
 	}
 
@@ -66,4 +68,17 @@ public class Item implements Obstacle {
 	public void setEffects_over(String[] effects_over) {
 		this.effects_over = effects_over;
 	}
+
+	public String replace(String inputParsed) {
+		return inputParsed.replace(name, id);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 }

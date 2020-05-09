@@ -6,7 +6,7 @@ public class Location {
 	private Numbers number;
 	private String description;
 	private Place[] places;
-	private NonPlayable[] npcs;
+	private String[] npcs;
 	private Connection[] connections;
 
 	public Location() {
@@ -56,11 +56,11 @@ public class Location {
 		this.places = places;
 	}
 
-	public NonPlayable[] getNpcs() {
+	public String[] getNpcs() {
 		return npcs;
 	}
 
-	public void setNpcs(NonPlayable[] npcs) {
+	public void setNpcs(String[] npcs) {
 		this.npcs = npcs;
 	}
 

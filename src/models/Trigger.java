@@ -2,14 +2,14 @@ package models;
 
 public class Trigger {
 	private Types type;
-	private Item thing;
+	private String thing;
 	private String on_trigger;
 	private String after_trigger;
 
 	public Trigger() {
 	}
 
-	public Trigger(Types type, Item thing) {
+	public Trigger(Types type, String thing) {
 		this.type = type;
 		this.thing = thing;
 	}
@@ -22,11 +22,11 @@ public class Trigger {
 		this.type = type;
 	}
 
-	public Item getThing() {
+	public String getThing() {
 		return thing;
 	}
 
-	public void setThing(Item thing) {
+	public void setThing(String thing) {
 		this.thing = thing;
 	}
 

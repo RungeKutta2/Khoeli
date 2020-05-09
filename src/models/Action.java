@@ -33,4 +33,11 @@ public class Action {
 	public void setSynonyms(Set<String> synonyms) {
 		this.synonyms = synonyms;
 	}
+
+	public String replace(String inputParsed) {
+		for (String string : synonyms) {	
+			inputParsed = inputParsed.replace(string, name);
+		}
+		return inputParsed;
+	}
 }

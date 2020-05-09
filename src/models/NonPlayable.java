@@ -1,7 +1,7 @@
 package models;
 
 public class NonPlayable extends Subject implements Obstacle {
-
+	private String id;
 	private String description;
 	private Numbers number;
 	private String talk;
@@ -14,8 +14,9 @@ public class NonPlayable extends Subject implements Obstacle {
 		super(name);
 	}
 
-	public NonPlayable(String name, Genders gender) {
+	public NonPlayable(String id,String name, Genders gender) {
 		super(name, gender);
+		this.id=id;
 	}
 
 	@Override
@@ -52,6 +53,18 @@ public class NonPlayable extends Subject implements Obstacle {
 
 	public void setTriggers(Trigger[] triggers) {
 		this.triggers = triggers;
+	}
+
+	public String replace(String inputParsed) {
+		return inputParsed.replace(name, id);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

@@ -1,8 +1,8 @@
 package models;
 
 public class Subject {
-	private String name;
-	private Genders gender;
+	protected String name;
+	protected Genders gender;
 
 	public Subject() {
 	}
