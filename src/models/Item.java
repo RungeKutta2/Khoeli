@@ -23,7 +23,6 @@ public class Item implements Obstacle {
 		this.actions = actions;
 	}
 
-	@Override
 	public void clearPath() {
 		// TODO Auto-generated method stub
 

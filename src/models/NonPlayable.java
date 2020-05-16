@@ -19,7 +19,6 @@ public class NonPlayable extends Subject implements Obstacle {
 		this.id=id;
 	}
 
-	@Override
 	public void clearPath() {
 	}
 

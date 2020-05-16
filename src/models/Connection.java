@@ -8,6 +8,13 @@ public class Connection {
 	public Connection() {
 	}
 
+	public Connection(Directions direction, String location, String obstacles) {
+		super();
+		this.direction = direction;
+		this.location = location;
+		this.obstacles = obstacles;
+	}
+
 	public Directions getDirection() {
 		return direction;
 	}

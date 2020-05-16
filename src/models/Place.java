@@ -1,15 +1,17 @@
 package models;
 
+import java.util.List;
+
 public class Place {
 	private String name;
 	private Genders gender;
 	private Numbers number;
-	private String[] items;
+	private List<String> items;
 
 	public Place() {
 	}
 
-	public Place(String name, Genders gender, Numbers number, String[] items) {
+	public Place(String name, Genders gender, Numbers number, List<String> items) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
@@ -40,11 +42,31 @@ public class Place {
 		this.number = number;
 	}
 
-	public String[] getItems() {
+	public List<String> getItems() {
 		return items;
 	}
 
-	public void setItems(String[] items) {
+	public void setItems(List<String> items) {
 		this.items = items;
 	}
+
+	public String takeItem(String item) {
+		int itemPosition = 0;
+		String foundItem = null;
+		
+		while (foundItem == null && itemPosition < items.size()) {
+			if (items.get(itemPosition).equals(item)) {
+				foundItem = items.get(itemPosition);
+			} else {
+				itemPosition++;
+			}
+		}
+		
+		if (foundItem != null) {
+			items.remove(itemPosition);
+		}
+		
+		return foundItem;
+	}
+
 }

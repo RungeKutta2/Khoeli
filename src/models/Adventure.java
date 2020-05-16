@@ -5,9 +5,7 @@ public class Adventure {
 	private Location[] locations;
 	private NonPlayable[] npcs;
 	private Item[] items;
-	private Endgame[] endgames;
-	private Action[] actions;
-	
+	private Endgame[] endgames;	
 	
 	public void configMainCharacter(String name,Genders gender) {
 		settings.getCharacter().setName(name);
@@ -54,12 +52,13 @@ public class Adventure {
 		this.endgames = endgames;
 	}
 
-	public Action[] getActions() {
-		return actions;
-	}
-
-	public void setActions(Action[] actions) {
-		this.actions = actions;
+	public Location findLocation(String locationName) {
+		for (Location location : locations) {
+			if(location.getName().equals(locationName)) {
+				return location;
+			}
+		}
+		return null;
 	}
 	
 	
