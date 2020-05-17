@@ -2,33 +2,19 @@ package models;
 
 public class Subject {
 	protected String name;
-	protected Genders gender;
-
-	public Subject() {
-	}
-
-	public Subject(String name, Genders gender) {
-		this.name = name;
-		this.gender = gender;
-	}
-
-	public Subject(String name) {
-		this.name = name;
-	}
-
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Genders getGender() {
 		return gender;
 	}
 
-	public void setGender(Genders gender) {
+	protected Genders gender;
+
+	public Subject(String name, Genders gender) {
+		this.name = name;
 		this.gender = gender;
 	}
+
 }

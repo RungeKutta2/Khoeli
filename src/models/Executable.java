@@ -5,8 +5,21 @@ public interface Executable {
 
     String pickUp(String item, String place);
 
-    String use(String item);
+    String use(Item item);
+     
+    String use(Item itemUsado,Item itemAfectado);
     
-    String lookAt(String item);
+    String use(Item item,NonPlayable npc);
+    
+    String use(Item item, Place place);
+    
+    String lookAt(Item item);
 
+    String lookAt(NonPlayable npc);
+
+    String lookAt(Location location);
+    
+    String talkTo(NonPlayable npc);
+    
+    
 }

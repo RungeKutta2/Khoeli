@@ -1,83 +1,58 @@
 package models;
 
-public class Item implements Obstacle {
+import java.util.ArrayList;
+
+public class Item {
 	private String id;
 	private String name;
 	private Genders gender;
 	private Numbers number;
-	private String[] actions;
-	private String[] effects_over;
+	private ArrayList<String> actions;
+	private ArrayList<String> effectsOver;
+	private String description;
+	private Trigger[] triggers;
 
-	public Item() {
+	public String getDescription() {
+		return description;
 	}
 
-	public Item(String name) {
-		this.name = name;
-	}
-	
-	public Item(String id,String name, Genders gender, Numbers number, String[] actions) {
-		this.id=id;
-		this.name = name;
-		this.gender = gender;
-		this.number = number;
-		this.actions = actions;
-	}
-
-	public void clearPath() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Genders getGender() {
-		return gender;
-	}
-
-	public void setGender(Genders gender) {
-		this.gender = gender;
-	}
-
-	public Numbers getNumber() {
-		return number;
-	}
-
-	public void setNumber(Numbers number) {
-		this.number = number;
-	}
-
-	public String[] getActions() {
-		return actions;
-	}
-
-	public void setActions(String[] actions) {
-		this.actions = actions;
-	}
-
-	public String[] getEffects_over() {
-		return effects_over;
-	}
-
-	public void setEffects_over(String[] effects_over) {
-		this.effects_over = effects_over;
-	}
-
-	public String replace(String inputParsed) {
-		return inputParsed.replace(name, id);
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
+	public Item(String id, String name, Genders gender, Numbers number, ArrayList<String> actions, String description,
+			Trigger[] triggers) {
 		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.number = number;
+		this.actions = actions;
+		this.description = description;
+		this.triggers = triggers;
 	}
-	
+
+	public Trigger perform(Actions action) {
+		Trigger t = null;
+		if (actions.contains(action.toString())) {
+			if (effectsOver.contains(EffectsOver.SELF)) {
+				t = findTrigger(Types.ACTION, action.toString());
+
+			}
+
+		}
+		return t;
+	}
+
+	private Trigger findTrigger(Types type, String thing) {
+		Trigger foundTrigger = null;
+		int i = 0;
+		while (foundTrigger == null && i < triggers.length) {
+			if (triggers[i].getType().equals(type) && triggers[i].getThing().equals(thing)) {
+				foundTrigger = triggers[i];
+			}
+			i++;
+		}
+		return foundTrigger;
+	}
+
+//	public String replace(String inputParsed) {
+//		return inputParsed.replace(name, id);
+//	}
+
 }
