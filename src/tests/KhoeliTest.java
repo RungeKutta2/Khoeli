@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import main.Khoeli;
 import models.Adventure;
@@ -25,19 +26,19 @@ import models.NonPlayable;
 
 class KhoeliTest {
 
-	static private Khoeli khoeli;
-	private static Item espadaVieja;
-	private static NonPlayable neneTerrorifico;
-	private static NonPlayable npcMudo;
-	private static Location baño;
-	private static String endgameDescription = "Llegaste al bar, empezaste a festejar con tus amigos, pero como estaban todos deprimidos por la evaluación del primer cuatrimeste murieron por un coma alcoholico. Fin. Beber con moderación. Si bebiste no conduzcas.";
-	static Location mercia;
-	static Location inicial;
-	static Location escuela;
-	static Place sueloDeDescampado;
+	private Khoeli khoeli;
+	private  Item espadaVieja;
+	private NonPlayable neneTerrorifico;
+	private NonPlayable npcMudo;
+	private Location baño;
+	private String endgameDescription = "Llegaste al bar, empezaste a festejar con tus amigos, pero como estaban todos deprimidos por la evaluación del primer cuatrimeste murieron por un coma alcoholico. Fin. Beber con moderación. Si bebiste no conduzcas.";
+	 Location mercia;
+	Location inicial;
+	Location escuela;
+	Place sueloDeDescampado;
 
-	@BeforeAll
-	static void createAdventure() {
+	@BeforeEach
+	void createAdventure() {
 		khoeli = new Khoeli();
 		Adventure selectedAdventure = new Adventure();
 		Endgame endgames = new Endgame("location", "move", "bar", endgameDescription);
