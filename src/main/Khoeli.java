@@ -20,6 +20,7 @@ import models.NonPlayable;
 import models.Place;
 import models.Settings;
 import models.Trigger;
+import models.Types;
 
 public class Khoeli implements Executable {
 	private Adventure selectedAdventure;
@@ -133,30 +134,77 @@ public class Khoeli implements Executable {
 	//faltar todos los usar y triggers, endgame 
 	@Override
 	public String use(Item item) {
-		Trigger t = item.perform(Actions.USE);
-		switch (t.getAfter_trigger()) {
-		case "remove":
-			break;
-		
+		String response = null;
+		Trigger found = item.findTrigger(Types.ACTION, Actions.USE.toString());
+		if(found != null) {
+			response = found.getOn_trigger();
+			String[] afterTrigger = found.getAfter_trigger().split(";");
+			switch(afterTrigger[0]) {
+				case "delete":
+					selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);						
+					break;
+				case "add":
+					selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
+					break;
+				case "changeDescription":
+					item.setDescription(afterTrigger[1]);
+					break;
+			}
+		} else {
+			response = "No se puede usar " + item.getName();
 		}
-		return t.getOn_trigger();
+		return response;
 	}
 
 	@Override
 	public String use(Item itemUsado, Item itemAfectado) {
-		// TODO Auto-generated method stub
-		return null;
+		String response = null;
+		Trigger found = itemAfectado.findTrigger(Types.ITEM, itemUsado.getId());
+		if(found != null) {
+			response = found.getOn_trigger();
+			String[] afterTrigger = found.getAfter_trigger().split(";");
+			switch(afterTrigger[0]) {
+				case "delete":
+					selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);						
+					break;
+				case "add":
+					selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
+					break;
+				case "changeDescription":
+					itemAfectado.setDescription(afterTrigger[1]);
+					break;
+			}
+		} else {
+			response = "No se puede usar " + itemUsado.getName() + " con "+ itemAfectado.getName();
+		}
+		return response;
 	}
 
 	@Override
 	public String use(Item item, NonPlayable npc) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		String response = null;
+		Trigger found = npc.findTrigger(Types.ITEM, item.getId());
+		if(found != null) {
+			response = found.getOn_trigger();
+			String[] afterTrigger = found.getAfter_trigger().split(";");
+			switch(afterTrigger[0]) {
+				case "delete":
+					selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);						
+					break;
+				case "add":
+					selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
+					break;
+				case "changeDescription":
+					npc.setDescription(afterTrigger[1]);
+					break;
+			}
+		} else {
+			response = "No se puede usar " + item.getName() + " con "+ npc.getName();
+		}
+		return response;	}
 
 	@Override
 	public String use(Item item, Place place) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

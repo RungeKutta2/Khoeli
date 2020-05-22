@@ -2,14 +2,34 @@ package models;
 
 import java.util.ArrayList;
 
-public class Item {
+public class Item{
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	private String id;
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	private String name;
 	private Genders gender;
 	private Numbers number;
 	private ArrayList<String> actions;
 	private ArrayList<String> effectsOver;
 	private String description;
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	private Trigger[] triggers;
 
 	public String getDescription() {
@@ -27,19 +47,7 @@ public class Item {
 		this.triggers = triggers;
 	}
 
-	public Trigger perform(Actions action) {
-		Trigger t = null;
-		if (actions.contains(action.toString())) {
-			if (effectsOver.contains(EffectsOver.SELF)) {
-				t = findTrigger(Types.ACTION, action.toString());
-
-			}
-
-		}
-		return t;
-	}
-
-	private Trigger findTrigger(Types type, String thing) {
+	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
 		while (foundTrigger == null && i < triggers.length) {
@@ -50,6 +58,7 @@ public class Item {
 		}
 		return foundTrigger;
 	}
+
 
 //	public String replace(String inputParsed) {
 //		return inputParsed.replace(name, id);

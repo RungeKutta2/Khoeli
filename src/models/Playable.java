@@ -7,6 +7,14 @@ public class Playable extends Subject {
 	private int healthPoints;
 	private List<String> items;
 
+	public List<String> getItems() {
+		return items;
+	}
+
+	public void setItems(List<String> items) {
+		this.items = items;
+	}
+
 	public Playable(String name, Genders gender) {
 		super(name, gender);
 		healthPoints = 100;
@@ -17,6 +25,14 @@ public class Playable extends Subject {
 		this.name=name;
 		this.gender=gender;
 		
+	}
+	
+	public void addItem(String item) {
+		items.add(item);
+	}
+
+	public void removeItem(String string) {
+		items.removeIf(x->x.equals(string));		
 	}
 
 }

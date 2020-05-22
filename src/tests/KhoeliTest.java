@@ -1,6 +1,7 @@
 package tests;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -36,18 +37,23 @@ class KhoeliTest {
 	Location inicial;
 	Location escuela;
 	Place sueloDeDescampado;
-
+	private Item caramelo;
+	private Item piedra;
 	@BeforeEach
 	void createAdventure() {
 		khoeli = new Khoeli();
 		Adventure selectedAdventure = new Adventure();
 		Endgame endgames = new Endgame("location", "move", "bar", endgameDescription);
 		espadaVieja = new Item("espada_vieja", "espada vieja", Genders.FEMALE, Numbers.SINGULAR, new ArrayList<String>(){{ add("use"); }},
-				"parece que esta a punto de romperse", new Trigger[] {});
+				"parece que esta a punto de romperse", new Trigger[] {new Trigger(Types.ITEM, "piedra","La espada ahora está afilada","delete;piedra")});
+		piedra = new Item("piedra", "piedra", Genders.FEMALE, Numbers.SINGULAR, new ArrayList<String>(){{ add("use"); }},
+				"se puede afilar una espada con esto", new Trigger[] {});
+		caramelo = new Item("caramelo", "caramelo", Genders.MALE, Numbers.SINGULAR, new ArrayList<String>(){{ add("use"); }},
+				"dulce, rico.", new Trigger[] {});
 		neneTerrorifico = new NonPlayable("nene_terrorifico", "nene terrorifico",
 				"te mira esperando algo y hay un dragon al lado sospechoso(espada) ;)", Genders.MALE,
 				new Trigger[] { new Trigger(Types.ITEM, "espada_vieja", "gracias ahora puedo matar a mis enemigos :)",
-						"remove") },
+						"remove"), new Trigger(Types.ITEM, "caramelo","No quiero eso" ,"changeDescription;Ahora parece más enojado") },
 				"matar,matar,matar");
 		npcMudo = new NonPlayable("npc_mudo", "npc mudo", "no habla xd !!!1", Genders.MALE,
 				new Trigger[] { new Trigger(Types.ACTION, "espada_vieja", "", "remove") }, "");
@@ -175,10 +181,32 @@ class KhoeliTest {
 		assertEquals(Genders.FEMALE, khoeli.getSelectedAdventure().getSettings().getCharacter().getGender());
 		assertEquals("Manchita", khoeli.getSelectedAdventure().getSettings().getCharacter().getName());
 	}
+	
 	@Test
 	void testEndgame() {
-		String asd = khoeli.move(Directions.NORTH);
+		String locationString = khoeli.move(Directions.NORTH);
 		assertEquals(mercia, khoeli.getCurrentLocation());
-		assertEquals(endgameDescription, asd);
+		assertEquals(endgameDescription, locationString);
 	}
+	
+	@Test
+	void testUseItemOnNpc() {
+		assertEquals("gracias ahora puedo matar a mis enemigos :)",khoeli.use(espadaVieja, neneTerrorifico));
+	}
+	
+	@Test
+	void testUseItemOnItem() {
+		khoeli.getSelectedAdventure().getSettings().getCharacter().getItems().add("piedra");
+		assertTrue(khoeli.getSelectedAdventure().getSettings().getCharacter().getItems().contains("piedra"));
+		assertEquals("La espada ahora está afilada",khoeli.use(piedra, espadaVieja));
+		assertFalse(khoeli.getSelectedAdventure().getSettings().getCharacter().getItems().contains("piedra"));
+	}
+	
+	@Test
+	void testChangeDescription() {
+	assertEquals("No quiero eso", khoeli.use(caramelo, neneTerrorifico));
+	assertEquals("Ahora parece más enojado",neneTerrorifico.getDescription());
+	}
+	//falta probar que agregue un item al inventario.
+	//falta probar que cambie descripcion.
 }

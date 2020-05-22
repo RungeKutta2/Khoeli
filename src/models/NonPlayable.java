@@ -19,8 +19,24 @@ public class NonPlayable extends Subject {
 		return description;
 	}
 
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public String getTalk() {
 		return talk;
+	}
+	
+	public Trigger findTrigger(Types type, String thing) {
+		Trigger foundTrigger = null;
+		int i = 0;
+		while (foundTrigger == null && i < triggers.length) {
+			if (triggers[i].getType().equals(type) && triggers[i].getThing().equals(thing)) {
+				foundTrigger = triggers[i];
+			}
+			i++;
+		}
+		return foundTrigger;
 	}
 
 }
