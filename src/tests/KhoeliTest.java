@@ -572,4 +572,118 @@ class KhoeliTest {
 		assertEquals(location, khoeli.getCurrentLocation());
 	}
 
+	@Test
+	void testAfterTriggerRemovesItemFromConnection() {
+		Item daga = new Item("daga", "daga", Genders.FEMALE, Numbers.SINGULAR, null, "Filosa como la hoja", null);
+		List<Trigger> triggers = new ArrayList<Trigger>();
+		triggers.add(new Trigger(Types.ITEM, "daga",
+				"Corta muy bien", new AfterTrigger(TriggerActions.REMOVE,
+						"nene_terrorifico", Directions.SOUTH.toString(), DestinationTypes.CONNECTION)));
+		List<Item> items = new ArrayList<Item>();
+		items.add(daga);
+		NonPlayable npc = new NonPlayable("nene_terrorifico", "nene terrorifico",
+				"Hay un nene con la mirada perdida que parece muy extraño", Genders.MALE, triggers,
+				"No vas a poder pasar mientras yo esté acá");
+		List<Place> places = new ArrayList<Place>();
+		List<String> npcs = new ArrayList<String>();
+		npcs.add("nene_terrorifico");
+		List<Connection> connections = new ArrayList<Connection>();
+		connections.add(new Connection(Directions.SOUTH, "mercia", "nene_terrorifico"));
+		Location location = new Location("descampado", Genders.MALE, Numbers.SINGULAR,
+				"Estas en un descampado, al sur esta mercia, no hay nada mas", places, npcs, connections);
+		Location locationFinal = new Location("mercia", Genders.FEMALE, Numbers.SINGULAR,
+				"Estas en mercia, al norte esta el descampado, no hay nada mas", null, null, null);
+		Adventure selectedAdventure = new Adventure();
+		ArrayList<Location> locations = new ArrayList<Location>();
+		locations.add(location);
+		locations.add(locationFinal);
+		ArrayList<NonPlayable> adventureNpc = new ArrayList<NonPlayable>();
+		adventureNpc.add(npc);
+		selectedAdventure.setItems(items);
+		selectedAdventure.setLocations(locations);
+		selectedAdventure.setNpcs(adventureNpc);
+		Khoeli khoeli = new Khoeli();
+		khoeli.setSelectedAdventure(selectedAdventure);
+		assertEquals("Corta muy bien", khoeli.use(daga,npc));
+		assertEquals(null, khoeli.getCurrentLocation().getConnection(Directions.SOUTH).getObstacle());
+		assertEquals("Estas en mercia, al norte esta el descampado, no hay nada mas",khoeli.move(Directions.SOUTH));
+		assertEquals(locationFinal, khoeli.getCurrentLocation());
+	}
+	
+	@Test
+	void testAfterTriggerRemovesNpcFromConnection() {
+		List<Trigger> triggers = new ArrayList<Trigger>();
+		triggers.add(new Trigger(Types.ITEM, "pico", "Hiciste trizas la piedra", new AfterTrigger(TriggerActions.REMOVE,
+				"piedra", Directions.SOUTH.toString(), DestinationTypes.CONNECTION)));
+		Item pico = new Item("pico", "pico", Genders.MALE, Numbers.SINGULAR, new ArrayList<String>(),
+				"Es un pico que puede romper MUCHAS cosas", null);
+		Item piedra = new Item("piedra_en_el_camino", "piedra", Genders.FEMALE, Numbers.SINGULAR,
+				new ArrayList<String>(), "Hay una piedra en el camino y no podes pasar", triggers);
+		List<Place> places = new ArrayList<Place>();
+		List<String> npcs = new ArrayList<String>();
+		List<Connection> connections = new ArrayList<Connection>();
+		connections.add(new Connection(Directions.SOUTH, "mercia", "piedra_en_el_camino"));
+		Location location = new Location("descampado", Genders.MALE, Numbers.SINGULAR,
+				"Estas en un descampado, al sur esta mercia, no hay nada mas", places, npcs, connections);
+		Location locationFinal = new Location("mercia", Genders.FEMALE, Numbers.SINGULAR,
+				"Estas en mercia, al norte esta el descampado, no hay nada mas", null, null, null);
+		Adventure selectedAdventure = new Adventure();
+		ArrayList<Location> locations = new ArrayList<Location>();
+		locations.add(location);
+		locations.add(locationFinal);
+		ArrayList<Item> adventureItem = new ArrayList<Item>();
+		adventureItem.add(pico);
+		adventureItem.add(piedra);
+		selectedAdventure.setLocations(locations);
+		selectedAdventure.setItems(adventureItem);
+		Khoeli khoeli = new Khoeli();
+		khoeli.setSelectedAdventure(selectedAdventure);
+		assertEquals("Hiciste trizas la piedra", khoeli.use(pico,piedra));
+		assertEquals(null, khoeli.getCurrentLocation().getConnection(Directions.SOUTH).getObstacle());
+		assertEquals("Estas en mercia, al norte esta el descampado, no hay nada mas",khoeli.move(Directions.SOUTH));
+		assertEquals(locationFinal, khoeli.getCurrentLocation());
+	}
+	
+	//remov inventario
+	//remov place
+	//add inventario
+	//add place
+	//diagrama
+	
+//	@Test
+//	void testAfterTriggerRemovesItemFromInventory() {
+//		Playable mainCharacter = new Playable("Tigri", Genders.MALE);
+//		Settings settings = new Settings("Bienvenido!", mainCharacter);
+//		List<Trigger> triggers = new ArrayList<Trigger>();
+//		triggers.add(new Trigger(Types.ITEM, "pico", "Hiciste trizas la piedra", new AfterTrigger(TriggerActions.REMOVE,
+//				"piedra", Directions.SOUTH.toString(), DestinationTypes.CONNECTION)));
+//		Item pico = new Item("pico", "pico", Genders.MALE, Numbers.SINGULAR, new ArrayList<String>(),
+//				"Es un pico que puede romper MUCHAS cosas", null);
+//		Item piedra = new Item("piedra_en_el_camino", "piedra", Genders.FEMALE, Numbers.SINGULAR,
+//				new ArrayList<String>(), "Hay una piedra en el camino y no podes pasar", triggers);
+//		List<Place> places = new ArrayList<Place>();
+//		List<String> npcs = new ArrayList<String>();
+//		List<Connection> connections = new ArrayList<Connection>();
+//		connections.add(new Connection(Directions.SOUTH, "mercia", "piedra_en_el_camino"));
+//		Location location = new Location("descampado", Genders.MALE, Numbers.SINGULAR,
+//				"Estas en un descampado, al sur esta mercia, no hay nada mas", places, npcs, connections);
+//		Location locationFinal = new Location("mercia", Genders.FEMALE, Numbers.SINGULAR,
+//				"Estas en mercia, al norte esta el descampado, no hay nada mas", null, null, null);
+//		Adventure selectedAdventure = new Adventure();
+//		ArrayList<Location> locations = new ArrayList<Location>();
+//		locations.add(location);
+//		locations.add(locationFinal);
+//		ArrayList<Item> adventureItem = new ArrayList<Item>();
+//		adventureItem.add(pico);
+//		adventureItem.add(piedra);
+//		selectedAdventure.setLocations(locations);
+//		selectedAdventure.setItems(adventureItem);
+//		Khoeli khoeli = new Khoeli();
+//		khoeli.setSelectedAdventure(selectedAdventure);
+//		assertEquals("Hiciste trizas la piedra", khoeli.use(pico,piedra));
+//		assertEquals(null, khoeli.getCurrentLocation().getConnection(Directions.SOUTH).getObstacle());
+//		assertEquals("Estas en mercia, al norte esta el descampado, no hay nada mas",khoeli.move(Directions.SOUTH));
+//		assertEquals(locationFinal, khoeli.getCurrentLocation());
+//	}
+	
 }
