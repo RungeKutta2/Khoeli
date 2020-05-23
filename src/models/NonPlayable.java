@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class NonPlayable implements Triggereable, Observable{
+public class NonPlayable implements Triggereable, Observable, Obstacle {
 	private String id;
 	private String description;
 	private Numbers number;
@@ -11,7 +11,8 @@ public class NonPlayable implements Triggereable, Observable{
 	private String name;
 	private Genders gender;
 
-	public NonPlayable(String id, String name, String description, Genders gender, List<Trigger> triggers, String talk) {
+	public NonPlayable(String id, String name, String description, Genders gender, List<Trigger> triggers,
+			String talk) {
 		this.name = name;
 		this.gender = gender;
 		this.description = description;
@@ -27,15 +28,15 @@ public class NonPlayable implements Triggereable, Observable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public String getTalk() {
 		return talk;
 	}
-	
+
 	public String getNameNpc() {
 		return name;
-	}	
-	
+	}
+
 	public Genders getGender() {
 		return gender;
 	}
@@ -47,7 +48,7 @@ public class NonPlayable implements Triggereable, Observable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
@@ -65,7 +66,7 @@ public class NonPlayable implements Triggereable, Observable{
 	public void changeDescription(String thing) {
 		description = thing;
 	}
-	
+
 	@Override
 	public String getName() {
 		return id;
@@ -74,5 +75,10 @@ public class NonPlayable implements Triggereable, Observable{
 	@Override
 	public String lookAt() {
 		return description;
+	}
+
+	@Override
+	public String getObstacleDescription() {
+		return talk;
 	}
 }
