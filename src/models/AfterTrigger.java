@@ -4,9 +4,9 @@ public class AfterTrigger {
 	private TriggerActions action;
 	private String thing;
 	private String actionDestination;
-	private String destinationType;
+	private DestinationTypes destinationType;
 
-	public AfterTrigger(TriggerActions action, String thing, String actionDestination, String destinationType) {
+	public AfterTrigger(TriggerActions action, String thing, String actionDestination, DestinationTypes destinationType) {
 		this.action = action;
 		this.thing = thing;
 		this.actionDestination = actionDestination;
@@ -25,7 +25,7 @@ public class AfterTrigger {
 		return actionDestination;
 	}
 
-	public String getDestinationType() {
+	public DestinationTypes getDestinationType() {
 		return destinationType;
 	}
 

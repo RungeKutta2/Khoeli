@@ -387,7 +387,7 @@ class KhoeliTest {
 		Settings settings = new Settings("Bienvenido!", mainCharacter);
 		ArrayList<Trigger> triggersPocion = new ArrayList<Trigger>();
 		triggersPocion.add(new Trigger(Types.ACTION, TriggerActions.USE.toString(), "Has restaurado 50 puntos de vida!",
-				new AfterTrigger(TriggerActions.REMOVE, "pocion", null, "inventory")));
+				new AfterTrigger(TriggerActions.REMOVE, "pocion", null, DestinationTypes.INVENTORY)));
 		Item pocion = new Item("pocion", "pocion", Genders.FEMALE, Numbers.SINGULAR, new ArrayList<String>(),
 				"Restaura vida!", triggersPocion);
 		Adventure selectedAdventure = new Adventure();
@@ -413,7 +413,7 @@ class KhoeliTest {
 		Settings settings = new Settings("Bienvenido!", mainCharacter);
 		ArrayList<Trigger> triggersNene = new ArrayList<Trigger>();
 		triggersNene.add(new Trigger(Types.ITEM, "espada_vieja", "gracias ahora puedo matar a mis enemigos :)",
-				new AfterTrigger(TriggerActions.REMOVE, "espada_vieja", null, "inventory")));
+				new AfterTrigger(TriggerActions.REMOVE, "espada_vieja", null, DestinationTypes.INVENTORY)));
 		NonPlayable neneTerrorifico = new NonPlayable("nene_terrorifico", "nene terrorifico",
 				"te mira esperando algo y hay un dragon al lado sospechoso(espada) ;)", Genders.MALE, triggersNene,
 				"holis");
@@ -444,7 +444,7 @@ class KhoeliTest {
 		ArrayList<Trigger> triggersEspada = new ArrayList<Trigger>();
 		ArrayList<Trigger> triggersPiedra = new ArrayList<Trigger>();
 		triggersEspada.add(new Trigger(Types.ITEM, "piedra", "La espada ahora está afilada",
-				new AfterTrigger(TriggerActions.REMOVE, "piedra", null, "inventory")));
+				new AfterTrigger(TriggerActions.REMOVE, "piedra", null, DestinationTypes.INVENTORY)));
 		Item piedra = new Item("piedra", "piedra", Genders.FEMALE, Numbers.SINGULAR, new ArrayList<String>(),
 				"se puede afilar una espada con esto", triggersPiedra);
 		Item espadaVieja = new Item("espada_vieja", "espada vieja", Genders.FEMALE, Numbers.SINGULAR,
@@ -498,7 +498,7 @@ class KhoeliTest {
 				"rico caramelo media hora", triggersCaramelo);
 		ArrayList<Trigger> triggersNene = new ArrayList<Trigger>();
 		triggersNene.add(new Trigger(Types.ITEM, "caramelo", "Ya no necesito este celular (Ahora tenes un celular)",
-				new AfterTrigger(TriggerActions.ADD, "celular", null, "inventory")));
+				new AfterTrigger(TriggerActions.ADD, "celular", null, DestinationTypes.INVENTORY)));
 		NonPlayable neneTerrorifico = new NonPlayable("nene_terrorifico", "nene terrorifico",
 				"te mira esperando algo y hay un dragon al lado sospechoso(espada) ;)", Genders.MALE, triggersNene,
 				"holis");
@@ -519,7 +519,7 @@ class KhoeliTest {
 		List<Trigger> triggers = new ArrayList<Trigger>();
 		triggers.add(new Trigger(Types.ACTION, TriggerActions.TALK.toString(),
 				"AL fin alguien se dio cuenta que estoy aca, ahora podes pasar", new AfterTrigger(TriggerActions.REMOVE,
-						"nene_terrorifico", Directions.SOUTH.toString(), "connection")));
+						"nene_terrorifico", Directions.SOUTH.toString(), DestinationTypes.CONNECTION)));
 		NonPlayable npc = new NonPlayable("nene_terrorifico", "nene terrorifico",
 				"Hay un nene con la mirada perdida que parece muy extraño", Genders.MALE, triggers,
 				"No vas a poder pasar mientras yo esté acá");
@@ -546,12 +546,12 @@ class KhoeliTest {
 	@Test
 	void testItemBlocksPath() {
 		List<Trigger> triggers = new ArrayList<Trigger>();
-		triggers.add(new Trigger(Types.ITEM, "pico", "Hiciste trizas la piedra",
-				new AfterTrigger(TriggerActions.REMOVE, "piedra", Directions.SOUTH.toString(), "connection")));
+		triggers.add(new Trigger(Types.ITEM, "pico", "Hiciste trizas la piedra", new AfterTrigger(TriggerActions.REMOVE,
+				"piedra", Directions.SOUTH.toString(), DestinationTypes.CONNECTION)));
 		Item pico = new Item("pico", "pico", Genders.MALE, Numbers.SINGULAR, new ArrayList<String>(),
 				"Es un pico que puede romper MUCHAS cosas", null);
-		Item piedra = new Item("piedra_en_el_camino", "piedra", Genders.FEMALE, Numbers.SINGULAR, new ArrayList<String>(),
-				"Hay una piedra en el camino y no podes pasar", triggers);
+		Item piedra = new Item("piedra_en_el_camino", "piedra", Genders.FEMALE, Numbers.SINGULAR,
+				new ArrayList<String>(), "Hay una piedra en el camino y no podes pasar", triggers);
 		List<Place> places = new ArrayList<Place>();
 		List<String> npcs = new ArrayList<String>();
 		List<Connection> connections = new ArrayList<Connection>();

@@ -22,4 +22,8 @@ public class Connection {
 	public String getObstacle() {
 		return obstacle;
 	}
+
+	public void removeObstacle() {
+		obstacle = null;
+	}
 }

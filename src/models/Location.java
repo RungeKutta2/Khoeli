@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class Location implements Observable{
+public class Location implements Observable {
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -32,10 +32,19 @@ public class Location implements Observable{
 
 	public String findLocationName(Directions direction) {
 		String found = null;
+		Connection connection = getConnection(direction);
+		if (connection != null) {
+			found = connection.getLocation();
+		}
+		return found;
+	}
+
+	private Connection getConnection(Directions direction) {
+		Connection found = null;
 		int i = 0;
 		while (found == null && i < connections.size()) {
 			if (connections.get(i).getDirection().equals(direction)) {
-				found = connections.get(i).getLocation();
+				found = connections.get(i);
 			}
 			i++;
 		}
@@ -49,12 +58,9 @@ public class Location implements Observable{
 
 	public String findObstacle(Directions direction) {
 		String found = null;
-		int i = 0;
-		while (found == null && i < connections.size()) {
-			if (connections.get(i).getDirection().equals(direction)) {
-				found = connections.get(i).getObstacle();
-			}
-			i++;
+		Connection connection = getConnection(direction);
+		if (connection != null) {
+			found = connection.getObstacle();
 		}
 		return found;
 	}
@@ -62,5 +68,39 @@ public class Location implements Observable{
 	@Override
 	public String lookAt() {
 		return description;
+	}
+
+	public void removeObstacle(Directions direction) {
+		Connection connection = getConnection(direction);
+		if (connection != null) {
+			connection.removeObstacle();
+		}
+	}
+
+	public void removeFromPlace(String placeName, String item) {
+		Place place = getPlace(placeName);
+		if (place != null) {
+			place.getItems().remove(item);
+		}
+	}
+
+	private Place getPlace(String place) {
+		Place found = null;
+		int i = 0;
+		while (found == null && i < places.size()) {
+			if (places.get(i).getName().equals(place)) {
+				found = places.get(i);
+			}
+			i++;
+		}
+		return found;
+	}
+
+	public void addToPlace(String placeName, String item) {
+		Place place = getPlace(placeName);
+		if (place != null) {
+			place.getItems().add(item);
+		}
+		
 	}
 }
