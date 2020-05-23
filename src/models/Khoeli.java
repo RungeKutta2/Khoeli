@@ -69,13 +69,13 @@ public class Khoeli implements Executable {
 			AfterTrigger afterTrigger = found.getAfterTrigger();
 			switch (afterTrigger.getAction()) {
 			case REMOVE:
-				selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger.getThing());
+				removeAfterTrigger(afterTrigger);
 				break;
 			case CHANGE_DESCRIPTION:
 				item.changeDescription(afterTrigger.getThing());
 				break;
 			case ADD:
-				selectedAdventure.getSettings().getCharacter().addItem(afterTrigger.getThing());
+				addAfterTrigger(afterTrigger);
 				break;
 			default:
 				break;
@@ -95,13 +95,13 @@ public class Khoeli implements Executable {
 			AfterTrigger afterTrigger = found.getAfterTrigger();
 			switch (afterTrigger.getAction()) {
 			case REMOVE:
-				selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger.getThing());
+				removeAfterTrigger(afterTrigger);
 				break;
 			case CHANGE_DESCRIPTION:
 				affected.changeDescription(afterTrigger.getThing());
 				break;
 			case ADD:
-				selectedAdventure.getSettings().getCharacter().addItem(afterTrigger.getThing());
+				addAfterTrigger(afterTrigger);
 				break;
 			default:
 				break;
@@ -110,5 +110,32 @@ public class Khoeli implements Executable {
 			response = "No se puede usar " + item.getName() + " con " + affected.getName();
 		}
 		return response;
+	}
+
+	private void addAfterTrigger(AfterTrigger afterTrigger) {
+		switch (afterTrigger.getDestinationType()) {
+		case INVENTORY:
+			selectedAdventure.getSettings().getCharacter().addItem(afterTrigger.getThing());
+			break;
+		case PLACE:
+			currentLocation.addToPlace(afterTrigger.getActionDestination(), afterTrigger.getThing());
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void removeAfterTrigger(AfterTrigger afterTrigger) {
+		switch (afterTrigger.getDestinationType()) {
+		case CONNECTION:
+			currentLocation.removeObstacle(Directions.valueOf(afterTrigger.getActionDestination()));
+			break;
+		case INVENTORY:
+			selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger.getThing());
+			break;
+		case PLACE:
+			currentLocation.removeFromPlace(afterTrigger.getActionDestination(), afterTrigger.getThing());
+			break;
+		}
 	}
 }
