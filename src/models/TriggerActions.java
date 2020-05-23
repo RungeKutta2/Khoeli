@@ -4,5 +4,9 @@ public enum TriggerActions {
 	REMOVE,
 	CHANGE_DESCRIPTION,
 	ADD,
-	USE
+	USE,
+	TALK_TO,
+	PICK_UP,
+	MOVE,
+	LOOK_AT
 }
