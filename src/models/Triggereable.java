@@ -1,5 +1,9 @@
 package models;
 
 public interface Triggereable {
-	String useOn(Triggereable item);
+	Trigger findTrigger(Types type, String thing);
+
+	void changeDescription(String thing);
+
+	String getName();
 }

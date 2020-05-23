@@ -6,7 +6,6 @@ public class Connection {
 	private String obstacle;
 
 	public Connection(Directions direction, String location, String obstacles) {
-		super();
 		this.direction = direction;
 		this.location = location;
 		this.obstacle = obstacles;
@@ -23,5 +22,4 @@ public class Connection {
 	public String getObstacle() {
 		return obstacle;
 	}
-
 }

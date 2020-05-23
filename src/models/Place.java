@@ -19,7 +19,6 @@ public class Place {
 		return name;
 	}
 
-	
 	public List<String> getItems() {
 		return items;
 	}
@@ -35,12 +34,9 @@ public class Place {
 				itemPosition++;
 			}
 		}
-		
 		if (foundItem != null) {
 			items.remove(itemPosition);
-		}
-		
+		}	
 		return foundItem;
 	}
-
 }

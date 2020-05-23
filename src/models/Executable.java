@@ -5,13 +5,9 @@ public interface Executable {
 
     String pickUp(String item, String place);
 
+    String use(Item item, Triggereable affected);
+    
     String use(Item item);
-     
-    String use(Item itemUsado,Item itemAfectado);
-    
-    String use(Item item,NonPlayable npc);
-    
-    String use(Item item, Place place);
     
     String lookAt(Item item);
 
@@ -20,6 +16,4 @@ public interface Executable {
     String lookAt(Location location);
     
     String talkTo(NonPlayable npc);
-    
-    
 }

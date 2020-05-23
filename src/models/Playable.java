@@ -3,12 +3,31 @@ package models;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Playable extends Subject {
+public class Playable{
 	private int healthPoints;
 	private List<String> items;
+	private String name;
+	private Genders gender;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Genders getGender() {
+		return gender;
+	}
+
+	public void setGender(Genders gender) {
+		this.gender = gender;
+	}
 
 	public Playable(String name, Genders gender) {
-		super(name, gender);
+		this.name = name;
+		this.gender = gender;
 		healthPoints = 100;
 		items = new LinkedList<String>();
 	}
@@ -33,5 +52,4 @@ public class Playable extends Subject {
 	public void removeItem(String string) {
 		items.removeIf(x->x.equals(string));		
 	}
-
 }

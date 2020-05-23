@@ -11,17 +11,8 @@ public class Location {
 	private List<String> npcs;
 	private List<Connection> connections;
 
-	public String getName() {
-		return name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public Location(String name, Genders gender, Numbers number, String description, List<Place> places, List<String> npcs,
-			List<Connection> connections) {
-		super();
+	public Location(String name, Genders gender, Numbers number, String description, List<Place> places,
+			List<String> npcs, List<Connection> connections) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
@@ -29,6 +20,14 @@ public class Location {
 		this.places = places;
 		this.npcs = npcs;
 		this.connections = connections;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	public String findLocationName(Directions direction) {
@@ -58,7 +57,5 @@ public class Location {
 			i++;
 		}
 		return found;
-		
 	}
-
 }

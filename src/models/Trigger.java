@@ -3,22 +3,14 @@ package models;
 public class Trigger {
 	private Types type;
 	private String thing;
-	private String on_trigger;
-	public String getOn_trigger() {
-		return on_trigger;
-	}
+	private String onTrigger;
+	private AfterTrigger afterTrigger;
 
-	private String after_trigger;
-
-	public String getAfter_trigger() {
-		return after_trigger;
-	}
-
-	public Trigger(Types type, String thing, String on_trigger, String after_trigger) {
+	public Trigger(Types type, String thing, String onTrigger, AfterTrigger afterTrigger) {
 		this.type = type;
 		this.thing = thing;
-		this.on_trigger = on_trigger;
-		this.after_trigger = after_trigger;
+		this.onTrigger = onTrigger;
+		this.afterTrigger = afterTrigger;
 	}
 
 	public Types getType() {
@@ -27,6 +19,14 @@ public class Trigger {
 
 	public String getThing() {
 		return thing;
+	}
+	
+	public String getOnTrigger() {
+		return onTrigger;
+	}
+
+	public AfterTrigger getAfterTrigger() {
+		return afterTrigger;
 	}
 
 }

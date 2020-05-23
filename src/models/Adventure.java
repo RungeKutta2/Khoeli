@@ -11,12 +11,15 @@ public class Adventure {
 	private List<Item> items;
 	private List<Endgame> endGames;
 
-	public Settings getSettings() {
-		return settings;
+	public Adventure() {
+		locations = new ArrayList<Location>();
+		npcs = new ArrayList<NonPlayable>();
+		items = new ArrayList<Item>();
+		endGames = new ArrayList<Endgame>();
 	}
 
-	public void customizeCharacter(String name, Genders gender) {
-		settings.customizeCharacter(name, gender);
+	public Settings getSettings() {
+		return settings;
 	}
 
 	public void setSettings(Settings settings) {
@@ -43,6 +46,10 @@ public class Adventure {
 		this.endGames = endgames;
 	}
 
+	public void customizeCharacter(String name, Genders gender) {
+		settings.customizeCharacter(name, gender);
+	}
+
 	public Location findLocation(String locationName) {
 		for (Location location : locations) {
 			if (location.getName().equals(locationName)) {
@@ -64,7 +71,7 @@ public class Adventure {
 		}
 		return foundEndGame;
 	}
-	
+
 	public NonPlayable findNpc(String npcId) {
 		for (NonPlayable npc : npcs) {
 			if (npc.getName().equals(npcId)) {
@@ -73,6 +80,5 @@ public class Adventure {
 		}
 		return null;
 	}
-	
 
 }

@@ -1,17 +1,19 @@
 package models;
 
-
 import java.util.List;
 
-public class NonPlayable extends Subject {
+public class NonPlayable implements Triggereable{
 	private String id;
 	private String description;
 	private Numbers number;
 	private String talk;
 	private List<Trigger> triggers;
+	private String name;
+	private Genders gender;
 
 	public NonPlayable(String id, String name, String description, Genders gender, List<Trigger> triggers, String talk) {
-		super(name, gender);
+		this.name = name;
+		this.gender = gender;
 		this.description = description;
 		this.id = id;
 		this.triggers = triggers;
@@ -30,6 +32,23 @@ public class NonPlayable extends Subject {
 		return talk;
 	}
 	
+	public String getNameNpc() {
+		return name;
+	}	
+	
+	public Genders getGender() {
+		return gender;
+	}
+
+	public void setGender(Genders gender) {
+		this.gender = gender;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Override
 	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
@@ -42,4 +61,13 @@ public class NonPlayable extends Subject {
 		return foundTrigger;
 	}
 
+	@Override
+	public void changeDescription(String thing) {
+		description = thing;
+	}
+	
+	@Override
+	public String getName() {
+		return id;
+	}
 }
