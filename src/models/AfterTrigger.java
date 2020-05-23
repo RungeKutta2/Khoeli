@@ -17,31 +17,16 @@ public class AfterTrigger {
 		return action;
 	}
 
-	public void setAction(TriggerActions action) {
-		this.action = action;
-	}
-
 	public String getThing() {
 		return thing;
-	}
-
-	public void setThing(String thing) {
-		this.thing = thing;
 	}
 
 	public String getActionDestination() {
 		return actionDestination;
 	}
 
-	public void setActionDestination(String actionDestination) {
-		this.actionDestination = actionDestination;
-	}
-
 	public String getDestinationType() {
 		return destinationType;
 	}
 
-	public void setDestinationType(String destinationType) {
-		this.destinationType = destinationType;
-	}
 }

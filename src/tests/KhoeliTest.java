@@ -348,26 +348,24 @@ class KhoeliTest {
 
 	@Test
 	void testEndgame() {
-		String endgameDescription = "quedan mas test";
+		String endgameDescription = "Lo lograste, ahora disfuta con tus amigos";
 		Khoeli khoeli = new Khoeli();
 		Playable mainCharacter = new Playable("Tigri", Genders.MALE);
 		ArrayList<Place> places = new ArrayList<Place>();
 		ArrayList<Connection> connectionsInicial = new ArrayList<Connection>();
-		ArrayList<Endgame> endGames = new ArrayList<Endgame>();
 		Adventure selectedAdventure = new Adventure();
-		selectedAdventure.setEndgames(endGames);
 		ArrayList<Item> adventureItems = new ArrayList<Item>();
 		selectedAdventure.setItems(adventureItems);
 		ArrayList<Location> locations = new ArrayList<Location>();
 		ArrayList<NonPlayable> npcs = new ArrayList<NonPlayable>();
 		Settings settings = new Settings("Bienvenido!", mainCharacter);
 		ArrayList<Endgame> endgames = new ArrayList<Endgame>();
-		endgames.add(new Endgame("location", "move", "sur", endgameDescription));
+		endgames.add(new Endgame("location", "move", "mercia", endgameDescription));
 		Location inicial = new Location("descampado", Genders.MALE, Numbers.SINGULAR, "estas en un descampado", places,
 				new ArrayList<String>(), connectionsInicial);
 		connectionsInicial.add(new Connection(Directions.SOUTH, "mercia", null));
 		ArrayList<Connection> connections = new ArrayList<Connection>();
-		Location mercia = new Location("mercia", Genders.MALE, Numbers.SINGULAR, "quedan mas test", places,
+		Location mercia = new Location("mercia", Genders.MALE, Numbers.SINGULAR, "Estas en mercia, un bar muy lindo para estar con amigos, al norte hay un descampado", places,
 				new ArrayList<String>(), connections);
 		locations.add(inicial);
 		locations.add(mercia);

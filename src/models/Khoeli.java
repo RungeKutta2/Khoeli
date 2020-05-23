@@ -17,9 +17,6 @@ public class Khoeli implements Executable {
 		return currentLocation;
 	}
 
-	public void setCurrentLocation(Location currentLocation) {
-		this.currentLocation = currentLocation;
-	}
 
 	public String move(Directions direction) {
 		String obstacle = currentLocation.findObstacle(direction);
