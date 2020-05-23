@@ -25,39 +25,21 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 		return description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getTalk() {
 		return talk;
-	}
-
-	public String getNameNpc() {
-		return name;
-	}
-
-	public Genders getGender() {
-		return gender;
-	}
-
-	public void setGender(Genders gender) {
-		this.gender = gender;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	@Override
 	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		while (foundTrigger == null && i < triggers.size()) {
-			if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
-				foundTrigger = triggers.get(i);
+		if(triggers != null) {
+			while (foundTrigger == null && i < triggers.size()) {
+				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
+					foundTrigger = triggers.get(i);
+				}
+				i++;
 			}
-			i++;
 		}
 		return foundTrigger;
 	}
