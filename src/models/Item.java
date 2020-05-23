@@ -1,6 +1,5 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Item implements Triggereable, Observable, Obstacle {
@@ -22,35 +21,25 @@ public class Item implements Triggereable, Observable, Obstacle {
 		this.triggers = triggers;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getDescription() {
 		return description;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	@Override
 	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		while (foundTrigger == null && i < triggers.size()) {
-			if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
-				foundTrigger = triggers.get(i);
+		if(triggers != null) {
+			while (foundTrigger == null && i < triggers.size()) {
+				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
+					foundTrigger = triggers.get(i);
+				}
+				i++;
 			}
-			i++;
 		}
 		return foundTrigger;
 	}
@@ -62,7 +51,7 @@ public class Item implements Triggereable, Observable, Obstacle {
 
 	@Override
 	public String getName() {
-		return id;
+		return name;
 	}
 
 	@Override
