@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Item implements Triggereable, Observable{
+public class Item implements Triggereable, Observable, Obstacle {
 
 	private String id;
 	private String name;
@@ -11,8 +11,8 @@ public class Item implements Triggereable, Observable{
 	private Numbers number;
 	private String description;
 	private List<Trigger> triggers;
-	
-	public Item(String id, String name, Genders gender, Numbers number, ArrayList<String> actions, String description,
+
+	public Item(String id, String name, Genders gender, Numbers number, List<String> actions, String description,
 			List<Trigger> triggers) {
 		this.id = id;
 		this.name = name;
@@ -21,7 +21,7 @@ public class Item implements Triggereable, Observable{
 		this.description = description;
 		this.triggers = triggers;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
@@ -29,7 +29,7 @@ public class Item implements Triggereable, Observable{
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -59,7 +59,7 @@ public class Item implements Triggereable, Observable{
 	public void changeDescription(String thing) {
 		description = thing;
 	}
-	
+
 	@Override
 	public String getName() {
 		return id;
@@ -67,6 +67,11 @@ public class Item implements Triggereable, Observable{
 
 	@Override
 	public String lookAt() {
+		return description;
+	}
+
+	@Override
+	public String getObstacleDescription() {
 		return description;
 	}
 
