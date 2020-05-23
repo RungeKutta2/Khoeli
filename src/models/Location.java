@@ -39,7 +39,7 @@ public class Location implements Observable {
 		return found;
 	}
 
-	private Connection getConnection(Directions direction) {
+	public Connection getConnection(Directions direction) {
 		Connection found = null;
 		int i = 0;
 		while (found == null && i < connections.size()) {
