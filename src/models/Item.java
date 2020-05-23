@@ -1,8 +1,26 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Item{
+public class Item {
+
+	private String name;
+	private Genders gender;
+	private Numbers number;
+	private ArrayList<String> actions;
+	private ArrayList<String> effectsOver;
+	private String description;
+	private List<Trigger> triggers;
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -12,6 +30,7 @@ public class Item{
 	}
 
 	private String id;
+
 	public String getId() {
 		return id;
 	}
@@ -20,24 +39,8 @@ public class Item{
 		this.id = id;
 	}
 
-	private String name;
-	private Genders gender;
-	private Numbers number;
-	private ArrayList<String> actions;
-	private ArrayList<String> effectsOver;
-	private String description;
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	private Trigger[] triggers;
-
-	public String getDescription() {
-		return description;
-	}
-
 	public Item(String id, String name, Genders gender, Numbers number, ArrayList<String> actions, String description,
-			Trigger[] triggers) {
+			List<Trigger> triggers) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
@@ -50,15 +53,14 @@ public class Item{
 	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		while (foundTrigger == null && i < triggers.length) {
-			if (triggers[i].getType().equals(type) && triggers[i].getThing().equals(thing)) {
-				foundTrigger = triggers[i];
+		while (foundTrigger == null && i < triggers.size()) {
+			if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
+				foundTrigger = triggers.get(i);
 			}
 			i++;
 		}
 		return foundTrigger;
 	}
-
 
 //	public String replace(String inputParsed) {
 //		return inputParsed.replace(name, id);

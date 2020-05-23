@@ -3,13 +3,13 @@ package models;
 public class Connection {
 	private Directions direction;
 	private String location;
-	private String obstacles;
+	private String obstacle;
 
 	public Connection(Directions direction, String location, String obstacles) {
 		super();
 		this.direction = direction;
 		this.location = location;
-		this.obstacles = obstacles;
+		this.obstacle = obstacles;
 	}
 
 	public Directions getDirection() {
@@ -18,6 +18,10 @@ public class Connection {
 
 	public String getLocation() {
 		return location;
+	}
+
+	public String getObstacle() {
+		return obstacle;
 	}
 
 }

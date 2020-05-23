@@ -4,9 +4,23 @@ import java.util.List;
 
 public class Location {
 	private String name;
+	private Genders gender;
+	private Numbers number;
+	private String description;
+	private List<Place> places;
+	private List<String> npcs;
+	private List<Connection> connections;
 
-	public Location(String name, Genders gender, Numbers number, String description, List<Place> places, String[] npcs,
-			Connection[] connections) {
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public Location(String name, Genders gender, Numbers number, String description, List<Place> places, List<String> npcs,
+			List<Connection> connections) {
 		super();
 		this.name = name;
 		this.gender = gender;
@@ -17,27 +31,12 @@ public class Location {
 		this.connections = connections;
 	}
 
-	private Genders gender;
-	private Numbers number;
-	private String description;
-	private List<Place> places;
-	private String[] npcs;
-	private Connection[] connections;
-
-	public String getName() {
-		return name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
 	public String findLocationName(Directions direction) {
 		String found = null;
 		int i = 0;
-		while (found == null && i < connections.length) {
-			if (connections[i].getDirection().equals(direction)) {
-				found = connections[i].getLocation();
+		while (found == null && i < connections.size()) {
+			if (connections.get(i).getDirection().equals(direction)) {
+				found = connections.get(i).getLocation();
 			}
 			i++;
 		}
@@ -48,4 +47,18 @@ public class Location {
 		Place placeToSearch = places.stream().filter(x -> x.getName().equals(place)).findFirst().get();
 		return placeToSearch.takeItem(item);
 	}
+
+	public String findObstacle(Directions direction) {
+		String found = null;
+		int i = 0;
+		while (found == null && i < connections.size()) {
+			if (connections.get(i).getDirection().equals(direction)) {
+				found = connections.get(i).getObstacle();
+			}
+			i++;
+		}
+		return found;
+		
+	}
+
 }

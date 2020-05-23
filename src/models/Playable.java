@@ -7,6 +7,12 @@ public class Playable extends Subject {
 	private int healthPoints;
 	private List<String> items;
 
+	public Playable(String name, Genders gender) {
+		super(name, gender);
+		healthPoints = 100;
+		items = new LinkedList<String>();
+	}
+
 	public List<String> getItems() {
 		return items;
 	}
@@ -14,13 +20,6 @@ public class Playable extends Subject {
 	public void setItems(List<String> items) {
 		this.items = items;
 	}
-
-	public Playable(String name, Genders gender) {
-		super(name, gender);
-		healthPoints = 100;
-		items = new LinkedList<String>();
-	}
-
 	public void customize(String name, Genders gender) {
 		this.name=name;
 		this.gender=gender;

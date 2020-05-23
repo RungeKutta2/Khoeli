@@ -31,7 +31,7 @@ public class Khoeli implements Executable {
 
 	public void setSelectedAdventure(Adventure selectedAdventure) {
 		this.selectedAdventure = selectedAdventure;
-		this.currentLocation = selectedAdventure.getLocations()[0];
+		this.currentLocation = selectedAdventure.getLocations().get(0);
 	}
 
 	private Location currentLocation;
@@ -85,22 +85,27 @@ public class Khoeli implements Executable {
 //	}
 
 	public String move(Directions direction) {
-		String locationName = currentLocation.findLocationName(direction);
-		Location foundLocation = selectedAdventure.findLocation(locationName);
-		if (foundLocation != null) {
-			currentLocation = foundLocation;
-			String endGame= selectedAdventure.findEndGame("move","location",locationName);
-			if(endGame==null) {
-				return currentLocation.getDescription();
+		String obstacle = currentLocation.findObstacle(direction);
+		if (obstacle == null) {
+			String locationName = currentLocation.findLocationName(direction);
+			Location foundLocation = selectedAdventure.findLocation(locationName);
+			if (foundLocation != null) {
+				currentLocation = foundLocation;
+				String endGame = selectedAdventure.findEndGame("move", "location", locationName);
+				if (endGame == null) {
+					return currentLocation.getDescription();
+				} else {
+					return endGame;
+				}
+			} else {
+				return "No hay nada al " + direction.toString();
 			}
-			else {
-				return endGame;
-			}
-		} else {
-			return "No hay nada al " + direction.toString();
+		}
+		else {
+			return selectedAdventure.findNpc(obstacle).getDescription();
 		}
 	}
-	
+
 	public String pickUp(String item, String place) {
 		String itemString = currentLocation.takeItem(item, place);
 		if (itemString != null) {
@@ -131,24 +136,25 @@ public class Khoeli implements Executable {
 		}
 		return talk;
 	}
-	//faltar todos los usar y triggers, endgame 
+
+	// faltar todos los usar y triggers, endgame
 	@Override
 	public String use(Item item) {
 		String response = null;
 		Trigger found = item.findTrigger(Types.ACTION, Actions.USE.toString());
-		if(found != null) {
+		if (found != null) {
 			response = found.getOn_trigger();
 			String[] afterTrigger = found.getAfter_trigger().split(";");
-			switch(afterTrigger[0]) {
-				case "delete":
-					selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);						
-					break;
-				case "add":
-					selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
-					break;
-				case "changeDescription":
-					item.setDescription(afterTrigger[1]);
-					break;
+			switch (afterTrigger[0]) {
+			case "delete":
+				selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);
+				break;
+			case "add":
+				selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
+				break;
+			case "changeDescription":
+				item.setDescription(afterTrigger[1]);
+				break;
 			}
 		} else {
 			response = "No se puede usar " + item.getName();
@@ -160,22 +166,22 @@ public class Khoeli implements Executable {
 	public String use(Item itemUsado, Item itemAfectado) {
 		String response = null;
 		Trigger found = itemAfectado.findTrigger(Types.ITEM, itemUsado.getId());
-		if(found != null) {
+		if (found != null) {
 			response = found.getOn_trigger();
 			String[] afterTrigger = found.getAfter_trigger().split(";");
-			switch(afterTrigger[0]) {
-				case "delete":
-					selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);						
-					break;
-				case "add":
-					selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
-					break;
-				case "changeDescription":
-					itemAfectado.setDescription(afterTrigger[1]);
-					break;
+			switch (afterTrigger[0]) {
+			case "delete":
+				selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);
+				break;
+			case "add":
+				selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
+				break;
+			case "changeDescription":
+				itemAfectado.setDescription(afterTrigger[1]);
+				break;
 			}
 		} else {
-			response = "No se puede usar " + itemUsado.getName() + " con "+ itemAfectado.getName();
+			response = "No se puede usar " + itemUsado.getName() + " con " + itemAfectado.getName();
 		}
 		return response;
 	}
@@ -184,24 +190,25 @@ public class Khoeli implements Executable {
 	public String use(Item item, NonPlayable npc) {
 		String response = null;
 		Trigger found = npc.findTrigger(Types.ITEM, item.getId());
-		if(found != null) {
+		if (found != null) {
 			response = found.getOn_trigger();
 			String[] afterTrigger = found.getAfter_trigger().split(";");
-			switch(afterTrigger[0]) {
-				case "delete":
-					selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);						
-					break;
-				case "add":
-					selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
-					break;
-				case "changeDescription":
-					npc.setDescription(afterTrigger[1]);
-					break;
+			switch (afterTrigger[0]) {
+			case "delete":
+				selectedAdventure.getSettings().getCharacter().removeItem(afterTrigger[1]);
+				break;
+			case "add":
+				selectedAdventure.getSettings().getCharacter().addItem(afterTrigger[1]);
+				break;
+			case "changeDescription":
+				npc.setDescription(afterTrigger[1]);
+				break;
 			}
 		} else {
-			response = "No se puede usar " + item.getName() + " con "+ npc.getName();
+			response = "No se puede usar " + item.getName() + " con " + npc.getName();
 		}
-		return response;	}
+		return response;
+	}
 
 	@Override
 	public String use(Item item, Place place) {

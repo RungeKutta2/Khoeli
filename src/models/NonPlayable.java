@@ -1,13 +1,16 @@
 package models;
 
+
+import java.util.List;
+
 public class NonPlayable extends Subject {
 	private String id;
 	private String description;
 	private Numbers number;
 	private String talk;
-	private Trigger[] triggers;
+	private List<Trigger> triggers;
 
-	public NonPlayable(String id, String name, String description, Genders gender, Trigger[] triggers, String talk) {
+	public NonPlayable(String id, String name, String description, Genders gender, List<Trigger> triggers, String talk) {
 		super(name, gender);
 		this.description = description;
 		this.id = id;
@@ -30,9 +33,9 @@ public class NonPlayable extends Subject {
 	public Trigger findTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		while (foundTrigger == null && i < triggers.length) {
-			if (triggers[i].getType().equals(type) && triggers[i].getThing().equals(thing)) {
-				foundTrigger = triggers[i];
+		while (foundTrigger == null && i < triggers.size()) {
+			if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
+				foundTrigger = triggers.get(i);
 			}
 			i++;
 		}
