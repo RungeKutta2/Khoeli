@@ -29,7 +29,7 @@ public class Location implements Observable {
 	public String getDescription() {
 		return description;
 	}
-
+	
 	public String findLocationName(Directions direction) {
 		String found = null;
 		Connection connection = getConnection(direction);
@@ -84,7 +84,7 @@ public class Location implements Observable {
 		}
 	}
 
-	private Place getPlace(String place) {
+	public Place getPlace(String place) {
 		Place found = null;
 		int i = 0;
 		while (found == null && i < places.size()) {
@@ -103,4 +103,5 @@ public class Location implements Observable {
 		}
 		
 	}
+	
 }

@@ -31,7 +31,7 @@ public class Khoeli implements Executable {
 					return endGame;
 				}
 			} else {
-				return "No hay nada al " + direction.toString();
+				return "No hay nada al " + direction.getDescription();
 			}
 		} else {
 			return selectedAdventure.findObstacle(obstacle).getObstacleDescription();

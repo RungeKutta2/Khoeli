@@ -13,16 +13,8 @@ public class Playable{
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Genders getGender() {
 		return gender;
-	}
-
-	public void setGender(Genders gender) {
-		this.gender = gender;
 	}
 
 	public Playable(String name, Genders gender) {
@@ -36,9 +28,6 @@ public class Playable{
 		return items;
 	}
 
-	public void setItems(List<String> items) {
-		this.items = items;
-	}
 	public void customize(String name, Genders gender) {
 		this.name=name;
 		this.gender=gender;
