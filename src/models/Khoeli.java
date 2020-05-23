@@ -17,7 +17,6 @@ public class Khoeli implements Executable {
 		return currentLocation;
 	}
 
-
 	public String move(Directions direction) {
 		String obstacle = currentLocation.findObstacle(direction);
 		if (obstacle == null) {
@@ -35,7 +34,7 @@ public class Khoeli implements Executable {
 				return "No hay nada al " + direction.toString();
 			}
 		} else {
-			return selectedAdventure.findNpc(obstacle).getDescription();
+			return selectedAdventure.findObstacle(obstacle).getObstacleDescription();
 		}
 	}
 
@@ -51,7 +50,7 @@ public class Khoeli implements Executable {
 	public String lookAt(Observable observable) {
 		return observable.lookAt();
 	}
-	
+
 	@Override
 	public String talkTo(NonPlayable npc) {
 		String talk = npc.getTalk();

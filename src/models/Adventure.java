@@ -30,19 +30,19 @@ public class Adventure {
 		return locations;
 	}
 
-	public void setLocations(ArrayList<Location> locations) {
+	public void setLocations(List<Location> locations) {
 		this.locations = locations;
 	}
 
-	public void setNpcs(ArrayList<NonPlayable> npcs) {
+	public void setNpcs(List<NonPlayable> npcs) {
 		this.npcs = npcs;
 	}
 
-	public void setItems(ArrayList<Item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 
-	public void setEndgames(ArrayList<Endgame> endgames) {
+	public void setEndgames(List<Endgame> endgames) {
 		this.endGames = endgames;
 	}
 
@@ -72,11 +72,17 @@ public class Adventure {
 		return foundEndGame;
 	}
 
-	public NonPlayable findNpc(String npcId) {
+	public Obstacle findObstacle(String id) {
 		for (NonPlayable npc : npcs) {
-			if (npc.getName().equals(npcId)) {
+			if (npc.getName().equals(id)) {
 				return npc;
 			}
+		}
+		for (Item item : items) {
+			if(item.getId().equals(id)) {
+				return item;
+			}
+			
 		}
 		return null;
 	}
