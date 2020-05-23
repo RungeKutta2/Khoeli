@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class NonPlayable implements Triggereable{
+public class NonPlayable implements Triggereable, Observable{
 	private String id;
 	private String description;
 	private Numbers number;
@@ -69,5 +69,10 @@ public class NonPlayable implements Triggereable{
 	@Override
 	public String getName() {
 		return id;
+	}
+
+	@Override
+	public String lookAt() {
+		return description;
 	}
 }

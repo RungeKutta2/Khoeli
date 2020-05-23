@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Item implements Triggereable{
+public class Item implements Triggereable, Observable{
 
 	private String id;
 	private String name;
@@ -63,6 +63,11 @@ public class Item implements Triggereable{
 	@Override
 	public String getName() {
 		return id;
+	}
+
+	@Override
+	public String lookAt() {
+		return description;
 	}
 
 //	public String replace(String inputParsed) {

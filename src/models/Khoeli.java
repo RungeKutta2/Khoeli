@@ -48,18 +48,8 @@ public class Khoeli implements Executable {
 	}
 
 	@Override
-	public String lookAt(Item item) {
-		return item.getDescription();
-	}
-
-	@Override
-	public String lookAt(NonPlayable npc) {
-		return npc.getDescription();
-	}
-
-	@Override
-	public String lookAt(Location location) {
-		return location.getDescription();
+	public String lookAt(Observable observable) {
+		return observable.lookAt();
 	}
 	
 	@Override

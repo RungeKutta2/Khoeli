@@ -9,11 +9,7 @@ public interface Executable {
     
     String use(Item item);
     
-    String lookAt(Item item);
+    String lookAt(Observable observable);
 
-    String lookAt(NonPlayable npc);
-
-    String lookAt(Location location);
-    
     String talkTo(NonPlayable npc);
 }

@@ -2,7 +2,7 @@ package models;
 
 import java.util.List;
 
-public class Location {
+public class Location implements Observable{
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -57,5 +57,10 @@ public class Location {
 			i++;
 		}
 		return found;
+	}
+
+	@Override
+	public String lookAt() {
+		return description;
 	}
 }
