@@ -1,12 +1,14 @@
 package models;
 
+import java.util.List;
+
 public class Trigger {
 	private Types type;
 	private String thing;
 	private String onTrigger;
-	private AfterTrigger afterTrigger;
+	private List<AfterTrigger> afterTrigger;
 
-	public Trigger(Types type, String thing, String onTrigger, AfterTrigger afterTrigger) {
+	public Trigger(Types type, String thing, String onTrigger,List <AfterTrigger> afterTrigger) {
 		this.type = type;
 		this.thing = thing;
 		this.onTrigger = onTrigger;
@@ -25,7 +27,7 @@ public class Trigger {
 		return onTrigger;
 	}
 
-	public AfterTrigger getAfterTrigger() {
+	public List<AfterTrigger> getAfterTrigger() {
 		return afterTrigger;
 	}
 

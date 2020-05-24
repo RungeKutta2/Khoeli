@@ -44,6 +44,11 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 		return foundTrigger;
 	}
 
+	
+	public String getId() {
+		return id;
+	}
+
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;

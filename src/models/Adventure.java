@@ -1,31 +1,44 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Adventure {
 
-	private Settings settings;
 	private List<Location> locations;
 	private List<NonPlayable> npcs;
 	private List<Item> items;
 	private List<Endgame> endGames;
+	private Playable selectedPlayer;
+	private static Adventure selectedAdventure = null;
 
-	public Adventure() {
-		locations = new ArrayList<Location>();
-		npcs = new ArrayList<NonPlayable>();
-		items = new ArrayList<Item>();
-		endGames = new ArrayList<Endgame>();
+	public static Adventure init(List<Location> locations, List<NonPlayable> npcs, List<Item> items,
+			List<Endgame> endGames, Playable selectedPlayer) {
+		if (selectedAdventure != null) {
+			throw new AssertionError("You already initialized me");
+		}
+		selectedAdventure = new Adventure(locations, npcs, items, endGames, selectedPlayer);
+		return selectedAdventure;
 	}
 
-	public Settings getSettings() {
-		return settings;
+	public static Adventure getSelectedAdventure() {
+
+		if (selectedAdventure == null) {
+
+			throw new AssertionError("You have to call init first");
+		}
+		return selectedAdventure;
 	}
 
-	public void setSettings(Settings settings) {
-		this.settings = settings;
+	private Adventure(List<Location> locations, List<NonPlayable> npcs, List<Item> items,
+			List<Endgame> endGames, Playable selectedPlayer) {
+		this.locations = locations;
+		this.npcs = npcs;
+		this.items = items;
+		this.endGames = endGames;
+		this.selectedPlayer = selectedPlayer;
 	}
 
+	
 	public List<Location> getLocations() {
 		return locations;
 	}
@@ -34,31 +47,82 @@ public class Adventure {
 		this.locations = locations;
 	}
 
+	public List<NonPlayable> getNpcs() {
+		return npcs;
+	}
+
 	public void setNpcs(List<NonPlayable> npcs) {
 		this.npcs = npcs;
+	}
+
+	public List<Item> getItems() {
+		return items;
 	}
 
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 
-	public void setEndgames(List<Endgame> endgames) {
-		this.endGames = endgames;
+	public List<Endgame> getEndGames() {
+		return endGames;
 	}
 
-	public void customizeCharacter(String name, Genders gender) {
-		settings.customizeCharacter(name, gender);
+	public void setEndGames(List<Endgame> endGames) {
+		this.endGames = endGames;
+	}
+	
+	public Playable getSelectedPlayer() {
+		return selectedPlayer;
+	}
+
+	public void setSelectedPlayer(Playable selectedPlayer) {
+		this.selectedPlayer = selectedPlayer;
 	}
 
 	public Location findLocation(String locationName) {
-		for (Location location : locations) {
-			if (location.getName().equals(locationName)) {
-				return location;
+		int i = 0;
+		Location foundLocation = null;
+		
+		while (foundLocation != null && i < locations.size()) {
+			if (locations.get(i).getName().equals(locationName)) {
+				foundLocation = locations.get(i);
 			}
+			i++;
 		}
-		return null;
+		
+		return foundLocation;
+	}
+	
+	public Item findItem(String itemId) {
+		int i = 0;
+		Item foundItem = null;
+		
+		while (foundItem != null && i < items.size()) {
+			if (items.get(i).getId().equals(itemId)) {
+				foundItem = items.get(i);
+			}
+			i++;
+		}
+		
+		return foundItem;
 	}
 
+	public NonPlayable findNpc(String npcId) {
+		int i = 0;
+		NonPlayable foundNpc = null;
+		
+		while (foundNpc != null && i < npcs.size()) {
+			if (npcs.get(i).getId().equals(npcId)) {
+				foundNpc = npcs.get(i);
+			}
+			i++;
+		}
+		
+		return foundNpc;
+	}
+
+
+	//HAY QUE SACAR ESTO PORQUE DEBERIAMOS HACERLO COMO UN TRIGGER
 	public String findEndGame(String action, String condition, String thing) {
 		String foundEndGame = null;
 		int i = 0;
@@ -71,7 +135,7 @@ public class Adventure {
 		}
 		return foundEndGame;
 	}
-
+	
 	public Obstacle findObstacle(String id) {
 		for (NonPlayable npc : npcs) {
 			if (npc.getName().equals(id)) {
@@ -79,10 +143,10 @@ public class Adventure {
 			}
 		}
 		for (Item item : items) {
-			if(item.getId().equals(id)) {
+			if (item.getId().equals(id)) {
 				return item;
 			}
-			
+
 		}
 		return null;
 	}

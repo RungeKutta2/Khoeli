@@ -1,0 +1,136 @@
+{
+  "locations": [
+    {
+      "name": "descampado",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estas en un descampado, al norte hay un bar y al oeste hay una escuela. Despues no hay mas nada",
+      "places": [
+        {
+          "name": "piso",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "espada_vieja"
+          ]
+        }
+      ],
+      "npcs": [
+      	"nene_terrorifico"
+      ],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "bar",
+          "obstacles": null
+        },
+        {
+        	"direction": "WEST",
+        	"location":"escuela",
+        	"obstacles": "nene_terrorifico"
+        }
+      ]
+    },
+     {
+      "name": "bar",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estas en un bar llamado Mercia, al sur esta el descampado",
+      "places": [
+      ],
+      "npcs": [
+   
+      ],
+      "connections": [
+        {
+          "direction": "SOUTH",
+          "location": "descampado",
+          "obstacles": null
+        }
+      ]
+    },
+    {
+      "name": "escuela",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estas en una escuela, al este esta el descampado",
+      "places": [
+      ],
+      "npcs": [
+      ],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "descampado",
+          "obstacles": null
+        }
+      ]
+    }
+   
+  ],
+  "npcs": [
+    {
+      "id": "nene_terrorifico",
+      "name": "nene terrorifico",
+      "description": "Es un nene de aproximadamente diez años, tiene una mirada perdida y parece medio extraño.",
+      "gender": "MALE",
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "TALK",
+          "onTrigger": "Al fin alguien se dio cuenta que estoy acá, ahora puedo irme a mi casa tranquilo",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "nene_terrorifico",
+              "actionDestination": "WEST",
+              "destinationType": "CONNECTION"
+            }
+          ]
+        }
+      ],
+      "talk": "La gente entra y sale de la escuela y nunca se dan cueta que estoy aca"
+    }
+  ],
+  "items": [
+    {
+      "id": "",
+      "name": "",
+      "gender": "",
+      "number": "",
+      "description,": "",
+      "triggers": [
+        {
+          "type": "",
+          "thing": "",
+          "onTrigger": "",
+          "afterTrigger": [
+            {
+              "action": "",
+              "thing": "",
+              "actionDestination": "",
+              "destinationType": ""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "endGames": [
+    {
+      "condition": "",
+      "action": "",
+      "thing": "",
+      "description": ""
+    }
+  ],
+  "selectedPlayer": {
+    "name": "",
+    "gender": "",
+    "settings": {
+      "welcome": "",
+      "initialLocation": "",
+      "initialHealthPoints": 100
+    }
+  }
+}

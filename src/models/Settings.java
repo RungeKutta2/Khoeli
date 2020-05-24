@@ -2,18 +2,21 @@ package models;
 
 public class Settings {
 	private String welcome;
-	private Playable character;
-
-	public Settings(String welcome, Playable character) {
+	private String initialLocation;
+	private int initialHealthPoints;
+	
+	public Settings(String welcome, String initialLocation, int initialHealthPoints) {
 		this.welcome = welcome;
-		this.character = character;
+		this.initialLocation = initialLocation;
+		this.initialHealthPoints = initialHealthPoints;
+	}
+
+	public String getInitialLocation() {
+		return initialLocation;
+	}
+
+	public int getInitialHealthPoints() {
+		return initialHealthPoints;
 	}
 	
-	public Playable getCharacter() {
-		return character;
-	}
-
-	public void customizeCharacter(String name, Genders gender) {
-		character.customize(name,gender);
-	}
 }

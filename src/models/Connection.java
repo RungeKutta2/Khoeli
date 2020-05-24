@@ -2,24 +2,24 @@ package models;
 
 public class Connection {
 	private Directions direction;
-	private String location;
-	private String obstacle;
+	private Location location;
+	private Obstacle obstacle;
 
 	public Connection(Directions direction, String location, String obstacles) {
 		this.direction = direction;
-		this.location = location;
-		this.obstacle = obstacles;
+		this.location = Adventure.getSelectedAdventure().findLocation(location);
+		this.obstacle = Adventure.getSelectedAdventure().findObstacle(obstacles); //ESTO HAY QUE MEJORARLO
 	}
 
 	public Directions getDirection() {
 		return direction;
 	}
 
-	public String getLocation() {
+	public Location getLocation() {
 		return location;
 	}
 
-	public String getObstacle() {
+	public Obstacle getObstacle() {
 		return obstacle;
 	}
 
