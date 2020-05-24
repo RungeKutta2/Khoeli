@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Location implements Observable {
@@ -8,7 +9,7 @@ public class Location implements Observable {
 	private Numbers number;
 	private String description;
 	private List<Place> places;
-	private List<String> npcs;
+	private List<NonPlayable> npcs;
 	private List<Connection> connections;
 
 	public Location(String name, Genders gender, Numbers number, String description, List<Place> places,
@@ -18,8 +19,17 @@ public class Location implements Observable {
 		this.number = number;
 		this.description = description;
 		this.places = places;
-		this.npcs = npcs;
+		this.npcs = setNonPlayable(npcs);
 		this.connections = connections;
+	}
+
+	private List<NonPlayable> setNonPlayable(List<String> npcs) {
+		List<NonPlayable> npcList = new ArrayList<NonPlayable>(npcs.size());
+		for (String npcId : npcs) {
+			npcList.add(Adventure.getSelectedAdventure().findNpc(npcId));
+		}
+
+		return npcList;
 	}
 
 	public String getName() {
@@ -29,17 +39,17 @@ public class Location implements Observable {
 	public String getDescription() {
 		return description;
 	}
-	
-	public String findLocationName(Directions direction) {
-		String found = null;
-		Connection connection = getConnection(direction);
+
+	public Location findLocationName(Directions direction) {
+		Location found = null;
+		Connection connection = findConnection(direction);
 		if (connection != null) {
 			found = connection.getLocation();
 		}
 		return found;
 	}
 
-	public Connection getConnection(Directions direction) {
+	public Connection findConnection(Directions direction) {
 		Connection found = null;
 		int i = 0;
 		while (found == null && i < connections.size()) {
@@ -51,14 +61,9 @@ public class Location implements Observable {
 		return found;
 	}
 
-	public String takeItem(String item, String place) {
-		Place placeToSearch = places.stream().filter(x -> x.getName().equals(place)).findFirst().get();
-		return placeToSearch.takeItem(item);
-	}
-
-	public String findObstacle(Directions direction) {
-		String found = null;
-		Connection connection = getConnection(direction);
+	public Obstacle findObstacle(Directions direction) {
+		Obstacle found = null;
+		Connection connection = findConnection(direction);
 		if (connection != null) {
 			found = connection.getObstacle();
 		}
@@ -71,7 +76,7 @@ public class Location implements Observable {
 	}
 
 	public void removeObstacle(Directions direction) {
-		Connection connection = getConnection(direction);
+		Connection connection = findConnection(direction);
 		if (connection != null) {
 			connection.removeObstacle();
 		}
@@ -96,12 +101,16 @@ public class Location implements Observable {
 		return found;
 	}
 
-	public void addToPlace(String placeName, String item) {
-		Place place = getPlace(placeName);
-		if (place != null) {
-			place.getItems().add(item);
-		}
-		
+	public boolean takeItem(Item item, Place place) {
+		return place.getItems().remove(item);
 	}
-	
+
+//	public void addToPlace(String placeName, String item) {
+//		Place place = getPlace(placeName);
+//		if (place != null) {
+//			place.getItems().add(item);
+//		}
+//		
+//	}
+
 }

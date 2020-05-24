@@ -11,7 +11,7 @@ public class Item implements Triggereable, Observable, Obstacle {
 	private String description;
 	private List<Trigger> triggers;
 
-	public Item(String id, String name, Genders gender, Numbers number, List<String> actions, String description,
+	public Item(String id, String name, Genders gender, Numbers number, String description,
 			List<Trigger> triggers) {
 		this.id = id;
 		this.name = name;
