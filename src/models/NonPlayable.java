@@ -4,14 +4,14 @@ import java.util.List;
 
 public class NonPlayable implements Triggereable, Observable, Obstacle {
 	private String id;
+	private String name;
 	private String description;
+	private Genders gender;
 	private Numbers number;
 	private String talk;
 	private List<Trigger> triggers;
-	private String name;
-	private Genders gender;
-
-	public NonPlayable(String id, String name, String description, Genders gender, List<Trigger> triggers,
+	
+	public NonPlayable(String id, String name, String description, Genders gender,Numbers number, List<Trigger> triggers,
 			String talk) {
 		this.name = name;
 		this.gender = gender;
@@ -19,6 +19,7 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 		this.id = id;
 		this.triggers = triggers;
 		this.talk = talk;
+		this.number = number;
 	}
 
 	public String getDescription() {
