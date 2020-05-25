@@ -11,12 +11,12 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [
-            "espada_vieja"
+            "pico"
           ]
         }
       ],
       "npcs": [
-      	"nene_terrorifico"
+        "nene_terrorifico"
       ],
       "connections": [
         {
@@ -25,22 +25,24 @@
           "obstacles": null
         },
         {
-        	"direction": "WEST",
-        	"location":"escuela",
-        	"obstacles": "nene_terrorifico"
+          "direction": "SOUTH",
+          "location": "cueva",
+          "obstacles": "piedra"
+        },
+        {
+          "direction": "WEST",
+          "location": "escuela",
+          "obstacles": "nene_terrorifico"
         }
       ]
     },
-     {
+    {
       "name": "bar",
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estas en un bar llamado Mercia, al sur esta el descampado",
-      "places": [
-      ],
-      "npcs": [
-   
-      ],
+      "places": [],
+      "npcs": [],
       "connections": [
         {
           "direction": "SOUTH",
@@ -54,10 +56,8 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Estas en una escuela, al este esta el descampado",
-      "places": [
-      ],
-      "npcs": [
-      ],
+      "places": [],
+      "npcs": [],
       "connections": [
         {
           "direction": "EAST",
@@ -65,8 +65,22 @@
           "obstacles": null
         }
       ]
+    },
+    {
+      "name": "cueva",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estas en una cueva, al norte esta el descampado",
+      "places": [],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "descampado",
+          "obstacles": null
+        }
+      ]
     }
-   
   ],
   "npcs": [
     {
@@ -74,6 +88,7 @@
       "name": "nene terrorifico",
       "description": "Es un nene de aproximadamente diez años, tiene una mirada perdida y parece medio extraño.",
       "gender": "MALE",
+      "number": "SINGULAR",
       "triggers": [
         {
           "type": "ACTION",
@@ -87,6 +102,19 @@
               "destinationType": "CONNECTION"
             }
           ]
+        },
+        {
+          "type": "ITEM",
+          "thing": "espada_vieja",
+          "onTrigger": "Atacaste al nene terrorifico con la espada. Se lo merecia",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Ahora está muy enojado",
+              "actionDestination": null,
+              "destinationType": null
+            }
+          ]
         }
       ],
       "talk": "La gente entra y sale de la escuela y nunca se dan cueta que estoy aca"
@@ -94,42 +122,86 @@
   ],
   "items": [
     {
-      "id": "",
-      "name": "",
-      "gender": "",
-      "number": "",
-      "description,": "",
+      "id": "pico",
+      "name": "pico",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "parece que esta a punto de romperse",
+      "triggers": []
+    },
+    {
+      "id": "pocion",
+      "name": "poción",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Te cura de tus heridas",
       "triggers": [
         {
-          "type": "",
-          "thing": "",
-          "onTrigger": "",
+          "type": "ACTION",
+          "thing": "USE",
+          "onTrigger": "Te curaste tus heridas",
           "afterTrigger": [
             {
-              "action": "",
-              "thing": "",
-              "actionDestination": "",
-              "destinationType": ""
+              "action": "REMOVE",
+              "thing": "pocion",
+              "actionDestination": null,
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "espada_vieja",
+      "name": "espada vieja",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una espada un poco oxidada",
+      "triggers": []
+    },
+    {
+      "id": "piedra",
+      "name": "piedra",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una piedra enorme que te impide pasar mientras este ahí",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "pico",
+          "onTrigger": "la piedra se rompió pero el pico tambien porque era muy debil",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "piedra",
+              "actionDestination": "SOUTH",
+              "destinationType": "CONNECTION"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "pico",
+              "actionDestination": null,
+              "destinationType": "INVENTORY"
             }
           ]
         }
       ]
     }
   ],
-  "endGames": [
+  "endgames": [
     {
-      "condition": "",
-      "action": "",
-      "thing": "",
-      "description": ""
+      "condition": "location",
+      "action": "move",
+      "thing": "bar",
+      "description": "Pasaste una noche muy divertida con tus amigos. THE END"
     }
   ],
   "selectedPlayer": {
-    "name": "",
-    "gender": "",
+    "name": "Jose",
+    "gender": "MALE",
     "settings": {
-      "welcome": "",
-      "initialLocation": "",
+      "welcome": "Bienvenido a esta aventura",
+      "initialLocation": "descampado",
       "initialHealthPoints": 100
     }
   }

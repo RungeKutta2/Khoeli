@@ -1,17 +1,58 @@
 package tests;
 
 import static org.junit.Assert.*;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.google.gson.*;
+
+import deserializers.*;
 import models.*;
 
 class KhoeliTest {
 
-	
+	@Test
+	void setearTodo() {
+		try {
+		    // create Gson instance
+			Gson gson = new Gson();
+			GsonBuilder gsonBuilder = new GsonBuilder();
+			
+			gsonBuilder.registerTypeAdapter(Adventure.class, new AdventureDeserializer());
+			
+			
 
+			gson = gsonBuilder.create();
+
+		    // create a reader
+		    Reader reader = Files.newBufferedReader(Paths.get("AventuraTest.json"));
+		  
+		    // convert JSON string to User object
+		    Adventure selectedAdventure = gson.fromJson(reader,Adventure.class);
+
+		    // print user object
+		    System.out.println("holi");
+
+		    // close reader
+		    reader.close();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		    System.err.println(ex.getMessage());
+		}
+	}
+	
+//
 //	@Test
 //	void testMoveToExistingLocation() {
 //		Khoeli khoeli = new Khoeli();

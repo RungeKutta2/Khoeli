@@ -1,9 +1,18 @@
 package models;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Location implements Observable {
+import com.google.gson.Gson;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
+
+public class Location implements Observable{
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -19,7 +28,7 @@ public class Location implements Observable {
 		this.number = number;
 		this.description = description;
 		this.places = places;
-		this.npcs = setNonPlayable(npcs);
+//		this.npcs = setNonPlayable(npcs);
 		this.connections = connections;
 	}
 
@@ -105,6 +114,7 @@ public class Location implements Observable {
 		return place.getItems().remove(item);
 	}
 
+	
 //	public void addToPlace(String placeName, String item) {
 //		Place place = getPlace(placeName);
 //		if (place != null) {
@@ -114,3 +124,4 @@ public class Location implements Observable {
 //	}
 
 }
+
