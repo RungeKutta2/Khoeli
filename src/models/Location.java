@@ -1,18 +1,17 @@
 package models;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
+import enums.Types;
+import enums.Directions;
+import enums.Genders;
+import enums.Numbers;
+import interfaces.Observable;
+import interfaces.Obstacle;
+import interfaces.Triggereable;
 
-public class Location implements Observable{
+public class Location implements Observable, Triggereable {
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -20,16 +19,17 @@ public class Location implements Observable{
 	private List<Place> places;
 	private List<NonPlayable> npcs;
 	private List<Connection> connections;
+	private List<Trigger> triggers;
 
 	public Location(String name, Genders gender, Numbers number, String description, List<Place> places,
-			List<String> npcs, List<Connection> connections) {
+			List<String> npcs, List<Trigger> triggers) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
 		this.description = description;
 		this.places = places;
-//		this.npcs = setNonPlayable(npcs);
-		this.connections = connections;
+		this.npcs = setNonPlayable(npcs);
+		this.triggers = triggers;
 	}
 
 	private List<NonPlayable> setNonPlayable(List<String> npcs) {
@@ -91,13 +91,6 @@ public class Location implements Observable{
 		}
 	}
 
-	public void removeFromPlace(String placeName, String item) {
-		Place place = getPlace(placeName);
-		if (place != null) {
-			place.getItems().remove(item);
-		}
-	}
-
 	public Place getPlace(String place) {
 		Place found = null;
 		int i = 0;
@@ -114,7 +107,39 @@ public class Location implements Observable{
 		return place.getItems().remove(item);
 	}
 
-	
+	public List<NonPlayable> getNpcs() {
+		return npcs;
+	}
+
+	public void setConnections(List<Connection> connections) {
+		this.connections = connections;
+	}
+
+	@Override
+	public String executeTrigger(Types type, String thing) {
+		Trigger foundTrigger = null;
+		int i = 0;
+		if(triggers != null) {
+			while (foundTrigger == null && i < triggers.size()) {
+				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
+					foundTrigger = triggers.get(i);
+				}
+				i++;
+			}
+		}
+		String result = "";
+		if(foundTrigger != null) {
+			result=foundTrigger.getOnTrigger();
+			foundTrigger.executeAfterTriggers();
+		}
+		return result;
+	}
+
+	@Override
+	public void changeDescription(String thing) {
+		description = thing;
+	}
+
 //	public void addToPlace(String placeName, String item) {
 //		Place place = getPlace(placeName);
 //		if (place != null) {
@@ -124,4 +149,3 @@ public class Location implements Observable{
 //	}
 
 }
-

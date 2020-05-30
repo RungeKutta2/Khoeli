@@ -1,4 +1,4 @@
-package deserializers;
+package helpers;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -11,8 +11,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
+import enums.Directions;
 import models.Connection;
-import models.Directions;
 
 public class ConnectionDeserializer implements JsonDeserializer<Connection>{
 	@Override
@@ -23,7 +23,7 @@ public class ConnectionDeserializer implements JsonDeserializer<Connection>{
 	
 		    Directions direction = Directions.valueOf(jobject.get("direction").getAsString());
 			String location = jobject.get("location").getAsString();
-			String obstacle = jobject.get("obstacle").getAsString();
+			String obstacle = NullSafe.of((jobject.get("obstacle"))).call(JsonElement::getAsString).get();
 			Connection connection = new Connection(direction,location,obstacle);
 		    
 		    return connection;

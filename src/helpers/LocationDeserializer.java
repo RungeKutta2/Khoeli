@@ -1,4 +1,4 @@
-package deserializers;
+package helpers;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -12,11 +12,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
+import enums.Genders;
+import enums.Numbers;
+import models.AfterTrigger;
 import models.Connection;
-import models.Genders;
 import models.Location;
-import models.Numbers;
 import models.Place;
+import models.Trigger;
 
 public class LocationDeserializer implements JsonDeserializer<Location> {
 
@@ -27,8 +29,8 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 
 		gsonBuilder.registerTypeAdapter(Place.class, new PlaceDeserializer());
-		gsonBuilder.registerTypeAdapter(Connection.class, new ConnectionDeserializer());
-		
+		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
+
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
 		
@@ -40,10 +42,9 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		}.getType());
 		List<String> npcs = gson.fromJson(jobject.get("npcs").getAsJsonArray(), new TypeToken<List<String>>() {
 		}.getType());
-		List<Connection> connection = gson.fromJson(jobject.get("connection").getAsJsonArray(), new TypeToken<List<Connection>>() {
-		}.getType());
+        List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(), new TypeToken<List<Trigger>>(){}.getType());
 
-		Location location = new Location(name, gender, number, description, places, npcs, connection);
+		Location location = new Location(name, gender, number, description, places, npcs,triggers);
 
 		return location;
 	}

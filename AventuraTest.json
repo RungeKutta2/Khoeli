@@ -22,19 +22,20 @@
         {
           "direction": "NORTH",
           "location": "bar",
-          "obstacles": null
+          "obstacle": null
         },
         {
           "direction": "SOUTH",
           "location": "cueva",
-          "obstacles": "piedra"
+          "obstacle": "piedra"
         },
         {
           "direction": "WEST",
           "location": "escuela",
-          "obstacles": "nene_terrorifico"
+          "obstacle": "nene_terrorifico"
         }
-      ]
+      ],
+      "triggers": []
     },
     {
       "name": "bar",
@@ -47,7 +48,19 @@
         {
           "direction": "SOUTH",
           "location": "descampado",
-          "obstacles": null
+          "obstacle": null
+        }
+      ],
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "MOVE",
+          "onTrigger": "Pasaste una noche muy divertida con tus amigos. THE END",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
         }
       ]
     },
@@ -62,9 +75,10 @@
         {
           "direction": "EAST",
           "location": "descampado",
-          "obstacles": null
+          "obstacle": null
         }
-      ]
+      ],
+      "triggers": []
     },
     {
       "name": "cueva",
@@ -77,9 +91,10 @@
         {
           "direction": "NORTH",
           "location": "descampado",
-          "obstacles": null
+          "obstacle": null
         }
-      ]
+      ],
+      "triggers": []
     }
   ],
   "npcs": [
@@ -111,8 +126,8 @@
             {
               "action": "CHANGE_DESCRIPTION",
               "thing": "Ahora está muy enojado",
-              "actionDestination": null,
-              "destinationType": null
+              "actionDestination": "nene_terrorifico",
+              "destinationType": "NPC"
             }
           ]
         }
@@ -175,7 +190,8 @@
               "action": "REMOVE",
               "thing": "piedra",
               "actionDestination": "SOUTH",
-              "destinationType": "CONNECTION"
+              "destinationType": "CONNECTION",
+              "parentId": "descampado"
             },
             {
               "action": "REMOVE",
@@ -203,6 +219,7 @@
       "welcome": "Bienvenido a esta aventura",
       "initialLocation": "descampado",
       "initialHealthPoints": 100
-    }
+    },
+    "items": []
   }
 }

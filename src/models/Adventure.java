@@ -1,6 +1,11 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import interfaces.Obstacle;
 
 public class Adventure {
 
@@ -9,6 +14,7 @@ public class Adventure {
 	private List<Item> items;
 	private List<Endgame> endGames;
 	private Playable selectedPlayer;
+	private boolean ended;
 	private static Adventure selectedAdventure = null;
 
 	public static Adventure init(List<Location> locations, List<NonPlayable> npcs, List<Item> items,
@@ -17,28 +23,31 @@ public class Adventure {
 			throw new AssertionError("You already initialized me");
 		}
 		selectedAdventure = new Adventure(locations, npcs, items, endGames, selectedPlayer);
+		
 		return selectedAdventure;
 	}
 
 	public static Adventure getSelectedAdventure() {
-
 		if (selectedAdventure == null) {
-
-			throw new AssertionError("You have to call init first");
+			selectedAdventure = new Adventure();
 		}
 		return selectedAdventure;
 	}
 
-	private Adventure(List<Location> locations, List<NonPlayable> npcs, List<Item> items,
-			List<Endgame> endGames, Playable selectedPlayer) {
+	private Adventure(List<Location> locations, List<NonPlayable> npcs, List<Item> items, List<Endgame> endGames,
+			Playable selectedPlayer) {
 		this.locations = locations;
 		this.npcs = npcs;
 		this.items = items;
 		this.endGames = endGames;
 		this.selectedPlayer = selectedPlayer;
+		ended = false;
 	}
 
-	
+	private Adventure() {
+
+	}
+
 	public List<Location> getLocations() {
 		return locations;
 	}
@@ -70,7 +79,7 @@ public class Adventure {
 	public void setEndGames(List<Endgame> endGames) {
 		this.endGames = endGames;
 	}
-	
+
 	public Playable getSelectedPlayer() {
 		return selectedPlayer;
 	}
@@ -82,47 +91,46 @@ public class Adventure {
 	public Location findLocation(String locationName) {
 		int i = 0;
 		Location foundLocation = null;
-		
-		while (foundLocation != null && i < locations.size()) {
+
+		while (foundLocation == null && i < locations.size()) {
 			if (locations.get(i).getName().equals(locationName)) {
 				foundLocation = locations.get(i);
 			}
 			i++;
 		}
-		
+
 		return foundLocation;
 	}
-	
+
 	public Item findItem(String itemId) {
 		int i = 0;
 		Item foundItem = null;
-		
-		while (foundItem != null && i < items.size()) {
+
+		while (foundItem == null && i < items.size()) {
 			if (items.get(i).getId().equals(itemId)) {
 				foundItem = items.get(i);
 			}
 			i++;
 		}
-		
+
 		return foundItem;
 	}
 
 	public NonPlayable findNpc(String npcId) {
 		int i = 0;
 		NonPlayable foundNpc = null;
-		
-		while (foundNpc != null && i < npcs.size()) {
+
+		while (foundNpc == null && i < npcs.size()) {
 			if (npcs.get(i).getId().equals(npcId)) {
 				foundNpc = npcs.get(i);
 			}
 			i++;
 		}
-		
+
 		return foundNpc;
 	}
 
-
-	//HAY QUE SACAR ESTO PORQUE DEBERIAMOS HACERLO COMO UN TRIGGER
+	// HAY QUE SACAR ESTO PORQUE DEBERIAMOS HACERLO COMO UN TRIGGER
 	public String findEndGame(String action, String condition, String thing) {
 		String foundEndGame = null;
 		int i = 0;
@@ -135,20 +143,30 @@ public class Adventure {
 		}
 		return foundEndGame;
 	}
-	
-	public Obstacle findObstacle(String id) {
-		for (NonPlayable npc : npcs) {
-			if (npc.getName().equals(id)) {
-				return npc;
-			}
-		}
-		for (Item item : items) {
-			if (item.getId().equals(id)) {
-				return item;
-			}
 
+	public Obstacle findObstacle(String id) {
+		if (id != null) {
+			for (NonPlayable npc : npcs) {
+				if (npc.getName().equals(id)) {
+					return npc;
+				}
+			}
+			for (Item item : items) {
+				if (item.getId().equals(id)) {
+					return item;
+				}
+
+			}
 		}
 		return null;
+	}
+
+	public void executeAfterTriggers(List<AfterTrigger> afterTriggers) {
+
+	}
+
+	public void end() {
+		ended = true;
 	}
 
 }

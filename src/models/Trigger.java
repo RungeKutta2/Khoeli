@@ -2,17 +2,19 @@ package models;
 
 import java.util.List;
 
+import enums.Types;
+
 public class Trigger {
 	private Types type;
 	private String thing;
 	private String onTrigger;
-	private List<AfterTrigger> afterTrigger;
+	private List<AfterTrigger> afterTriggers;
 
-	public Trigger(Types type, String thing, String onTrigger,List <AfterTrigger> afterTrigger) {
+	public Trigger(Types type, String thing, String onTrigger, List<AfterTrigger> afterTriggers) {
 		this.type = type;
 		this.thing = thing;
 		this.onTrigger = onTrigger;
-		this.afterTrigger = afterTrigger;
+		this.afterTriggers = afterTriggers;
 	}
 
 	public Types getType() {
@@ -22,13 +24,21 @@ public class Trigger {
 	public String getThing() {
 		return thing;
 	}
-	
+
 	public String getOnTrigger() {
 		return onTrigger;
 	}
 
-	public List<AfterTrigger> getAfterTrigger() {
-		return afterTrigger;
+	public List<AfterTrigger> getAfterTriggers() {
+		return afterTriggers;
+	}
+
+	public void executeAfterTriggers() {
+		if (afterTriggers != null) {
+			for (AfterTrigger afterTrigger : afterTriggers) {
+				afterTrigger.execute();
+			}
+		}
 	}
 
 }
