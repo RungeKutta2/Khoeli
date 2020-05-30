@@ -2,6 +2,13 @@ package models;
 
 import java.util.List;
 
+import enums.Types;
+import enums.Genders;
+import enums.Numbers;
+import interfaces.Observable;
+import interfaces.Obstacle;
+import interfaces.Triggereable;
+
 public class Item implements Triggereable, Observable, Obstacle {
 
 	private String id;
@@ -30,7 +37,7 @@ public class Item implements Triggereable, Observable, Obstacle {
 	}
 
 	@Override
-	public Trigger findTrigger(Types type, String thing) {
+	public String executeTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
 		if(triggers != null) {
@@ -41,7 +48,12 @@ public class Item implements Triggereable, Observable, Obstacle {
 				i++;
 			}
 		}
-		return foundTrigger;
+		String result = "";
+		if(foundTrigger!= null) {
+			result  = foundTrigger.getOnTrigger();
+			foundTrigger.executeAfterTriggers();
+		}
+		return result;
 	}
 
 	@Override

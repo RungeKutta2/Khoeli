@@ -1,7 +1,9 @@
-package models;
+package interfaces;
+
+import enums.Types;
 
 public interface Triggereable {
-	Trigger findTrigger(Types type, String thing);
+	String executeTrigger(Types type, String thing);
 
 	void changeDescription(String thing);
 

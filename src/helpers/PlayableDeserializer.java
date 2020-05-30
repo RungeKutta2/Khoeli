@@ -1,4 +1,4 @@
-package deserializers;
+package helpers;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import models.Genders;
+import enums.Genders;
 import models.Playable;
 import models.Settings;
 

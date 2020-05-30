@@ -1,7 +1,10 @@
-package models;
+package enums;
 
 public enum DestinationTypes {
 	INVENTORY,
 	CONNECTION,
-	PLACE
+	PLACE,
+	ITEM,
+	NPC,
+	LOCATION
 }

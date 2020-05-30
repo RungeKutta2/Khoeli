@@ -1,22 +1,19 @@
 package models;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.reflect.TypeToken;
+import enums.Types;
+import enums.Genders;
+import enums.Numbers;
+import interfaces.Triggereable;
 
-public class Place{
+public class Place implements Triggereable{
 	private String name;
 	private Genders gender;
 	private Numbers number;
-	private List<Item> items;
+	private Inventory items;
+	private List<Trigger> triggers;
 
 	public Place(String name, Genders gender, Numbers number, List<String> items) {
 		this.name = name;
@@ -25,13 +22,13 @@ public class Place{
 		this.items = setItems(items);
 	}
 	
-	private List<Item> setItems(List<String> items){
-		List<Item> itemList = new ArrayList<Item>(items.size());
+	private Inventory setItems(List<String> items){
+		Inventory inventory = new Inventory();
 		for (String itemId : items) {
-			itemList.add(Adventure.getSelectedAdventure().findItem(itemId));
+			inventory.add(Adventure.getSelectedAdventure().findItem(itemId));
 		}
 		
-		return itemList;
+		return inventory;
 	}
 	
 
@@ -39,26 +36,32 @@ public class Place{
 		return name;
 	}
 
-	public List<Item> getItems() {
+	public Inventory getItems() {
 		return items;
 	}
-	
-	/*
-	public String takeItem(String item) {
-		int itemPosition = 0;
-		String foundItem = null;
-		
-		while (foundItem == null && itemPosition < items.size()) {
-			if (items.get(itemPosition).equals(item)) {
-				foundItem = items.get(itemPosition);
-			} else {
-				itemPosition++;
+
+	@Override
+	public String executeTrigger(Types type, String thing) {
+		Trigger foundTrigger = null;
+		int i = 0;
+		if(triggers != null) {
+			while (foundTrigger == null && i < triggers.size()) {
+				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
+					foundTrigger = triggers.get(i);
+				}
+				i++;
 			}
 		}
-		if (foundItem != null) {
-			items.remove(itemPosition);
-		}	
-		return foundItem;
+		String result = "";
+		if(foundTrigger!= null) {
+			result  = foundTrigger.getOnTrigger();
+			foundTrigger.executeAfterTriggers();
+		}
+		return result;
 	}
-	*/
+
+	@Override
+	public void changeDescription(String thing) {		
+	}
+
 }

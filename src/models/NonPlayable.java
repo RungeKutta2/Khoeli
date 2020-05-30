@@ -2,6 +2,13 @@ package models;
 
 import java.util.List;
 
+import enums.Types;
+import enums.Genders;
+import enums.Numbers;
+import interfaces.Observable;
+import interfaces.Obstacle;
+import interfaces.Triggereable;
+
 public class NonPlayable implements Triggereable, Observable, Obstacle {
 	private String id;
 	private String name;
@@ -10,9 +17,9 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 	private Numbers number;
 	private String talk;
 	private List<Trigger> triggers;
-	
-	public NonPlayable(String id, String name, String description, Genders gender,Numbers number, List<Trigger> triggers,
-			String talk) {
+
+	public NonPlayable(String id, String name, String description, Genders gender, Numbers number,
+			List<Trigger> triggers, String talk) {
 		this.name = name;
 		this.gender = gender;
 		this.description = description;
@@ -31,10 +38,10 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 	}
 
 	@Override
-	public Trigger findTrigger(Types type, String thing) {
+	public String executeTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		if(triggers != null) {
+		if (triggers != null) {
 			while (foundTrigger == null && i < triggers.size()) {
 				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
 					foundTrigger = triggers.get(i);
@@ -42,10 +49,14 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 				i++;
 			}
 		}
-		return foundTrigger;
+		String result = "";
+		if (foundTrigger != null) {
+			result = foundTrigger.getOnTrigger();
+			foundTrigger.executeAfterTriggers();
+		}
+		return result;
 	}
 
-	
 	public String getId() {
 		return id;
 	}

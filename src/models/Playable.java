@@ -1,11 +1,16 @@
 package models;
-
-import java.util.LinkedList;
 import java.util.List;
+import enums.TriggerAction;
+import enums.Types;
+import interfaces.Executable;
+import interfaces.Observable;
+import interfaces.Triggereable;
+import enums.Genders;
+import enums.Directions;
 
 public class Playable implements Executable {
 	private int healthPoints;
-	private List<Item> items;
+	private Inventory inventory;
 	private String name;
 	private Genders gender;
 	private Location currentLocation;
@@ -27,34 +32,22 @@ public class Playable implements Executable {
 		this.gender = gender;
 		healthPoints = settings.getInitialHealthPoints();
 		currentLocation = Adventure.getSelectedAdventure().findLocation(settings.getInitialLocation());
-		this.items = setItem(items);
+		this.inventory = setItem(items);
 	}
 
-	private List<Item> setItem(List<String> items) {
-		List<Item> itemList = new LinkedList<Item>();
+	private Inventory setItem(List<String> items) {
+		Inventory inventory = new Inventory();
 		for (String item : items) {
-			itemList.add(Adventure.getSelectedAdventure().findItem(item));
+			inventory.add(Adventure.getSelectedAdventure().findItem(item));
 		}
 
-		return itemList;
-	}
-
-	public List<Item> getItems() {
-		return items;
+		return inventory;
 	}
 
 	public void customize(String name, Genders gender) {
 		this.name = name;
 		this.gender = gender;
 
-	}
-
-	public void addItem(Item item) {
-		items.add(item);
-	}
-
-	public void removeItem(Item item) {
-		items.remove(item);
 	}
 
 	@Override
@@ -66,11 +59,12 @@ public class Playable implements Executable {
 				// NO ESTAMOS CHEQUEANDO EL END GAME PORQUE TENEMOS QUE HACERLO TRIGGER
 				currentLocation = connection.getLocation();
 				result = currentLocation.getDescription();
+				result += currentLocation.executeTrigger(Types.ACTION, TriggerAction.MOVE.toString());
 			} else {
 				result = connection.getObstacle().getObstacleDescription();
 			}
 		} else {
-			result = "No hay nada al " + direction.toString();
+			result = "No hay nada al " + direction.getDescription();
 		}
 
 		return result;
@@ -82,6 +76,7 @@ public class Playable implements Executable {
 		boolean itemResult = currentLocation.takeItem(item, place);
 		if (itemResult) {
 			result = "Juntaste " + item.getName();
+			inventory.add(item);
 		} else {
 			result = "No hay " + item.getName() + " en " + place.getName();
 		}
@@ -104,59 +99,24 @@ public class Playable implements Executable {
 
 	@Override
 	public String use(Item item) {
-		String response = null;
-		Trigger found = item.findTrigger(Types.ACTION, TriggerActions.USE.toString());
-		if (found != null) {
-			response = found.getOnTrigger();
-			List<AfterTrigger> afterTriggerList = found.getAfterTrigger();
-			for (AfterTrigger afterTrigger : afterTriggerList) {
-				switch (afterTrigger.getAction()) {
-				case REMOVE:
-					// removeItem(afterTrigger.getThing());
-					break;
-				case CHANGE_DESCRIPTION:
-					item.changeDescription(afterTrigger.getThing());
-					break;
-				case ADD:
-					// addItem(afterTrigger.getThing());
-					break;
-				default:
-					break;
-				}
-			}
-
-		} else {
-			response = "No se puede usar " + item.getName();
+		String response = item.executeTrigger(Types.ACTION, TriggerAction.USE.toString());
+		if(response == null || response.isEmpty()) {
+			response = "no se puede usar "+ item.getName();
 		}
 		return response;
 	}
 
 	@Override
 	public String use(Item item, Triggereable affected) {
-		String response = null;
-		Trigger found = affected.findTrigger(Types.ITEM, item.getId());
-		if (found != null) {
-			response = found.getOnTrigger();
-			List<AfterTrigger> afterTriggerList = found.getAfterTrigger();
-			for (AfterTrigger afterTrigger : afterTriggerList) {
-				switch (afterTrigger.getAction()) {
-				case REMOVE:
-					// removeItem(afterTrigger.getThing());
-					break;
-				case CHANGE_DESCRIPTION:
-					affected.changeDescription(afterTrigger.getThing());
-					break;
-				case ADD:
-					// addItem(afterTrigger.getThing());
-					break;
-				default:
-					break;
-				}
-			}
-		} else {
-			response = "No se puede usar " + item.getName() + " con " + affected.getName();
+		String response = affected.executeTrigger(Types.ITEM, item.getId());
+		if(response == null || response.isEmpty()) {
+			response = "no se puede usar "+ item.getName() + " con " +affected.getName();
 		}
 		return response;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
 	}
 
 }

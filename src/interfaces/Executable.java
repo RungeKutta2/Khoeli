@@ -1,4 +1,9 @@
-package models;
+package interfaces;
+
+import enums.Directions;
+import models.Item;
+import models.NonPlayable;
+import models.Place;
 
 public interface Executable {
 	String move(Directions direction);

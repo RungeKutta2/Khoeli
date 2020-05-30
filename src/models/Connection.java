@@ -1,5 +1,8 @@
 package models;
 
+import enums.Directions;
+import interfaces.Obstacle;
+
 public class Connection {
 	private Directions direction;
 	private Location location;
@@ -26,4 +29,5 @@ public class Connection {
 	public void removeObstacle() {
 		obstacle = null;
 	}
+
 }

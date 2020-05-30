@@ -1,4 +1,4 @@
-package deserializers;
+package helpers;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -11,8 +11,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import models.Genders;
-import models.Numbers;
+import enums.Genders;
+import enums.Numbers;
 import models.Place;
 
 public class PlaceDeserializer implements JsonDeserializer<Place>{
