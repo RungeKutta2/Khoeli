@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import interfaces.Observable;
 import interfaces.Obstacle;
+import interfaces.Triggereable;
 
 public class Adventure {
 
@@ -48,6 +50,10 @@ public class Adventure {
 
 	}
 
+	public boolean isEnded() {
+		return ended;
+	}
+	
 	public List<Location> getLocations() {
 		return locations;
 	}
@@ -116,6 +122,8 @@ public class Adventure {
 		return foundItem;
 	}
 
+	
+	
 	public NonPlayable findNpc(String npcId) {
 		int i = 0;
 		NonPlayable foundNpc = null;
@@ -161,6 +169,7 @@ public class Adventure {
 		return null;
 	}
 
+	
 	public void executeAfterTriggers(List<AfterTrigger> afterTriggers) {
 
 	}

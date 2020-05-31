@@ -8,7 +8,7 @@ import enums.Genders;
 import enums.Numbers;
 import interfaces.Triggereable;
 
-public class Place implements Triggereable{
+public class Place implements Triggereable{ //agregar observable y descripcion
 	private String name;
 	private Genders gender;
 	private Numbers number;
