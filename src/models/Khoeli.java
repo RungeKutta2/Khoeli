@@ -52,7 +52,8 @@ public class Khoeli {
 			System.err.println("archivo de aventura invalido");
 		}
 
-		Scanner scanner = new Scanner(System.in).useDelimiter("\r\n");
+		Scanner scanner = new Scanner(System.in);
+		scanner.useDelimiter("\r\n");
 		
 		// hay que mostrar un mensaje inicial
 		while (!khoeli.selectedAdventure.isEnded()) {
@@ -140,7 +141,7 @@ public class Khoeli {
 				return npc;
 			}
 		}
-		for (Item item : selectedAdventure.getItems()) {
+		for (Item item : selectedAdventure.getItems()) {  
 			if (item.getId().equals(id)) {
 				return item;				
 			}

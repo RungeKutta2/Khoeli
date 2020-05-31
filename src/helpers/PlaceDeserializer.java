@@ -28,8 +28,9 @@ public class PlaceDeserializer implements JsonDeserializer<Place>{
             Genders gender = Genders.valueOf(jobject.get("gender").getAsString());
             Numbers number = Numbers.valueOf(jobject.get("number").getAsString());
             List<String> items = gson.fromJson(jobject.get("items").getAsJsonArray(), new TypeToken<List<String>>(){}.getType());
-		 	
-		    return new Place(name, gender, number, items);
+		 	String description = jobject.get("description").getAsString();
+            
+		    return new Place(name, gender, number, items, description);
 	}
 	
 }

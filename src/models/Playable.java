@@ -14,6 +14,7 @@ public class Playable implements Executable {
 	private String name;
 	private Genders gender;
 	private Location currentLocation;
+	//current place??
 
 	public String getName() {
 		return name;
