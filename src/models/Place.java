@@ -6,20 +6,23 @@ import java.util.List;
 import enums.Types;
 import enums.Genders;
 import enums.Numbers;
+import interfaces.Observable;
 import interfaces.Triggereable;
 
-public class Place implements Triggereable{ //agregar observable y descripcion
+public class Place implements Triggereable, Observable{
 	private String name;
 	private Genders gender;
 	private Numbers number;
 	private Inventory items;
+	private String description;
 	private List<Trigger> triggers;
 
-	public Place(String name, Genders gender, Numbers number, List<String> items) {
+	public Place(String name, Genders gender, Numbers number, List<String> items, String description) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
 		this.items = setItems(items);
+		this.description = description;
 	}
 	
 	private Inventory setItems(List<String> items){
@@ -61,7 +64,13 @@ public class Place implements Triggereable{ //agregar observable y descripcion
 	}
 
 	@Override
-	public void changeDescription(String thing) {		
+	public void changeDescription(String thing) {
+		description = thing;
+	}
+
+	@Override
+	public String lookAt() {
+		return description;
 	}
 
 }
