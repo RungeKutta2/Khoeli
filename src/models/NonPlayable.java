@@ -60,6 +60,10 @@ public class NonPlayable implements Triggereable, Observable, Obstacle {
 	public String getId() {
 		return id;
 	}
+	
+	public String getName2() {
+		return name;
+	}
 
 	@Override
 	public void changeDescription(String thing) {

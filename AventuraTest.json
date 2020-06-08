@@ -108,14 +108,15 @@
       "triggers": [
         {
           "type": "ACTION",
-          "thing": "TALK",
+          "thing": "TALK_TO",
           "onTrigger": "Al fin alguien se dio cuenta que estoy acá, ahora puedo irme a mi casa tranquilo",
           "afterTrigger": [
             {
               "action": "REMOVE",
               "thing": "nene_terrorifico",
               "actionDestination": "WEST",
-              "destinationType": "CONNECTION"
+              "destinationType": "CONNECTION",
+              "parentId": "descampado"
             }
           ]
         },

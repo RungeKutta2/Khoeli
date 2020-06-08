@@ -92,8 +92,12 @@ public class Playable implements Executable {
 	@Override
 	public String talkTo(NonPlayable npc) {
 		String talk = npc.getTalk();
+		String onTrigger = npc.executeTrigger(Types.ACTION, TriggerAction.TALK_TO.toString()); 
 		if (talk.isEmpty()) {
 			return "No tiene nada que decir";
+		}
+		else if (onTrigger != null && !onTrigger.isEmpty()) {
+			talk=onTrigger;
 		}
 		return talk;
 	}
