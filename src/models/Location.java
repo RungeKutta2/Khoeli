@@ -49,6 +49,10 @@ public class Location implements Observable, Triggereable {
 		return description;
 	}
 
+	public List<Place> getPlaces() {
+		return places;
+	}
+
 	public Location findLocationName(Directions direction) {
 		Location found = null;
 		Connection connection = findConnection(direction);
@@ -102,6 +106,8 @@ public class Location implements Observable, Triggereable {
 		}
 		return found;
 	}
+	
+	
 
 	public boolean takeItem(Item item, Place place) {
 		return place.getItems().remove(item);

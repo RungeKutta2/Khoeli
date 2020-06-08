@@ -69,43 +69,123 @@ public class Khoeli {
 	}
 
 	private Command parse(String next) {
-		//remover espacios de mas
-		//reemplazar nombres con espacios por id
-		//remover conectores
+		String inputParsed = next.replaceAll("\\s+", " ").trim();
+		inputParsed = replaceId(inputParsed);
+		inputParsed = removeConectors(inputParsed);
 		//ver tema sinonimos
-		String[] parsed = next.split(" ");
+		String[] parsed = inputParsed.split(" ");
+
 		return new Command(parsed[0],parsed[1],parsed[2]);
 	}
-
+	
+	public String removeConectors(String name) {
+		String conectors = " (el|la|de|en) ";
+		String actual = name;
+		boolean distinto=true;
+		do {
+			actual = name.replaceFirst(conectors, " ");
+			if(actual == name) {
+				distinto=false;
+			}
+			else {
+				name = actual;
+			}
+		}while(distinto);
+		
+		return name;
+	}
+	
+	public String replaceId(String name) {
+		String replaced = name;
+		for (NonPlayable npc : selectedAdventure.getNpcs()) {
+			replaced = replaced.replaceAll(npc.getName2(), npc.getId());
+		}
+		for (Item item : selectedAdventure.getItems()) {
+			replaced = replaced.replaceAll(item.getName(), item.getId());
+		}
+		/* HACER LO DE IDS PLACES Y LOCATIONS */
+//		for (Location location : selectedAdventure.getLocations()) {
+//			replaced = replaced.replaceAll(location.getName(), location.getId());
+//		}
+//		for (Place place : selectedAdventure.getSelectedPlayer().getCurrentLocation().getPlaces(place)) {
+//			replaced=replaced.replaceAll(location.getName(), location.getId());
+//		}
+		
+		/* ACA IRIA LO DE SINONIMO DE ACCIONES */
+		return replaced;
+	}
+	
 	private String execute(Command comando) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
 		TriggerAction action = comando.getAction();
 		
 		if (action == TriggerAction.MOVE) {
-			resultado = player.move(Directions.getDirection(comando.getCallerObject()));
+			Directions direction = Directions.getDirection(comando.getCallerObject());
+			if(direction == null) {
+				resultado = "La direccion "+comando.getCallerObject()+" no existe";
+			}
+			else {
+				resultado = player.move(direction);
+			}
 
 		} else if (action == TriggerAction.PICK_UP) {
 			Item item = selectedAdventure.findItem(comando.getCallerObject());
 			Place place = player.getCurrentLocation().getPlace(comando.getReceiverObject());
-			resultado = player.pickUp(item, place);
+			if(item == null) {
+				resultado = "No existe el item "+comando.getCallerObject();
+			}
+			else if(place == null) {
+				resultado = "No existe el place "+comando.getReceiverObject();
+			}
+			else {
+				resultado = player.pickUp(item, place);
+			}
+			
 		} else if (action == TriggerAction.TALK_TO) {
 			NonPlayable npc = selectedAdventure.findNpc(comando.getCallerObject());
-			resultado = player.talkTo(npc);
+			if(npc == null) {
+				resultado = "No existe "+comando.getCallerObject();
+			}
+			else {
+				resultado = player.talkTo(npc);
+			}
+			
 		} else if (action == TriggerAction.USE) {
 			if (comando.getReceiverObject() == null) {
-				Item item2 = selectedAdventure.findItem(comando.getCallerObject());
-				resultado = player.use(item2);
+				Item item = selectedAdventure.findItem(comando.getCallerObject());
+				if(item == null) {
+					resultado = "No existe el item "+comando.getCallerObject();
+				}
+				else {
+					resultado = player.use(item);
+				}
+				
 			} else {
-				Item item3 = selectedAdventure.findItem(comando.getCallerObject());
+				Item item = selectedAdventure.findItem(comando.getCallerObject());
 				Triggereable affected = findTriggereable(comando.getReceiverObject());
-				resultado = player.use(item3, affected);
+				if(item == null) {
+					resultado = "No existe el item "+comando.getCallerObject();
+				}
+				else if(affected == null) {
+					resultado = "No existe "+comando.getCallerObject();
+				}
+				else {
+					resultado = player.use(item, affected);
+				}
+				
 			}
 		} else if (action == TriggerAction.LOOK_AT) {
 			Observable observable = findObservable(comando.getCallerObject());
-			resultado = player.lookAt(observable);
+			if(observable == null) {
+				resultado = "No existe "+comando.getCallerObject();
+			}
+			else {
+				resultado = player.lookAt(observable);
+			}
+			
 		} else {
-			resultado = "la acción no es correcta. Intentalo de nuevo";
+			resultado = "La acción no es correcta. Intentalo de nuevo";
 		}
 
 		return resultado;
