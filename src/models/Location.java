@@ -9,9 +9,10 @@ import enums.Genders;
 import enums.Numbers;
 import interfaces.Observable;
 import interfaces.Obstacle;
-import interfaces.Triggereable;
+import interfaces.Triggerable;
 
-public class Location implements Observable, Triggereable {
+public class Location implements Observable, Triggerable {
+	private String id = "";
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -39,6 +40,10 @@ public class Location implements Observable, Triggereable {
 		}
 
 		return npcList;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -106,8 +111,6 @@ public class Location implements Observable, Triggereable {
 		}
 		return found;
 	}
-	
-	
 
 	public boolean takeItem(Item item, Place place) {
 		return place.getItems().remove(item);
@@ -125,7 +128,7 @@ public class Location implements Observable, Triggereable {
 	public String executeTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		if(triggers != null) {
+		if (triggers != null) {
 			while (foundTrigger == null && i < triggers.size()) {
 				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
 					foundTrigger = triggers.get(i);
@@ -134,8 +137,8 @@ public class Location implements Observable, Triggereable {
 			}
 		}
 		String result = "";
-		if(foundTrigger != null) {
-			result=foundTrigger.getOnTrigger();
+		if (foundTrigger != null) {
+			result = foundTrigger.getOnTrigger();
 			foundTrigger.executeAfterTriggers();
 		}
 		return result;
@@ -144,6 +147,79 @@ public class Location implements Observable, Triggereable {
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;
+	}
+
+	public boolean contains(Item item) {
+		boolean found = false;
+		int i = 0;
+		while (!found && i < places.size()) {
+			if (places.get(i).getItems().contains(item)) {
+				found = true;
+			}
+			i++;
+		}
+		if (!found) {
+			i = 0;
+			while (!found && i < connections.size()) {
+				Obstacle obstacle = connections.get(i).getObstacle();
+				if (obstacle != null && obstacle.equals(item)) {
+					found = true;
+				}
+				i++;
+			}
+		}
+		return found;
+	}
+
+	public boolean contains(NonPlayable npc) {
+
+		boolean found = npcs.contains(npc);
+
+		if (!found) {
+			int i = 0;
+			while (!found && i < connections.size()) {
+				Obstacle obstacle = connections.get(i).getObstacle();
+				if (obstacle != null && obstacle.equals(npc)) {
+					found = true;
+				}
+				i++;
+			}
+		}
+		return found;
+	}
+
+	public boolean contains(Place place) {
+		return places.contains(place);
+	}
+
+	public Triggerable findTriggerable(String id) {
+
+		Item item = Adventure.getSelectedAdventure().findItem(id);
+		if (item != null && contains(item)) {
+			return item;
+		}
+
+		NonPlayable npc = findNpc(id);
+		if (npc != null) {
+			return npc;
+		}
+
+		Place place = getPlace(id);
+		if (place != null && contains(place)) {
+			return place;
+		}
+
+		return null;
+	}
+
+	public NonPlayable findNpc(String id) {
+
+		NonPlayable npc = Adventure.getSelectedAdventure().findNpc(id);
+		if (npc != null && contains(npc)) {
+			return npc;
+		}
+		
+		return null;
 	}
 
 //	public void addToPlace(String placeName, String item) {

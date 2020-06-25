@@ -7,9 +7,9 @@ import enums.Types;
 import enums.Genders;
 import enums.Numbers;
 import interfaces.Observable;
-import interfaces.Triggereable;
+import interfaces.Triggerable;
 
-public class Place implements Triggereable, Observable{
+public class Place implements Triggerable, Observable{
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -63,6 +63,17 @@ public class Place implements Triggereable, Observable{
 		return result;
 	}
 
+	public Item findItem(String id) {
+		Item item = Adventure.getSelectedAdventure().findItem(id);
+		if (item != null && items.contains(item)) {
+			return item;
+		}
+
+		return null;
+
+	}
+	
+	
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;

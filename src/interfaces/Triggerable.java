@@ -2,7 +2,7 @@ package interfaces;
 
 import enums.Types;
 
-public interface Triggereable {
+public interface Triggerable {
 	String executeTrigger(Types type, String thing);
 
 	void changeDescription(String thing);

@@ -11,7 +11,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [
-            "pico"
+            "pico", "pocion"
           ],
           "description": "Es muy solido"
         }

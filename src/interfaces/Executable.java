@@ -10,7 +10,7 @@ public interface Executable {
 
     String pickUp(Item item, Place place);
 
-    String use(Item item, Triggereable affected);
+    String use(Item item, Triggerable affected);
     
     String use(Item item);
     

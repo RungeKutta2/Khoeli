@@ -17,7 +17,7 @@ import enums.Directions;
 import enums.TriggerAction;
 import helpers.AdventureDeserializer;
 import interfaces.Observable;
-import interfaces.Triggereable;
+import interfaces.Triggerable;
 
 public class Khoeli {
 	private Adventure selectedAdventure;
@@ -42,7 +42,7 @@ public class Khoeli {
 		JFileChooser selectorArchivos = new JFileChooser();
 		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
-		selectorArchivos.setCurrentDirectory(new File("./")); // poner carpeta aventuras
+		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
 		int resultado = selectorArchivos.showOpenDialog(null);
 		File archivo = selectorArchivos.getSelectedFile();
 
@@ -54,7 +54,7 @@ public class Khoeli {
 
 		Scanner scanner = new Scanner(System.in);
 		scanner.useDelimiter("\r\n");
-		
+
 		// hay que mostrar un mensaje inicial
 		while (!khoeli.selectedAdventure.isEnded()) {
 
@@ -69,32 +69,31 @@ public class Khoeli {
 	}
 
 	private Command parse(String next) {
-		String inputParsed = next.replaceAll("\\s+", " ").trim();
+		String inputParsed = next.replaceAll("\\s+", " ").trim(); //TODO: toLowerCase
 		inputParsed = replaceId(inputParsed);
 		inputParsed = removeConectors(inputParsed);
-		//ver tema sinonimos
+		// ver tema sinonimos
 		String[] parsed = inputParsed.split(" ");
-
-		return new Command(parsed[0],parsed[1],parsed[2]);
+		
+		return new Command(parsed[0], parsed[1], parsed.length == 3 ? parsed[2] : null);
 	}
-	
+
 	public String removeConectors(String name) {
-		String conectors = " (el|la|de|en) ";
+		String conectors = " (el|los|la|las|un|una|unos|unas|al|del|a|ante|bajo|con|contra|de|desde|durante|en|entre|hacia|hasta|mediante|para|por|segun|sin|sobre|tras) ";
 		String actual = name;
-		boolean distinto=true;
+		boolean distinto = true;
 		do {
 			actual = name.replaceFirst(conectors, " ");
-			if(actual == name) {
-				distinto=false;
-			}
-			else {
+			if (actual == name) {
+				distinto = false;
+			} else {
 				name = actual;
 			}
-		}while(distinto);
-		
+		} while (distinto);
+
 		return name;
 	}
-	
+
 	public String replaceId(String name) {
 		String replaced = name;
 		for (NonPlayable npc : selectedAdventure.getNpcs()) {
@@ -110,88 +109,81 @@ public class Khoeli {
 //		for (Place place : selectedAdventure.getSelectedPlayer().getCurrentLocation().getPlaces(place)) {
 //			replaced=replaced.replaceAll(location.getName(), location.getId());
 //		}
-		
+
 		/* ACA IRIA LO DE SINONIMO DE ACCIONES */
 		return replaced;
 	}
-	
+
 	private String execute(Command comando) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
 		TriggerAction action = comando.getAction();
-		
+
 		if (action == TriggerAction.MOVE) {
 			Directions direction = Directions.getDirection(comando.getCallerObject());
-			if(direction == null) {
-				resultado = "La direccion "+comando.getCallerObject()+" no existe";
-			}
-			else {
+			if (direction == null) {
+				resultado = "La direccion " + comando.getCallerObject() + " no existe";
+			} else {
 				resultado = player.move(direction);
 			}
 
 		} else if (action == TriggerAction.PICK_UP) {
-			Item item = selectedAdventure.findItem(comando.getCallerObject());
 			Place place = player.getCurrentLocation().getPlace(comando.getReceiverObject());
-			if(item == null) {
-				resultado = "No existe el item "+comando.getCallerObject();
+			if (place != null) {
+				Item item = place.findItem(comando.getCallerObject());
+				if (item != null) {
+					resultado = player.pickUp(item, place);
+				} else {
+					resultado = "No existe el item " + comando.getCallerObject();
+				}
+			} else {
+				resultado = "No existe el place " + comando.getReceiverObject();
 			}
-			else if(place == null) {
-				resultado = "No existe el place "+comando.getReceiverObject();
-			}
-			else {
-				resultado = player.pickUp(item, place);
-			}
-			
 		} else if (action == TriggerAction.TALK_TO) {
-			NonPlayable npc = selectedAdventure.findNpc(comando.getCallerObject());
-			if(npc == null) {
-				resultado = "No existe "+comando.getCallerObject();
-			}
-			else {
+			NonPlayable npc = player.getCurrentLocation().findNpc(comando.getCallerObject());
+			if (npc == null) {
+				resultado = "No existe " + comando.getCallerObject();
+			} else {
 				resultado = player.talkTo(npc);
 			}
-			
+
 		} else if (action == TriggerAction.USE) {
+			Item item = player.findItem(comando.getCallerObject());
 			if (comando.getReceiverObject() == null) {
-				Item item = selectedAdventure.findItem(comando.getCallerObject());
-				if(item == null) {
-					resultado = "No existe el item "+comando.getCallerObject();
-				}
-				else {
+
+				if (item == null) {
+					resultado = "No existe el item " + comando.getCallerObject();
+				} else {
 					resultado = player.use(item);
 				}
-				
 			} else {
-				Item item = selectedAdventure.findItem(comando.getCallerObject());
-				Triggereable affected = findTriggereable(comando.getReceiverObject());
-				if(item == null) {
-					resultado = "No existe el item "+comando.getCallerObject();
-				}
-				else if(affected == null) {
-					resultado = "No existe "+comando.getCallerObject();
-				}
-				else {
+				Triggerable affected = player.getCurrentLocation().findTriggerable(comando.getReceiverObject());
+				if (item == null) {
+					resultado = "No existe el item " + comando.getCallerObject();
+				} else if (affected == null) {
+					resultado = "No existe " + comando.getReceiverObject();
+				} else {
 					resultado = player.use(item, affected);
 				}
-				
+
 			}
 		} else if (action == TriggerAction.LOOK_AT) {
-			Observable observable = findObservable(comando.getCallerObject());
-			if(observable == null) {
-				resultado = "No existe "+comando.getCallerObject();
-			}
-			else {
+			Observable observable = player.findObservable(comando.getCallerObject());
+			if (observable == null) {
+				resultado = "No existe " + comando.getCallerObject();
+			} else {
 				resultado = player.lookAt(observable);
 			}
-			
+
 		} else {
 			resultado = "La acción no es correcta. Intentalo de nuevo";
 		}
 
 		return resultado;
 	}
-	
-	public Triggereable findTriggereable(String id) {
+
+	public Observable findObservable(String id) {
+		/* Agregar todos los demas */
 		for (NonPlayable npc : selectedAdventure.getNpcs()) {
 			if (npc.getName().equals(id)) {
 				return npc;
@@ -199,31 +191,7 @@ public class Khoeli {
 		}
 		for (Item item : selectedAdventure.getItems()) {
 			if (item.getId().equals(id)) {
-				return item;				
-			}
-		}
-		for (Location location : selectedAdventure.getLocations()) {
-			if (location.getName().equals(id)) {
-				return location;
-			}
-		}
-		Place place = selectedAdventure.getSelectedPlayer().getCurrentLocation().getPlace(id);
-		if(place != null) {
-			return place;
-		}
-		return null;
-	}
-	
-	public Observable findObservable(String id) {
-		/* Agregar todos los demas */	
-		for (NonPlayable npc : selectedAdventure.getNpcs()) {
-			if (npc.getName().equals(id)) {
-				return npc;
-			}
-		}
-		for (Item item : selectedAdventure.getItems()) {  
-			if (item.getId().equals(id)) {
-				return item;				
+				return item;
 			}
 		}
 		for (Location location : selectedAdventure.getLocations()) {
@@ -235,7 +203,7 @@ public class Khoeli {
 //		if(place != null) {
 //			return place;
 //		}
-	
+
 		return null;
 	}
 

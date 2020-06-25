@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 import interfaces.Observable;
 import interfaces.Obstacle;
-import interfaces.Triggereable;
+import interfaces.Triggerable;
 
 public class Adventure {
 
@@ -121,6 +121,29 @@ public class Adventure {
 
 		return foundItem;
 	}
+	
+//	public Triggerable findTriggerable(String triggerableId) {
+//		int i = 0;
+//		Item foundTriggerable = null;
+//
+//		while (foundTriggerable == null && i < items.size()) {
+//			if (items.get(i).getId().equals(triggerableId)) {
+//				foundTriggerable = items.get(i);
+//			}
+//			if (npcs.get(i).getId().equals(triggerableId)) {
+//				foundTriggerable = items.get(i);
+//			}
+//			if (locations.get(i).getId().equals(triggerableId)) {
+//				foundTriggerable = items.get(i);
+//			}
+//			if () {
+//				foundTriggerable = items.get(i);
+//			}
+//			i++;
+//		}
+//
+//		return foundTriggerable;
+//	}
 
 	
 	
