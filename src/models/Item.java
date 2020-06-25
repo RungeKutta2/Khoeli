@@ -7,9 +7,9 @@ import enums.Genders;
 import enums.Numbers;
 import interfaces.Observable;
 import interfaces.Obstacle;
-import interfaces.Triggereable;
+import interfaces.Triggerable;
 
-public class Item implements Triggereable, Observable, Obstacle {
+public class Item implements Triggerable, Observable, Obstacle {
 
 	private String id;
 	private String name;

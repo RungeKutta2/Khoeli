@@ -4,7 +4,7 @@ import enums.TriggerAction;
 import enums.Types;
 import interfaces.Executable;
 import interfaces.Observable;
-import interfaces.Triggereable;
+import interfaces.Triggerable;
 import enums.Genders;
 import enums.Directions;
 
@@ -112,7 +112,7 @@ public class Playable implements Executable {
 	}
 
 	@Override
-	public String use(Item item, Triggereable affected) {
+	public String use(Item item, Triggerable affected) {
 		String response = affected.executeTrigger(Types.ITEM, item.getId());
 		if(response == null || response.isEmpty()) {
 			response = "no se puede usar "+ item.getName() + " con " +affected.getName();
@@ -122,6 +122,38 @@ public class Playable implements Executable {
 
 	public Inventory getInventory() {
 		return inventory;
+	}
+	
+	public Item findItem(String id) {
+		Item item = Adventure.getSelectedAdventure().findItem(id);
+		if(inventory.contains(item) || currentLocation.contains(item)) {
+			return item;
+		}
+		return null;
+	}
+	
+	public Observable findObservable(String id) {
+		
+		Item item = findItem(id);
+		if(item != null) {
+			return item;
+		}
+		
+		NonPlayable npc = Adventure.getSelectedAdventure().findNpc(id);
+		if(npc != null && currentLocation.getNpcs().contains(npc)) {
+			return npc;
+		}
+		
+		Place place = currentLocation.getPlace(id);
+		if(place != null) {
+			return place;
+		}
+		
+		if(currentLocation.getId().equals(id)) {
+			return currentLocation;
+		}
+		
+		return null;
 	}
 
 }
