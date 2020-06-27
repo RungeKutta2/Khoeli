@@ -1,5 +1,6 @@
 package models;
 
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -7,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import enums.Directions;
@@ -40,6 +43,16 @@ public class Khoeli {
 
 		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
 		int resultado = selectorArchivos.showOpenDialog(null);
+		if (selectorArchivos.getSelectedFile() == null) {
+			Component frame = null;
+			JOptionPane.showMessageDialog(frame,
+			    "No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura valida.",
+			    "Error!",
+			    JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
+		
 		File archivo = selectorArchivos.getSelectedFile();
 
 		try {
@@ -51,34 +64,33 @@ public class Khoeli {
 		System.out.println(khoeli.selectedAdventure.getWelcomeMessage());
 		System.out.println();
 		System.out.println(khoeli.selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
-		
+
 		Scanner scanner = new Scanner(System.in);
 		scanner.useDelimiter("\r\n");
 
 		while (!khoeli.selectedAdventure.isEnded()) {
 
 			Command comando = khoeli.parse(scanner.next());
-			if ( comando != null) {
+			if (comando != null) {
 				String result = khoeli.execute(comando);
 				System.out.println(result);
 			}
-			
+
 		}
 		scanner.close();
 	}
 
 	private Command parse(String next) {
-		String inputParsed = next.replaceAll("\\s+", " ").trim().toLowerCase(); //TODO: toLowerCase
+		String inputParsed = next.replaceAll("\\s+", " ").trim().toLowerCase(); // TODO: toLowerCase
 		inputParsed = replaceId(inputParsed);
 		inputParsed = removeConectors(inputParsed);
 		// ver tema sinonimos
 		String[] parsed = inputParsed.split(" ");
-		
+
 		Command comando = null;
 		try {
 			comando = new Command(parsed[0], parsed[1], parsed.length == 3 ? parsed[2] : null);
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println("Acción incorrecta, intente nuevamente.");
 		}
 		return comando;
@@ -125,21 +137,18 @@ public class Khoeli {
 				resultado = player.move(direction);
 			} else {
 				Location location = selectedAdventure.findLocation(comando.getCallerObject());
-				if(location != null) {
+				if (location != null) {
 					resultado = player.move(location);
-				}
-				else {
+				} else {
 					resultado = "La direccion " + comando.getCallerObject() + " no existe";
 				}
 			}
 
 		} else if (action == TriggerAction.PICK_UP) {
 			Place place;
-			if(comando.getReceiverObject() == null) {
+			if (comando.getReceiverObject() == null) {
 				place = player.getCurrentPlace();
-			}
-			else
-			{
+			} else {
 				place = player.getCurrentLocation().getPlace(comando.getReceiverObject());
 			}
 			if (place != null) {
