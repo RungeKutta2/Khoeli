@@ -63,6 +63,9 @@ public class AdventureDeserializer implements JsonDeserializer<Adventure> {
 
 		Playable selectedPlayer = gson.fromJson(jobject.get("selectedPlayer"), Playable.class);
 		adventure.setSelectedPlayer(selectedPlayer);
+		
+		String welcomeMessage = jobject.get("welcomeMessage").getAsString();
+		adventure.setWelcomeMessage(welcomeMessage);
 
 		return adventure;
 	}

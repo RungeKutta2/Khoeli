@@ -31,7 +31,7 @@ class KhoeliTest {
 			GsonBuilder gsonBuilder = new GsonBuilder();
 			gsonBuilder.registerTypeAdapter(Adventure.class, new AdventureDeserializer());
 			gson = gsonBuilder.create();
-			Reader reader = Files.newBufferedReader(Paths.get("AventuraTest.json"));
+			Reader reader = Files.newBufferedReader(Paths.get("./aventuras/AventuraTest.json"));
 			selectedAdventure = gson.fromJson(reader, Adventure.class);
 			reader.close();
 

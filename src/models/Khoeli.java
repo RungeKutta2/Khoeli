@@ -52,30 +52,40 @@ public class Khoeli {
 			System.err.println("archivo de aventura invalido");
 		}
 
+		System.out.println(khoeli.selectedAdventure.getWelcomeMessage());
+		System.out.println();
+		System.out.println(khoeli.selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
+		
 		Scanner scanner = new Scanner(System.in);
 		scanner.useDelimiter("\r\n");
 
-		// hay que mostrar un mensaje inicial
 		while (!khoeli.selectedAdventure.isEnded()) {
 
 			Command comando = khoeli.parse(scanner.next());
-			String result = khoeli.execute(comando);
-			System.out.println(result);
-			/*
-			 * leer entrada parsear entrada ejecutar comando mostrar resultado
-			 */
+			if ( comando != null) {
+				String result = khoeli.execute(comando);
+				System.out.println(result);
+			}
+			
 		}
 		scanner.close();
 	}
 
 	private Command parse(String next) {
-		String inputParsed = next.replaceAll("\\s+", " ").trim(); //TODO: toLowerCase
+		String inputParsed = next.replaceAll("\\s+", " ").trim().toLowerCase(); //TODO: toLowerCase
 		inputParsed = replaceId(inputParsed);
 		inputParsed = removeConectors(inputParsed);
 		// ver tema sinonimos
 		String[] parsed = inputParsed.split(" ");
 		
-		return new Command(parsed[0], parsed[1], parsed.length == 3 ? parsed[2] : null);
+		Command comando = null;
+		try {
+			comando = new Command(parsed[0], parsed[1], parsed.length == 3 ? parsed[2] : null);
+		}
+		catch (Exception e) {
+			System.out.println("Acción incorrecta, intente nuevamente.");
+		}
+		return comando;
 	}
 
 	public String removeConectors(String name) {
@@ -119,9 +129,12 @@ public class Khoeli {
 				resultado = player.move(direction);
 			} else {
 				Location location = selectedAdventure.findLocation(comando.getCallerObject());
-				
-				
-				resultado = "La direccion " + comando.getCallerObject() + " no existe";
+				if(location != null) {
+					resultado = player.move(location);
+				}
+				else {
+					resultado = "La direccion " + comando.getCallerObject() + " no existe";
+				}
 			}
 
 		} else if (action == TriggerAction.PICK_UP) {

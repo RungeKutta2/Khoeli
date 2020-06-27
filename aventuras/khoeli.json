@@ -5,7 +5,7 @@
       "name": "sala de estar",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "No hay nada fuera de lo normal.\r\nA tu alrededor hay una mesa, una silla, una cama y una chimenea.\r\nAl Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.",
+      "description": "Estás en la sala de estar.\r\nNo hay nada fuera de lo normal.\r\nA tu alrededor hay una mesa, una silla, una cama y una chimenea.\r\nAl Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.",
       "places": [
         {
           "name": "mesa",
@@ -32,6 +32,14 @@
             "tronco"
           ],
           "description": "Hace falta mucha más leña para encenderla.\r\nHay solo un tronco pequeño, quizás sea util."
+        },
+                {
+          "name": "silla",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+          ],
+          "description": "No parece estable, yo no me sentaría allí.\r\nNo hay nada sobre ella."
         }
       ],
       "npcs": [],
@@ -197,7 +205,9 @@
       "number": "SINGULAR",
       "description": "Estas en el lago.\r\nAl Oeste está el parque, al Sur hay una cabaña.",
       "places": [],
-      "npcs": ["cazador"],
+      "npcs": [
+        "cazador"
+      ],
       "connections": [
         {
           "direction": "WEST",
@@ -386,7 +396,9 @@
           "description": "El suelo esta muy frio. \r\nIncomodo y helado."
         }
       ],
-      "npcs": [],
+      "npcs": [
+        "guardia"
+      ],
       "connections": [
         {
           "direction": "NORTH",
@@ -412,8 +424,8 @@
           "name": "cajon",
           "gender": "MALE",
           "number": "SINGULAR",
-          "items": [],
-          "description": "No tiene nada."
+          "items": ["llave_real"],
+          "description": "Hay una llave real."
         },
         {
           "name": "puesto",
@@ -594,7 +606,7 @@
         {
           "type": "ITEM",
           "thing": "machete",
-          "onTrigger": "¡Increíble!, ¿es para mí?\r\n Ahora sí tengo un arma de caza, ya me temerán esos lobos.\r\nVen pasa a mi cabaña, puedes llevarte mi vieja hacha.",
+          "onTrigger": "¡Increíble!, ¿es para mí?\r\nAhora sí tengo un arma de caza, ya me temerán esos lobos.\r\nVen pasa a mi cabaña, puedes llevarte mi vieja hacha.",
           "afterTrigger": [
             {
               "action": "REMOVE",
@@ -625,7 +637,7 @@
               "thing": "guardia",
               "actionDestination": "SOUTH",
               "destinationType": "CONNECTION",
-              "parentId": "sendero"
+              "parentId": "entrada_al_pueblo"
             }
           ]
         }
@@ -959,5 +971,6 @@
       "initialHealthPoints": 100
     },
     "items": []
-  }
+  },
+  "welcomeMessage": "Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n----------\r\n----------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\n¡TE ESTÁS DESANGRANDO!"
 }
