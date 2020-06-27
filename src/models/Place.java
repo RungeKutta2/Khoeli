@@ -78,6 +78,7 @@ public class Place implements Triggerable, Observable{
 	public void changeDescription(String thing) {
 		description = thing;
 	}
+	
 
 	@Override
 	public String lookAt() {

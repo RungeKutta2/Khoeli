@@ -12,10 +12,9 @@
           "gender": "FEMALE",
           "number": "SINGULAR",
           "items": [
-            "fotografia",
-            "carta"
+            "fotografia"
           ],
-          "description": "Parece hecha de madera noble.\r\nHay una foto y una carta sobre ella."
+          "description": "Parece hecha de madera noble.\r\nHay una fotografía sobre ella."
         },
         {
           "name": "cama",
@@ -33,13 +32,14 @@
           ],
           "description": "Hace falta mucha más leña para encenderla.\r\nHay solo un tronco pequeño, quizás sea util."
         },
-                {
+        {
           "name": "silla",
           "gender": "FEMALE",
           "number": "SINGULAR",
           "items": [
+            "carta"
           ],
-          "description": "No parece estable, yo no me sentaría allí.\r\nNo hay nada sobre ella."
+          "description": "No parece estable, yo no me sentaría allí.\r\nHay una carta sobre ella."
         }
       ],
       "npcs": [],
@@ -106,17 +106,25 @@
       "name": "cocina",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la cocina.\r\nAl Sur está la sala de estar.\r\nCreo que le faltan muebles...\r\nHay solo un horno sin su puerta.",
+      "description": "Estás en la cocina.\r\nCreo que le faltan muebles...\r\nHay solo un horno sin su puerta y en el suelo hay algo tirado.\r\nAl Sur está la sala de estar.",
       "places": [
         {
           "name": "horno",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [
-            "martillo",
             "fosforos"
           ],
-          "description": "Tiene tiempo de no usarse.\r\nDentro hay fósforos y un martillo."
+          "description": "Tiene tiempo de no usarse.\r\nDentro hay fósforos."
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "martillo"
+          ],
+          "description": "No hay nada más que un martillo."
         }
       ],
       "npcs": [],
@@ -143,7 +151,7 @@
           "items": [
             "nieve"
           ],
-          "description": "hay una montaña de nieve. Puede haber algo aqui."
+          "description": "Hay una montaña de nieve. Puede haber algo aquí."
         }
       ],
       "npcs": [],
@@ -236,7 +244,7 @@
           "items": [
             "hacha"
           ],
-          "description": "Está manchada de sangre.\r\nHay un hacha sobre ella"
+          "description": "Está manchada de sangre.\r\nHay un hacha sobre ella."
         },
         {
           "name": "sillon",
@@ -418,13 +426,15 @@
       "name": "feria",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la feria.\r\nAl sur está la plaza, al norte la entrada del pueblo.\r\nA tu alrededor hay un cajón de madera y un puesto de comida.",
+      "description": "Estás en la feria.\r\nA tu alrededor hay un cajón de madera y un puesto de comida.\r\nAl sur está la plaza, al Norte la entrada del pueblo.",
       "places": [
         {
           "name": "cajon",
           "gender": "MALE",
           "number": "SINGULAR",
-          "items": ["llave_real"],
+          "items": [
+            "llave_real"
+          ],
           "description": "Hay una llave real."
         },
         {
@@ -661,7 +671,34 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Se ve un hombre de mediana edad usando un collar vistoso de plata.\r\nLo conozco, pero... no logro recordar quién es.",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la fotografía.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Parece hecha de madera noble.",
+              "actionDestination": "mesa",
+              "parentId": "sala_de_estar",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "fotografia",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "fotografia",
+              "actionDestination": "mesa",
+              "parentId": "sala_de_estar",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "carta",
@@ -669,7 +706,34 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Parece que se escribió hace mucho tiempo. Sólo logro leer: 'Para mi séptimo hijo. Con amor, tu madre.'",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la carta.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No hay nada arriba.",
+              "actionDestination": "silla",
+              "parentId": "sala_de_estar",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "carta",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "carta",
+              "actionDestination": "silla",
+              "parentId": "sala_de_estar",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "tronco",
@@ -697,6 +761,32 @@
               "action": "REMOVE",
               "thing": "tronco",
               "destinationType": "INVENTORY"
+            }
+          ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste tronco.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Hace falta mucha más leña para encenderla.",
+              "actionDestination": "chimenea",
+              "parentId": "sala_de_estar",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "tronco",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "tronco",
+              "actionDestination": "chimenea",
+              "parentId": "sala_de_estar",
+              "destinationType": "PLACE"
             }
           ]
         }
@@ -728,6 +818,32 @@
               "destinationType": "INVENTORY"
             }
           ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Agarraste la llave.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Parece que pierde agua.\r\nNo pienso volver a meter la mano ahí.",
+              "actionDestination": "inodoro",
+              "parentId": "baño",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "llave",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "llave",
+              "actionDestination": "inodoro",
+              "parentId": "baño",
+              "destinationType": "PLACE"
+            }
+          ]
         }
       ]
     },
@@ -737,23 +853,116 @@
       "gender": "MALE",
       "number": "PLURAL",
       "description": "Están algo húmedos, pero todavía sirven.",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Agarraste los fósforos.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Tiene tiempo de no usarse.",
+              "actionDestination": "horno",
+              "parentId": "cocina",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "fosforos",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "fosforos",
+              "actionDestination": "horno",
+              "parentId": "cocina",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "martillo",
       "name": "martillo",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "sirve para romper cosas.",
-      "triggers": []
+      "description": "Sirve para romper cosas.",
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Agarraste el martillo.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No hay más nada.",
+              "actionDestination": "suelo",
+              "parentId": "cocina",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Estás en la cocina.\r\nCreo que le faltan muebles...\r\nHay solo un horno sin su puerta.\r\nAl Sur está la sala de estar.",
+              "actionDestination": "cocina",
+              "destinationType": "LOCATION"
+            },
+            {
+              "action": "ADD",
+              "thing": "martillo",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "martillo",
+              "actionDestination": "suelo",
+              "parentId": "cocina",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "pala",
       "name": "pala",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "esta un poco gastada pero sirve.",
-      "triggers": []
+      "description": "Está un poco gastada pero sirve.",
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Agarraste la pala.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No hay nada más allí.",
+              "actionDestination": "suelo",
+              "parentId": "deposito",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Estas en el depósito.\r\nAl Sur está el parque.",
+              "actionDestination": "deposito",
+              "destinationType": "LOCATION"
+            },
+            {
+              "action": "ADD",
+              "thing": "pala",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "pala",
+              "actionDestination": "suelo",
+              "parentId": "deposito",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "hielo",
@@ -801,6 +1010,19 @@
               "actionDestination": "suelo",
               "destinationType": "PLACE",
               "parentId": "parque"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Hay un machete en el suelo",
+              "actionDestination": "suelo",
+              "parentId": "parque",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
+              "actionDestination": "parque",
+              "destinationType": "LOCATION"
             }
           ]
         }
@@ -812,15 +1034,69 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Quizá a alguien le pueda interesar",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Recogiste el machete.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No hay nada más ahí.",
+              "actionDestination": "suelo",
+              "parentId": "parque",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "machete",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "machete",
+              "actionDestination": "suelo",
+              "parentId": "parque",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "hacha",
       "name": "hacha",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "number": "SINGULAR",
       "description": "Con esto podré talar algo, espero.",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Recogiste el hacha.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Está manchada de sangre.",
+              "actionDestination": "mesada",
+              "parentId": "cabaña",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "hacha",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "hacha",
+              "actionDestination": "mesada",
+              "parentId": "cabaña",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "arbol",
@@ -861,6 +1137,12 @@
               "action": "ADD",
               "thing": "colmillo",
               "destinationType": "INVENTORY"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Estás en el jardín.\r\nAl Oeste está el bosque, al Este está el invernadero, al Sur está el sendero al pueblo.",
+              "actionDestination": "parque",
+              "destinationType": "LOCATION"
             }
           ]
         }
@@ -872,7 +1154,34 @@
       "gender": "FEMALE",
       "number": "PLURAL",
       "description": "Parecen dulces.",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Pusiste las frutillas en tus bolsillos.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No tiene más frutos.",
+              "actionDestination": "planta",
+              "parentId": "invernadero",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "frutillas",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "frutillas",
+              "actionDestination": "planta",
+              "parentId": "invernadero",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "llave_real",
@@ -880,14 +1189,41 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Es una llave con un sello real",
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Guardaste la llave real en tus bolsillos",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No hay más nada.",
+              "actionDestination": "cajon",
+              "parentId": "feria",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "ADD",
+              "thing": "llave_real",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "llave_real",
+              "actionDestination": "cajon",
+              "parentId": "feria",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "puerta",
       "name": "puerta",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es una puerta sólida",
+      "description": "Es una puerta sólida.",
       "triggers": [
         {
           "type": "ITEM",
@@ -908,12 +1244,12 @@
       "name": "puerta real",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es la puerta de la habitación del rey",
+      "description": "Es la puerta de la habitación del rey.",
       "triggers": [
         {
           "type": "ITEM",
           "thing": "llave_real",
-          "onTrigger": "La puerta esta desbloqueada",
+          "onTrigger": "Abriste la puerta.",
           "afterTrigger": [
             {
               "action": "REMOVE",

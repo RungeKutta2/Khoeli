@@ -68,6 +68,11 @@ public class AfterTrigger {
 			Location affectedLocation = Adventure.getSelectedAdventure().findLocation(actionDestination);
 			affectedLocation.changeDescription(thing);
 			break;
+		case PLACE:
+			Location location2 = Adventure.getSelectedAdventure().findLocation(parentId);
+			Place place = location2.getPlace(actionDestination);
+			place.changeDescription(thing);
+			break;
 		default:
 			break;
 		}

@@ -96,15 +96,13 @@ public class Playable implements Executable {
 
 	@Override
 	public String pickUp(Item item, Place place) {
-		String result;
-		boolean itemResult = currentLocation.takeItem(item, place);
-		if (itemResult) {
-			result = "Juntaste " + item.getName();
-			inventory.add(item);
-		} else {
-			result = "No hay " + item.getName() + " en " + place.getName();
+		
+		String response = item.executeTrigger(Types.ACTION, TriggerAction.PICK_UP.toString());
+		if (response == null || response.isEmpty()) {
+			return response = "No puedo juntar eso.";
 		}
-		return result;
+
+		return response;
 	}
 
 	@Override
