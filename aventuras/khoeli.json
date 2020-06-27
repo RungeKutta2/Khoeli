@@ -478,7 +478,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+          "description": "No hay nada en él. Está muy frío."
         }
       ],
       "npcs": [],
@@ -501,14 +501,14 @@
       "name": "plaza",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la plaza principal.\r\nAl Sur está el camino real, al norte está la plaza.\r\nEstá desierta, ¿no hay un alma viva en el corazón del pueblo? Deberán estar en la taberna.",
+      "description": "Estás en la plaza principal.\r\nEstá desierta, ¿no hay un alma viva en el corazón del pueblo?\r\nAl Sur está el camino real, al norte está la plaza.",
       "places": [
         {
           "name": "suelo",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+          "description": "No hay nada en él. Está muy frío."
         }
       ],
       "npcs": [],
@@ -531,17 +531,19 @@
       "name": "camino real",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": " Estás en el camino real.\r\nAl Sur está la entrada del castillo, al norte está la plaza.Tengo un mal augurio",
+      "description": "Estás en el camino real.\r\nHay un aldeano merodeando, tengo un mal augurio.\r\nAl Sur está la entrada del castillo, al norte está la plaza.",
       "places": [
         {
           "name": "suelo",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+          "description": "No hay nada en él. Está muy frío."
         }
       ],
-      "npcs": [],
+      "npcs": [
+        "aldeano"
+      ],
       "connections": [
         {
           "direction": "NORTH",
@@ -561,14 +563,14 @@
       "name": "entrada al castillo",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la entrada del castillo.\r\nAl Sur está el salón real, al norte está el camino real.\r\n¿No debería haber guardias por aquí?",
+      "description": "Estás en la entrada del castillo.\r\n¿No debería haber guardias por aquí?\r\nAl Sur está el salón real, al norte está el camino real.",
       "places": [
         {
           "name": "suelo",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+          "description": "No hay nada en él. Está muy frío."
         }
       ],
       "npcs": [],
@@ -591,8 +593,16 @@
       "name": "salón real",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el salón real.\r\nAl Este está la habitación del rey.\r\nEl rey está sentado en su trono.",
-      "places": [],
+      "description": "Estás en el salón real.\r\nEl rey está sentado en su trono.\r\nAl Este está la habitación del rey.",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "No hay nada en él. Está muy frío."
+        }
+      ],
       "npcs": [
         "rey"
       ],
@@ -611,7 +621,15 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Estás en la habitacion del rey.",
-      "places": [],
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "No hay nada en él. Está muy frío."
+        }
+      ],
       "npcs": [],
       "connections": [
         {
@@ -624,7 +642,7 @@
         {
           "type": "ACTION",
           "thing": "MOVE",
-          "onTrigger": "Toda mi vida quise guardar este secreto y ahora un inmundo pueblerino quiere tirar todo por la borda. Jamás dejaré que eso ocurra.\r\nSiento un fuerte dolor y veo como una inmensa daga se mete en mi pecho. Levanto la mirada y veo los ojos del rey, los mismos ojos que me atacaron esta noche. FIN",
+          "onTrigger": "Toda mi vida quise guardar este secreto y ahora un inmundo pueblerino quiere tirar todo por la borda.\r\nJamás dejaré que eso ocurra.\r\nSiento un fuerte dolor y veo como una inmensa daga se mete en mi pecho.\r\nLevanto la mirada y veo los ojos del rey, los mismos ojos que me atacaron esta noche.\r\nFIN.",
           "afterTrigger": [
             {
               "action": "ENDGAME"
@@ -657,7 +675,25 @@
           ]
         }
       ],
-      "talk": "No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice.\r\nme robaron mi único rifle de caza.\r\nQuizás podría ganarme su confianza con algún presente."
+      "talk": "No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice me robaron mi único rifle de caza.\r\nQuizás podría ganarme su confianza con algún presente."
+    },
+    {
+      "id": "mercader",
+      "name": "mercader",
+      "description": "No parece ser un mercader si lo veo más de cerca...",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "triggers": [],
+      "talk": "No todo el que deambula está perdido niño."
+    },
+    {
+      "id": "aldeano",
+      "name": "aldeano",
+      "description": "Se nota atemorizado... ¿De mí?",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "triggers": [],
+      "talk": "¡No te acerques a mí! Ve con tu padre, animal."
     },
     {
       "id": "guardia",
@@ -681,7 +717,7 @@
           ]
         }
       ],
-      "talk": "Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.\r\nAunque, lo podríamos negociar por lo más dulce del valle.\r\nQué guardia amistoso…"
+      "talk": "Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.\r\nAunque, lo podríamos negociar por lo más dulce del valle."
     },
     {
       "id": "rey",
@@ -690,7 +726,7 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "triggers": [],
-      "talk": "Parece que no tiene intenciones de hablar"
+      "talk": "Qué guardia amistoso… Parece que no tiene intenciones de hablar"
     }
   ],
   "items": [
@@ -1238,7 +1274,7 @@
       "name": "llave real",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es una llave con un sello real",
+      "description": "Es una llave real. Está marcada por el sello de la familia del rey.",
       "triggers": [
         {
           "type": "ACTION",
@@ -1294,7 +1330,7 @@
       "name": "puerta real",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es la puerta de la habitación del rey.",
+      "description": "Es la puerta real. Debe ser la entrada a la habitación del rey.",
       "triggers": [
         {
           "type": "ITEM",
