@@ -320,7 +320,7 @@
       "name": "jardin",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el jardín.\r\nHay unas huellas que llevan a un montículo de tierra, quizás debería removerla y ver que hay allí\r\nAl Oeste está el bosque, al Este está el invernadero, al Sur está el sendero al pueblo.",
+      "description": "Estás en el jardín.\r\nHay unas huellas que llevan a un montículo de tierra, quizás debería removerla y ver que hay allí\r\nAl Este está el bosque, al Oeste está el invernadero, al Sur está el sendero al pueblo.",
       "places": [
         {
           "name": "suelo",
@@ -1176,7 +1176,7 @@
             },
             {
               "action": "CHANGE_DESCRIPTION",
-              "thing": "Estás en el jardín.\r\nAl Oeste está el bosque, al Este está el invernadero, al Sur está el sendero al pueblo.",
+              "thing": "Estás en el jardín.\r\nAl Este está el bosque, al Oeste está el invernadero, al Sur está el sendero al pueblo.",
               "actionDestination": "parque",
               "destinationType": "LOCATION"
             },
