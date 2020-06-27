@@ -117,7 +117,7 @@ class KhoeliTest {
 	void testTalkToNpc() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
 		NonPlayable npc = selectedAdventure.findNpc("nene_terrorifico");
-		assertEquals("La gente entra y sale de la escuela y nunca se dan cueta que estoy aca",
+		assertEquals("Al fin alguien se dio cuenta que estoy acá, ahora puedo irme a mi casa tranquilo",
 				selectedPlayer.talkTo(npc));
 	}
 
@@ -220,7 +220,7 @@ class KhoeliTest {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
 		Item item1 = selectedAdventure.findItem("espada_vieja");
 		Item item2 = selectedAdventure.findItem("piedra");
-		
+
 		assertEquals("no se puede usar espada vieja con piedra", selectedPlayer.use(item1, item2));
 	}
 }
