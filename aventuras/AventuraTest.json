@@ -228,5 +228,6 @@
       "initialHealthPoints": 100
     },
     "items": []
-  }
+  },
+  "welcomeMessage":"Bienvenido"
 }
