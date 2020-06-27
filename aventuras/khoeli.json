@@ -142,7 +142,7 @@
       "name": "parque",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nParece haber algo debajo.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
+      "description": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nParece haber algo debajo.\r\nHay un pino.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
       "places": [
         {
           "name": "suelo",
@@ -152,6 +152,13 @@
             "nieve"
           ],
           "description": "Hay una montaña de nieve. Puede haber algo aquí."
+        },
+        {
+          "name": "pino",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Sólo se puede ver su copa. Está completamente cubierto por nieve."
         }
       ],
       "npcs": [],
@@ -184,7 +191,7 @@
       "name": "deposito",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estas en el depósito.\r\nAl Sur está el parque.\r\nHay una pala en el suelo.",
+      "description": "Estás en el depósito.\r\nA tu altededor hay un barril. En el suelo hay una pala.\r\nAl Sur está el parque.",
       "places": [
         {
           "name": "suelo",
@@ -193,7 +200,14 @@
           "items": [
             "pala"
           ],
-          "description": "Hay una pala en el suelo"
+          "description": "Hay una pala en él."
+        },
+        {
+          "name": "barril",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Parece que antigamente tenía vino."
         }
       ],
       "npcs": [],
@@ -209,10 +223,25 @@
     {
       "id": "lago",
       "name": "lago",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estas en el lago.\r\nAl Oeste está el parque, al Sur hay una cabaña.",
-      "places": [],
+      "description": "Estás en el lago.\r\nAl Oeste está el parque, al Sur hay una cabaña.",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Es de origen volcánico como las costas de alrededor."
+        },
+        {
+          "name": "arbusto",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Está destrozado, ¿alguien lo habrá usado para algo?"
+        }
+      ],
       "npcs": [
         "cazador"
       ],
@@ -269,7 +298,7 @@
       "name": "bosque",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el bosque.\r\nAl Norte está el parque, al Oeste está el jardín.\r\n¿Es de noche o es de día? Los árboles cubren todo",
+      "description": "Estás en el bosque.\r\nAl Norte está el parque, al Oeste está el jardín.\r\n¿Es de noche o es de día? Los árboles cubren todo el cielo.",
       "places": [],
       "npcs": [],
       "connections": [
@@ -300,7 +329,7 @@
           "items": [
             "tierra"
           ],
-          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+          "description": "Hay tierra acumulada."
         }
       ],
       "npcs": [],
@@ -328,7 +357,7 @@
       "name": "invernadero",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el invernadero.\r\nAl Este está el jardín.\r\nSolo queda una única planta",
+      "description": "Estás en el invernadero.\r\nAl Este está el jardín.\r\nSolo queda una única planta.",
       "places": [
         {
           "name": "planta",
@@ -344,7 +373,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+          "description": "No hay nada en él. Está muy frío."
         }
       ],
       "npcs": [],
@@ -369,7 +398,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio. \r\nIncomodo y helado."
+          "description": "No hay nada en él. Está muy frío."
         }
       ],
       "npcs": [
@@ -401,7 +430,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "El suelo esta muy frio. \r\nIncomodo y helado."
+          "description": "Está hecho con adoquines, no esperaba menos de la civilización."
         }
       ],
       "npcs": [
@@ -944,7 +973,7 @@
             },
             {
               "action": "CHANGE_DESCRIPTION",
-              "thing": "Estas en el depósito.\r\nAl Sur está el parque.",
+              "thing": "Estás en el depósito.\r\nA tu altededor hay un barril\r\nAl Sur está el parque.",
               "actionDestination": "deposito",
               "destinationType": "LOCATION"
             },
@@ -1020,9 +1049,16 @@
             },
             {
               "action": "CHANGE_DESCRIPTION",
-              "thing": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
+              "thing": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nHay un pino.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
               "actionDestination": "parque",
               "destinationType": "LOCATION"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "nieve",
+              "actionDestination": "suelo",
+              "parentId": "parque",
+              "destinationType": "PLACE"
             }
           ]
         }
@@ -1143,6 +1179,20 @@
               "thing": "Estás en el jardín.\r\nAl Oeste está el bosque, al Este está el invernadero, al Sur está el sendero al pueblo.",
               "actionDestination": "parque",
               "destinationType": "LOCATION"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "No hay nada en él.",
+              "actionDestination": "suelo",
+              "parentId": "jardin",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "tierra",
+              "actionDestination": "suelo",
+              "parentId": "jardin",
+              "destinationType": "PLACE"
             }
           ]
         }
