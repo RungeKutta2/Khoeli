@@ -46,7 +46,7 @@ public class Khoeli {
 		if (selectorArchivos.getSelectedFile() == null) {
 			Component frame = null;
 			JOptionPane.showMessageDialog(frame,
-			    "No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura valida.",
+			    "No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura válida.",
 			    "Error!",
 			    JOptionPane.ERROR_MESSAGE);
 			return;
