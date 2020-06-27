@@ -17,6 +17,9 @@ public class Adventure {
 	private List<Endgame> endGames;
 	private Playable selectedPlayer;
 	private boolean ended;
+	private String welcomeMessage;
+
+
 	private static Adventure selectedAdventure = null;
 
 	public static Adventure init(List<Location> locations, List<NonPlayable> npcs, List<Item> items,
@@ -92,6 +95,14 @@ public class Adventure {
 
 	public void setSelectedPlayer(Playable selectedPlayer) {
 		this.selectedPlayer = selectedPlayer;
+	}
+	
+	public String getWelcomeMessage() {
+		return welcomeMessage;
+	}
+	
+	public void setWelcomeMessage(String welcomeMessage) {
+		this.welcomeMessage = welcomeMessage;
 	}
 
 	public Location findLocation(String id) {
