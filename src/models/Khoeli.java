@@ -102,15 +102,9 @@ public class Khoeli {
 		for (Item item : selectedAdventure.getItems()) {
 			replaced = replaced.replaceAll(item.getName(), item.getId());
 		}
-		/* HACER LO DE IDS PLACES Y LOCATIONS */
-//		for (Location location : selectedAdventure.getLocations()) {
-//			replaced = replaced.replaceAll(location.getName(), location.getId());
-//		}
-//		for (Place place : selectedAdventure.getSelectedPlayer().getCurrentLocation().getPlaces(place)) {
-//			replaced=replaced.replaceAll(location.getName(), location.getId());
-//		}
-
-		/* ACA IRIA LO DE SINONIMO DE ACCIONES */
+		for (Location location : selectedAdventure.getLocations()) {
+			replaced = replaced.replaceAll(location.getName(), location.getId());
+		}
 		return replaced;
 	}
 
@@ -121,28 +115,38 @@ public class Khoeli {
 
 		if (action == TriggerAction.MOVE) {
 			Directions direction = Directions.getDirection(comando.getCallerObject());
-			if (direction == null) {
-				resultado = "La direccion " + comando.getCallerObject() + " no existe";
-			} else {
+			if (direction != null) {
 				resultado = player.move(direction);
+			} else {
+				Location location = selectedAdventure.findLocation(comando.getCallerObject());
+				
+				
+				resultado = "La direccion " + comando.getCallerObject() + " no existe";
 			}
 
 		} else if (action == TriggerAction.PICK_UP) {
-			Place place = player.getCurrentLocation().getPlace(comando.getReceiverObject());
+			Place place;
+			if(comando.getReceiverObject() == null) {
+				place = player.getCurrentPlace();
+			}
+			else
+			{
+				place = player.getCurrentLocation().getPlace(comando.getReceiverObject());
+			}
 			if (place != null) {
 				Item item = place.findItem(comando.getCallerObject());
 				if (item != null) {
 					resultado = player.pickUp(item, place);
 				} else {
-					resultado = "No existe el item " + comando.getCallerObject();
+					resultado = "No encuentro ese item.";
 				}
 			} else {
-				resultado = "No existe el place " + comando.getReceiverObject();
+				resultado = "No se de dónde agarrarlo.";
 			}
 		} else if (action == TriggerAction.TALK_TO) {
 			NonPlayable npc = player.getCurrentLocation().findNpc(comando.getCallerObject());
 			if (npc == null) {
-				resultado = "No existe " + comando.getCallerObject();
+				resultado = "No puedo hablar con " + comando.getCallerObject() + ".";
 			} else {
 				resultado = player.talkTo(npc);
 			}
@@ -157,7 +161,7 @@ public class Khoeli {
 					resultado = player.use(item);
 				}
 			} else {
-				Triggerable affected = player.getCurrentLocation().findTriggerable(comando.getReceiverObject());
+				Triggerable affected = player.findTriggerable(comando.getReceiverObject());
 				if (item == null) {
 					resultado = "No existe el item " + comando.getCallerObject();
 				} else if (affected == null) {
@@ -174,7 +178,6 @@ public class Khoeli {
 			} else {
 				resultado = player.lookAt(observable);
 			}
-
 		} else {
 			resultado = "La acción no es correcta. Intentalo de nuevo";
 		}

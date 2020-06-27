@@ -1,0 +1,963 @@
+{
+  "locations": [
+    {
+      "id": "sala_de_estar",
+      "name": "sala de estar",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "No hay nada fuera de lo normal.\r\nA tu alrededor hay una mesa, una silla, una cama y una chimenea.\r\nAl Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.",
+      "places": [
+        {
+          "name": "mesa",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "fotografia",
+            "carta"
+          ],
+          "description": "Parece hecha de madera noble.\r\nHay una foto y una carta sobre ella."
+        },
+        {
+          "name": "cama",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "No es hora de acostarme."
+        },
+        {
+          "name": "chimenea",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "tronco"
+          ],
+          "description": "Hace falta mucha más leña para encenderla.\r\nHay solo un tronco pequeño, quizás sea util."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "cocina",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "jardin",
+          "obstacle": "puerta"
+        },
+        {
+          "direction": "WEST",
+          "location": "baño",
+          "obstacle": null
+        },
+        {
+          "direction": "EAST",
+          "location": "parque",
+          "obstacle": "ventana"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "baño",
+      "name": "baño",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Está todo mojado.\r\nA tu alrededor hay un inodoro y un lavamanos.\r\nAl Este está la sala de estar.",
+      "places": [
+        {
+          "name": "inodoro",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "llave"
+          ],
+          "description": "Parece que pierde agua.\r\nDentro de él hay una llave.\r\n¿Debería meter la mano allí?"
+        },
+        {
+          "name": "lavamanos",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Está realmente sucio y cubierto por musgo."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "sala_de_estar",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "cocina",
+      "name": "cocina",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la cocina.\r\nAl Sur está la sala de estar.\r\nCreo que le faltan muebles...\r\nHay solo un horno sin su puerta.",
+      "places": [
+        {
+          "name": "horno",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "martillo",
+            "fosforos"
+          ],
+          "description": "Tiene tiempo de no usarse.\r\nDentro hay fósforos y un martillo."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "SOUTH",
+          "location": "sala_de_estar",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "parque",
+      "name": "parque",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nParece haber algo debajo.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "nieve"
+          ],
+          "description": "hay una montaña de nieve. Puede haber algo aqui."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "deposito",
+          "obstacle": null
+        },
+        {
+          "direction": "WEST",
+          "location": "sala_de_estar",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "bosque",
+          "obstacle": null
+        },
+        {
+          "direction": "EAST",
+          "location": "lago",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "deposito",
+      "name": "deposito",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estas en el depósito.\r\nAl Sur está el parque.\r\nHay una pala en el suelo.",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "pala"
+          ],
+          "description": "Hay una pala en el suelo"
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "SOUTH",
+          "location": "parque",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "lago",
+      "name": "lago",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estas en el lago.\r\nAl Oeste está el parque, al Sur hay una cabaña.",
+      "places": [],
+      "npcs": ["cazador"],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "parque",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "cabaña",
+          "obstacle": "cazador"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "cabaña",
+      "name": "cabaña",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la cabaña.\r\nAl norte está el lago.\r\nHay un olor desagradable, no me gustaría vivir aquí.\r\nA tu alrededor hay una mesada y un sillón.",
+      "places": [
+        {
+          "name": "mesada",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "hacha"
+          ],
+          "description": "Está manchada de sangre.\r\nHay un hacha sobre ella"
+        },
+        {
+          "name": "sillon",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Aparenta ser cómodo pero yo no me sentaría.\r\nEste lugar me da una mala sensación.\r\nNo hay nada sobre él."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "lago",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "bosque",
+      "name": "bosque",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el bosque.\r\nAl Norte está el parque, al Oeste está el jardín.\r\n¿Es de noche o es de día? Los árboles cubren todo",
+      "places": [],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "jardin",
+          "obstacle": "arbol"
+        },
+        {
+          "direction": "NORTH",
+          "location": "parque",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "jardin",
+      "name": "jardin",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el jardín.\r\nHay unas huellas que llevan a un montículo de tierra, quizás debería removerla y ver que hay allí\r\nAl Oeste está el bosque, al Este está el invernadero, al Sur está el sendero al pueblo.",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "tierra"
+          ],
+          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "bosque",
+          "obstacle": null
+        },
+        {
+          "direction": "WEST",
+          "location": "invernadero",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "sendero",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "invernadero",
+      "name": "invernadero",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el invernadero.\r\nAl Este está el jardín.\r\nSolo queda una única planta",
+      "places": [
+        {
+          "name": "planta",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "frutillas"
+          ],
+          "description": "Tiene unas frutillas."
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "jardin",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "sendero",
+      "name": "sendero",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el sendero al pueblo.\r\nAl norte está el jardín, al sur está la entrada del pueblo.\r\n¿Qué hace aquí un mercader con este clima?",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio. \r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [
+        "mercader"
+      ],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "jardin",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "entrada_al_pueblo",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "entrada_al_pueblo",
+      "name": "entrada al pueblo",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la entrada del pueblo, ¿no hay nieve aquí?\r\nAl norte está el sendero, al Sur está la feria.\r\nParece un pueblo fantasma, ¿estoy siguiendo bien el camino?",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio. \r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "sendero",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "feria",
+          "obstacle": "guardia"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "feria",
+      "name": "feria",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la feria.\r\nAl sur está la plaza, al norte la entrada del pueblo.\r\nA tu alrededor hay un cajón de madera y un puesto de comida.",
+      "places": [
+        {
+          "name": "cajon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "No tiene nada."
+        },
+        {
+          "name": "puesto",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "No queda más comida."
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "entrada_al_pueblo",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "plaza",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "plaza",
+      "name": "plaza",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la plaza principal.\r\nAl Sur está el camino real, al norte está la plaza.\r\nEstá desierta, ¿no hay un alma viva en el corazón del pueblo? Deberán estar en la taberna.",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "feria",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "camino_real",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "camino_real",
+      "name": "camino real",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": " Estás en el camino real.\r\nAl Sur está la entrada del castillo, al norte está la plaza.Tengo un mal augurio",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "plaza",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "entrada_castillo",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "entrada_castillo",
+      "name": "entrada al castillo",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la entrada del castillo.\r\nAl Sur está el salón real, al norte está el camino real.\r\n¿No debería haber guardias por aquí?",
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El suelo esta muy frio.\r\nIncomodo y helado."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "camino_real",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "salon_rey",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "salon_rey",
+      "name": "salón real",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el salón real.\r\nAl Este está la habitación del rey.\r\nEl rey está sentado en su trono.",
+      "places": [],
+      "npcs": [
+        "rey"
+      ],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "habitacion_rey",
+          "obstacle": "puerta_real"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "habitacion_rey",
+      "name": "habitación real",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la habitacion del rey.",
+      "places": [],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "salon_rey",
+          "obstacle": null
+        }
+      ],
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "MOVE",
+          "onTrigger": "Toda mi vida quise guardar este secreto y ahora un inmundo pueblerino quiere tirar todo por la borda. Jamás dejaré que eso ocurra.\r\nSiento un fuerte dolor y veo como una inmensa daga se mete en mi pecho. Levanto la mirada y veo los ojos del rey, los mismos ojos que me atacaron esta noche. FIN",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "cazador",
+      "name": "cazador",
+      "description": "Es un hombre de mediana edad y bastante corpulento.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "machete",
+          "onTrigger": "¡Increíble!, ¿es para mí?\r\n Ahora sí tengo un arma de caza, ya me temerán esos lobos.\r\nVen pasa a mi cabaña, puedes llevarte mi vieja hacha.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "cazador",
+              "actionDestination": "SOUTH",
+              "destinationType": "CONNECTION",
+              "parentId": "lago"
+            }
+          ]
+        }
+      ],
+      "talk": "No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice.\r\nme robaron mi único rifle de caza.\r\nQuizás podría ganarme su confianza con algún presente."
+    },
+    {
+      "id": "guardia",
+      "name": "guardia",
+      "description": "Es un guardia muy fuerte, dispuesto a matarme si lo hago enojar.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "frutillas",
+          "onTrigger": "Por fin podré hacer mi mermelada favorita.\r\nPasa antes que me arrepienta renacuajo.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "guardia",
+              "actionDestination": "SOUTH",
+              "destinationType": "CONNECTION",
+              "parentId": "sendero"
+            }
+          ]
+        }
+      ],
+      "talk": "Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.\r\nAunque, lo podríamos negociar por lo más dulce del valle.\r\nQué guardia amistoso…"
+    },
+    {
+      "id": "rey",
+      "name": "rey",
+      "description": "Es el gobernante absoluto de este pueblo.\r\nSu mirada es despectiva y tiene aires de grandeza.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "triggers": [],
+      "talk": "Parece que no tiene intenciones de hablar"
+    }
+  ],
+  "items": [
+    {
+      "id": "fotografia",
+      "name": "fotografia",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Se ve un hombre de mediana edad usando un collar vistoso de plata.\r\nLo conozco, pero... no logro recordar quién es.",
+      "triggers": []
+    },
+    {
+      "id": "carta",
+      "name": "carta",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Parece que se escribió hace mucho tiempo. Sólo logro leer: 'Para mi séptimo hijo. Con amor, tu madre.'",
+      "triggers": []
+    },
+    {
+      "id": "tronco",
+      "name": "tronco",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Es un tronco bastante flamable",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "fosforos",
+          "onTrigger": "Ahora tengo una antorcha.\r\nLos demás fósforos están húmedos.\r\nYa no me sirven.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "antorcha",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "fosforos",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "tronco",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "antorcha",
+      "name": "antorcha",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "sirve para quemar cosas.",
+      "triggers": []
+    },
+    {
+      "id": "llave",
+      "name": "llave",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Esta un poco oxidada",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "llave",
+          "onTrigger": "La llave se rompió en el intento.\r\nDebe haber otra salida.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "llave",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fosforos",
+      "name": "fosforos",
+      "gender": "MALE",
+      "number": "PLURAL",
+      "description": "Están algo húmedos, pero todavía sirven.",
+      "triggers": []
+    },
+    {
+      "id": "martillo",
+      "name": "martillo",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "sirve para romper cosas.",
+      "triggers": []
+    },
+    {
+      "id": "pala",
+      "name": "pala",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "esta un poco gastada pero sirve.",
+      "triggers": []
+    },
+    {
+      "id": "hielo",
+      "name": "hielo",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Hay un montón de hielo que me impide salir. Debería utilizar algo para derretirlo.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "antorcha",
+          "onTrigger": "Se derritió rápidamente el hielo.\r\nLa salida está desbloqueada.\r\nLa antorcha ya no me es util.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "antorcha",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "hielo",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "sala_de_estar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nieve",
+      "name": "nieve",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Parece haber algo debajo.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "pala",
+          "onTrigger": "Quité la nieve. En el suelo hay un machete.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "machete",
+              "actionDestination": "suelo",
+              "destinationType": "PLACE",
+              "parentId": "parque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "machete",
+      "name": "machete",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Quizá a alguien le pueda interesar",
+      "triggers": []
+    },
+    {
+      "id": "hacha",
+      "name": "hacha",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Con esto podré talar algo, espero.",
+      "triggers": []
+    },
+    {
+      "id": "arbol",
+      "name": "arbol",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Hay un árbol bloqueando el camino.\r\nDebe haber alguna forma de deshacerme de él.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "hacha",
+          "onTrigger": "Talé el árbol, ahora el camino está despejado.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "arbol",
+              "actionDestination": "WEST",
+              "destinationType": "CONNECTION",
+              "parentId": "bosque"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tierra",
+      "name": "tierra",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Parece que fue cavado recientemente. Puede haber algo.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "pala",
+          "onTrigger": "Quité la tierra y encontré un colmillo. Lo voy a guardar.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "colmillo",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frutillas",
+      "name": "frutillas",
+      "gender": "FEMALE",
+      "number": "PLURAL",
+      "description": "Parecen dulces.",
+      "triggers": []
+    },
+    {
+      "id": "llave_real",
+      "name": "llave real",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una llave con un sello real",
+      "triggers": []
+    },
+    {
+      "id": "puerta",
+      "name": "puerta",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una puerta sólida",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "llave",
+          "onTrigger": "La llave se ha roto. Mejor busco otra manera de salir.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "llave",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "puerta_real",
+      "name": "puerta real",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es la puerta de la habitación del rey",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "llave_real",
+          "onTrigger": "La puerta esta desbloqueada",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "llave_real",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "puerta_real",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "salon_rey"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ventana",
+      "name": "ventana",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Hay una ventana. El hielo del exterior la está bloqueando. Con un buen golpe podría abrirla.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "martillo",
+          "onTrigger": "El golpe fue muy fuerte y el vidrio estalló.\r\nEl hielo me impide salir.\r\nDebería utilizar algo para derretirlo.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "ventana",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "sala_de_estar"
+            },
+            {
+              "action": "ADD",
+              "thing": "hielo",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "sala_de_estar"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "selectedPlayer": {
+    "name": "Geralt De Rivia",
+    "gender": "MALE",
+    "settings": {
+      "welcome": "Bienvenido a esta aventura",
+      "initialLocation": "sala_de_estar",
+      "initialHealthPoints": 100
+    },
+    "items": []
+  }
+}
