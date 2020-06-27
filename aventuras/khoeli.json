@@ -151,14 +151,14 @@
           "items": [
             "nieve"
           ],
-          "description": "Hay una montaña de nieve. Puede haber algo aquí."
+          "description": "Hay una montaña de nieve.\r\nPuede haber algo aquí."
         },
         {
           "name": "pino",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Sólo se puede ver su copa. Está completamente cubierto por nieve."
+          "description": "Sólo se puede ver su copa.\r\nEstá completamente cubierto por nieve."
         }
       ],
       "npcs": [],
@@ -191,7 +191,7 @@
       "name": "deposito",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el depósito.\r\nA tu altededor hay un barril. En el suelo hay una pala.\r\nAl Sur está el parque.",
+      "description": "Estás en el depósito.\r\nA tu altededor hay un barril.\r\nEn el suelo hay una pala.\r\nAl Sur está el parque.",
       "places": [
         {
           "name": "suelo",
@@ -689,10 +689,21 @@
     {
       "id": "aldeano",
       "name": "aldeano",
-      "description": "Se nota atemorizado... ¿De mí?",
+      "description": "Se nota atemorizado...\r\n¿De mí?",
       "gender": "MALE",
       "number": "SINGULAR",
-      "triggers": [],
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "colmillo",
+          "onTrigger": "¡ESE COLMILLO ES DE LA BESTIA!¡MUERE CANALLA! Sientes lentamente como el filo de una daga brillante te empieza a atravesar y quemar tu alma.\r\nEras un hombre lobo.\r\nFIN.",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
+        }
+      ],
       "talk": "¡No te acerques a mí! Ve con tu padre, animal."
     },
     {
@@ -726,7 +737,7 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "triggers": [],
-      "talk": "Qué guardia amistoso… Parece que no tiene intenciones de hablar"
+      "talk": "Qué guardia amistoso…\r\nParece que no tiene intenciones de hablar"
     }
   ],
   "items": [
@@ -770,7 +781,7 @@
       "name": "carta",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Parece que se escribió hace mucho tiempo. Sólo logro leer: 'Para mi séptimo hijo. Con amor, tu madre.'",
+      "description": "Parece que se escribió hace mucho tiempo.\r\nSólo logro leer:\r\n'Para mi séptimo hijo. Con amor, tu madre.'",
       "triggers": [
         {
           "type": "ACTION",
@@ -862,7 +873,7 @@
       "name": "antorcha",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "sirve para quemar cosas.",
+      "description": "Sirve para quemar cosas.",
       "triggers": []
     },
     {
@@ -1034,7 +1045,7 @@
       "name": "hielo",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Hay un montón de hielo que me impide salir. Debería utilizar algo para derretirlo.",
+      "description": "Hay un montón de hielo que me impide salir.\r\nDebería utilizar algo para derretirlo.",
       "triggers": [
         {
           "type": "ITEM",
@@ -1067,7 +1078,7 @@
         {
           "type": "ITEM",
           "thing": "pala",
-          "onTrigger": "Quité la nieve. En el suelo hay un machete.",
+          "onTrigger": "Quité la nieve.\r\nEn el suelo hay un machete.",
           "afterTrigger": [
             {
               "action": "ADD",
@@ -1198,12 +1209,12 @@
       "name": "tierra",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Parece que fue cavado recientemente. Puede haber algo.",
+      "description": "Parece que fue cavado recientemente.\r\nPuede haber algo.",
       "triggers": [
         {
           "type": "ITEM",
           "thing": "pala",
-          "onTrigger": "Quité la tierra y encontré un colmillo. ¡Es gigantesco! Lo voy a guardar.",
+          "onTrigger": "Quité la tierra y encontré un colmillo.\r\n¡Es gigantesco!\r\nLo voy a guardar.",
           "afterTrigger": [
             {
               "action": "ADD",
@@ -1240,21 +1251,7 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Es gigantesco.\r\nNo parece que haya sido de un animal ordinario.",
-      "triggers": [
-        {
-          "type": "ACTION",
-          "thing": "USE",
-          "actionDestination": "aldeano",
-          "parentId": "camino_real",
-          "destinationType": "NPC",
-          "onTrigger": "¡ESE COLMILLO ES DE LA BESTIA!¡MUERE CANALLA!.\r\nFIN.",
-          "afterTrigger": [
-            {
-              "action": "ENDGAME"
-            }
-          ]
-        }
-      ]
+      "triggers": []
     },
     {
       "id": "frutillas",
@@ -1296,7 +1293,7 @@
       "name": "llave real",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es una llave real. Está marcada por el sello de la familia del rey.",
+      "description": "Es una llave real.\r\nEstá marcada por el sello de la familia del rey.",
       "triggers": [
         {
           "type": "ACTION",
@@ -1331,12 +1328,12 @@
       "name": "puerta",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es una puerta sólida.",
+      "description": "Una puerta sólida cerrada con llave que impide el paso.",
       "triggers": [
         {
           "type": "ITEM",
           "thing": "llave",
-          "onTrigger": "La llave se ha roto. Mejor busco otra manera de salir.",
+          "onTrigger": "La llave se ha roto.\r\nMejor busco otra manera de salir.",
           "afterTrigger": [
             {
               "action": "REMOVE",
@@ -1352,7 +1349,7 @@
       "name": "puerta real",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es la puerta real. Es la entrada a la habitación del rey.",
+      "description": "Es la puerta real.\r\nEs la entrada a la habitación del rey.",
       "triggers": [
         {
           "type": "ITEM",
@@ -1380,7 +1377,7 @@
       "name": "ventana",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Hay una ventana. El hielo del exterior la está bloqueando. Con un buen golpe podría abrirla.",
+      "description": "Hay una ventana. El hielo del exterior la está bloqueando.\r\nCon un buen golpe podría abrirla.",
       "triggers": [
         {
           "type": "ITEM",
