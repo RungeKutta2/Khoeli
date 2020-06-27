@@ -6,13 +6,9 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
-
 import javax.swing.JFileChooser;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import enums.Directions;
 import enums.TriggerAction;
 import helpers.AdventureDeserializer;

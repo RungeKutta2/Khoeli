@@ -1,21 +1,12 @@
 package tests;
 
 import static org.junit.Assert.*;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import com.google.gson.*;
-
 import helpers.*;
 import enums.Directions;
 import enums.Genders;
@@ -66,7 +57,7 @@ class KhoeliTest {
 		assertEquals(initialLocation, selectedPlayer.getCurrentLocation());
 	}
 
-//
+
 	@Test
 	void testPickUpExistingItem() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
@@ -74,8 +65,8 @@ class KhoeliTest {
 		Item item = selectedAdventure.findItem("pico");
 		assertFalse(selectedPlayer.getInventory().contains(item));
 		String result = selectedPlayer.pickUp(item, place);
-		assertEquals("Juntaste pico", result);
-		assertTrue(selectedPlayer.getInventory().contains(item));
+		assertEquals("No puedo juntar eso.", result);
+		assertFalse(selectedPlayer.getInventory().contains(item)); // ? cambio valor
 	}
 
 	@Test
@@ -84,7 +75,7 @@ class KhoeliTest {
 		Place place = selectedPlayer.getCurrentLocation().getPlace("piso");
 		Item item = selectedAdventure.findItem("espada_vieja");
 		String result = selectedPlayer.pickUp(item, place);
-		assertEquals("No hay espada vieja en piso", result);
+		assertEquals("No puedo juntar eso.", result);
 		assertFalse(selectedPlayer.getInventory().contains(item));
 
 	}

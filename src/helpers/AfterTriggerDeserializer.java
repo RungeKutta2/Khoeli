@@ -10,9 +10,9 @@ import com.google.gson.JsonParseException;
 
 import enums.AfterTriggerAction;
 import enums.DestinationTypes;
+import enums.ThingType;
 import models.Adventure;
 import models.AfterTrigger;
-import models.ThingType;
 
 public class AfterTriggerDeserializer implements JsonDeserializer<AfterTrigger> {
 

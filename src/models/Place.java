@@ -1,8 +1,7 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
 
+import java.util.List;
 import enums.Types;
 import enums.Genders;
 import enums.Numbers;
