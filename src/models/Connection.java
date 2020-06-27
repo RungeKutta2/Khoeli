@@ -30,4 +30,8 @@ public class Connection {
 		obstacle = null;
 	}
 
+	public void setObstacle(Obstacle obstacle) {
+		this.obstacle = obstacle;
+	}
+
 }

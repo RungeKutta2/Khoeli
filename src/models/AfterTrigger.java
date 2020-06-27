@@ -3,6 +3,7 @@ package models;
 import enums.AfterTriggerAction;
 import enums.DestinationTypes;
 import enums.Directions;
+import interfaces.Obstacle;
 
 public class AfterTrigger {
 	private AfterTriggerAction action;
@@ -109,11 +110,13 @@ public class AfterTrigger {
 			Item item = Adventure.getSelectedAdventure().findItem(thing);
 			Adventure.getSelectedAdventure().getSelectedPlayer().getInventory().add(item);
 			break;
-//		case CONNECTION:
-//			Location location1 = Adventure.getSelectedAdventure().findLocation(parentId);
-//			Connection connection = location1.findConnection(Directions.valueOf(actionDestination));
-//			connection.setObstacle();
-//			break;
+		case CONNECTION:
+			Location location1 = Adventure.getSelectedAdventure().findLocation(parentId);
+			Connection connection = location1.findConnection(Directions.valueOf(actionDestination));
+			Obstacle obstacle = Adventure.getSelectedAdventure().findObstacle(thing);
+			
+			connection.setObstacle(obstacle);
+			break;
 		case PLACE:
 			Location location2 = Adventure.getSelectedAdventure().findLocation(parentId);
 			Place place = location2.getPlace(actionDestination);

@@ -10,7 +10,7 @@ public class Command {
 	
 
 	public Command(String action, String callerObject, String receiverObject) {
-		this.action = TriggerAction.getEnum(action);
+		this.action = TriggerAction.getTriggerAction(action);
 		this.callerObject = callerObject;
 		this.receiverObject = receiverObject;
 	}

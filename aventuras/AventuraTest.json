@@ -1,6 +1,7 @@
 {
   "locations": [
     {
+      "id": "descampado",
       "name": "descampado",
       "gender": "MALE",
       "number": "SINGULAR",
@@ -11,7 +12,8 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [
-            "pico", "pocion"
+            "pico",
+            "pocion"
           ],
           "description": "Es muy solido"
         }
@@ -40,6 +42,7 @@
     },
     {
       "name": "bar",
+      "id": "bar",
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estas en un bar llamado Mercia, al sur esta el descampado",
@@ -66,6 +69,7 @@
       ]
     },
     {
+      "id": "escuela",
       "name": "escuela",
       "gender": "FEMALE",
       "number": "SINGULAR",
@@ -82,6 +86,7 @@
       "triggers": []
     },
     {
+      "id": "cueva",
       "name": "cueva",
       "gender": "FEMALE",
       "number": "SINGULAR",

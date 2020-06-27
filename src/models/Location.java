@@ -12,7 +12,7 @@ import interfaces.Obstacle;
 import interfaces.Triggerable;
 
 public class Location implements Observable, Triggerable {
-	private String id = "";
+	private String id;
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -22,8 +22,9 @@ public class Location implements Observable, Triggerable {
 	private List<Connection> connections;
 	private List<Trigger> triggers;
 
-	public Location(String name, Genders gender, Numbers number, String description, List<Place> places,
+	public Location(String id, String name, Genders gender, Numbers number, String description, List<Place> places,
 			List<String> npcs, List<Trigger> triggers) {
+		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
@@ -72,6 +73,18 @@ public class Location implements Observable, Triggerable {
 		int i = 0;
 		while (found == null && i < connections.size()) {
 			if (connections.get(i).getDirection().equals(direction)) {
+				found = connections.get(i);
+			}
+			i++;
+		}
+		return found;
+	}
+	
+	public Connection findConnection(Location location) {
+		Connection found = null;
+		int i = 0;
+		while (found == null && i < connections.size()) {
+			if (connections.get(i).getLocation().equals(location)) {
 				found = connections.get(i);
 			}
 			i++;

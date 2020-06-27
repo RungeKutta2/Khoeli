@@ -94,12 +94,12 @@ public class Adventure {
 		this.selectedPlayer = selectedPlayer;
 	}
 
-	public Location findLocation(String locationName) {
+	public Location findLocation(String id) {
 		int i = 0;
 		Location foundLocation = null;
 
 		while (foundLocation == null && i < locations.size()) {
-			if (locations.get(i).getName().equals(locationName)) {
+			if (locations.get(i).getId().equals(id)) {
 				foundLocation = locations.get(i);
 			}
 			i++;

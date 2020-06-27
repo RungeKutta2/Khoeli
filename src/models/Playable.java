@@ -1,4 +1,5 @@
 package models;
+
 import java.util.List;
 import enums.TriggerAction;
 import enums.Types;
@@ -14,7 +15,7 @@ public class Playable implements Executable {
 	private String name;
 	private Genders gender;
 	private Location currentLocation;
-	//current place??
+	private Place currentPlace;
 
 	public String getName() {
 		return name;
@@ -26,6 +27,10 @@ public class Playable implements Executable {
 
 	public Location getCurrentLocation() {
 		return currentLocation;
+	}
+
+	public Place getCurrentPlace() {
+		return currentPlace;
 	}
 
 	public Playable(String name, Genders gender, Settings settings, List<String> items) {
@@ -57,7 +62,6 @@ public class Playable implements Executable {
 		String result;
 		if (connection != null) {
 			if (connection.getObstacle() == null) {
-				// NO ESTAMOS CHEQUEANDO EL END GAME PORQUE TENEMOS QUE HACERLO TRIGGER
 				currentLocation = connection.getLocation();
 				result = currentLocation.getDescription();
 				result += currentLocation.executeTrigger(Types.ACTION, TriggerAction.MOVE.toString());
@@ -66,6 +70,25 @@ public class Playable implements Executable {
 			}
 		} else {
 			result = "No hay nada al " + direction.getDescription();
+		}
+
+		return result;
+	}
+
+	@Override
+	public String move(Location location) {
+		Connection connection = currentLocation.findConnection(location);
+		String result;
+		if (connection != null) {
+			if (connection.getObstacle() == null) {
+				currentLocation = connection.getLocation();
+				result = currentLocation.getDescription();
+				result += currentLocation.executeTrigger(Types.ACTION, TriggerAction.MOVE.toString());
+			} else {
+				result = connection.getObstacle().getObstacleDescription();
+			}
+		} else {
+			result = "No hay " + location.getName();
 		}
 
 		return result;
@@ -86,18 +109,20 @@ public class Playable implements Executable {
 
 	@Override
 	public String lookAt(Observable observable) {
+		if (observable instanceof Place) {
+			currentPlace = (Place) observable;
+		}
 		return observable.lookAt();
 	}
 
 	@Override
 	public String talkTo(NonPlayable npc) {
 		String talk = npc.getTalk();
-		String onTrigger = npc.executeTrigger(Types.ACTION, TriggerAction.TALK_TO.toString()); 
+		String onTrigger = npc.executeTrigger(Types.ACTION, TriggerAction.TALK_TO.toString());
 		if (talk.isEmpty()) {
 			return "No tiene nada que decir";
-		}
-		else if (onTrigger != null && !onTrigger.isEmpty()) {
-			talk=onTrigger;
+		} else if (onTrigger != null && !onTrigger.isEmpty()) {
+			talk = onTrigger;
 		}
 		return talk;
 	}
@@ -105,8 +130,8 @@ public class Playable implements Executable {
 	@Override
 	public String use(Item item) {
 		String response = item.executeTrigger(Types.ACTION, TriggerAction.USE.toString());
-		if(response == null || response.isEmpty()) {
-			response = "no se puede usar "+ item.getName();
+		if (response == null || response.isEmpty()) {
+			response = "no se puede usar " + item.getName();
 		}
 		return response;
 	}
@@ -114,8 +139,8 @@ public class Playable implements Executable {
 	@Override
 	public String use(Item item, Triggerable affected) {
 		String response = affected.executeTrigger(Types.ITEM, item.getId());
-		if(response == null || response.isEmpty()) {
-			response = "no se puede usar "+ item.getName() + " con " +affected.getName();
+		if (response == null || response.isEmpty()) {
+			response = "no se puede usar " + item.getName() + " con " + affected.getName();
 		}
 		return response;
 	}
@@ -123,37 +148,46 @@ public class Playable implements Executable {
 	public Inventory getInventory() {
 		return inventory;
 	}
-	
+
 	public Item findItem(String id) {
 		Item item = Adventure.getSelectedAdventure().findItem(id);
-		if(inventory.contains(item) || currentLocation.contains(item)) {
+		if (item != null && (inventory.contains(item) || currentLocation.contains(item))) {
 			return item;
 		}
 		return null;
 	}
-	
+
 	public Observable findObservable(String id) {
-		
+
 		Item item = findItem(id);
-		if(item != null) {
+		if (item != null) {
 			return item;
 		}
-		
+
 		NonPlayable npc = Adventure.getSelectedAdventure().findNpc(id);
-		if(npc != null && currentLocation.getNpcs().contains(npc)) {
+		if (npc != null && currentLocation.getNpcs().contains(npc)) {
 			return npc;
 		}
-		
+
 		Place place = currentLocation.getPlace(id);
-		if(place != null) {
+		if (place != null) {
 			return place;
 		}
-		
-		if(currentLocation.getId().equals(id)) {
+
+		if (currentLocation != null && currentLocation.getId().equals(id)) {
 			return currentLocation;
 		}
-		
+
 		return null;
+	}
+
+	public Triggerable findTriggerable(String receiverObject) {
+		Item item = Adventure.getSelectedAdventure().findItem(receiverObject);
+		if (inventory.contains(item)) {
+			return item;
+		} else {
+			return currentLocation.findTriggerable(receiverObject);	
+		}
 	}
 
 }

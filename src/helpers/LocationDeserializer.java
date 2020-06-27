@@ -34,6 +34,7 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
 		
+		String id = jobject.get("id").getAsString();
 		String name = jobject.get("name").getAsString();
 		Genders gender = Genders.valueOf(jobject.get("gender").getAsString());
 		Numbers number = Numbers.valueOf(jobject.get("number").getAsString());
@@ -44,7 +45,7 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		}.getType());
         List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(), new TypeToken<List<Trigger>>(){}.getType());
 
-		Location location = new Location(name, gender, number, description, places, npcs,triggers);
+		Location location = new Location(id, name, gender, number, description, places, npcs,triggers);
 
 		return location;
 	}

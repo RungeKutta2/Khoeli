@@ -46,10 +46,6 @@ public class AdventureDeserializer implements JsonDeserializer<Adventure> {
 		List<Item> items = gson.fromJson(jobject.get("items").getAsJsonArray(), new TypeToken<List<Item>>() {
 		}.getType());
 		adventure.setItems(items);
-		List<Endgame> endGames = gson.fromJson(jobject.get("endgames").getAsJsonArray(),
-				new TypeToken<List<Endgame>>() {
-				}.getType());
-		adventure.setEndGames(endGames);
 		JsonArray locationsArray = jobject.get("locations").getAsJsonArray();
 
 		List<Location> locations = gson.fromJson(locationsArray, new TypeToken<List<Location>>() {
