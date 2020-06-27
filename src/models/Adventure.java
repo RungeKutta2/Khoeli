@@ -1,13 +1,7 @@
 package models;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
-import interfaces.Observable;
 import interfaces.Obstacle;
-import interfaces.Triggerable;
 
 public class Adventure {
 

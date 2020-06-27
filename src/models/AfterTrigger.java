@@ -3,6 +3,7 @@ package models;
 import enums.AfterTriggerAction;
 import enums.DestinationTypes;
 import enums.Directions;
+import enums.ThingType;
 import interfaces.Obstacle;
 
 public class AfterTrigger {
