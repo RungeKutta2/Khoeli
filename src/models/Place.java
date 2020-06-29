@@ -1,7 +1,5 @@
 package models;
 
-
-import java.text.Normalizer;
 import java.util.List;
 import enums.Types;
 import enums.Genders;
@@ -9,7 +7,7 @@ import enums.Numbers;
 import interfaces.Observable;
 import interfaces.Triggerable;
 
-public class Place implements Triggerable, Observable{
+public class Place implements Triggerable, Observable {
 	private String name;
 	private Genders gender;
 	private Numbers number;
@@ -23,17 +21,18 @@ public class Place implements Triggerable, Observable{
 		this.number = number;
 		this.items = setItems(items);
 		this.description = description;
+		this.items.setEmptyInventoryDescription("No hay nada en " + getDefineArticle(this.gender, this.number) + " " + name);
+		this.items.setFullInventoryDescription("En " + getDefineArticle(this.gender, this.number) + " " + name + " hay:\n");
 	}
-	
-	private Inventory setItems(List<String> items){
+
+	private Inventory setItems(List<String> items) {
 		Inventory inventory = new Inventory();
 		for (String itemId : items) {
 			inventory.add(Adventure.getSelectedAdventure().findItem(itemId));
 		}
-		
+
 		return inventory;
 	}
-	
 
 	public String getName() {
 		return name;
@@ -47,7 +46,7 @@ public class Place implements Triggerable, Observable{
 	public String executeTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
 		int i = 0;
-		if(triggers != null) {
+		if (triggers != null) {
 			while (foundTrigger == null && i < triggers.size()) {
 				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
 					foundTrigger = triggers.get(i);
@@ -56,8 +55,8 @@ public class Place implements Triggerable, Observable{
 			}
 		}
 		String result = "";
-		if(foundTrigger!= null) {
-			result  = foundTrigger.getOnTrigger();
+		if (foundTrigger != null) {
+			result = foundTrigger.getOnTrigger();
 			foundTrigger.executeAfterTriggers();
 		}
 		return result;
@@ -72,7 +71,7 @@ public class Place implements Triggerable, Observable{
 		return null;
 
 	}
-	
+
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;
@@ -80,7 +79,12 @@ public class Place implements Triggerable, Observable{
 
 	@Override
 	public String lookAt() {
-		return   description + System.lineSeparator() +"En " + getDefineArticle(gender, number) + " " + name + " hay:" + System.lineSeparator() + items.lookAt();
+		String inventoryDescription = description + System.lineSeparator() 
+				+ (items.isEmpty()
+				? items.getEmptyInventoryDefaultDescription()
+				: (items.getFullInventoryDefaultDescription() + items.lookAt()));
+
+		return inventoryDescription;
 	}
 
 }

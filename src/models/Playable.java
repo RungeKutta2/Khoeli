@@ -9,7 +9,7 @@ import interfaces.Triggerable;
 import enums.Genders;
 import enums.Directions;
 
-public class Playable implements Executable,Observable {
+public class Playable implements Executable, Observable {
 	private int healthPoints;
 	private Inventory inventory;
 	private String name;
@@ -20,7 +20,7 @@ public class Playable implements Executable,Observable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -43,6 +43,8 @@ public class Playable implements Executable,Observable {
 		healthPoints = settings.getInitialHealthPoints();
 		currentLocation = Adventure.getSelectedAdventure().findLocation(settings.getInitialLocation());
 		this.inventory = setItem(items);
+		this.inventory.setEmptyInventoryDescription("No hay nada en el inventario");
+		this.inventory.setFullInventoryDescription("En mi inventario hay:\n");
 	}
 
 	private Inventory setItem(List<String> items) {
@@ -100,7 +102,7 @@ public class Playable implements Executable,Observable {
 
 	@Override
 	public String pickUp(Item item, Place place) {
-		
+
 		String response = item.executeTrigger(Types.ACTION, TriggerAction.PICK_UP.toString());
 		if (response == null || response.isEmpty()) {
 			return response = "No puedo juntar eso.";
@@ -160,17 +162,16 @@ public class Playable implements Executable,Observable {
 	}
 
 	public Observable findObservable(String id) {
-		
-		if(id.equals("inventario")) {
+
+		if (id.equals("inventario")) {
 			return this;
 		}
-		
+
 		Item item = findItem(id);
 		if (item != null) {
 			return item;
 		}
 
-		
 		NonPlayable npc = Adventure.getSelectedAdventure().findNpc(id);
 		if (npc != null && currentLocation.getNpcs().contains(npc)) {
 			return npc;
@@ -193,13 +194,17 @@ public class Playable implements Executable,Observable {
 		if (inventory.contains(item)) {
 			return item;
 		} else {
-			return currentLocation.findTriggerable(receiverObject);	
+			return currentLocation.findTriggerable(receiverObject);
 		}
 	}
 
 	@Override
 	public String lookAt() {
-		return "En mi inventario hay:" + System.lineSeparator() + inventory.lookAt();
+		String inventoryDescription = inventory.isEmpty() 
+				? inventory.getEmptyInventoryDefaultDescription()
+				: (inventory.getFullInventoryDefaultDescription() + inventory.lookAt());
+		
+		return inventoryDescription;
 	}
 
 }
