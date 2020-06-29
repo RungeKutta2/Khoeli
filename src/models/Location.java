@@ -14,8 +14,8 @@ import interfaces.Triggerable;
 public class Location implements Observable, Triggerable {
 	private String id;
 	private String name;
-	private Genders gender;
-	private Numbers number;
+//	private Genders gender;
+//	private Numbers number;
 	private String description;
 	private List<Place> places;
 	private List<NonPlayable> npcs;
@@ -26,8 +26,8 @@ public class Location implements Observable, Triggerable {
 			List<String> npcs, List<Trigger> triggers) {
 		this.id = id;
 		this.name = name;
-		this.gender = gender;
-		this.number = number;
+//		this.gender = gender;
+//		this.number = number;
 		this.description = description;
 		this.places = places;
 		this.npcs = setNonPlayable(npcs);

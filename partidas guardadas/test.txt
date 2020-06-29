@@ -1,0 +1,6 @@
+cami: mirar sala de estar
+Estás en la sala de estar.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una silla, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.
+cami: guardar test 2.

@@ -14,8 +14,6 @@ import com.google.gson.reflect.TypeToken;
 
 import enums.Genders;
 import enums.Numbers;
-import models.AfterTrigger;
-import models.Connection;
 import models.Location;
 import models.Place;
 import models.Trigger;

@@ -12,7 +12,7 @@ public class Adventure {
 	private Playable selectedPlayer;
 	private boolean ended;
 	private String welcomeMessage;
-
+	private StringBuilder history;
 
 	private static Adventure selectedAdventure = null;
 
@@ -22,7 +22,7 @@ public class Adventure {
 			throw new AssertionError("You already initialized me");
 		}
 		selectedAdventure = new Adventure(locations, npcs, items, endGames, selectedPlayer);
-		
+
 		return selectedAdventure;
 	}
 
@@ -40,17 +40,19 @@ public class Adventure {
 		this.items = items;
 		this.endGames = endGames;
 		this.selectedPlayer = selectedPlayer;
+		history = new StringBuilder();
 		ended = false;
 	}
 
 	private Adventure() {
-
+		history = new StringBuilder();
+		ended = false;
 	}
 
 	public boolean isEnded() {
 		return ended;
 	}
-	
+
 	public List<Location> getLocations() {
 		return locations;
 	}
@@ -90,11 +92,11 @@ public class Adventure {
 	public void setSelectedPlayer(Playable selectedPlayer) {
 		this.selectedPlayer = selectedPlayer;
 	}
-	
+
 	public String getWelcomeMessage() {
 		return welcomeMessage;
 	}
-	
+
 	public void setWelcomeMessage(String welcomeMessage) {
 		this.welcomeMessage = welcomeMessage;
 	}
@@ -126,7 +128,7 @@ public class Adventure {
 
 		return foundItem;
 	}
-	
+
 //	public Triggerable findTriggerable(String triggerableId) {
 //		int i = 0;
 //		Item foundTriggerable = null;
@@ -150,8 +152,6 @@ public class Adventure {
 //		return foundTriggerable;
 //	}
 
-	
-	
 	public NonPlayable findNpc(String npcId) {
 		int i = 0;
 		NonPlayable foundNpc = null;
@@ -197,13 +197,21 @@ public class Adventure {
 		return null;
 	}
 
-	
-	public void executeAfterTriggers(List<AfterTrigger> afterTriggers) {
-
-	}
-
 	public void end() {
 		ended = true;
+	}
+
+	public void appendRequest(String request) {
+		history.append(selectedPlayer.getName()).append(": ")
+			   .append(request).append(System.lineSeparator());
+	}
+
+	public void appendResponse(String response) {
+		history.append(response).append(System.lineSeparator());
+	}
+
+	public StringBuilder getHistory() {
+		return history;
 	}
 
 }

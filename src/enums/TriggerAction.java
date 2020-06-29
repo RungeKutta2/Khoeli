@@ -50,27 +50,19 @@ public enum TriggerAction {
 
 	public abstract List<String> getSynonyms();
 
-	public static TriggerAction getEnum(String action) {
-		try {
-			return valueOf(action);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	public static TriggerAction getTriggerAction(String callerObject) {
+	public static TriggerAction getTriggerAction(String action) {
 		TriggerAction result = null;
-		if (MOVE.getSynonyms().contains(callerObject)) {
+		if (MOVE.getSynonyms().contains(action)) {
 			result = MOVE;
-		} else if (PICK_UP.getSynonyms().contains(callerObject)) {
+		} else if (PICK_UP.getSynonyms().contains(action)) {
 			result = PICK_UP;
-		} else if (USE.getSynonyms().contains(callerObject)) {
+		} else if (USE.getSynonyms().contains(action)) {
 			result = USE;
-		} else if (LOOK_AT.getSynonyms().contains(callerObject)) {
+		} else if (LOOK_AT.getSynonyms().contains(action)) {
 			result = LOOK_AT;
-		} else if (TALK_TO.getSynonyms().contains(callerObject)) {
+		} else if (TALK_TO.getSynonyms().contains(action)) {
 			result = TALK_TO;
-		} else if (SAVE.getSynonyms().contains(callerObject)) {
+		} else if (SAVE.getSynonyms().contains(action)) {
 			result = SAVE;
 		}
 		return result;

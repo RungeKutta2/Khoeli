@@ -13,9 +13,8 @@ import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import enums.Types;
-import models.AfterTrigger;
-import models.Location;
 import models.Trigger;
+import models.aftertrigger.AfterTriggerRequest;
 
 public class TriggerDeserializer implements JsonDeserializer<Trigger>{
 
@@ -23,14 +22,14 @@ public class TriggerDeserializer implements JsonDeserializer<Trigger>{
 	public Trigger deserialize(JsonElement json, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
 
 		GsonBuilder gsonBuilder = new GsonBuilder();
-		gsonBuilder.registerTypeAdapter(AfterTrigger.class, new AfterTriggerDeserializer());
+		gsonBuilder.registerTypeAdapter(AfterTriggerRequest.class, new AfterTriggerDeserializer());
 
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
 		Types type= Types.valueOf(jobject.get("type").getAsString());
 		String thing= jobject.get("thing").getAsString();
 		String onTrigger= jobject.get("onTrigger").getAsString();
-		List<AfterTrigger> afterTriggers = gson.fromJson(jobject.get("afterTrigger"), new TypeToken<List<AfterTrigger>>() {}.getType());
+		List<AfterTriggerRequest> afterTriggers = gson.fromJson(jobject.get("afterTrigger"), new TypeToken<List<AfterTriggerRequest>>() {}.getType());
 
 		return new Trigger(type, thing, onTrigger, afterTriggers);
 	}

@@ -1,0 +1,56 @@
+Cami Abuin: 
+Estás en la sala de estar.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una silla, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.
+Cami Abuin: 
+Hace falta mucha más leña para encenderla.
+Hay solo un tronco pequeño, quizás sea util.
+En La chimenea hay:
+- Un tronco
+Cami Abuin: 
+Juntaste tronco.
+Cami Abuin: 
+Estás en la cocina.
+Creo que le faltan muebles...
+Hay solo un horno sin su puerta y en el suelo hay algo tirado.
+Al Sur está la sala de estar.
+Cami Abuin: 
+Agarraste los fósforos.
+Cami Abuin: 
+Agarraste el martillo.
+Cami Abuin: 
+No hay nada al este
+Cami Abuin: 
+Estás en la sala de estar.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una silla, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.
+Cami Abuin: 
+El golpe fue muy fuerte y el vidrio estalló.
+El hielo me impide salir.
+Debería utilizar algo para derretirlo.
+Cami Abuin: 
+No puedo hablar con hielo.
+Cami Abuin: 
+Hay un montón de hielo que me impide salir.
+Debería utilizar algo para derretirlo.
+Cami Abuin: 
+Ahora tengo una antorcha.
+Los demás fósforos están húmedos.
+Ya no me sirven.
+Cami Abuin: 
+Se derritió rápidamente el hielo.
+La salida está desbloqueada.
+La antorcha ya no me es util.
+Cami Abuin: 
+La direccion exterior no existe
+Cami Abuin: 
+Una puerta sólida cerrada con llave que impide el paso.
+Cami Abuin: 
+Estás en el parque.
+Todo está cubierto por nieve.
+Parece haber algo debajo.
+Hay un pino.
+Al Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.
+Cami Abuin: 

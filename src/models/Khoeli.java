@@ -1,36 +1,34 @@
 package models;
 
 import java.awt.Component;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.Normalizer;
-import java.text.Normalizer.Form;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import enums.Directions;
-import enums.TriggerAction;
+
 import helpers.AdventureDeserializer;
-import interfaces.Observable;
-import interfaces.Triggerable;
+import models.parser.*;
 
 public class Khoeli {
 	private Adventure selectedAdventure;
-	private StringBuilder history;
+	private Parser parser;
 
 	public Khoeli() {
-		history = new StringBuilder();
+		parser = new ParserLookAt();
+		parser.linkWith(new ParserMove())
+			  .linkWith(new ParserPickup())
+			  .linkWith(new ParserSave())
+			  .linkWith(new ParserTalkTo())
+			  .linkWith(new ParserUse());
 	}
 
 	public Adventure getSelectedAdventure() {
@@ -48,13 +46,16 @@ public class Khoeli {
 	}
 
 	public static void main(String[] args) {
-
 		Khoeli khoeli = new Khoeli();
+		khoeli.play();
+	}
+
+	private void play() {
 		JFileChooser selectorArchivos = new JFileChooser();
 		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
 		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
-		int resultado = selectorArchivos.showOpenDialog(null);
+		selectorArchivos.showOpenDialog(null);
 		if (selectorArchivos.getSelectedFile() == null) {
 			Component frame = null;
 			JOptionPane.showMessageDialog(frame,
@@ -66,37 +67,35 @@ public class Khoeli {
 		File archivo = selectorArchivos.getSelectedFile();
 
 		try {
-			khoeli.setSelectedAdventure(archivo.getPath());
+			setSelectedAdventure(archivo.getPath());
 		} catch (IOException e) {
 			System.err.println("archivo de aventura invalido");
 		}
 
-		System.out.println("Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n");
-		System.out.println("Ingrese su nombre (si no ingresa nada, el nombre será " + khoeli.selectedAdventure.getSelectedPlayer().getName() + "):");
-		
+		System.out.println(
+				"Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n");
+		System.out.println("Ingrese su nombre (si no ingresa nada, el nombre será "
+				+ selectedAdventure.getSelectedPlayer().getName() + "):");
+
 		Scanner scanner = new Scanner(System.in);
 		scanner.useDelimiter("\r\n");
 		String name = scanner.next();
-		if(!name.isEmpty()) {
-			khoeli.selectedAdventure.getSelectedPlayer().setName(name);
+		if (!name.isEmpty()) {
+			selectedAdventure.getSelectedPlayer().setName(name);
 		}
-		
-		System.out.println(khoeli.selectedAdventure.getWelcomeMessage());
+
+		System.out.println(selectedAdventure.getWelcomeMessage());
 		System.out.println();
-		System.out.println(khoeli.selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
+		System.out.println(selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
 
-		
-
-		while (!khoeli.selectedAdventure.isEnded()) {
+		while (!selectedAdventure.isEnded()) {
 			String entrada = scanner.next();
-			Command comando = khoeli.parse(entrada);
+			Command comando = parse(entrada);
 
 			if (comando != null) {
-				khoeli.history.append(khoeli.selectedAdventure.getSelectedPlayer().getName()).append(": ").append(entrada);
-				khoeli.history.append(System.lineSeparator());
-				String result = khoeli.execute(comando);
-				khoeli.history.append(result);
-				khoeli.history.append(System.lineSeparator());
+				selectedAdventure.appendRequest(entrada);
+				String result = parser.execute(selectedAdventure, comando);
+				selectedAdventure.appendResponse(result);
 				final char[] var = { '.', '\n' };
 				System.out.println(WordUtils.capitalizeFully(result, var));
 			}
@@ -105,9 +104,9 @@ public class Khoeli {
 		scanner.close();
 	}
 
-	
 	private Command parse(String next) {
-		String var = Normalizer.normalize(next.replaceAll("\\s+", " ").trim().toLowerCase(),Normalizer.Form.NFD).replaceAll("[\\u0300-\\u0301]", "");
+		String var = Normalizer.normalize(next.replaceAll("\\s+", " ").trim().toLowerCase(), Normalizer.Form.NFD)
+				.replaceAll("[\\u0300-\\u0301]", "");
 		String inputParsed = Normalizer.normalize(var, Normalizer.Form.NFC);
 		inputParsed = replaceId(inputParsed);
 		inputParsed = removeConectors(inputParsed);
@@ -150,125 +149,6 @@ public class Khoeli {
 			replaced = replaced.replaceAll(location.getName(), location.getId());
 		}
 		return replaced;
-	}
-
-	private String execute(Command comando) {
-		Playable player = selectedAdventure.getSelectedPlayer();
-		String resultado;
-		TriggerAction action = comando.getAction();
-
-		if (action == TriggerAction.MOVE) {
-			Directions direction = Directions.getDirection(comando.getCallerObject());
-			if (direction != null) {
-				resultado = player.move(direction);
-			} else {
-				Location location = selectedAdventure.findLocation(comando.getCallerObject());
-				if (location != null) {
-					resultado = player.move(location);
-				} else {
-					resultado = "La direccion " + comando.getCallerObject() + " no existe";
-				}
-			}
-
-		} else if (action == TriggerAction.PICK_UP) {
-			Place place;
-			if (comando.getReceiverObject() == null) {
-				place = player.getCurrentPlace();
-			} else {
-				place = player.getCurrentLocation().getPlace(comando.getReceiverObject());
-			}
-			if (place != null) {
-				Item item = place.findItem(comando.getCallerObject());
-				if (item != null) {
-					resultado = player.pickUp(item, place);
-				} else {
-					resultado = "No encuentro ese item.";
-				}
-			} else {
-				resultado = "No se de dónde agarrarlo.";
-			}
-		} else if (action == TriggerAction.TALK_TO) {
-			NonPlayable npc = player.getCurrentLocation().findNpc(comando.getCallerObject());
-			if (npc == null) {
-				resultado = "No puedo hablar con " + comando.getCallerObject() + ".";
-			} else {
-				resultado = player.talkTo(npc);
-			}
-
-		} else if (action == TriggerAction.USE) {
-			Item item = player.findItem(comando.getCallerObject());
-			if (comando.getReceiverObject() == null) {
-
-				if (item == null) {
-					resultado = "No existe el item " + comando.getCallerObject();
-				} else {
-					resultado = player.use(item);
-				}
-			} else {
-				Triggerable affected = player.findTriggerable(comando.getReceiverObject());
-				if (item == null) {
-					resultado = "No existe el item " + comando.getCallerObject();
-				} else if (affected == null) {
-					resultado = "No existe " + comando.getReceiverObject();
-				} else {
-					resultado = player.use(item, affected);
-				}
-
-			}
-		} else if (action == TriggerAction.LOOK_AT) {
-			Observable observable = player.findObservable(comando.getCallerObject());
-			if (observable == null) {
-				resultado = "No existe " + comando.getCallerObject();
-			} else {
-				resultado = player.lookAt(observable);
-			}
-		} else if (action == TriggerAction.SAVE) {
-			String string = comando.getCallerObject();
-			BufferedWriter writer = null;
-			try {
-				writer = new BufferedWriter(new FileWriter("./partidas guardadas/" + string + ".txt"));
-				writer.append(history);
-			} catch (IOException e) {
-				System.err.println(e.getMessage());
-			} finally {
-				try {
-					writer.close();
-				} catch (IOException e) {
-					System.err.println(e.getMessage());
-				}
-			}
-			resultado = "Se ha guardado exitosamente.";
-
-		} else {
-			resultado = "La acción no es correcta. Intentalo de nuevo";
-		}
-
-		return resultado;
-	}
-
-	public Observable findObservable(String id) {
-		/* Agregar todos los demas */
-		for (NonPlayable npc : selectedAdventure.getNpcs()) {
-			if (npc.getName().equals(id)) {
-				return npc;
-			}
-		}
-		for (Item item : selectedAdventure.getItems()) {
-			if (item.getId().equals(id)) {
-				return item;
-			}
-		}
-		for (Location location : selectedAdventure.getLocations()) {
-			if (location.getName().equals(id)) {
-				return location;
-			}
-		}
-//		Place place = selectedAdventure.getSelectedPlayer().getCurrentLocation().getPlace(id);
-//		if(place != null) {
-//			return place;
-//		}
-
-		return null;
 	}
 
 }

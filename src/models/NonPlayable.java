@@ -13,20 +13,20 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 	private String id;
 	private String name;
 	private String description;
-	private Genders gender;
-	private Numbers number;
+//	private Genders gender;
+//	private Numbers number;
 	private String talk;
 	private List<Trigger> triggers;
 
 	public NonPlayable(String id, String name, String description, Genders gender, Numbers number,
 			List<Trigger> triggers, String talk) {
 		this.name = name;
-		this.gender = gender;
 		this.description = description;
 		this.id = id;
 		this.triggers = triggers;
 		this.talk = talk;
-		this.number = number;
+//		this.number = number;
+//		this.gender = gender;
 	}
 
 	public String getDescription() {

@@ -10,7 +10,7 @@ import enums.Genders;
 import enums.Directions;
 
 public class Playable implements Executable, Observable {
-	private int healthPoints;
+//	private int healthPoints;
 	private Inventory inventory;
 	private String name;
 	private Genders gender;
@@ -40,7 +40,7 @@ public class Playable implements Executable, Observable {
 	public Playable(String name, Genders gender, Settings settings, List<String> items) {
 		this.name = name;
 		this.gender = gender;
-		healthPoints = settings.getInitialHealthPoints();
+//		healthPoints = settings.getInitialHealthPoints();
 		currentLocation = Adventure.getSelectedAdventure().findLocation(settings.getInitialLocation());
 		this.inventory = setItem(items);
 		this.inventory.setEmptyInventoryDescription("No hay nada en el inventario");
