@@ -1,6 +1,5 @@
 package models;
-
-
+import java.text.Normalizer;
 import java.util.List;
 import enums.Types;
 import enums.Genders;
@@ -72,16 +71,13 @@ public class Place implements Triggerable, Observable{
 
 	}
 	
-	
-	@Override
 	public void changeDescription(String thing) {
 		description = thing;
 	}
-	
 
 	@Override
 	public String lookAt() {
-		return description;
+		return   description + System.lineSeparator() +"En " + getDefineArticle(gender, number) + " " + name + " hay:" + System.lineSeparator() + items.lookAt();
 	}
 
 }

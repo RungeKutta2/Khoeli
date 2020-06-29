@@ -31,4 +31,9 @@ public class Command {
 		return receiverObject;
 	}
 
+	@Override
+	public String toString() {
+		return action + " " + callerObject + " " +receiverObject != null? receiverObject:"";
+	}
+
 }

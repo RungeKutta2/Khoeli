@@ -36,6 +36,14 @@ public class Item implements Triggerable, Observable, Obstacle {
 		return id;
 	}
 
+	public Genders getGender() {
+		return gender;
+	}
+
+	public Numbers getNumber() {
+		return number;
+	}
+	
 	@Override
 	public String executeTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;

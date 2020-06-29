@@ -1,0 +1,15 @@
+Genn Greymane: ir baño
+Está todo mojado.
+A tu alrededor hay un inodoro y un lavamanos.
+Al Este está la sala de estar.
+Genn Greymane: ir e
+Estás en la sala de estar.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una silla, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el parque, al Oeste está el baño.
+Genn Greymane: mirar ventana
+Hay una ventana. El hielo del exterior la está bloqueando.
+Con un buen golpe podría abrirla.
+Genn Greymane: golpear ventana
+La acción no es correcta. Intentalo de nuevo
+Genn Greymane: guardar partida1

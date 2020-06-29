@@ -1,14 +1,21 @@
 package models;
 
 import java.awt.Component;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,6 +27,11 @@ import interfaces.Triggerable;
 
 public class Khoeli {
 	private Adventure selectedAdventure;
+	private StringBuilder history;
+
+	public Khoeli() {
+		history = new StringBuilder();
+	}
 
 	public Adventure getSelectedAdventure() {
 		return selectedAdventure;
@@ -46,13 +58,11 @@ public class Khoeli {
 		if (selectorArchivos.getSelectedFile() == null) {
 			Component frame = null;
 			JOptionPane.showMessageDialog(frame,
-			    "No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura válida.",
-			    "Error!",
-			    JOptionPane.ERROR_MESSAGE);
+					"No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura válida.",
+					"Error!", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
-		
+
 		File archivo = selectorArchivos.getSelectedFile();
 
 		try {
@@ -61,19 +71,33 @@ public class Khoeli {
 			System.err.println("archivo de aventura invalido");
 		}
 
+		System.out.println("Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n");
+		System.out.println("Ingrese su nombre (si no ingresa nada, el nombre será " + khoeli.selectedAdventure.getSelectedPlayer().getName() + "):");
+		
+		Scanner scanner = new Scanner(System.in);
+		scanner.useDelimiter("\r\n");
+		String name = scanner.next();
+		if(!name.isEmpty()) {
+			khoeli.selectedAdventure.getSelectedPlayer().setName(name);
+		}
+		
 		System.out.println(khoeli.selectedAdventure.getWelcomeMessage());
 		System.out.println();
 		System.out.println(khoeli.selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
 
-		Scanner scanner = new Scanner(System.in);
-		scanner.useDelimiter("\r\n");
 
 		while (!khoeli.selectedAdventure.isEnded()) {
+			String entrada = scanner.next();
+			Command comando = khoeli.parse(entrada);
 
-			Command comando = khoeli.parse(scanner.next());
 			if (comando != null) {
+				khoeli.history.append(khoeli.selectedAdventure.getSelectedPlayer().getName()).append(": ").append(entrada);
+				khoeli.history.append(System.lineSeparator());
 				String result = khoeli.execute(comando);
-				System.out.println(result);
+				khoeli.history.append(result);
+				khoeli.history.append(System.lineSeparator());
+				final char[] var = { '.', '\n' };
+				System.out.println(WordUtils.capitalizeFully(result, var));
 			}
 
 		}
@@ -81,10 +105,10 @@ public class Khoeli {
 	}
 
 	private Command parse(String next) {
-		String inputParsed = next.replaceAll("\\s+", " ").trim().toLowerCase(); // TODO: toLowerCase
+		String var = Normalizer.normalize(next.replaceAll("\\s+", " ").trim().toLowerCase(),Normalizer.Form.NFD).replaceAll("[\\u0300-\\u0301]", "");
+		String inputParsed = Normalizer.normalize(var, Normalizer.Form.NFC);
 		inputParsed = replaceId(inputParsed);
 		inputParsed = removeConectors(inputParsed);
-		// ver tema sinonimos
 		String[] parsed = inputParsed.split(" ");
 
 		Command comando = null;
@@ -196,6 +220,23 @@ public class Khoeli {
 			} else {
 				resultado = player.lookAt(observable);
 			}
+		} else if (action == TriggerAction.SAVE) {
+			String string = comando.getCallerObject();
+			BufferedWriter writer = null;
+			try {
+				writer = new BufferedWriter(new FileWriter("./partidas guardadas/" + string + ".txt"));
+				writer.append(history);
+			} catch (IOException e) {
+				System.err.println(e.getMessage());
+			} finally {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					System.err.println(e.getMessage());
+				}
+			}
+			resultado = "Se ha guardado exitosamente.";
+
 		} else {
 			resultado = "La acción no es correcta. Intentalo de nuevo";
 		}

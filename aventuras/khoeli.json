@@ -1404,14 +1404,13 @@
     }
   ],
   "selectedPlayer": {
-    "name": "Geralt De Rivia",
+    "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "welcome": "Bienvenido a esta aventura",
       "initialLocation": "sala_de_estar",
       "initialHealthPoints": 100
     },
     "items": []
   },
-  "welcomeMessage": "Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n----------\r\n----------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\n¡TE ESTÁS DESANGRANDO!"
+  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\n¡TE ESTÁS DESANGRANDO!"
 }
