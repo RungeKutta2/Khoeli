@@ -12,7 +12,7 @@ import interfaces.Observable;
 import interfaces.Obstacle;
 import interfaces.Triggerable;
 
-public class Location implements Observable, Triggerable{
+public class Location implements Observable, Triggerable {
 	private String id;
 	private String name;
 //	private Genders gender;
@@ -72,19 +72,22 @@ public class Location implements Observable, Triggerable{
 	public Connection findConnection(Direction direction) {
 		Connection found = null;
 		if (direction != null) {
-			Optional<Connection> result = connections.stream().filter(x -> x.getDirection().equals(direction)).findFirst();
+			Optional<Connection> result = connections.stream().filter(x -> x.getDirection().equals(direction))
+					.findFirst();
+			found = result.isPresent() ? result.get() : null;
+		}
+		return found;
+	}
+
+	public Connection findConnection(Location location) {
+		Connection found = null;
+		if (location != null) {
+			Optional<Connection> result = connections.stream().filter(x -> x.getLocation().equals(location))
+					.findFirst();
 			found = result.orElseGet(null);
 		}
 		return found;
 	}
-	
-	public Connection findConnection(Location location) {
-		Connection found = null;
-		if (location != null) {
-			Optional<Connection> result = connections.stream().filter(x -> x.getLocation().equals(location)).findFirst();
-			found = result.orElseGet(null);
-		}
-		return found;	}
 
 	public Obstacle findObstacle(Direction direction) {
 		Obstacle found = null;
@@ -111,7 +114,7 @@ public class Location implements Observable, Triggerable{
 		Place found = null;
 		if (place != null) {
 			Optional<Place> result = places.stream().filter(x -> x.getName().equals(place)).findFirst();
-			found = result.orElseGet(null);
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
@@ -137,12 +140,13 @@ public class Location implements Observable, Triggerable{
 	private Trigger findTrigger(TriggerType type, String thing) {
 		Trigger found = null;
 		if (type != null && thing != null) {
-			Optional<Trigger> result = triggers.stream().filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
-			found = result.orElseGet(null);
+			Optional<Trigger> result = triggers.stream()
+					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
-	
+
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;
@@ -217,7 +221,7 @@ public class Location implements Observable, Triggerable{
 		if (npc != null && contains(npc)) {
 			return npc;
 		}
-		
+
 		return null;
 	}
 }

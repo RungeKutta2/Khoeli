@@ -23,8 +23,10 @@ public class Place implements Triggerable, Observable {
 		this.number = number;
 		this.items = setItems(items);
 		this.description = description;
-		this.items.setEmptyInventoryDescription("No hay nada en " + getDefinedArticle(this.gender, this.number) + " " + name);
-		this.items.setFullInventoryDescription("En " + getDefinedArticle(this.gender, this.number) + " " + name + " hay:\n");
+		this.items.setEmptyInventoryDescription(
+				"No hay nada en " + getDefinedArticle(this.gender, this.number) + " " + name);
+		this.items.setFullInventoryDescription(
+				"En " + getDefinedArticle(this.gender, this.number) + " " + name + " hay:\n");
 	}
 
 	private Inventory setItems(List<String> items) {
@@ -53,16 +55,16 @@ public class Place implements Triggerable, Observable {
 		}
 		return result;
 	}
-	
+
 	private Trigger findTrigger(TriggerType type, String thing) {
 		Trigger found = null;
 		if (type != null && thing != null) {
-			Optional<Trigger> result = triggers.stream().filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
-			found = result.orElseGet(null);
+			Optional<Trigger> result = triggers.stream()
+					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
-	
 
 	public Item findItem(String id) {
 		Item item = Adventure.getSelectedAdventure().findItem(id);
@@ -81,10 +83,9 @@ public class Place implements Triggerable, Observable {
 
 	@Override
 	public String lookAt() {
-		String inventoryDescription = description + System.lineSeparator() 
-				+ (items.isEmpty()
-				? items.getEmptyInventoryDefaultDescription()
-				: (items.getFullInventoryDefaultDescription() + items.lookAt()));
+		String inventoryDescription = description + System.lineSeparator()
+				+ (items.isEmpty() ? items.getEmptyInventoryDefaultDescription()
+						: (items.getFullInventoryDefaultDescription() + items.lookAt()));
 
 		return inventoryDescription;
 	}

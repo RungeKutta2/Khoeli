@@ -10,7 +10,7 @@ import interfaces.Observable;
 import interfaces.Obstacle;
 import interfaces.Triggerable;
 
-public class NonPlayable implements Triggerable, Observable, Obstacle{
+public class NonPlayable implements Triggerable, Observable, Obstacle {
 	private String id;
 	private String name;
 	private String description;
@@ -19,8 +19,8 @@ public class NonPlayable implements Triggerable, Observable, Obstacle{
 	private String talk;
 	private List<Trigger> triggers;
 
-	public NonPlayable(String id, String name, String description, Gender gender, Number number,
-			List<Trigger> triggers, String talk) {
+	public NonPlayable(String id, String name, String description, Gender gender, Number number, List<Trigger> triggers,
+			String talk) {
 		this.name = name;
 		this.description = description;
 		this.id = id;
@@ -47,21 +47,21 @@ public class NonPlayable implements Triggerable, Observable, Obstacle{
 		}
 		return result;
 	}
-	
+
 	private Trigger findTrigger(TriggerType type, String thing) {
 		Trigger found = null;
 		if (type != null && thing != null) {
-			Optional<Trigger> result = triggers.stream().filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
-			found = result.orElseGet(null);
+			Optional<Trigger> result = triggers.stream()
+					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
-	
 
 	public String getId() {
 		return id;
 	}
-	
+
 	public String getName2() {
 		return name;
 	}

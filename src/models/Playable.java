@@ -68,8 +68,10 @@ public class Playable implements Observable {
 			if (connection.getObstacle() == null) {
 				currentLocation = connection.getLocation();
 				result = currentLocation.getDescription();
-				result += System.lineSeparator()
-						+ currentLocation.executeTrigger(TriggerType.ACTION, Action.MOVE.toString());
+				String triggerResult = currentLocation.executeTrigger(TriggerType.ACTION, Action.MOVE.toString());
+				if (!triggerResult.isEmpty()) {
+					result += System.lineSeparator() + triggerResult;
+				}
 			} else {
 				result = connection.getObstacle().getObstacleDescription();
 			}
@@ -87,7 +89,10 @@ public class Playable implements Observable {
 			if (connection.getObstacle() == null) {
 				currentLocation = connection.getLocation();
 				result = currentLocation.getDescription();
-				result += currentLocation.executeTrigger(TriggerType.ACTION, Action.MOVE.toString());
+				String triggerResult = currentLocation.executeTrigger(TriggerType.ACTION, Action.MOVE.toString());
+				if (!triggerResult.isEmpty()) {
+					result += System.lineSeparator() + triggerResult;
+				}
 			} else {
 				result = connection.getObstacle().getObstacleDescription();
 			}

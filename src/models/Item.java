@@ -10,7 +10,7 @@ import interfaces.Observable;
 import interfaces.Obstacle;
 import interfaces.Triggerable;
 
-public class Item implements Triggerable, Observable, Obstacle{
+public class Item implements Triggerable, Observable, Obstacle {
 
 	private String id;
 	private String name;
@@ -19,9 +19,7 @@ public class Item implements Triggerable, Observable, Obstacle{
 	private String description;
 	private List<Trigger> triggers;
 
-
-	public Item(String id, String name, Gender gender, Number number, String description,
-			List<Trigger> triggers) {
+	public Item(String id, String name, Gender gender, Number number, String description, List<Trigger> triggers) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
@@ -45,26 +43,26 @@ public class Item implements Triggerable, Observable, Obstacle{
 	public Number getNumber() {
 		return number;
 	}
-	
+
 	@Override
 	public String executeTrigger(TriggerType type, String thing) {
 		Trigger foundTrigger = findTrigger(type, thing);
 		String result = "";
-		if(foundTrigger!= null) {
-			result  = foundTrigger.execute();
+		if (foundTrigger != null) {
+			result = foundTrigger.execute();
 		}
 		return result;
 	}
-	
+
 	private Trigger findTrigger(TriggerType type, String thing) {
 		Trigger found = null;
 		if (type != null && thing != null) {
-			Optional<Trigger> result = triggers.stream().filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
-			found = result.orElseGet(null);
+			Optional<Trigger> result = triggers.stream()
+					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
-	
 
 	@Override
 	public void changeDescription(String thing) {
@@ -84,7 +82,6 @@ public class Item implements Triggerable, Observable, Obstacle{
 	public String getObstacleDescription() {
 		return description;
 	}
-
 
 //	public String replace(String inputParsed) {
 //		return inputParsed.replace(name, id);

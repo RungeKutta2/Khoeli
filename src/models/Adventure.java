@@ -95,7 +95,7 @@ public class Adventure {
 		Location found = null;
 		if (id != null) {
 			Optional<Location> result = locations.stream().filter(x -> x.getId().equals(id)).findFirst();
-			found = result.orElseGet(null);
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
@@ -104,7 +104,7 @@ public class Adventure {
 		Item found = null;
 		if (id != null) {
 			Optional<Item> result = items.stream().filter(x -> x.getId().equals(id)).findFirst();
-			found = result.orElseGet(null);
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
@@ -113,16 +113,18 @@ public class Adventure {
 		NonPlayable found = null;
 		if (id != null) {
 			Optional<NonPlayable> result = npcs.stream().filter(x -> x.getId().equals(id)).findFirst();
-			found = result.orElseGet(null);
+			found = result.isPresent() ? result.get() : null;
 		}
 		return found;
 	}
 
 	public Obstacle findObstacle(String id) {
 		Obstacle found = null;
-		found = findNpc(id);
-		if(found == null) {
-			found = findItem(id);
+		if (id != null) {
+			found = findNpc(id);
+			if (found == null) {
+				found = findItem(id);
+			}
 		}
 		return found;
 	}

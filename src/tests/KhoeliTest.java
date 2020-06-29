@@ -57,7 +57,6 @@ class KhoeliTest {
 		assertEquals(initialLocation, selectedPlayer.getCurrentLocation());
 	}
 
-
 	@Test
 	void testPickUpExistingItem() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
@@ -133,9 +132,8 @@ class KhoeliTest {
 		Location mercia = selectedAdventure.findLocation("bar");
 		String result = selectedPlayer.move(Direction.NORTH);
 		assertEquals(mercia, selectedPlayer.getCurrentLocation());
-		assertEquals(
-				"Estas en un bar llamado Mercia, al sur esta el descampadoPasaste una noche muy divertida con tus amigos. THE END",
-				result);
+		assertEquals("Estas en un bar llamado Mercia, al sur esta el descampado" + System.lineSeparator()
+				+ "Pasaste una noche muy divertida con tus amigos. THE END", result);
 	}
 //
 //	@Test
@@ -212,6 +210,6 @@ class KhoeliTest {
 		Item item1 = selectedAdventure.findItem("espada_vieja");
 		Item item2 = selectedAdventure.findItem("piedra");
 
-		assertEquals("no se puede usar espada vieja con piedra", selectedPlayer.use(item1, item2));
+		assertEquals("No puedo hacer eso", selectedPlayer.use(item1, item2));
 	}
 }
