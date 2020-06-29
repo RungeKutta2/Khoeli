@@ -90,7 +90,7 @@ public class Khoeli {
 
 		while (!selectedAdventure.isEnded()) {
 			String entrada = scanner.next();
-			Command comando = parse(entrada);
+			Command comando = Parser.parse(entrada);
 
 			if (comando != null) {
 				selectedAdventure.appendRequest(entrada);
@@ -104,51 +104,5 @@ public class Khoeli {
 		scanner.close();
 	}
 
-	private Command parse(String next) {
-		String var = Normalizer.normalize(next.replaceAll("\\s+", " ").trim().toLowerCase(), Normalizer.Form.NFD)
-				.replaceAll("[\\u0300-\\u0301]", "");
-		String inputParsed = Normalizer.normalize(var, Normalizer.Form.NFC);
-		inputParsed = replaceId(inputParsed);
-		inputParsed = removeConectors(inputParsed);
-		String[] parsed = inputParsed.split(" ");
-
-		Command comando = null;
-		try {
-			comando = new Command(parsed[0], parsed[1], parsed.length == 3 ? parsed[2] : null);
-		} catch (Exception e) {
-			System.out.println("Acción incorrecta, intente nuevamente.");
-		}
-		return comando;
-	}
-
-	public String removeConectors(String name) {
-		String conectors = " (el|los|la|las|un|una|unos|unas|al|del|a|ante|bajo|con|contra|de|desde|durante|en|entre|hacia|hasta|mediante|para|por|segun|sin|sobre|tras) ";
-		String actual = name;
-		boolean distinto = true;
-		do {
-			actual = name.replaceFirst(conectors, " ");
-			if (actual == name) {
-				distinto = false;
-			} else {
-				name = actual;
-			}
-		} while (distinto);
-
-		return name;
-	}
-
-	public String replaceId(String name) {
-		String replaced = name;
-		for (NonPlayable npc : selectedAdventure.getNpcs()) {
-			replaced = replaced.replaceAll(npc.getName2(), npc.getId());
-		}
-		for (Item item : selectedAdventure.getItems()) {
-			replaced = replaced.replaceAll(item.getName(), item.getId());
-		}
-		for (Location location : selectedAdventure.getLocations()) {
-			replaced = replaced.replaceAll(location.getName(), location.getId());
-		}
-		return replaced;
-	}
 
 }

@@ -62,17 +62,13 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 		return id;
 	}
 
-	public String getName2() {
+	public String getName() {
 		return name;
 	}
 
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;
-	}
-
-	public String getName() {
-		return id;
 	}
 
 	@Override

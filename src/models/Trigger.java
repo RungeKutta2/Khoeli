@@ -10,15 +10,15 @@ public class Trigger {
 	private String thing;
 	private String onTrigger;
 	private List<AfterTriggerRequest> afterTriggers;
-	AfterTrigger middleware;
+	AfterTrigger afterTrigger;
 
 	public Trigger(TriggerType type, String thing, String onTrigger, List<AfterTriggerRequest> afterTriggers) {
 		this.type = type;
 		this.thing = thing;
 		this.onTrigger = onTrigger;
 		this.afterTriggers = afterTriggers;
-		middleware = new Add();
-		middleware.linkWith(new ChangeDescription()).linkWith(new Endgame()).linkWith(new Remove());
+		afterTrigger = new Add();
+		afterTrigger.linkWith(new ChangeDescription()).linkWith(new Endgame()).linkWith(new Remove());
 	}
 
 	public TriggerType getType() {
@@ -39,8 +39,8 @@ public class Trigger {
 
 	public String execute() {
 		if (afterTriggers != null) {
-			for (AfterTriggerRequest afterTrigger : afterTriggers) {
-				middleware.execute(afterTrigger);
+			for (AfterTriggerRequest request : afterTriggers) {
+				afterTrigger.execute(request);
 			}
 		}
 		return onTrigger;
