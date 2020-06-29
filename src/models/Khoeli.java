@@ -72,14 +72,14 @@ public class Khoeli {
 			System.err.println("archivo de aventura invalido");
 		}
 
+		Scanner scanner = new Scanner(System.in);
+		
 		System.out.println(
 				"Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n");
 		System.out.println("Ingrese su nombre (si no ingresa nada, el nombre será "
 				+ selectedAdventure.getSelectedPlayer().getName() + "):");
 
-		Scanner scanner = new Scanner(System.in);
-		scanner.useDelimiter("\r\n");
-		String name = scanner.next();
+		String name = scanner.nextLine();
 		if (!name.isEmpty()) {
 			selectedAdventure.getSelectedPlayer().setName(name);
 		}
@@ -89,7 +89,7 @@ public class Khoeli {
 		System.out.println(selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
 
 		while (!selectedAdventure.isEnded()) {
-			String entrada = scanner.next();
+			String entrada = scanner.nextLine();
 			Command comando = Parser.parse(entrada);
 
 			if (comando != null) {
