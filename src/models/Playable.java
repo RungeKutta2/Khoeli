@@ -9,7 +9,7 @@ import interfaces.Triggerable;
 import enums.Genders;
 import enums.Directions;
 
-public class Playable implements Executable {
+public class Playable implements Executable,Observable {
 	private int healthPoints;
 	private Inventory inventory;
 	private String name;
@@ -17,6 +17,10 @@ public class Playable implements Executable {
 	private Location currentLocation;
 	private Place currentPlace;
 
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -156,12 +160,17 @@ public class Playable implements Executable {
 	}
 
 	public Observable findObservable(String id) {
-
+		
+		if(id.equals("inventario")) {
+			return this;
+		}
+		
 		Item item = findItem(id);
 		if (item != null) {
 			return item;
 		}
 
+		
 		NonPlayable npc = Adventure.getSelectedAdventure().findNpc(id);
 		if (npc != null && currentLocation.getNpcs().contains(npc)) {
 			return npc;
@@ -186,6 +195,11 @@ public class Playable implements Executable {
 		} else {
 			return currentLocation.findTriggerable(receiverObject);	
 		}
+	}
+
+	@Override
+	public String lookAt() {
+		return "En mi inventario hay:" + System.lineSeparator() + inventory.lookAt();
 	}
 
 }

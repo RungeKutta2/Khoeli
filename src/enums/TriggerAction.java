@@ -39,6 +39,13 @@ public enum TriggerAction {
 			String[] synonyms = new String[] { "hablar", "conversar", "charlar", "platicar", "discutir" };
 			return Arrays.asList(synonyms);
 		}
+	},
+	SAVE {
+		@Override
+		public List<String> getSynonyms() {
+			String[] synonyms = new String[] { "guardar", "salvar", "grabar" };
+			return Arrays.asList(synonyms);
+		}
 	};
 
 	public abstract List<String> getSynonyms();
@@ -63,6 +70,8 @@ public enum TriggerAction {
 			result = LOOK_AT;
 		} else if (TALK_TO.getSynonyms().contains(callerObject)) {
 			result = TALK_TO;
+		} else if (SAVE.getSynonyms().contains(callerObject)) {
+			result = SAVE;
 		}
 		return result;
 	}

@@ -18,6 +18,7 @@ public class Item implements Triggerable, Observable, Obstacle {
 	private String description;
 	private List<Trigger> triggers;
 
+
 	public Item(String id, String name, Genders gender, Numbers number, String description,
 			List<Trigger> triggers) {
 		this.id = id;
@@ -36,6 +37,14 @@ public class Item implements Triggerable, Observable, Obstacle {
 		return id;
 	}
 
+	public Genders getGender() {
+		return gender;
+	}
+
+	public Numbers getNumber() {
+		return number;
+	}
+	
 	@Override
 	public String executeTrigger(Types type, String thing) {
 		Trigger foundTrigger = null;
