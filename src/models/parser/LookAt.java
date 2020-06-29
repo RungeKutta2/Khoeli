@@ -1,29 +1,28 @@
 package models.parser;
 
-import enums.TriggerAction;
+import enums.Action;
 import interfaces.Observable;
 import models.Adventure;
 import models.Playable;
 
-public class ParserLookAt extends Parser{
+public class LookAt extends Parser {
 
 	@Override
 	public String execute(Adventure selectedAdventure, Command request) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
-		TriggerAction action = request.getAction();
+		Action action = request.getAction();
 
-		if (action == TriggerAction.LOOK_AT) {
+		if (action == Action.LOOK_AT) {
 			Observable observable = player.findObservable(request.getCallerObject());
 			if (observable == null) {
 				resultado = "No existe " + request.getCallerObject();
 			} else {
 				resultado = player.lookAt(observable);
-			}		}
-		else {
+			}
+		} else {
 			resultado = checkNext(selectedAdventure, request);
 		}
 		return resultado;
 	}
-
 }

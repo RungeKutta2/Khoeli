@@ -1,6 +1,6 @@
 package enums;
 
-public enum Directions {
+public enum Direction {
 	NORTH {
 		@Override
 		public String getDescription() {
@@ -28,7 +28,7 @@ public enum Directions {
 	
 	public abstract String getDescription();
 
-	public static Directions getDirection(String callerObject) {
+	public static Direction getDirection(String callerObject) {
 		switch (callerObject) {
 		case "norte":
 		case "n":

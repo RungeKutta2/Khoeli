@@ -3,7 +3,7 @@ package enums;
 import java.util.Arrays;
 import java.util.List;
 
-public enum TriggerAction {
+public enum Action {
 	MOVE {
 		@Override
 		public List<String> getSynonyms() {
@@ -50,8 +50,8 @@ public enum TriggerAction {
 
 	public abstract List<String> getSynonyms();
 
-	public static TriggerAction getTriggerAction(String action) {
-		TriggerAction result = null;
+	public static Action get(String action) {
+		Action result = null;
 		if (MOVE.getSynonyms().contains(action)) {
 			result = MOVE;
 		} else if (PICK_UP.getSynonyms().contains(action)) {

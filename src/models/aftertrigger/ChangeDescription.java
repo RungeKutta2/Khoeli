@@ -7,7 +7,7 @@ import models.Location;
 import models.NonPlayable;
 import models.Place;
 
-public class AfterTriggerChangeDescription extends AfterTrigger {
+public class ChangeDescription extends AfterTrigger {
 
 	@Override
 	public void execute(AfterTriggerRequest request) {

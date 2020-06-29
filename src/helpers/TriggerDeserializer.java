@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import enums.Types;
+import enums.TriggerType;
 import models.Trigger;
 import models.aftertrigger.AfterTriggerRequest;
 
@@ -26,7 +26,7 @@ public class TriggerDeserializer implements JsonDeserializer<Trigger>{
 
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
-		Types type= Types.valueOf(jobject.get("type").getAsString());
+		TriggerType type= TriggerType.valueOf(jobject.get("type").getAsString());
 		String thing= jobject.get("thing").getAsString();
 		String onTrigger= jobject.get("onTrigger").getAsString();
 		List<AfterTriggerRequest> afterTriggers = gson.fromJson(jobject.get("afterTrigger"), new TypeToken<List<AfterTriggerRequest>>() {}.getType());

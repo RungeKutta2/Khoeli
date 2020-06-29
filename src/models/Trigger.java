@@ -2,27 +2,26 @@ package models;
 
 import java.util.List;
 
-import enums.Types;
+import enums.TriggerType;
 import models.aftertrigger.*;
 
 public class Trigger {
-	private Types type;
+	private TriggerType type;
 	private String thing;
 	private String onTrigger;
 	private List<AfterTriggerRequest> afterTriggers;
 	AfterTrigger middleware;
-	public Trigger(Types type, String thing, String onTrigger, List<AfterTriggerRequest> afterTriggers) {
+
+	public Trigger(TriggerType type, String thing, String onTrigger, List<AfterTriggerRequest> afterTriggers) {
 		this.type = type;
 		this.thing = thing;
 		this.onTrigger = onTrigger;
 		this.afterTriggers = afterTriggers;
-		middleware = new AfterTriggerAdd();
-		middleware.linkWith(new AfterTriggerChangeDescription())
-				.linkWith(new AfterTriggerEndgame())
-				.linkWith(new AfterTriggerRemove());
+		middleware = new Add();
+		middleware.linkWith(new ChangeDescription()).linkWith(new Endgame()).linkWith(new Remove());
 	}
 
-	public Types getType() {
+	public TriggerType getType() {
 		return type;
 	}
 
@@ -38,12 +37,13 @@ public class Trigger {
 		return afterTriggers;
 	}
 
-	public void executeAfterTriggers() {
+	public String execute() {
 		if (afterTriggers != null) {
 			for (AfterTriggerRequest afterTrigger : afterTriggers) {
 				middleware.execute(afterTrigger);
 			}
 		}
+		return onTrigger;
 	}
 
 }

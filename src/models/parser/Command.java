@@ -1,16 +1,16 @@
 package models.parser;
 
-import enums.TriggerAction;
+import enums.Action;
 
 public class Command {
-	private TriggerAction action;
+	private Action action;
 	private String callerObject;
 	private String receiverObject;
 	
 	
 
 	public Command(String action, String callerObject, String receiverObject) {
-		this.action = TriggerAction.getTriggerAction(action);
+		this.action = Action.get(action);
 		this.callerObject = callerObject;
 		this.receiverObject = receiverObject;
 	}
@@ -19,7 +19,7 @@ public class Command {
 		
 	}
 	
-	public TriggerAction getAction() {
+	public Action getAction() {
 		return action;
 	}
 

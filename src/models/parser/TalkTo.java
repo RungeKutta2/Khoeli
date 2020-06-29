@@ -1,19 +1,19 @@
 package models.parser;
 
-import enums.TriggerAction;
+import enums.Action;
 import models.Adventure;
 import models.NonPlayable;
 import models.Playable;
 
-public class ParserTalkTo extends Parser {
+public class TalkTo extends Parser {
 
 	@Override
 	public String execute(Adventure selectedAdventure, Command request) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
-		TriggerAction action = request.getAction();
+		Action action = request.getAction();
 
-		if (action == TriggerAction.TALK_TO) {
+		if (action == Action.TALK_TO) {
 			NonPlayable npc = player.getCurrentLocation().findNpc(request.getCallerObject());
 			if (npc == null) {
 				resultado = "No puedo hablar con " + request.getCallerObject() + ".";

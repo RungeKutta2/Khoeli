@@ -1,6 +1,6 @@
 package enums;
 
-public enum ThingType {
+public enum AfterTriggerThing {
 	ITEM,
 	CONNECTION,
 	NPC,

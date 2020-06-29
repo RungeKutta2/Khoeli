@@ -1,7 +1,7 @@
 package models.aftertrigger;
 
 import enums.AfterTriggerAction;
-import enums.Directions;
+import enums.Direction;
 import interfaces.Obstacle;
 import models.Adventure;
 import models.Connection;
@@ -10,7 +10,7 @@ import models.Location;
 import models.NonPlayable;
 import models.Place;
 
-public class AfterTriggerAdd extends AfterTrigger {
+public class Add extends AfterTrigger {
 
 	@Override
 	public void execute(AfterTriggerRequest request) {
@@ -23,7 +23,7 @@ public class AfterTriggerAdd extends AfterTrigger {
 				break;
 			case CONNECTION:
 				Location location1 = Adventure.getSelectedAdventure().findLocation(request.getParentId());
-				Connection connection = location1.findConnection(Directions.valueOf(request.getActionDestination()));
+				Connection connection = location1.findConnection(Direction.valueOf(request.getActionDestination()));
 				Obstacle obstacle = Adventure.getSelectedAdventure().findObstacle(request.getThing());
 				connection.setObstacle(obstacle);
 				break;

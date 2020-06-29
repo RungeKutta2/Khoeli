@@ -1,14 +1,14 @@
 package models.aftertrigger;
 
 import enums.AfterTriggerAction;
-import enums.DestinationTypes;
-import enums.ThingType;
+import enums.AfterTriggerDestination;
+import enums.AfterTriggerThing;
 
 public class AfterTriggerRequest {
 	private AfterTriggerAction action;
 	private String thing;
 	private String actionDestination;
-	private DestinationTypes destinationType;
+	private AfterTriggerDestination destinationType;
 	private String parentId;
 	
 	public AfterTriggerAction getAction() {
@@ -35,11 +35,11 @@ public class AfterTriggerRequest {
 		this.actionDestination = actionDestination;
 	}
 
-	public DestinationTypes getDestinationType() {
+	public AfterTriggerDestination getDestinationType() {
 		return destinationType;
 	}
 
-	public void setDestinationType(DestinationTypes destinationType) {
+	public void setDestinationType(AfterTriggerDestination destinationType) {
 		this.destinationType = destinationType;
 	}
 
@@ -51,8 +51,8 @@ public class AfterTriggerRequest {
 		this.parentId = parentId;
 	}
 
-	public AfterTriggerRequest(AfterTriggerAction action, String thing, ThingType thingType, String parentId, String actionDestination,
-			DestinationTypes destinationType) {
+	public AfterTriggerRequest(AfterTriggerAction action, String thing, AfterTriggerThing thingType, String parentId, String actionDestination,
+			AfterTriggerDestination destinationType) {
 		this.action = action;
 		this.thing = thing;
 		this.actionDestination = actionDestination;

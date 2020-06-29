@@ -31,7 +31,7 @@ public class Inventory implements Observable {
 		StringBuilder sb = new StringBuilder();
 		for (Item item : items) {
 			sb.append("- ");
-			sb.append(getUndefineArticle(item.getGender(), item.getNumber()) + " ");
+			sb.append(getUndefinedArticle(item.getGender(), item.getNumber()) + " ");
 			sb.append(item.getName());
 			sb.append(System.lineSeparator());
 		}

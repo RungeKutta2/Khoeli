@@ -1,6 +1,6 @@
 package enums;
 
-public enum Numbers {
+public enum Number {
 	PLURAL,
 	SINGULAR
 }

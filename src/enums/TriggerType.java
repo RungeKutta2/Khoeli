@@ -1,6 +1,6 @@
 package enums;
 
-public enum Types {
+public enum TriggerType {
 	ITEM,
 	ACTION
 }

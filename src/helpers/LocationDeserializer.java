@@ -12,8 +12,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import enums.Genders;
-import enums.Numbers;
+import enums.Gender;
+import enums.Number;
 import models.Location;
 import models.Place;
 import models.Trigger;
@@ -34,8 +34,8 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		
 		String id = jobject.get("id").getAsString();
 		String name = jobject.get("name").getAsString();
-		Genders gender = Genders.valueOf(jobject.get("gender").getAsString());
-		Numbers number = Numbers.valueOf(jobject.get("number").getAsString());
+		Gender gender = Gender.valueOf(jobject.get("gender").getAsString());
+		Number number = Number.valueOf(jobject.get("number").getAsString());
 		String description = jobject.get("description").getAsString();
 		List<Place> places = gson.fromJson(jobject.get("places").getAsJsonArray(), new TypeToken<List<Place>>() {
 		}.getType());

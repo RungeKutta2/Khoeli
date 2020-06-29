@@ -3,17 +3,17 @@ package models.parser;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import enums.TriggerAction;
+import enums.Action;
 import models.Adventure;
 
-public class ParserSave extends Parser{
+public class Save extends Parser{
 
 	@Override
 	public String execute(Adventure selectedAdventure, Command request) {
 		String resultado;
-		TriggerAction action = request.getAction();
+		Action action = request.getAction();
 
-		if (action == TriggerAction.SAVE) {
+		if (action == Action.SAVE) {
 			String string = request.getCallerObject();
 			BufferedWriter writer = null;
 			try {

@@ -7,7 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
-import enums.Directions;
+import enums.Direction;
 import models.Connection;
 
 public class ConnectionDeserializer implements JsonDeserializer<Connection>{
@@ -17,7 +17,7 @@ public class ConnectionDeserializer implements JsonDeserializer<Connection>{
 		
 		 	JsonObject jobject = json.getAsJsonObject();
 	
-		    Directions direction = Directions.valueOf(jobject.get("direction").getAsString());
+		    Direction direction = Direction.valueOf(jobject.get("direction").getAsString());
 			String location = jobject.get("location").getAsString();
 			String obstacle = NullSafe.of((jobject.get("obstacle"))).call(JsonElement::getAsString).get();
 			Connection connection = new Connection(direction,location,obstacle);

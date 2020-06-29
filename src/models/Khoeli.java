@@ -23,12 +23,12 @@ public class Khoeli {
 	private Parser parser;
 
 	public Khoeli() {
-		parser = new ParserLookAt();
-		parser.linkWith(new ParserMove())
-			  .linkWith(new ParserPickup())
-			  .linkWith(new ParserSave())
-			  .linkWith(new ParserTalkTo())
-			  .linkWith(new ParserUse());
+		parser = new LookAt();
+		parser.linkWith(new Move())
+			  .linkWith(new Pickup())
+			  .linkWith(new Save())
+			  .linkWith(new TalkTo())
+			  .linkWith(new Use());
 	}
 
 	public Adventure getSelectedAdventure() {

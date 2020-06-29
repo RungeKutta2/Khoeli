@@ -2,16 +2,17 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import enums.Types;
-import enums.Directions;
-import enums.Genders;
-import enums.Numbers;
+import enums.TriggerType;
+import enums.Direction;
+import enums.Gender;
+import enums.Number;
 import interfaces.Observable;
 import interfaces.Obstacle;
 import interfaces.Triggerable;
 
-public class Location implements Observable, Triggerable {
+public class Location implements Observable, Triggerable{
 	private String id;
 	private String name;
 //	private Genders gender;
@@ -22,7 +23,7 @@ public class Location implements Observable, Triggerable {
 	private List<Connection> connections;
 	private List<Trigger> triggers;
 
-	public Location(String id, String name, Genders gender, Numbers number, String description, List<Place> places,
+	public Location(String id, String name, Gender gender, Number number, String description, List<Place> places,
 			List<String> npcs, List<Trigger> triggers) {
 		this.id = id;
 		this.name = name;
@@ -59,7 +60,7 @@ public class Location implements Observable, Triggerable {
 		return places;
 	}
 
-	public Location findLocationName(Directions direction) {
+	public Location findLocationName(Direction direction) {
 		Location found = null;
 		Connection connection = findConnection(direction);
 		if (connection != null) {
@@ -68,31 +69,24 @@ public class Location implements Observable, Triggerable {
 		return found;
 	}
 
-	public Connection findConnection(Directions direction) {
+	public Connection findConnection(Direction direction) {
 		Connection found = null;
-		int i = 0;
-		while (found == null && i < connections.size()) {
-			if (connections.get(i).getDirection().equals(direction)) {
-				found = connections.get(i);
-			}
-			i++;
+		if (direction != null) {
+			Optional<Connection> result = connections.stream().filter(x -> x.getDirection().equals(direction)).findFirst();
+			found = result.orElseGet(null);
 		}
 		return found;
 	}
 	
 	public Connection findConnection(Location location) {
 		Connection found = null;
-		int i = 0;
-		while (found == null && i < connections.size()) {
-			if (connections.get(i).getLocation().equals(location)) {
-				found = connections.get(i);
-			}
-			i++;
+		if (location != null) {
+			Optional<Connection> result = connections.stream().filter(x -> x.getLocation().equals(location)).findFirst();
+			found = result.orElseGet(null);
 		}
-		return found;
-	}
+		return found;	}
 
-	public Obstacle findObstacle(Directions direction) {
+	public Obstacle findObstacle(Direction direction) {
 		Obstacle found = null;
 		Connection connection = findConnection(direction);
 		if (connection != null) {
@@ -106,7 +100,7 @@ public class Location implements Observable, Triggerable {
 		return description;
 	}
 
-	public void removeObstacle(Directions direction) {
+	public void removeObstacle(Direction direction) {
 		Connection connection = findConnection(direction);
 		if (connection != null) {
 			connection.removeObstacle();
@@ -115,18 +109,11 @@ public class Location implements Observable, Triggerable {
 
 	public Place getPlace(String place) {
 		Place found = null;
-		int i = 0;
-		while (found == null && i < places.size()) {
-			if (places.get(i).getName().equals(place)) {
-				found = places.get(i);
-			}
-			i++;
+		if (place != null) {
+			Optional<Place> result = places.stream().filter(x -> x.getName().equals(place)).findFirst();
+			found = result.orElseGet(null);
 		}
 		return found;
-	}
-
-	public boolean takeItem(Item item, Place place) {
-		return place.getItems().remove(item);
 	}
 
 	public List<NonPlayable> getNpcs() {
@@ -138,25 +125,24 @@ public class Location implements Observable, Triggerable {
 	}
 
 	@Override
-	public String executeTrigger(Types type, String thing) {
-		Trigger foundTrigger = null;
-		int i = 0;
-		if (triggers != null) {
-			while (foundTrigger == null && i < triggers.size()) {
-				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
-					foundTrigger = triggers.get(i);
-				}
-				i++;
-			}
-		}
+	public String executeTrigger(TriggerType type, String thing) {
+		Trigger foundTrigger = findTrigger(type, thing);
 		String result = "";
 		if (foundTrigger != null) {
-			result = foundTrigger.getOnTrigger();
-			foundTrigger.executeAfterTriggers();
+			result = foundTrigger.execute();
 		}
 		return result;
 	}
 
+	private Trigger findTrigger(TriggerType type, String thing) {
+		Trigger found = null;
+		if (type != null && thing != null) {
+			Optional<Trigger> result = triggers.stream().filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.orElseGet(null);
+		}
+		return found;
+	}
+	
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;
@@ -234,13 +220,4 @@ public class Location implements Observable, Triggerable {
 		
 		return null;
 	}
-
-//	public void addToPlace(String placeName, String item) {
-//		Place place = getPlace(placeName);
-//		if (place != null) {
-//			place.getItems().add(item);
-//		}
-//		
-//	}
-
 }

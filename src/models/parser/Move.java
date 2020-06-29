@@ -1,21 +1,21 @@
 package models.parser;
 
-import enums.Directions;
-import enums.TriggerAction;
+import enums.Direction;
+import enums.Action;
 import models.Adventure;
 import models.Location;
 import models.Playable;
 
-public class ParserMove extends Parser {
+public class Move extends Parser {
 
 	@Override
 	public String execute(Adventure selectedAdventure, Command request) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
-		TriggerAction action = request.getAction();
+		Action action = request.getAction();
 
-		if (action == TriggerAction.MOVE) {
-			Directions direction = Directions.getDirection(request.getCallerObject());
+		if (action == Action.MOVE) {
+			Direction direction = Direction.getDirection(request.getCallerObject());
 			if (direction != null) {
 				resultado = player.move(direction);
 			} else {

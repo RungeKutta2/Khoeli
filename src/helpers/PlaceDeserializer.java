@@ -11,13 +11,12 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import enums.Genders;
-import enums.Numbers;
+import enums.Gender;
+import enums.Number;
 import models.Place;
 
 public class PlaceDeserializer implements JsonDeserializer<Place>{
 
-	
 	@Override
 	public Place deserialize(JsonElement json, Type type, JsonDeserializationContext context)
 			throws JsonParseException {
@@ -25,8 +24,8 @@ public class PlaceDeserializer implements JsonDeserializer<Place>{
 		 JsonObject jobject = json.getAsJsonObject();
 		 	Gson gson = new Gson();
 		 	String name = jobject.get("name").getAsString();
-            Genders gender = Genders.valueOf(jobject.get("gender").getAsString());
-            Numbers number = Numbers.valueOf(jobject.get("number").getAsString());
+            Gender gender = Gender.valueOf(jobject.get("gender").getAsString());
+            Number number = Number.valueOf(jobject.get("number").getAsString());
             List<String> items = gson.fromJson(jobject.get("items").getAsJsonArray(), new TypeToken<List<String>>(){}.getType());
 		 	String description = jobject.get("description").getAsString();
             

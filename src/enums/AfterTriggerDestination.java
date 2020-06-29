@@ -1,6 +1,6 @@
 package enums;
 
-public enum DestinationTypes {
+public enum AfterTriggerDestination {
 	INVENTORY,
 	CONNECTION,
 	PLACE,

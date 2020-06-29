@@ -1,20 +1,20 @@
 package models.parser;
 
-import enums.TriggerAction;
+import enums.Action;
 import models.Adventure;
 import models.Item;
 import models.Place;
 import models.Playable;
 
-public class ParserPickup extends Parser {
+public class Pickup extends Parser {
 
 	@Override
 	public String execute(Adventure selectedAdventure, Command request) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
-		TriggerAction action = request.getAction();
+		Action action = request.getAction();
 
-		if (action == TriggerAction.PICK_UP) {
+		if (action == Action.PICK_UP) {
 			Place place;
 			if (request.getReceiverObject() == null) {
 				place = player.getCurrentPlace();

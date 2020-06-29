@@ -1,19 +1,18 @@
 package models;
 
 import java.util.List;
-import enums.TriggerAction;
-import enums.Types;
-import interfaces.Executable;
+import enums.Action;
+import enums.TriggerType;
 import interfaces.Observable;
 import interfaces.Triggerable;
-import enums.Genders;
-import enums.Directions;
+import enums.Gender;
+import enums.Direction;
 
-public class Playable implements Executable, Observable {
+public class Playable implements Observable {
 //	private int healthPoints;
 	private Inventory inventory;
 	private String name;
-	private Genders gender;
+	private Gender gender;
 	private Location currentLocation;
 	private Place currentPlace;
 
@@ -25,7 +24,7 @@ public class Playable implements Executable, Observable {
 		return name;
 	}
 
-	public Genders getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
@@ -37,17 +36,17 @@ public class Playable implements Executable, Observable {
 		return currentPlace;
 	}
 
-	public Playable(String name, Genders gender, Settings settings, List<String> items) {
+	public Playable(String name, Gender gender, Settings settings, List<String> items) {
 		this.name = name;
 		this.gender = gender;
 //		healthPoints = settings.getInitialHealthPoints();
 		currentLocation = Adventure.getSelectedAdventure().findLocation(settings.getInitialLocation());
-		this.inventory = setItem(items);
+		this.inventory = setItems(items);
 		this.inventory.setEmptyInventoryDescription("No hay nada en el inventario");
 		this.inventory.setFullInventoryDescription("En mi inventario hay:\n");
 	}
 
-	private Inventory setItem(List<String> items) {
+	private Inventory setItems(List<String> items) {
 		Inventory inventory = new Inventory();
 		for (String item : items) {
 			inventory.add(Adventure.getSelectedAdventure().findItem(item));
@@ -56,21 +55,21 @@ public class Playable implements Executable, Observable {
 		return inventory;
 	}
 
-	public void customize(String name, Genders gender) {
+	public void customize(String name, Gender gender) {
 		this.name = name;
 		this.gender = gender;
 
 	}
 
-	@Override
-	public String move(Directions direction) {
+	public String move(Direction direction) {
 		Connection connection = currentLocation.findConnection(direction);
 		String result;
 		if (connection != null) {
 			if (connection.getObstacle() == null) {
 				currentLocation = connection.getLocation();
 				result = currentLocation.getDescription();
-				result += currentLocation.executeTrigger(Types.ACTION, TriggerAction.MOVE.toString());
+				result += System.lineSeparator()
+						+ currentLocation.executeTrigger(TriggerType.ACTION, Action.MOVE.toString());
 			} else {
 				result = connection.getObstacle().getObstacleDescription();
 			}
@@ -81,7 +80,6 @@ public class Playable implements Executable, Observable {
 		return result;
 	}
 
-	@Override
 	public String move(Location location) {
 		Connection connection = currentLocation.findConnection(location);
 		String result;
@@ -89,7 +87,7 @@ public class Playable implements Executable, Observable {
 			if (connection.getObstacle() == null) {
 				currentLocation = connection.getLocation();
 				result = currentLocation.getDescription();
-				result += currentLocation.executeTrigger(Types.ACTION, TriggerAction.MOVE.toString());
+				result += currentLocation.executeTrigger(TriggerType.ACTION, Action.MOVE.toString());
 			} else {
 				result = connection.getObstacle().getObstacleDescription();
 			}
@@ -100,10 +98,9 @@ public class Playable implements Executable, Observable {
 		return result;
 	}
 
-	@Override
 	public String pickUp(Item item, Place place) {
 
-		String response = item.executeTrigger(Types.ACTION, TriggerAction.PICK_UP.toString());
+		String response = item.executeTrigger(TriggerType.ACTION, Action.PICK_UP.toString());
 		if (response == null || response.isEmpty()) {
 			return response = "No puedo juntar eso.";
 		}
@@ -111,7 +108,6 @@ public class Playable implements Executable, Observable {
 		return response;
 	}
 
-	@Override
 	public String lookAt(Observable observable) {
 		if (observable instanceof Place) {
 			currentPlace = (Place) observable;
@@ -119,10 +115,9 @@ public class Playable implements Executable, Observable {
 		return observable.lookAt();
 	}
 
-	@Override
 	public String talkTo(NonPlayable npc) {
 		String talk = npc.getTalk();
-		String onTrigger = npc.executeTrigger(Types.ACTION, TriggerAction.TALK_TO.toString());
+		String onTrigger = npc.executeTrigger(TriggerType.ACTION, Action.TALK_TO.toString());
 		if (talk.isEmpty()) {
 			return "No tiene nada que decir";
 		} else if (onTrigger != null && !onTrigger.isEmpty()) {
@@ -131,20 +126,18 @@ public class Playable implements Executable, Observable {
 		return talk;
 	}
 
-	@Override
 	public String use(Item item) {
-		String response = item.executeTrigger(Types.ACTION, TriggerAction.USE.toString());
+		String response = item.executeTrigger(TriggerType.ACTION, Action.USE.toString());
 		if (response == null || response.isEmpty()) {
 			response = "no se puede usar " + item.getName();
 		}
 		return response;
 	}
 
-	@Override
 	public String use(Item item, Triggerable affected) {
-		String response = affected.executeTrigger(Types.ITEM, item.getId());
+		String response = affected.executeTrigger(TriggerType.ITEM, item.getId());
 		if (response == null || response.isEmpty()) {
-			response = "no se puede usar " + item.getName() + " con " + affected.getName();
+			response = "No puedo hacer eso";
 		}
 		return response;
 	}
@@ -200,10 +193,9 @@ public class Playable implements Executable, Observable {
 
 	@Override
 	public String lookAt() {
-		String inventoryDescription = inventory.isEmpty() 
-				? inventory.getEmptyInventoryDefaultDescription()
+		String inventoryDescription = inventory.isEmpty() ? inventory.getEmptyInventoryDefaultDescription()
 				: (inventory.getFullInventoryDefaultDescription() + inventory.lookAt());
-		
+
 		return inventoryDescription;
 	}
 

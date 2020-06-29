@@ -1,20 +1,20 @@
 package models.parser;
 
-import enums.TriggerAction;
+import enums.Action;
 import interfaces.Triggerable;
 import models.Adventure;
 import models.Item;
 import models.Playable;
 
-public class ParserUse extends Parser {
+public class Use extends Parser {
 
 	@Override
 	public String execute(Adventure selectedAdventure, Command request) {
 		Playable player = selectedAdventure.getSelectedPlayer();
 		String resultado;
-		TriggerAction action = request.getAction();
+		Action action = request.getAction();
 
-		if (action == TriggerAction.USE) {
+		if (action == Action.USE) {
 			Item item = player.findItem(request.getCallerObject());
 			if (request.getReceiverObject() == null) {
 
