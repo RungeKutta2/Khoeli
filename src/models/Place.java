@@ -24,7 +24,7 @@ public class Place implements Triggerable, Observable {
 		this.items = setItems(items);
 		this.description = description;
 		this.items.setEmptyInventoryDescription(
-				"No hay nada en " + getDefinedArticle(this.gender, this.number) + " " + name);
+				"No hay nada útil en " + getDefinedArticle(this.gender, this.number) + " " + name);
 		this.items.setFullInventoryDescription(
 				"En " + getDefinedArticle(this.gender, this.number) + " " + name + " hay:\n");
 	}

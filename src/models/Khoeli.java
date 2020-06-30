@@ -15,6 +15,7 @@ import org.apache.commons.text.WordUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import enums.Action;
 import helpers.AdventureDeserializer;
 import models.parser.*;
 
@@ -83,7 +84,7 @@ public class Khoeli {
 		if (!name.isEmpty()) {
 			selectedAdventure.getSelectedPlayer().setName(name);
 		}
-
+		
 		System.out.println(selectedAdventure.getWelcomeMessage());
 		System.out.println();
 		System.out.println(selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
@@ -99,8 +100,13 @@ public class Khoeli {
 				final char[] var = { '.', '\n' };
 				System.out.println(WordUtils.capitalizeFully(result, var));
 			}
-
 		}
+		
+		int dialogResult = JOptionPane.showConfirmDialog(null, "\r\n¿Desea guardar su recorrido en la aventura?\r\n","Khoeli",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(dialogResult == JOptionPane.YES_OPTION){
+		  parser.execute(selectedAdventure, new Command(Action.SAVE.toString(),selectedAdventure.getSelectedPlayer().getName(),null));
+		}	
+		
 		scanner.close();
 	}
 

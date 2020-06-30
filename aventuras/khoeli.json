@@ -14,7 +14,7 @@
           "items": [
             "fotografia"
           ],
-          "description": "Parece hecha de madera noble.\r\nHay una fotografía sobre ella."
+          "description": "Parece hecha de madera noble."
         },
         {
           "name": "cama",
@@ -30,7 +30,7 @@
           "items": [
             "tronco"
           ],
-          "description": "Hace falta mucha más leña para encenderla.\r\nHay solo un tronco pequeño, quizás sea util."
+          "description": "Está apagada."
         },
         {
           "name": "silla",
@@ -39,7 +39,7 @@
           "items": [
             "carta"
           ],
-          "description": "No parece estable, yo no me sentaría allí.\r\nHay una carta sobre ella."
+          "description": "No parece muy estable, yo no me sentaría allí."
         }
       ],
       "npcs": [],
@@ -72,7 +72,7 @@
       "name": "baño",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Está todo mojado.\r\nA tu alrededor hay un inodoro y un lavamanos.\r\nAl Este está la sala de estar.",
+      "description": "Está inundado.\r\nA tu alrededor ves un inodoro y un lavamanos.\r\nAl Este está la sala de estar.",
       "places": [
         {
           "name": "inodoro",
@@ -81,7 +81,7 @@
           "items": [
             "llave"
           ],
-          "description": "Parece que pierde agua.\r\nDentro de él hay una llave.\r\n¿Debería meter la mano allí?"
+          "description": "Parece que pierde agua.\r\n¿Debería meter la mano allí?"
         },
         {
           "name": "lavamanos",
@@ -106,7 +106,7 @@
       "name": "cocina",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la cocina.\r\nCreo que le faltan muebles...\r\nHay solo un horno sin su puerta y en el suelo hay algo tirado.\r\nAl Sur está la sala de estar.",
+      "description": "Estás en la cocina.\r\nCreo que le faltan muebles...\r\nHay sólo un horno sin su puerta.\r\nEl suelo está repleto de basura.\r\nAl Sur está la sala de estar.",
       "places": [
         {
           "name": "horno",
@@ -115,7 +115,7 @@
           "items": [
             "fosforos"
           ],
-          "description": "Tiene tiempo de no usarse.\r\nDentro hay fósforos."
+          "description": "Tiene tiempo de no usarse."
         },
         {
           "name": "suelo",
@@ -124,7 +124,7 @@
           "items": [
             "martillo"
           ],
-          "description": "No hay nada más que un martillo."
+          "description": "Está repleto de basura."
         }
       ],
       "npcs": [],
@@ -142,7 +142,7 @@
       "name": "parque",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nParece haber algo debajo.\r\nHay un pino.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
+      "description": "Estás en el parque.\r\nEstá todo el suelo cubierto por nieve, parece cavable.\r\nUn banco destaca entre lo blanco.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
       "places": [
         {
           "name": "suelo",
@@ -151,14 +151,14 @@
           "items": [
             "nieve"
           ],
-          "description": "Hay una montaña de nieve.\r\nPuede haber algo aquí."
+          "description": "Blanco y gélido."
         },
         {
-          "name": "pino",
+          "name": "banco",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Sólo se puede ver su copa.\r\nEstá completamente cubierto por nieve."
+          "description": "Está casi completamente cubierto por la nieve."
         }
       ],
       "npcs": [],
@@ -191,7 +191,7 @@
       "name": "deposito",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el depósito.\r\nA tu altededor hay un barril.\r\nEn el suelo hay una pala.\r\nAl Sur está el parque.",
+      "description": "Estás en el depósito.\r\nHay un barril junto a unas herramientas en el piso.\r\nAl Sur está el parque.",
       "places": [
         {
           "name": "suelo",
@@ -200,14 +200,14 @@
           "items": [
             "pala"
           ],
-          "description": "Hay una pala en él."
+          "description": "Hay herramientas por doquier."
         },
         {
           "name": "barril",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Parece que antigamente tenía vino."
+          "description": "Parece que antiguamente tenía vino."
         }
       ],
       "npcs": [],
@@ -273,14 +273,14 @@
           "items": [
             "hacha"
           ],
-          "description": "Está manchada de sangre.\r\nHay un hacha sobre ella."
+          "description": "Está manchada de sangre."
         },
         {
           "name": "sillon",
           "gender": "FEMALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Aparenta ser cómodo pero yo no me sentaría.\r\nEste lugar me da una mala sensación.\r\nNo hay nada sobre él."
+          "description": "Aparenta ser cómodo pero yo no me sentaría.\r\nEste lugar me da una mala sensación."
         }
       ],
       "npcs": [],
@@ -298,7 +298,7 @@
       "name": "bosque",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el bosque.\r\nAl Norte está el parque, al Oeste está el jardín.\r\n¿Es de noche o es de día? Los árboles cubren todo el cielo.",
+      "description": "Estás en el bosque.\r\n¿Es de noche o es de día? Los árboles cubren todo el cielo.\r\nAl Norte está el parque, al Oeste está el jardín.",
       "places": [],
       "npcs": [],
       "connections": [
@@ -320,7 +320,7 @@
       "name": "jardin",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el jardín.\r\nHay unas huellas que llevan a un montículo de tierra, quizás debería removerla y ver que hay allí\r\nAl Este está el bosque, al Oeste está el invernadero, al Sur está el sendero al pueblo.",
+      "description": "Estás en el jardín.\r\nHay unas huellas en el suelo, debería investigar desde más cerca.\r\nAl Este está el bosque, al Oeste está el invernadero, al Sur está el sendero al pueblo.",
       "places": [
         {
           "name": "suelo",
@@ -357,7 +357,7 @@
       "name": "invernadero",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el invernadero.\r\nAl Este está el jardín.\r\nSolo queda una única planta.",
+      "description": "Estás en el invernadero.\r\nSolo queda una única planta.\r\nAl Este está el jardín.",
       "places": [
         {
           "name": "planta",
@@ -366,14 +366,14 @@
           "items": [
             "frutillas"
           ],
-          "description": "Tiene unas frutillas."
+          "description": "Es la única planta viva en todo el invernadero."
         },
         {
           "name": "suelo",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [],
@@ -391,14 +391,14 @@
       "name": "sendero",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el sendero al pueblo.\r\nAl norte está el jardín, al sur está la entrada del pueblo.\r\n¿Qué hace aquí un mercader con este clima?",
+      "description": "Estás en el sendero al pueblo.\r\n¿Qué hace aquí un mercader con este clima?\r\nAl norte está el jardín, al sur está la entrada del pueblo.",
       "places": [
         {
           "name": "suelo",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [
@@ -423,7 +423,7 @@
       "name": "entrada al pueblo",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la entrada del pueblo, ¿no hay nieve aquí?\r\nAl norte está el sendero, al Sur está la feria.\r\nParece un pueblo fantasma, ¿estoy siguiendo bien el camino?",
+      "description": "Estás en la entrada del pueblo, ¿no hay nieve aquí?\r\nParece un pueblo fantasma, ¿estoy siguiendo bien el camino?\r\nAl norte está el sendero, al Sur está la feria.",
       "places": [
         {
           "name": "suelo",
@@ -455,7 +455,7 @@
       "name": "feria",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la feria.\r\nA tu alrededor hay un cajón de madera y un puesto de comida.\r\nAl sur está la plaza, al Norte la entrada del pueblo.",
+      "description": "Estás en la feria.\r\nA tu alrededor notas un cajón de madera y un puesto de comida.\r\nAl sur está la plaza, al Norte la entrada del pueblo.",
       "places": [
         {
           "name": "cajon",
@@ -464,7 +464,7 @@
           "items": [
             "llave_real"
           ],
-          "description": "Hay una llave real."
+          "description": "Rústico y antiguo."
         },
         {
           "name": "puesto",
@@ -478,7 +478,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [],
@@ -508,7 +508,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [],
@@ -538,7 +538,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [
@@ -570,7 +570,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [],
@@ -600,7 +600,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [
@@ -627,7 +627,7 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "No hay nada en él. Está muy frío."
+          "description": "Está muy frío."
         }
       ],
       "npcs": [],
@@ -754,13 +754,6 @@
           "onTrigger": "Juntaste la fotografía.",
           "afterTrigger": [
             {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Parece hecha de madera noble.",
-              "actionDestination": "mesa",
-              "parentId": "sala_de_estar",
-              "destinationType": "PLACE"
-            },
-            {
               "action": "ADD",
               "thing": "fotografia",
               "destinationType": "INVENTORY"
@@ -788,13 +781,6 @@
           "thing": "PICK_UP",
           "onTrigger": "Juntaste la carta.",
           "afterTrigger": [
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No hay nada arriba.",
-              "actionDestination": "silla",
-              "parentId": "sala_de_estar",
-              "destinationType": "PLACE"
-            },
             {
               "action": "ADD",
               "thing": "carta",
@@ -846,13 +832,6 @@
           "onTrigger": "Juntaste tronco.",
           "afterTrigger": [
             {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Hace falta mucha más leña para encenderla.",
-              "actionDestination": "chimenea",
-              "parentId": "sala_de_estar",
-              "destinationType": "PLACE"
-            },
-            {
               "action": "ADD",
               "thing": "tronco",
               "destinationType": "INVENTORY"
@@ -881,7 +860,7 @@
       "name": "llave",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Esta un poco oxidada",
+      "description": "Está un poco oxidada",
       "triggers": [
         {
           "type": "ITEM",
@@ -936,13 +915,6 @@
           "onTrigger": "Agarraste los fósforos.",
           "afterTrigger": [
             {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Tiene tiempo de no usarse.",
-              "actionDestination": "horno",
-              "parentId": "cocina",
-              "destinationType": "PLACE"
-            },
-            {
               "action": "ADD",
               "thing": "fosforos",
               "destinationType": "INVENTORY"
@@ -971,19 +943,6 @@
           "onTrigger": "Agarraste el martillo.",
           "afterTrigger": [
             {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No hay más nada.",
-              "actionDestination": "suelo",
-              "parentId": "cocina",
-              "destinationType": "PLACE"
-            },
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Estás en la cocina.\r\nCreo que le faltan muebles...\r\nHay solo un horno sin su puerta.\r\nAl Sur está la sala de estar.",
-              "actionDestination": "cocina",
-              "destinationType": "LOCATION"
-            },
-            {
               "action": "ADD",
               "thing": "martillo",
               "destinationType": "INVENTORY"
@@ -1011,19 +970,6 @@
           "thing": "PICK_UP",
           "onTrigger": "Agarraste la pala.",
           "afterTrigger": [
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No hay nada más allí.",
-              "actionDestination": "suelo",
-              "parentId": "deposito",
-              "destinationType": "PLACE"
-            },
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Estás en el depósito.\r\nA tu altededor hay un barril\r\nAl Sur está el parque.",
-              "actionDestination": "deposito",
-              "destinationType": "LOCATION"
-            },
             {
               "action": "ADD",
               "thing": "pala",
@@ -1088,19 +1034,6 @@
               "parentId": "parque"
             },
             {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Hay un machete en el suelo",
-              "actionDestination": "suelo",
-              "parentId": "parque",
-              "destinationType": "PLACE"
-            },
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Estás en el parque.\r\nTodo está cubierto por nieve.\r\nHay un pino.\r\nAl Oeste esta la sala de estar, al Este está el lago, al Norte está el depósito, al Sur el bosque.",
-              "actionDestination": "parque",
-              "destinationType": "LOCATION"
-            },
-            {
               "action": "REMOVE",
               "thing": "nieve",
               "actionDestination": "suelo",
@@ -1123,13 +1056,6 @@
           "thing": "PICK_UP",
           "onTrigger": "Recogiste el machete.",
           "afterTrigger": [
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No hay nada más ahí.",
-              "actionDestination": "suelo",
-              "parentId": "parque",
-              "destinationType": "PLACE"
-            },
             {
               "action": "ADD",
               "thing": "machete",
@@ -1158,13 +1084,6 @@
           "thing": "PICK_UP",
           "onTrigger": "Recogiste el hacha.",
           "afterTrigger": [
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Está manchada de sangre.",
-              "actionDestination": "mesada",
-              "parentId": "cabaña",
-              "destinationType": "PLACE"
-            },
             {
               "action": "ADD",
               "thing": "hacha",
@@ -1214,25 +1133,12 @@
         {
           "type": "ITEM",
           "thing": "pala",
-          "onTrigger": "Quité la tierra y encontré un colmillo.\r\n¡Es gigantesco!\r\nLo voy a guardar.",
+          "onTrigger": "Quité la tierra y encontré un colmillo,\r\n¡Es gigantesco!\r\nLo voy a guardar.",
           "afterTrigger": [
             {
               "action": "ADD",
               "thing": "colmillo",
               "destinationType": "INVENTORY"
-            },
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "Estás en el jardín.\r\nAl Este está el bosque, al Oeste está el invernadero, al Sur está el sendero al pueblo.",
-              "actionDestination": "parque",
-              "destinationType": "LOCATION"
-            },
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No hay nada en él.",
-              "actionDestination": "suelo",
-              "parentId": "jardin",
-              "destinationType": "PLACE"
             },
             {
               "action": "REMOVE",
@@ -1266,13 +1172,6 @@
           "onTrigger": "Pusiste las frutillas en tus bolsillos.",
           "afterTrigger": [
             {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No tiene más frutos.",
-              "actionDestination": "planta",
-              "parentId": "invernadero",
-              "destinationType": "PLACE"
-            },
-            {
               "action": "ADD",
               "thing": "frutillas",
               "destinationType": "INVENTORY"
@@ -1300,13 +1199,6 @@
           "thing": "PICK_UP",
           "onTrigger": "Guardaste la llave real en tus bolsillos",
           "afterTrigger": [
-            {
-              "action": "CHANGE_DESCRIPTION",
-              "thing": "No hay más nada.",
-              "actionDestination": "cajon",
-              "parentId": "feria",
-              "destinationType": "PLACE"
-            },
             {
               "action": "ADD",
               "thing": "llave_real",
