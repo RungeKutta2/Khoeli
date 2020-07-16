@@ -83,6 +83,7 @@ public class Item implements Triggerable, Observable, Obstacle {
 		return description;
 	}
 
+
 //	public String replace(String inputParsed) {
 //		return inputParsed.replace(name, id);
 //	}

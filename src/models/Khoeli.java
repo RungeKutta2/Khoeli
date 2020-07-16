@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.Normalizer;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -48,6 +51,12 @@ public class Khoeli {
 
 	public static void main(String[] args) {
 		Khoeli khoeli = new Khoeli();
+		
+		File path = new File( "./partidas guardadas/");
+		if (!path.exists()) {
+			path.mkdirs();
+		}
+		
 		khoeli.play();
 	}
 
@@ -102,9 +111,18 @@ public class Khoeli {
 			}
 		}
 		
+		
+		if(selectedAdventure.getSelectedPlayer().getHP() <= 0) {
+			System.out.println("Te moriste. Mejor suerte la proxima ...");
+		}else {
+			System.out.println("Felicidades! has llegado al final. Te esperamos en tu proxima aventura.");
+		}
+		
 		int dialogResult = JOptionPane.showConfirmDialog(null, "\r\n¿Desea guardar su recorrido en la aventura?\r\n","Khoeli",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+		Date date = new Date(System.currentTimeMillis());
 		if(dialogResult == JOptionPane.YES_OPTION){
-		  parser.execute(selectedAdventure, new Command(Action.SAVE.toString(),selectedAdventure.getSelectedPlayer().getName(),null));
+		  parser.execute(selectedAdventure, new Command(Action.SAVE.toString(),selectedAdventure.getSelectedPlayer().getName()+" - " +formatter.format(date) ,null));
 		}	
 		
 		scanner.close();

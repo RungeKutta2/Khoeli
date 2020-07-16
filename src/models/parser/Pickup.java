@@ -30,8 +30,8 @@ public class Pickup extends Parser {
 				}
 			} else {
 				resultado = "No se de dónde agarrarlo.";
-			}		}
-		else {
+			}
+		} else {
 			resultado = checkNext(selectedAdventure, request);
 		}
 		return resultado;

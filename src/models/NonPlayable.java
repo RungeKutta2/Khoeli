@@ -80,4 +80,5 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 	public String getObstacleDescription() {
 		return talk;
 	}
+	
 }

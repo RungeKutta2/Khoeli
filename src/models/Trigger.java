@@ -18,7 +18,7 @@ public class Trigger {
 		this.onTrigger = onTrigger;
 		this.afterTriggers = afterTriggers;
 		afterTrigger = new Add();
-		afterTrigger.linkWith(new ChangeDescription()).linkWith(new Endgame()).linkWith(new Remove());
+		afterTrigger.linkWith(new ChangeDescription()).linkWith(new Endgame()).linkWith(new Remove()).linkWith(new ChangeHP());
 	}
 
 	public TriggerType getType() {
