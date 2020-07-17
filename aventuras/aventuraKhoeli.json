@@ -1930,7 +1930,7 @@
       "name": "enredadera",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Es una gran planta cubierta de espinas que no me deja pasar.",
+      "description": "Es una gran enredadera cubierta de espinas que no me deja pasar.",
       "triggers": [
         {
           "type": "ACTION",

@@ -78,34 +78,17 @@ public class Khoeli {
 			path.mkdirs();
 		}
 		
-		khoeli.play();
+		Console console = new Console ();
+		console.setVisible(true);
+		
+		console.selectAdventure();
+		console.startAdventure();
+		
+		//khoeli.play();
 	}
 
 	private void play() {
-		JFileChooser selectorArchivos = new JFileChooser();
-		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-		JFrame ventana = new JFrame(); 
 		
-		
-		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
-		selectorArchivos.showOpenDialog(null);
-		if (selectorArchivos.getSelectedFile() == null) {
-			Component frame = null;
-			JOptionPane.showMessageDialog(frame,
-					"No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura válida.",
-					"Error!", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-
-		File archivo = selectorArchivos.getSelectedFile();
-
-		try {
-			setSelectedAdventure(archivo.getPath());
-		} catch (IOException e) {
-			System.err.println("archivo de aventura invalido");
-		}
-
 		
 		
 
@@ -116,21 +99,15 @@ public class Khoeli {
 		}
 		
 		DrawPanel dp = new DrawPanel();
-		ventana.add(dp);
-		
-		
-		ventana.setVisible(true);
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(1000, 600);
-		
-//		BufferedImage mesa;
-//		try {
-//			mesa = ImageIO.read(new File("./sprites/mesa.jpg"));
-//			dp.getGraphics().drawImage(mesa, 900, 0, null);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+	
+//		ventana.add(dp);
 //		
+//		
+//		ventana.setVisible(true);
+//		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		ventana.setSize(1000, 600);
+		
+		
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -149,6 +126,7 @@ public class Khoeli {
 		System.out.println(selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
 
 		while (!selectedAdventure.isEnded()) {
+			
 			String entrada = scanner.nextLine();
 			Command comando = Parser.parse(entrada);
 
