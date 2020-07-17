@@ -1,18 +1,38 @@
 package models;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Shape;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.AttributedCharacterIterator;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.plaf.DimensionUIResource;
+
 import org.apache.commons.text.WordUtils;
 
 import com.google.gson.Gson;
@@ -25,7 +45,8 @@ import models.parser.*;
 public class Khoeli {
 	private Adventure selectedAdventure;
 	private Parser parser;
-
+	private BufferedImage background;
+	
 	public Khoeli() {
 		parser = new LookAt();
 		parser.linkWith(new Move())
@@ -64,6 +85,9 @@ public class Khoeli {
 		JFileChooser selectorArchivos = new JFileChooser();
 		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
+		JFrame ventana = new JFrame(); 
+		
+		
 		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
 		selectorArchivos.showOpenDialog(null);
 		if (selectorArchivos.getSelectedFile() == null) {
@@ -82,6 +106,32 @@ public class Khoeli {
 			System.err.println("archivo de aventura invalido");
 		}
 
+		
+		
+
+		try {
+			background = ImageIO.read(new File("./sprites/cabaña.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		DrawPanel dp = new DrawPanel();
+		ventana.add(dp);
+		
+		
+		ventana.setVisible(true);
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana.setSize(1000, 600);
+		
+//		BufferedImage mesa;
+//		try {
+//			mesa = ImageIO.read(new File("./sprites/mesa.jpg"));
+//			dp.getGraphics().drawImage(mesa, 900, 0, null);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+		
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println(
@@ -127,6 +177,34 @@ public class Khoeli {
 		
 		scanner.close();
 	}
+	
+	private class DrawPanel extends JPanel {
+		private static final long serialVersionUID = 91574813372177663L;
 
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Graphics2D g2 = (Graphics2D) g;
+			BufferedImage mesa;
+			Dimension currentDimension = new Dimension(800,600);
+			g2.scale(currentDimension.getWidth() / 800, currentDimension.getHeight() / 450);
+
+			g2.drawImage(background, null, 0, 0);
+			try {
+				mesa = ImageIO.read(new File("./sprites/mesa.jpg"));
+				g2.drawImage(mesa, 900, 0, null);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+		}
+
+		@Override
+		public Dimension getPreferredSize() {
+			return new Dimension(800, 450);
+		}
+	}
 
 }
