@@ -852,7 +852,7 @@
       "number": "SINGULAR",
       "description": "Estás en el pueblo.\r\nHay un cantero y un campesino.\r\nAl Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.",
       "sprite": {
-        "path": "./sprites/pueblo2.png",
+        "path": "./sprites/pueblo.png",
         "x": 0,
         "y": 0,
         "width": 1000,
@@ -1266,6 +1266,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estás en el camino real.\r\nHay un trono.\r\nal Sur esta el camino real.",
+      "sprite": {
+        "path": "./sprites/salon_real.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -1482,8 +1489,8 @@
       "number": "SINGULAR",
       "sprite": {
         "path": "./sprites/rey.png",
-        "x": 500,
-        "y": 250,
+        "x": 550,
+        "y": 150,
         "width": 100,
         "height": 200
       },
