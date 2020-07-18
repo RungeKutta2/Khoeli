@@ -65,7 +65,7 @@ public class Place implements Triggerable, Observable {
 
 	private Trigger findTrigger(TriggerType type, String thing) {
 		Trigger found = null;
-		if (type != null && thing != null) {
+		if (triggers != null && type != null && thing != null) {
 			Optional<Trigger> result = triggers.stream()
 					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
 			found = result.isPresent() ? result.get() : null;

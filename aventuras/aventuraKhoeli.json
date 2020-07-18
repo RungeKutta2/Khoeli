@@ -1750,7 +1750,7 @@
         {
           "type": "ITEM",
           "thing": "nafta",
-          "onTrigger": "Lo empapaste con nafta. Ahora tienes una antorcha apagada.",
+          "onTrigger": "Lo empapaste con nafta. Ahora tienes una antorcha apagada. ",
           "afterTrigger": [
             {
               "action": "REMOVE",
