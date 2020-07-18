@@ -469,7 +469,9 @@
         "height": 450
       },
       "places": [],
-      "npcs": [],
+      "npcs": [
+        "rey"
+      ],
       "connections": [
         {
           "direction": "SOUTH",
@@ -477,7 +479,18 @@
           "obstacle": null
         }
       ],
-      "triggers": []
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "MOVE",
+          "onTrigger": "En la cueva se encuentra el rey. En el momento en que lo ves, todo termina de cobrar sentido, si la cueva cumple los deseos…\r\ndebe estar cumpliendo tu único deseo… encontrar a tu verdadera familia.\r\n-Hijo mío, veo que has entendido que lo que corre por nuestras venas es una bendición y no una maldición.\r\nEstoy orgulloso de que nos hayamos reencontrado y que por fin puedas reclamar la verdadera forma que pertenece a mi primogénito.\r\nJuntos, se dirigen al castillo, y sabes que continuarás con su reinado,\r\nacechando en las noches de luna llena para saciar el infinito apetito que conlleva la criatura en la que te has convertido",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "cabaña_abandonada",
@@ -1221,7 +1234,7 @@
           "direction": "SOUTH",
           "location": "salon_real",
           "obstacle": "guardia"
-        }        
+        }
       ],
       "triggers": []
     },
@@ -1288,9 +1301,9 @@
             {
               "action": "REMOVE",
               "thing": "cazador",
-              "actionDestination": "SOUTH",
+              "actionDestination": "EAST",
               "destinationType": "CONNECTION",
-              "parentId": "lago"
+              "parentId": "sendero_este"
             }
           ]
         },
@@ -1491,6 +1504,11 @@
               "actionDestination": "WEST",
               "destinationType": "CONNECTION",
               "parentId": "iglesia"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "rosario",
+              "destinationType": "INVENTORY"
             }
           ]
         }
@@ -2490,6 +2508,13 @@
               "thing": "enredadera",
               "actionDestination": "SOUTH",
               "parentId": "bosque_norte",
+              "destinationType": "CONNECTION"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "enredadera",
+              "actionDestination": "suelo",
+              "parentId": "bosque_norte",
               "destinationType": "PLACE"
             }
           ]
@@ -2526,6 +2551,13 @@
               "actionDestination": "NORTH",
               "parentId": "lago",
               "destinationType": "CONNECTION"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "puerta_misteriosa",
+              "actionDestination": "cueva",
+              "parentId": "lago",
+              "destinationType": "PLACE"
             }
           ]
         }
@@ -2749,7 +2781,7 @@
     },
     {
       "id": "nota_extraña",
-      "name": "nota_extraña",
+      "name": "nota extraña",
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "En ella se encuentra escritas las palabras: ORTZIMUGA ATARAXIA KALON.",
@@ -2877,10 +2909,17 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "lago",
+      "initialLocation": "sala",
       "initialHealthPoints": 100
     },
     "items": []
   },
-  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\nTienes una mordida extraña, quizás deberías vendarte antes de continuar …"
+  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\nTienes una mordida extraña, quizás deberías vendarte antes de continuar …",
+  "map": {
+    "path": "./sprites/mapa.png",
+    "x": 15,
+    "y": 15,
+    "width": 945,
+    "height": 625
+  }
 }
