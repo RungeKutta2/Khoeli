@@ -13,6 +13,7 @@ public class Adventure {
 	private boolean ended;
 	private String welcomeMessage;
 	private StringBuilder history;
+	private Sprite map;
 
 	private static Adventure selectedAdventure = null;
 
@@ -51,6 +52,14 @@ public class Adventure {
 		return ended;
 	}
 
+	public void setMap(Sprite map) {
+        this.map = map;
+    }
+   
+    public Sprite getMap() {
+        return map;
+    }
+	
 	public List<Location> getLocations() {
 		return locations;
 	}

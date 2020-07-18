@@ -1,0 +1,252 @@
+Genn Greymane: agarrar tronco chimenea
+Juntaste el tronco.
+Genn Greymane: ir n
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajon.
+Al Sur está la sala, al Oeste está la despensa.
+Genn Greymane: agarrar fosforos cajon
+Juntaste los fósforos.
+Genn Greymane: agarrar trapo mesada
+Juntaste el trapo.
+Genn Greymane: ir o
+Estás en la despensa.
+A tu alrededor hay un estante y una mesa.
+Al Este está la cocina.
+Genn Greymane: agarrar martillo estante
+Juntaste el martillo.
+Genn Greymane: agarrar nafta mesa
+Juntaste el bidon de nafta.
+Genn Greymane: ir e
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajon.
+Al Sur está la sala, al Oeste está la despensa.
+Genn Greymane: ir s
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.
+Genn Greymane: usar martillo ventana
+El golpe fue muy fuerte y el vidrio estalló.Ahora puedo salir de la cabaña.
+Genn Greymane: ir e
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: ir s
+Es una gran enredadera cubierta de espinas que no me deja pasar.
+Genn Greymane: usar trapo con tronco
+Usaste trapo en tronco.
+Genn Greymane: usar nafta con tronco con trapo
+Lo empapaste con nafta.
+Genn Greymane: usar fosforos con antorcha apagada
+Lo encendiste.
+Genn Greymane: ir s
+Es una gran enredadera cubierta de espinas que no me deja pasar.
+Genn Greymane: usar antorcha encendida con enredadera
+Arde maldita.
+Genn Greymane: ir s
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Genn Greymane: agarrar trampa suelo
+Juntaste la trampa.
+Genn Greymane: ir n
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: ir e
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Genn Greymane: agarrar rosario bote
+Juntaste el rosario.
+Genn Greymane: ir e
+Estás en el sendero este.
+Hay un buzón.
+Al Oeste está el lago y al Este la cabaña del cazador.
+Genn Greymane: ir e
+No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice me robaron mi único rifle de caza.
+Quizás podría ganarme su confianza con algún presente.
+Genn Greymane: usar trampa cazador
+Te dejo pasar, pero pasa rápido.
+Genn Greymane: ir e
+Estás en la cabaña del cazador.
+Hay una mesa y un sillón.
+Al Oeste está el sendero este.
+Genn Greymane: mirar mesa
+Esta cubierta de herramientas ensangrentadas. Espero que sea sangre animal.
+En la mesa hay:
+- una carta
+Genn Greymane: mirar carta
+'Amigo, ten cuidado, algo ataca a las cabras las noches de luna llena, solo puedo rezar para que no sean nada mas que cabras ...'
+¿Qué criatura sera de la que habla?
+Genn Greymane: mirar sillon
+No me sentaría en él.
+En el sillon hay:
+- un libro
+Genn Greymane: mirar libro
+Parece un libro de cuentos infantiles. 'Zacarias y la puerta misteriosa'
+'El niño se acercó a la cueva y dijo las palabras mágicas, y delante de él, la puerta se abrió y sus deseos se cumplieron'.
+Demasiado infantil para seguir ...
+Genn Greymane: agarrar libro
+Juntaste el libro.
+Genn Greymane: ir o
+Estás en el sendero este.
+Hay un buzón.
+Al Oeste está el lago y al Este la cabaña del cazador.
+Genn Greymane: ir s
+No hay nada al sur
+Genn Greymane: ir o
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Genn Greymane: ir n
+No tiene cerradura y parece tener un hilo de luz que apunta hacia el suroeste.
+
+Genn Greymane: usar libro puerta misteriosa
+No puedo hacer eso
+Genn Greymane: ir s
+Estás en la cabaña abandonada.
+Hay una mesa y un armario.
+Al Norte está el lago.
+Genn Greymane: agarrar invitacion mesa
+Juntaste la invitacion.
+Genn Greymane: ir n
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Genn Greymane: ir o
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: agarrar hacha tocon
+Juntaste el hacha.
+Genn Greymane: ir s
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Genn Greymane: ir e
+No hay nada al este
+Genn Greymane: ir o
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Genn Greymane: ir e
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Genn Greymane: ir o
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Genn Greymane: ir o
+Estás en el invernadero.
+Hay una mesa y una planta.
+Al Este está el jardin.
+Genn Greymane: mirar mesa
+Esta llena de tierra y suciedad.
+En la mesa hay:
+- un cuenco
+Genn Greymane: agarrar cuenco
+Juntaste el cuenco.
+Genn Greymane: mirar planta
+Tiene unas frutillas en su interior.
+En la planta hay:
+- unas frutillas
+Genn Greymane: agarrar frutillas
+Juntaste las frutillas.
+Genn Greymane: ir e
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Genn Greymane: ir s
+Estás en el sendero sur.
+Hay un cartel.
+Al Norte está el jardin y  al Sur el pueblo.
+Genn Greymane: mirar cartel
+'Bienvenido al pueblo de Telihold'
+Genn Greymane: ir s
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Genn Greymane: hablar campesino
+ ¿ Y tu que haces por aquí ? ¿ No sabes que en las noches de luna llena en este pueblo pasan cosas extrañas ? 
+
+Genn Greymane: mirar cantero
+Tiene plantas muy coloridas.
+En el cantero hay:
+- una planta
+Genn Greymane: mirar planta
+Es bonita.
+Genn Greymane: agarrar planta
+No puedo juntar eso.
+Genn Greymane: ir e
+No hay nada al este
+Genn Greymane: ir o
+Estás en la iglesia.
+Hay un altar y un anciano.
+Al Oeste está el cementerio y al Este el pueblo.
+Genn Greymane: hablar anciano
+Dios nos ilumina a todos de distinta manera pero siempre elige el camino correcto para todos nosotros.
+Genn Greymane: usar rosario anciano
+'Oh, Él siempre nos ilumina'
+Genn Greymane: ir o
+Estás en el cementerio.
+Hay una lapida, una fosa y un medico.
+Al Este esta la iglesia.
+Genn Greymane: hablar brujo
+Sé que te han atacado y tienes una maldición en tus hombros.
+Para preparar la cura debes unir la sangre de un hombre lobo y la planta a la que mas le temen.
+Cuando juntes eso, ven aquí y te curaré de tu enfermedad.
+Genn Greymane: ir e
+Estás en la iglesia.
+Hay un altar y un anciano.
+Al Oeste está el cementerio y al Este el pueblo.
+Genn Greymane: ir e
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Genn Greymane: ir s
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Genn Greymane: mirar fuente
+Es una obra de arte.
+En la fuente hay:
+- unas monedas
+Genn Greymane: agarrar monedas
+Juntaste las monedas. Al parecer los deseos de los demas no son importantes para ti ...
+Genn Greymane: ir o
+Estás en el mercado.
+Hay un puesto y un cajón.
+Al Este esta la plaza.
+Genn Greymane: hablar mercader
+ Por un precio justo, puedo darte algo útil.
+Genn Greymane: mirar puesto
+Hay un mercader que vende articulos.
+En el puesto hay:
+- una daga
+Genn Greymane: usar monedas mercader
+Aquí tienes esta bella daga de plata, en una noche como esta puede serte útil...
+Genn Greymane: ir o
+No hay nada al oeste
+Genn Greymane: ir e
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Genn Greymane: ir s
+Estás en el camino real.
+Hay un busto del rey en un pedestal.
+Al Norte esta la plaza y al Sur esta el salon real.
+Genn Greymane: ir s
+Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.
+Aunque, lo podríamos negociar por lo más dulce del valle.
+Genn Greymane: usar frutillas guardia
+Por fin podré hacer mi mermelada favorita.
+Pasa antes que me arrepienta renacuajo.
+Genn Greymane: ir s
+Estás en el camino real.
+Hay un trono.
+al Sur esta el camino real.
+Genn Greymane: mirar rey
+Es el gobernante absoluto de este pueblo.
+Su mirada es despectiva y tiene aires de grandeza.
+Genn Greymane: usar daga rey
+Al ver al rey, no puedes evitar pensar en cómo pudo arrebatarte tu vida de esta manera y no lo dudas.
+Le intentas clavar la daga, pero como es un guerrero hábil, te esquiva y te golpea con una fuerza descomunal.
+‘Se suponía que deberías estar orgulloso de lo que somos, Hijo mío. En vez de eso, te avergüenzas de nuestra verdadera forma e intentas asesinarme en mi propio trono.
+No tengo otra opción más que deshacerme de tal deshonra.’
+Ves unas garras clavándose en tu pecho y sientes como tu vida se te escurre entre tus brazos.
