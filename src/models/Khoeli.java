@@ -341,14 +341,12 @@ public class Khoeli extends JFrame {
 						input.setEnabled(false);
 						inventario.setEnabled(false);
 						mapa.setEnabled(false);
-						
-						if(ventanaMapa != null) {
+						if (ventanaMapa != null) {
 							ventanaMapa.setVisible(false);
 						}
-						if(ventanaInventario != null) {
+						if (ventanaInventario != null) {
 							ventanaInventario.setVisible(false);
 						}
-						
 					}
 				} else {
 					String result = "Acción incorrecta. Intente nuevamente.";
@@ -644,20 +642,18 @@ public class Khoeli extends JFrame {
 			return new Dimension(300, 400);
 		}
 	}
-	
+
 	public class MapPanel extends JPanel {
 
-
-		private static final long serialVersionUID = 1L;
-
 		@Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Image image;
-            Sprite map = selectedAdventure.getMap();
-            if (map != null) {
-                g.drawImage(map.getImage(), map.getX(), map.getY(), map.getWidth(), map.getHeight(), null);
-            }
-        }
-    }
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			Image image;
+			Sprite map = selectedAdventure.getMap();
+			if (map != null) {
+				g.drawImage(map.getImage(), map.getX(), map.getY(), map.getWidth(), map.getHeight(), null);
+			}
+		}
+	}
+
 }

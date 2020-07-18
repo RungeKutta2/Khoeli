@@ -16,7 +16,7 @@ public class TalkTo extends Parser {
 		if (action == Action.TALK_TO) {
 			NonPlayable npc = player.getCurrentLocation().findNpc(request.getCallerObject());
 			if (npc == null) {
-				resultado = "No puedo hablar con " + request.getCallerObject() + ".";
+				resultado = "No parece que tenga ganas de hablar.";
 			} else {
 				resultado = player.talkTo(npc);
 			}		}

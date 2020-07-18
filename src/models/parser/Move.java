@@ -23,7 +23,7 @@ public class Move extends Parser {
 				if (location != null) {
 					resultado = player.move(location);
 				} else {
-					resultado = "La direccion " + request.getCallerObject() + " no existe";
+					resultado = "No puedo ir hacia allí";
 				}
 			}
 		} else {

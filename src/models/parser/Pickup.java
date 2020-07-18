@@ -26,10 +26,10 @@ public class Pickup extends Parser {
 				if (item != null) {
 					resultado = player.pickUp(item, place);
 				} else {
-					resultado = "No encuentro ese item.";
+					resultado = "No puedo recoger eso.";
 				}
 			} else {
-				resultado = "No se de dónde agarrarlo.";
+				resultado = "No sé de dónde agarrar eso.";
 			}
 		} else {
 			resultado = checkNext(selectedAdventure, request);

@@ -19,16 +19,14 @@ public class Use extends Parser {
 			if (request.getReceiverObject() == null) {
 
 				if (item == null) {
-					resultado = "No existe el item " + request.getCallerObject();
+					resultado = "No voy a usar eso";
 				} else {
 					resultado = player.use(item);
 				}
 			} else {
 				Triggerable affected = player.findTriggerable(request.getReceiverObject());
-				if (item == null) {
-					resultado = "No existe el item " + request.getCallerObject();
-				} else if (affected == null) {
-					resultado = "No existe " + request.getReceiverObject();
+				if (item == null || affected == null) {
+					resultado = "Eso no es una buena combinación";
 				} else {
 					resultado = player.use(item, affected);
 				}

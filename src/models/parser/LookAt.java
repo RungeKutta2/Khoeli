@@ -16,7 +16,7 @@ public class LookAt extends Parser {
 		if (action == Action.LOOK_AT) {
 			Observable observable = player.findObservable(request.getCallerObject());
 			if (observable == null) {
-				resultado = "No existe " + request.getCallerObject();
+				resultado = "No veo eso por aquí";
 			} else {
 				resultado = player.lookAt(observable);
 			}

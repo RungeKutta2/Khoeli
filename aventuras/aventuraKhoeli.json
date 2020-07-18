@@ -2266,7 +2266,7 @@
       "name": "rosario",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Parece hecho a mano con madera.",
+      "description": "Parece tallado a mano.",
       "sprite": {
         "path": "./sprites/rosario.png",
         "x": 250,
