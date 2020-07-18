@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import enums.Genders;
+import enums.Gender;
 import models.Playable;
 import models.Settings;
 
@@ -25,7 +25,7 @@ public class PlayableDeserializer implements JsonDeserializer<Playable>{
 		 	Gson gson = new Gson();
 		 	
 		    String name = jobject.get("name").getAsString();
-			Genders gender = Genders.valueOf(jobject.get("gender").getAsString());
+			Gender gender = Gender.valueOf(jobject.get("gender").getAsString());
 			Settings settings = gson.fromJson(jobject.get("settings"), Settings.class);
 			List<String> items =  gson.fromJson(jobject.get("items").getAsJsonArray(), new TypeToken<List<String>>(){}.getType());
 			

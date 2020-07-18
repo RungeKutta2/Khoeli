@@ -1,12 +1,12 @@
 package models;
 
-import enums.TriggerAction;
+import enums.Action;
 
 public class ActionRequest {
 
-	private TriggerAction action;
+	private Action action;
 
-	public TriggerAction getAction() {
+	public Action getAction() {
 		return action;
 	}
 	

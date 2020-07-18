@@ -1,20 +1,20 @@
 package models;
 
-import enums.Directions;
+import enums.Direction;
 import interfaces.Obstacle;
 
 public class Connection {
-	private Directions direction;
+	private Direction direction;
 	private Location location;
 	private Obstacle obstacle;
 
-	public Connection(Directions direction, String location, String obstacles) {
+	public Connection(Direction direction, String location, String obstacles) {
 		this.direction = direction;
 		this.location = Adventure.getSelectedAdventure().findLocation(location);
-		this.obstacle = Adventure.getSelectedAdventure().findObstacle(obstacles); //ESTO HAY QUE MEJORARLO
+		this.obstacle = Adventure.getSelectedAdventure().findObstacle(obstacles);
 	}
 
-	public Directions getDirection() {
+	public Direction getDirection() {
 		return direction;
 	}
 

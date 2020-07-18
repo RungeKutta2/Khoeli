@@ -6,10 +6,10 @@ import com.google.gson.JsonNull;
 
 public final class NullSafe<T> {
 
-    private T t;
+    private T element;
 
-    private NullSafe(T t) {
-        this.t = t;
+    private NullSafe(T element) {
+        this.element = element;
     }
 
     public static <T> NullSafe<T> of(T t) {
@@ -22,12 +22,12 @@ public final class NullSafe<T> {
     }
 
     public T get() {
-        return t;
+        return element;
     }
 
     public <U> U get(Function<T, U> methodRef) {
         Objects.requireNonNull(methodRef);
-        return (t == null || t instanceof JsonNull) ? null : methodRef.apply(t);
+        return (element == null || element instanceof JsonNull) ? null : methodRef.apply(element);
     }
 
 }

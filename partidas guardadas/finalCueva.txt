@@ -1,0 +1,163 @@
+Genn Greymane: ir n
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajon.
+Al Sur está la sala, al Oeste está la despensa.
+Genn Greymane: ir o
+Estás en la despensa.
+A tu alrededor hay un estante y una mesa.
+Al Este está la cocina.
+Genn Greymane: agarrar martillo estante
+Juntaste el martillo.
+Genn Greymane: agarrar nafta mesa
+Juntaste el bidon de nafta.
+Genn Greymane: ir e
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajon.
+Al Sur está la sala, al Oeste está la despensa.
+Genn Greymane: agarrar fosforos cajon
+Juntaste los fósforos.
+Genn Greymane: agarrar trapo mesada
+Juntaste el trapo.
+Genn Greymane: ir s
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.
+Genn Greymane: agarrar tronco chimenea
+Juntaste el tronco.
+Genn Greymane: usar martillo ventana
+El golpe fue muy fuerte y el vidrio estalló.Ahora puedo salir de la cabaña.
+Genn Greymane: ir e
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: usar trapo con tronco
+Usaste trapo en tronco.
+Genn Greymane: usar nafta con tronco con trapo
+Lo empapaste con nafta.
+Genn Greymane: usar fosforos con antorcha apagada
+Lo encendiste.
+Genn Greymane: usar antorcha encendida enredadera
+Arde maldita.
+Genn Greymane: ir e
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Genn Greymane: ir s
+Estás en la cabaña abandonada.
+Hay una mesa y un armario.
+Al Norte está el lago.
+Genn Greymane: agarrar invitacion mesa
+Juntaste la invitacion.
+Genn Greymane: ir n
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Genn Greymane: agarrar rosrio bote
+No encuentro ese item.
+Genn Greymane: agarrar rosario bote
+Juntaste el rosario.
+Genn Greymane: ir o
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: ir s
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Genn Greymane: ir o
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Genn Greymane: ir o
+Estás en el invernadero.
+Hay una mesa y una planta.
+Al Este está el jardin.
+Genn Greymane: agarrar frutillas planta
+Juntaste las frutillas.
+Genn Greymane: agarrar cuenco mesa
+Juntaste el cuenco.
+Genn Greymane: ir e
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Genn Greymane: ir s
+Estás en el sendero sur.
+Hay un cartel.
+Al Norte está el jardin y  al Sur el pueblo.
+Genn Greymane: ir s
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Genn Greymane: ir s
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Genn Greymane: ir o
+Estás en el mercado.
+Hay un puesto y un cajón.
+Al Este esta la plaza.
+Genn Greymane: ir e
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Genn Greymane: ir e
+ ¿ Estás en la lista ? 
+Genn Greymane: usar invitacion gorila
+Puedes pasar, apúrate...
+Genn Greymane: ir e
+Estás en el bar.
+Parece que es la fiesta de la luna llena pero los invitados todavia no llegaron.
+Hay una barra y un borracho.
+Al Oeste esta la plaza.
+Genn Greymane: mirar suelo
+Hay cenizas de tabaco y botellas rotas.
+En el suelo hay:
+- una nota extraña
+Genn Greymane: agarrar nota extraña
+Que nota mas extraña ¿Quien habrá dejado esto aquí?
+Genn Greymane: ir o
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Genn Greymane: ir n
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Genn Greymane: ir n
+Estás en el sendero sur.
+Hay un cartel.
+Al Norte está el jardin y  al Sur el pueblo.
+Genn Greymane: ir n
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Genn Greymane: ir e
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Genn Greymane: ir n
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: ir o
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.
+Genn Greymane: ir e
+Estás en el bosque norte.
+Hay un tocón.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: ir e
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Genn Greymane: ir n
+No tiene cerradura y parece tener un hilo de luz que apunta hacia el suroeste.
+
+Genn Greymane: usar nota extraña puerta misteriosa
+la puerta desapareció y no puedo ver que hay en su interior.
+Genn Greymane: ir n
+Estás en la cueva.
+En la cueva se encuentra el rey. En el momento en que lo ves, todo termina de cobrar sentido, si la cueva cumple los deseos…
+debe estar cumpliendo tu único deseo… encontrar a tu verdadera familia.
+-Hijo mío, veo que has entendido que lo que corre por nuestras venas es una bendición y no una maldición.
+Estoy orgulloso de que nos hayamos reencontrado y que por fin puedas reclamar la verdadera forma que pertenece a mi primogénito.
+Juntos, se dirigen al castillo, y sabes que continuarás con su reinado,
+acechando en las noches de luna llena para saciar el infinito apetito que conlleva la criatura en la que te has convertido

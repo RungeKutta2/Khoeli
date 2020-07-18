@@ -1,10 +1,11 @@
 package models;
 
 import java.util.List;
+import java.util.Optional;
 
-import enums.Types;
-import enums.Genders;
-import enums.Numbers;
+import enums.TriggerType;
+import enums.Gender;
+import enums.Number;
 import interfaces.Observable;
 import interfaces.Obstacle;
 import interfaces.Triggerable;
@@ -13,22 +14,28 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 	private String id;
 	private String name;
 	private String description;
-	private Genders gender;
-	private Numbers number;
+//	private Genders gender;
+//	private Numbers number;
 	private String talk;
 	private List<Trigger> triggers;
+	private Sprite sprite;
 
-	public NonPlayable(String id, String name, String description, Genders gender, Numbers number,
-			List<Trigger> triggers, String talk) {
+	public NonPlayable(String id, String name, String description, Gender gender, Number number, List<Trigger> triggers,
+			String talk,Sprite sprite) {
 		this.name = name;
-		this.gender = gender;
 		this.description = description;
 		this.id = id;
 		this.triggers = triggers;
 		this.talk = talk;
-		this.number = number;
+//		this.number = number;
+//		this.gender = gender;
+		this.sprite = sprite;
 	}
 
+	public Sprite getSprite() {
+		return sprite;
+	}
+	
 	public String getDescription() {
 		return description;
 	}
@@ -38,41 +45,36 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 	}
 
 	@Override
-	public String executeTrigger(Types type, String thing) {
-		Trigger foundTrigger = null;
-		int i = 0;
-		if (triggers != null) {
-			while (foundTrigger == null && i < triggers.size()) {
-				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
-					foundTrigger = triggers.get(i);
-				}
-				i++;
-			}
-		}
+	public String executeTrigger(TriggerType type, String thing) {
+		Trigger foundTrigger = findTrigger(type, thing);
 		String result = "";
 		if (foundTrigger != null) {
-			result = foundTrigger.getOnTrigger();
-			foundTrigger.executeAfterTriggers();
+			result = foundTrigger.execute();
 		}
 		return result;
+	}
+
+	private Trigger findTrigger(TriggerType type, String thing) {
+		Trigger found = null;
+		if (type != null && thing != null) {
+			Optional<Trigger> result = triggers.stream()
+					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.isPresent() ? result.get() : null;
+		}
+		return found;
 	}
 
 	public String getId() {
 		return id;
 	}
-	
-	public String getName2() {
+
+	public String getName() {
 		return name;
 	}
 
 	@Override
 	public void changeDescription(String thing) {
 		description = thing;
-	}
-
-	@Override
-	public String getName() {
-		return id;
 	}
 
 	@Override
@@ -84,4 +86,5 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 	public String getObstacleDescription() {
 		return talk;
 	}
+	
 }
