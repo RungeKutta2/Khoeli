@@ -611,7 +611,14 @@
           "items": [
             "carta"
           ],
-          "description": "Esta cubierta de herramientas ensangrentadas. Espero que sea sangre animal."
+          "description": "Esta cubierta de herramientas ensangrentadas. Espero que sea sangre animal.",
+          "sprite": {
+            "path": "./sprites/mesa.png",
+            "x": 650,
+            "y": 200,
+            "width": 200,
+            "height": 200
+          }
         },
         {
           "name": "sillon",
@@ -623,8 +630,8 @@
           "description": "No me sentaría en él.",
           "sprite": {
             "path": "./sprites/sillon.png",
-            "x": 500,
-            "y": 250,
+            "x": 350,
+            "y": 150,
             "width": 180,
             "height": 180
           }
@@ -2175,10 +2182,10 @@
       "description": "'Amigo, ten cuidado, algo ataca a las cabras las noches de luna llena, solo puedo rezar para que no sean nada mas que cabras ...'\r\n¿Qué criatura sera de la que habla?",
       "sprite": {
         "path": "./sprites/carta.png",
-        "x": 300,
-        "y": 250,
-        "width": 50,
-        "height": 50
+        "x": 720,
+        "y": 240,
+        "width": 40,
+        "height": 30
       },
       "triggers": [
         {
@@ -2210,10 +2217,10 @@
       "description": "Parece un libro de cuentos infantiles. 'Zacarias y la puerta misteriosa'\r\n'El niño se acercó a la cueva y dijo las palabras mágicas, y delante de él, la puerta se abrió y sus deseos se cumplieron'.\r\nDemasiado infantil para seguir ...",
       "sprite": {
         "path": "./sprites/libro.png",
-        "x": 500,
-        "y": 250,
-        "width": 80,
-        "height": 80
+        "x": 390,
+        "y": 215,
+        "width": 50,
+        "height": 50
       },
       "triggers": [
         {
