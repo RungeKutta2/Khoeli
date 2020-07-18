@@ -1322,12 +1322,7 @@
       "connections": [
         {
           "direction": "NORTH",
-          "location": "salon_real",
-          "obstacle": null
-        },
-        {
-          "direction": "SOUTH",
-          "location": "plaza",
+          "location": "camino_real",
           "obstacle": null
         }
       ],
@@ -2993,7 +2988,7 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "lago",
+      "initialLocation": "sala",
       "initialHealthPoints": 50
     },
     "items": []

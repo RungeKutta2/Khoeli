@@ -529,7 +529,7 @@ public class Khoeli extends JFrame {
 		String name = JOptionPane.showInputDialog("Ingrese su nombre (si no ingresa nada, el nombre será "
 				+ selectedAdventure.getSelectedPlayer().getName() + "):");
 
-		if (!name.isEmpty()) {
+		if (name != null && !name.isEmpty()) {
 			selectedAdventure.getSelectedPlayer().setName(name);
 		}
 		print(selectedAdventure.getWelcomeMessage());
@@ -644,6 +644,7 @@ public class Khoeli extends JFrame {
 	}
 
 	public class MapPanel extends JPanel {
+		private static final long serialVersionUID = 1L;
 
 		@Override
 		protected void paintComponent(Graphics g) {

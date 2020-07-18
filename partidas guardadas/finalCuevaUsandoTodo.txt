@@ -1,0 +1,391 @@
+Cami: agarrar tronco chimenea
+Juntaste el tronco.
+Cami: agarrar foto mesa
+No puedo recoger eso.
+Cami: agarrar fotografia mesa
+Juntaste la fotografía.
+Cami: usar cama
+Te sientes descansado.
+Cami: hablar con cama
+No parece que tenga ganas de hablar.
+Cami: ir n
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajón.
+Al Sur está la sala, al Oeste está la despensa.
+Cami: juntar fosforos del cajon
+Juntaste los fósforos.
+Cami: juntar trapo de la mesada
+Juntaste el trapo.
+Cami: ir e
+No hay nada al este
+Cami: ir o
+Estás en la despensa.
+A tu alrededor hay un estante y una mesa.
+Al Este está la cocina.
+Cami: juntar nafta de la mesa
+Juntaste el bidon de nafta.
+Cami: juntar martillo del estante
+Juntaste el martillo.
+Cami: ir e
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajón.
+Al Sur está la sala, al Oeste está la despensa.
+Cami: ir s
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.
+Cami: ir o
+Está inundado.
+A tu alrededor ves un inodoro y un lavamanos.
+Al Este está la sala.
+Cami: juntar llave del inodoro
+Juntaste la llave.
+Cami: juntar botiquin del lavamanos
+Juntaste el botiquin.
+Cami: juntar vendas del lavamanos
+Juntaste las vendas.
+Cami: ir e
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.
+Cami: ir e
+Hay una ventana. El hielo del exterior la está bloqueando.
+Con un buen golpe podría abrirla.
+Cami: usar martillo ventana
+El golpe fue muy fuerte y el vidrio estalló.Ahora puedo salir de la cabaña.
+Cami: ir e
+Estás en el bosque norte.
+Hay un tocón.
+Al Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Cami: usar trapo en tronco
+Usaste trapo en tronco.
+Cami: usar nafta en tronco con trapo
+Lo empapaste con nafta.
+Cami: usar fosforos en antorcha apagada
+Lo encendiste.
+Cami: usar antorcha encendida en enredadera
+Arde maldita.
+Cami: juntar hacha del tocon
+Juntaste el hacha.
+Cami: ir e
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Cami: juntar rosario del bote
+Juntaste el rosario.
+Cami: ir e
+Estás en el sendero este.
+Hay un buzón.
+Al Oeste está el lago y al Este la cabaña del cazador.
+Cami: ir o
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Cami: ir o
+Estás en el bosque norte.
+Hay un tocón.
+Al Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Cami: ir o
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.
+Cami: ir e
+Estás en el bosque norte.
+Hay un tocón.
+Al Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Cami: ir s
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Cami: juntar trampa del suelo
+Juntaste la trampa.
+Cami: ir n
+Estás en el bosque norte.
+Hay un tocón.
+Al Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Cami: ir e
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Cami: ir e
+Estás en el sendero este.
+Hay un buzón.
+Al Oeste está el lago y al Este la cabaña del cazador.
+Cami: usar trampa en cazador
+Te dejo pasar, pero pasa rápido.
+Cami: ir e
+Estás en la cabaña del cazador.
+Hay una mesa y un sillón.
+Al Oeste está el sendero este.
+Cami: juntar libro del sillon
+Juntaste el libro.
+Cami: juntar carta de la mesa
+Juntaste la carta.
+Cami: ir o
+Estás en el sendero este.
+Hay un buzón.
+Al Oeste está el lago y al Este la cabaña del cazador.
+Cami: ir o
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Cami: ir s
+Estás en la cabaña abandonada.
+Hay una mesa y un armario.
+Al Norte está el lago.
+Cami: juntar juguete del suelo
+Juntaste el juguete.
+Cami: mirar armario
+Hay ropa de mujer dentro. Vestidos refinados de alta costura mezclados con blusas plebeyas.
+¿Alguien habra usado esta cabaña para esconderse?
+No hay nada útil en el armario
+Cami: juntar diario de la mesa
+Juntaste el diario.
+Cami: juntar invitacion de la mesa
+Juntaste la invitacion.
+Cami: ir n
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Cami: ir o
+Estás en el bosque norte.
+Hay un tocón.
+Al Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Cami: ir s
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Cami: ir s
+No hay nada al sur
+Cami: ir e
+No hay nada al este
+Cami: ir o
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Cami: mirar buzon
+Está vacio.
+No hay nada útil en el buzon
+Cami: juntar aconito
+No puedo recoger eso.
+Cami: juntar aconito del suelo
+Está demasiado enterrado como para sacarlo solo con mis manos.
+Cami: ir o
+Estás en el invernadero.
+Hay una mesa y una planta.
+Al Este está el jardin.
+Cami: juntar frutillas de la planta
+Juntaste las frutillas.
+Cami: juntar cuenco de la mesa
+Juntaste el cuenco.
+Cami: ir e
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Cami: ir s
+Estás en el sendero sur.
+Hay un cartel.
+Al Norte está el jardin y  al Sur el pueblo.
+Cami: mirar cartel
+'Bienvenido al pueblo de Telihold'
+Cami: mirar piedras
+Son demasiado pesadas para moverlas. No tienen ninguna utilidad.
+Cami: ir s
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Cami: mirar mercader
+No veo eso por aquí
+Cami: mirar campesino
+Es un simple campesino, parece simpático.
+Cami: hablar con campesino
+ ¿ Y tu que haces por aquí ? ¿ No sabes que en las noches de luna llena en este pueblo pasan cosas extrañas ? 
+
+Cami: mirar plantas
+No veo eso por aquí
+Cami: mirar cantero
+Tiene plantas muy coloridas.
+En el cantero hay:
+- una planta
+Cami: mirar planta
+Es bonita.
+Cami: ir 
+Acción incorrecta. Intente nuevamente.
+Cami: ir o
+Estás en la iglesia.
+Hay un altar y un anciano.
+Al Oeste está el cementerio y al Este el pueblo.
+Cami: juntar biblia
+No puedo recoger eso.
+Cami: juntar biblia del altar
+Juntaste la biblia.
+Cami: mirar biblia
+Hay un versiculo resaltado en ella.
+Isaías 34:14
+Las fieras del desierto se encontrarán con las hienas, el macho cabrío llamará a los de su especie;
+sí, el monstruo nocturno se establecerá allí, y encontrará para sí lugar de reposo.
+Cami: usar rosario en anciano
+'Oh, Él siempre nos ilumina'
+Cami: ir p
+No puedo ir hacia allí
+Cami: ir o
+Estás en el cementerio.
+Hay una lapida, una fosa y un medico.
+Al Este esta la iglesia.
+Cami: juntar pala de la fosa
+Juntaste la pala.
+Cami: hablar con brujo
+Sé que te han atacado y tienes una maldición en tus hombros.
+Para preparar la cura debes unir la sangre de un hombre lobo y la planta a la que mas le temen.
+Cuando juntes eso, ven aquí y te curaré de tu enfermedad.
+Cami: ir e
+Estás en la iglesia.
+Hay un altar y un anciano.
+Al Oeste está el cementerio y al Este el pueblo.
+Cami: ir e
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Cami: ir e
+No hay nada al este
+Cami: ir s
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: ir o
+Estás en el mercado.
+Hay un puesto con un mercader vendiendo y un cajón.
+Al Este esta la plaza.
+Cami: ir e
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: juntar monedas de fuente
+Juntaste las monedas. Al parecer los deseos de los demas no son importantes para ti ...
+Cami: ir o
+Estás en el mercado.
+Hay un puesto con un mercader vendiendo y un cajón.
+Al Este esta la plaza.
+Cami: usar monedas en mercader
+Aquí tienes esta bella daga de plata, en una noche como esta puede serte útil...
+Cami: mirar cajon
+No tiene nada especial.
+No hay nada útil en el cajon
+Cami: usar daga en mercader
+No puedo hacer eso
+Cami: usar daga en lata
+Eso no es una buena combinación
+Cami: ir e
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: usar invitacion en gorila
+Puedes pasar, apúrate...
+Cami: mirar banco
+Es un bonito banco de madera con detalles en metal.
+No hay nada útil en el banco
+Cami: ir e
+Estás en el bar.
+Se supone que esta noche se celebra la fiesta de la luna llena pero aparentemente los invitados todavia no llegaron.
+Hay una barra y un borracho.
+Al Oeste esta la plaza.
+Cami: juntar nota extraña del suelo
+Que nota mas extraña ¿Quien habrá dejado esto aquí?
+Cami: hablar con borracho
+ ¡Hic! Sho se que el shey ese algo esconde, creeme ¡Hic! muchacho, tengo un don para estas cosas ¡ Burp ! ¡ Salud !.
+Cami: usar daga en borracho
+No puedo hacer eso
+Cami: agarrar vino de la barra
+Juntaste el vino.
+Cami: usar vino
+Creo que no debería haber tomado esto. No me siento bien
+Cami: usar vendas
+Te sientes un poquito mejor.
+Cami: ir s
+No hay nada al sur
+Cami: ir o
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: ir s
+Estás en el camino real.
+Hay un busto del rey en un pedestal.
+Al Norte esta la plaza y al Sur esta el salon real.
+Cami: usar frutillas en guardia
+Por fin podré hacer mi mermelada favorita.
+Pasa antes que me arrepienta renacuajo.
+Cami: ir s
+Estás en el camino real.
+Hay un trono.
+Al Sur esta el camino real.
+Cami: mirar rey
+Es el gobernante absoluto de este pueblo.
+Su mirada es despectiva y tiene aires de grandeza.
+Cami: ir n
+Estás en el camino real.
+Hay un trono.
+Al Sur esta el camino real.
+Cami: ir s
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: ir s
+Estás en el camino real.
+Hay un busto del rey en un pedestal.
+Al Norte esta la plaza y al Sur esta el salon real.
+Cami: ir s
+Estás en el camino real.
+Hay un trono.
+Al Sur esta el camino real.
+Cami: ir n
+Estás en el camino real.
+Hay un trono.
+Al Sur esta el camino real.
+Cami: ir n
+Estás en el camino real.
+Hay un trono.
+Al Sur esta el camino real.
+Cami: ir s
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: ir s
+Estás en el camino real.
+Hay un busto del rey en un pedestal.
+Al Norte esta la plaza y al Sur esta el salon real.
+Cami: ir s
+Estás en el camino real.
+Hay un trono.
+Al Sur esta el camino real.
+Cami: ir s
+Estás en la plaza.
+Hay una fuente, un banco y un hombre corpulento.
+Al Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.
+Cami: ir n
+Estás en el pueblo.
+Hay un cantero y un campesino.
+Al Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.
+Cami: ir n
+Estás en el sendero sur.
+Hay un cartel.
+Al Norte está el jardin y  al Sur el pueblo.
+Cami: ir n
+Estás en el jardin.
+Hay un buzón.
+Al Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.
+Cami: ir e
+Estás en el bosque sur.
+Al Norte está el bosque norte y al Oeste esta el jardin.
+Cami: ir n
+Estás en el bosque norte.
+Hay un tocón.
+Al Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Cami: ir e
+Estás en el lago congelado.
+Al Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.
+Cami: usar nota extraña en puerta misteriosa
+la puerta desapareció y no puedo ver que hay en su interior.
+Cami: ir n
+Estás en la cueva.
+En la cueva se encuentra el rey. En el momento en que lo ves, todo termina de cobrar sentido, si la cueva cumple los deseos…
+debe estar cumpliendo tu único deseo… encontrar a tu verdadera familia.
+-Hijo mío, veo que has entendido que lo que corre por nuestras venas es una bendición y no una maldición.
+Estoy orgulloso de que nos hayamos reencontrado y que por fin puedas reclamar la verdadera forma que pertenece a mi primogénito.
+Juntos, se dirigen al castillo, y sabes que continuarás con su reinado,
+acechando en las noches de luna llena para saciar el infinito apetito que conlleva la criatura en la que te has convertido
