@@ -14,7 +14,6 @@ import com.google.gson.reflect.TypeToken;
 
 import enums.Gender;
 import enums.Number;
-import models.Item;
 import models.NonPlayable;
 import models.Sprite;
 import models.Trigger;

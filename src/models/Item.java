@@ -1,12 +1,7 @@
 package models;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-
-import javax.imageio.ImageIO;
 
 import enums.TriggerType;
 import enums.Gender;

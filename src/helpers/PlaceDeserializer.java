@@ -17,7 +17,6 @@ import enums.Number;
 import models.Item;
 import models.Place;
 import models.Sprite;
-import models.Trigger;
 
 public class PlaceDeserializer implements JsonDeserializer<Place> {
 

@@ -14,11 +14,9 @@ import com.google.gson.reflect.TypeToken;
 
 import enums.Gender;
 import enums.Number;
-import enums.TriggerType;
 import models.Item;
 import models.Sprite;
 import models.Trigger;
-import models.aftertrigger.AfterTriggerRequest;
 
 public class ItemDeserializer implements JsonDeserializer<Item>{
 
