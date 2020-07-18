@@ -1355,6 +1355,11 @@
               "actionDestination": "EAST",
               "destinationType": "CONNECTION",
               "parentId": "sendero_este"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "trampa",
+              "destinationType": "INVENTORY"
             }
           ]
         },
@@ -1426,6 +1431,11 @@
             {
               "action": "ADD",
               "thing": "daga",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "monedas",
               "destinationType": "INVENTORY"
             },
             {
@@ -1591,6 +1601,11 @@
               "actionDestination": "SOUTH",
               "destinationType": "CONNECTION",
               "parentId": "camino_real"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "frutillas",
+              "destinationType": "INVENTORY"
             }
           ]
         }
@@ -1735,7 +1750,7 @@
         {
           "type": "ITEM",
           "thing": "nafta",
-          "onTrigger": "Lo empapaste con nafta.",
+          "onTrigger": "Lo empapaste con nafta. Ahora tienes una antorcha apagada.",
           "afterTrigger": [
             {
               "action": "REMOVE",
@@ -2150,6 +2165,11 @@
             {
               "action": "ADD",
               "thing": "cuenco",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "daga",
               "destinationType": "INVENTORY"
             },
             {
@@ -2595,7 +2615,7 @@
         {
           "type": "ITEM",
           "thing": "nota_extraña",
-          "onTrigger": "la puerta desapareció y no puedo ver que hay en su interior.",
+          "onTrigger": "la puerta desapareció y no puedo ver que hay en el interior de la cueva.",
           "afterTrigger": [
             {
               "action": "REMOVE",
