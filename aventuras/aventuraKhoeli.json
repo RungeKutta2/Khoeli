@@ -1185,7 +1185,7 @@
       "name": "bar",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el bar.\r\nParece que es la fiesta de la luna llena pero los invitados todavia no llegaron.\r\nHay una barra y un borracho.\r\nAl Oeste esta la plaza.",
+      "description": "Estás en el bar.\r\nSe supone que esta noche se celebra la fiesta de la luna llena pero aparentemente los invitados todavia no llegaron.\r\nHay una barra y un borracho.\r\nAl Oeste esta la plaza.",
       "sprite": {
         "path": "./sprites/bar.png",
         "x": 0,
@@ -1292,7 +1292,7 @@
       "name": "salon real",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el camino real.\r\nHay un trono.\r\nal Sur esta el camino real.",
+      "description": "Estás en el camino real.\r\nHay un trono.\r\nAl Sur esta el camino real.",
       "sprite": {
         "path": "./sprites/salon_real.png",
         "x": 0,
@@ -1375,7 +1375,7 @@
           ]
         }
       ],
-      "talk": "No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice me robaron mi único rifle de caza.\r\nQuizás podría ganarme su confianza con algún presente."
+      "talk": "No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice intentaron robarme mi único rifle de caza.\r\nQuizás podría ganarme su confianza con algún presente."
     },
     {
       "id": "borracho",
