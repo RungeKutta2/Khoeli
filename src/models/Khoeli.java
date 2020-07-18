@@ -3,7 +3,6 @@ package models;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Graphics;
@@ -25,10 +24,6 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -68,14 +63,15 @@ public class Khoeli extends JFrame {
 	private DrawPanel gameGraphics;
 
 	private JToolBar toolbar;
-	private JButton guardarpartida;
-	private JButton abriraventura;
-
-	private InventoryFrame ventanaInventario;
-	private JButton inventario;
-
-	private JFrame ventanaMapa;
-	private JButton mapa;
+	
+	private JButton buttonToolbarSaveAdventure;
+	private JButton buttonToolbarOpenAdventure;
+	private JButton buttonToolbarInventary;
+	private JButton buttonToolbarMap;
+	
+	private InventoryFrame frameInventory;
+	private JFrame frameMap;
+	
 
 	private ArrayList<String> recent_used;
 	private int recent_used_id = 0;
@@ -101,15 +97,15 @@ public class Khoeli extends JFrame {
 		setTitle("Khoeli");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		guardarpartida = new JButton();
-		guardarpartida.setText("Guardar");
-		guardarpartida.setBorderPainted(false);
-		guardarpartida.setFocusPainted(false);
-		guardarpartida.setMargin(new Insets(5, 10, 5, 10));
-		guardarpartida.setFont(new Font("Arial", Font.PLAIN, 12));
-		guardarpartida.setEnabled(false);
+		buttonToolbarSaveAdventure = new JButton();
+		buttonToolbarSaveAdventure.setText("Guardar");
+		buttonToolbarSaveAdventure.setBorderPainted(false);
+		buttonToolbarSaveAdventure.setFocusPainted(false);
+		buttonToolbarSaveAdventure.setMargin(new Insets(5, 10, 5, 10));
+		buttonToolbarSaveAdventure.setFont(new Font("Arial", Font.PLAIN, 12));
+		buttonToolbarSaveAdventure.setEnabled(false);
 
-		guardarpartida.addActionListener(new ActionListener() {
+		buttonToolbarSaveAdventure.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -117,14 +113,14 @@ public class Khoeli extends JFrame {
 			}
 		});
 
-		abriraventura = new JButton();
-		abriraventura.setText("Seleccionar aventura");
-		abriraventura.setBorderPainted(false);
-		abriraventura.setFocusPainted(false);
-		abriraventura.setMargin(new Insets(5, 10, 5, 10));
-		abriraventura.setFont(new Font("Arial", Font.PLAIN, 12));
+		buttonToolbarOpenAdventure = new JButton();
+		buttonToolbarOpenAdventure.setText("Seleccionar aventura");
+		buttonToolbarOpenAdventure.setBorderPainted(false);
+		buttonToolbarOpenAdventure.setFocusPainted(false);
+		buttonToolbarOpenAdventure.setMargin(new Insets(5, 10, 5, 10));
+		buttonToolbarOpenAdventure.setFont(new Font("Arial", Font.PLAIN, 12));
 
-		abriraventura.addActionListener(new ActionListener() {
+		buttonToolbarOpenAdventure.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -132,26 +128,26 @@ public class Khoeli extends JFrame {
 			}
 		});
 
-		inventario = new JButton();
-		inventario.setText("Inventario");
-		inventario.setFont(new Font("Arial", Font.PLAIN, 12));
-		inventario.setBorderPainted(false);
-		inventario.setFocusPainted(false);
-		inventario.setMargin(new Insets(5, 10, 5, 10));
-		inventario.setEnabled(false);
-		inventario.addActionListener(new ActionListener() {
+		buttonToolbarInventary = new JButton();
+		buttonToolbarInventary.setText("Inventario");
+		buttonToolbarInventary.setFont(new Font("Arial", Font.PLAIN, 12));
+		buttonToolbarInventary.setBorderPainted(false);
+		buttonToolbarInventary.setFocusPainted(false);
+		buttonToolbarInventary.setMargin(new Insets(5, 10, 5, 10));
+		buttonToolbarInventary.setEnabled(false);
+		buttonToolbarInventary.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (ventanaInventario == null) {
-					ventanaInventario = new InventoryFrame();
-					ventanaInventario.setSize(300, 400);
-					ventanaInventario.setResizable(false);
-					ventanaInventario.setInventory(selectedAdventure.getSelectedPlayer().getInventory());
-					ventanaInventario.setTitle("Inventario");
-					ventanaInventario.setVisible(true);
+				if (frameInventory == null) {
+					frameInventory = new InventoryFrame();
+					frameInventory.setSize(300, 400);
+					frameInventory.setResizable(false);
+					frameInventory.setInventory(selectedAdventure.getSelectedPlayer().getInventory());
+					frameInventory.setTitle("Inventario");
+					frameInventory.setVisible(true);
 
-					ventanaInventario.addWindowListener(new WindowListener() {
+					frameInventory.addWindowListener(new WindowListener() {
 
 						@Override
 						public void windowOpened(WindowEvent e) {
@@ -179,7 +175,7 @@ public class Khoeli extends JFrame {
 
 						@Override
 						public void windowClosing(WindowEvent e) {
-							ventanaInventario = null;
+							frameInventory = null;
 
 						}
 
@@ -195,32 +191,32 @@ public class Khoeli extends JFrame {
 						}
 					});
 				} else {
-					ventanaInventario.setState(Frame.NORMAL);
+					frameInventory.setState(Frame.NORMAL);
 				}
 
 			}
 		});
 
-		mapa = new JButton();
-		mapa.setText("Mapa");
-		mapa.setFont(new Font("Arial", Font.PLAIN, 12));
-		mapa.setBorderPainted(false);
-		mapa.setFocusPainted(false);
-		mapa.setMargin(new Insets(5, 10, 5, 10));
-		mapa.setEnabled(false);
-		mapa.addActionListener(new ActionListener() {
+		buttonToolbarMap = new JButton();
+		buttonToolbarMap.setText("Mapa");
+		buttonToolbarMap.setFont(new Font("Arial", Font.PLAIN, 12));
+		buttonToolbarMap.setBorderPainted(false);
+		buttonToolbarMap.setFocusPainted(false);
+		buttonToolbarMap.setMargin(new Insets(5, 10, 5, 10));
+		buttonToolbarMap.setEnabled(false);
+		buttonToolbarMap.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (ventanaMapa == null) {
-					ventanaMapa = new JFrame();
-					ventanaMapa.add(new MapPanel());
-					ventanaMapa.setSize(995, 695);
-					ventanaMapa.setTitle("Mapa");
-					ventanaMapa.setResizable(false);
-					ventanaMapa.setVisible(true);
+				if (frameMap == null) {
+					frameMap = new JFrame();
+					frameMap.add(new MapPanel());
+					frameMap.setSize(995, 695);
+					frameMap.setTitle("Mapa");
+					frameMap.setResizable(false);
+					frameMap.setVisible(true);
 
-					ventanaMapa.addWindowListener(new WindowListener() {
+					frameMap.addWindowListener(new WindowListener() {
 
 						@Override
 						public void windowOpened(WindowEvent e) {
@@ -248,7 +244,7 @@ public class Khoeli extends JFrame {
 
 						@Override
 						public void windowClosing(WindowEvent e) {
-							ventanaMapa = null;
+							frameMap = null;
 
 						}
 
@@ -264,17 +260,17 @@ public class Khoeli extends JFrame {
 						}
 					});
 				} else {
-					ventanaMapa.setState(Frame.NORMAL);
+					frameMap.setState(Frame.NORMAL);
 				}
 			}
 		});
 
 		toolbar.setSize(1000, 50);
 		toolbar.setFloatable(false);
-		toolbar.add(abriraventura);
-		toolbar.add(guardarpartida);
-		toolbar.add(mapa);
-		toolbar.add(inventario);
+		toolbar.add(buttonToolbarOpenAdventure);
+		toolbar.add(buttonToolbarSaveAdventure);
+		toolbar.add(buttonToolbarMap);
+		toolbar.add(buttonToolbarInventary);
 
 		console = new JTextPane();
 		console.setEditable(false);
@@ -327,8 +323,8 @@ public class Khoeli extends JFrame {
 					final char[] var = { '.', '\n' };
 					print(WordUtils.capitalizeFully(result, var));
 
-					if (ventanaInventario != null) {
-						ventanaInventario.setInventory(selectedAdventure.getSelectedPlayer().getInventory());
+					if (frameInventory != null) {
+						frameInventory.setInventory(selectedAdventure.getSelectedPlayer().getInventory());
 					}
 
 					if (selectedAdventure.isEnded()) {
@@ -339,13 +335,13 @@ public class Khoeli extends JFrame {
 						}
 
 						input.setEnabled(false);
-						inventario.setEnabled(false);
-						mapa.setEnabled(false);
-						if (ventanaMapa != null) {
-							ventanaMapa.setVisible(false);
+						buttonToolbarInventary.setEnabled(false);
+						buttonToolbarMap.setEnabled(false);
+						if (frameMap != null) {
+							frameMap.setVisible(false);
 						}
-						if (ventanaInventario != null) {
-							ventanaInventario.setVisible(false);
+						if (frameInventory != null) {
+							frameInventory.setVisible(false);
 						}
 					}
 				} else {
@@ -512,9 +508,9 @@ public class Khoeli extends JFrame {
 		try {
 			setSelectedAdventure(archivo.getPath());
 			input.setEnabled(true);
-			guardarpartida.setEnabled(true);
-			inventario.setEnabled(true);
-			mapa.setEnabled(true);
+			buttonToolbarSaveAdventure.setEnabled(true);
+			buttonToolbarInventary.setEnabled(true);
+			buttonToolbarMap.setEnabled(true);
 			clear();
 			startAdventure();
 
