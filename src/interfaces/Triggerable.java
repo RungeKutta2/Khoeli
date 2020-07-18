@@ -1,11 +1,10 @@
 package interfaces;
 
-import enums.Types;
+import enums.TriggerType;
 
 public interface Triggerable {
-	String executeTrigger(Types type, String thing);
+	String executeTrigger(TriggerType type, String thing);
 
 	void changeDescription(String thing);
 
-	String getName();
 }

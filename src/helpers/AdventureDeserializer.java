@@ -14,14 +14,12 @@ import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import models.Adventure;
-import models.AfterTrigger;
 import models.Connection;
-import models.Endgame;
 import models.Item;
 import models.Location;
 import models.NonPlayable;
-import models.Place;
 import models.Playable;
+import models.Sprite;
 import models.Trigger;
 
 public class AdventureDeserializer implements JsonDeserializer<Adventure> {
@@ -34,7 +32,10 @@ public class AdventureDeserializer implements JsonDeserializer<Adventure> {
 		gsonBuilder.registerTypeAdapter(Playable.class, new PlayableDeserializer());
 		gsonBuilder.registerTypeAdapter(Connection.class, new ConnectionDeserializer());
 		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
-
+		gsonBuilder.registerTypeAdapter(Item.class, new ItemDeserializer());
+		gsonBuilder.registerTypeAdapter(NonPlayable.class, new NonPlayableDeserializer());
+		gsonBuilder.registerTypeAdapter(Sprite.class, new SpriteDeserializer());
+		
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
 
@@ -66,6 +67,8 @@ public class AdventureDeserializer implements JsonDeserializer<Adventure> {
 		
 		String welcomeMessage = jobject.get("welcomeMessage").getAsString();
 		adventure.setWelcomeMessage(welcomeMessage);
+		Sprite map = gson.fromJson(jobject.get("map"), Sprite.class);
+	    adventure.setMap(map);
 
 		return adventure;
 	}

@@ -1,0 +1,3004 @@
+{
+  "locations": [
+    {
+      "id": "sala",
+      "name": "sala",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la sala.\r\nNo hay nada fuera de lo normal.\r\nA tu alrededor hay una mesa, una cama y una chimenea.\r\nAl Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.",
+      "places": [
+        {
+          "name": "mesa",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "fotografia"
+          ],
+          "description": "Parece hecha de madera noble.",
+          "sprite": {
+            "path": "./sprites/mesa.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "cama"
+          ],
+          "description": "No tiene nada especial."
+        },
+        {
+          "name": "pared",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "ventana",
+            "puerta"
+          ],
+          "description": "No tiene nada especial."
+        },
+        {
+          "name": "chimenea",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "tronco"
+          ],
+          "description": "No tengo forma de volver a encenderla.",
+          "sprite": {
+            "path": "./sprites/chimenea.png",
+            "x": 300,
+            "y": 30,
+            "width": 200,
+            "height": 250
+          }
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "cocina",
+          "obstacle": null
+        },
+        {
+          "direction": "WEST",
+          "location": "baño",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "jardin",
+          "obstacle": "puerta"
+        },
+        {
+          "direction": "EAST",
+          "location": "bosque_norte",
+          "obstacle": "ventana"
+        }
+      ],
+      "triggers": [],
+      "sprite": {
+        "path": "./sprites/sala_de_estar.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      }
+    },
+    {
+      "id": "baño",
+      "name": "baño",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Está inundado.\r\nA tu alrededor ves un inodoro y un lavamanos.\r\nAl Este está la sala.",
+      "places": [
+        {
+          "name": "inodoro",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "llave"
+          ],
+          "sprite": {
+            "path": "./sprites/inodoro.png",
+            "x": 600,
+            "y": 100,
+            "width": 200,
+            "height": 220
+          },
+          "description": "Parece que pierde agua.\r\n¿Debería meter la mano allí?"
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Esta cubierto de agua."
+        },
+        {
+          "name": "lavamanos",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "botiquin",
+            "vendas"
+          ],
+          "sprite": {
+            "path": "./sprites/lavabo.png",
+            "x": 300,
+            "y": 130,
+            "width": 130,
+            "height": 150
+          },
+          "description": "Está realmente sucio y cubierto por musgo."
+        }
+      ],
+      "sprite": {
+        "path": "./sprites/baño.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "sala",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "cocina",
+      "name": "cocina",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la cocina.\r\nA tu alrededor hay una mesada con un cajón.\r\nAl Sur está la sala, al Oeste está la despensa.",
+      "sprite": {
+        "path": "./sprites/cocina.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "mesada",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "trapo"
+          ],
+          "description": "Han pasado sus mejores épocas.",
+          "sprite": {
+            "path": "./sprites/mesada.png",
+            "x": 700,
+            "y": 150,
+            "width": 300,
+            "height": 300
+          }
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Parece rechinar cuando camino."
+        },
+        {
+          "name": "cajon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "fosforos"
+          ],
+          "description": "Es un simple cajón."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "despensa",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "sala",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "despensa",
+      "name": "despensa",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la despensa.\r\nA tu alrededor hay un estante y una mesa.\r\nAl Este está la cocina.",
+      "places": [
+        {
+          "name": "mesa",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "nafta"
+          ],
+          "description": "Parece no estar balanceada. Creo que tiene una pata defectuosa.",
+          "sprite": {
+            "path": "./sprites/mesa.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Nadie lo limpia hace tiempo ..."
+        },
+        {
+          "name": "estante",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "martillo"
+          ],
+          "description": "Parece estar firme. Está lleno de polvo",
+          "sprite": {
+            "path": "./sprites/estante.png",
+            "x": 300,
+            "y": 30,
+            "width": 180,
+            "height": 180
+          }
+        }
+      ],
+      "sprite": {
+        "path": "./sprites/despensa.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "cocina",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "bosque_norte",
+      "name": "bosque norte",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el bosque norte.\r\nHay un tocón.\r\nAl Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.",
+      "sprite": {
+        "path": "./sprites/bosque_norte.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "id": "tronco_cortado",
+          "name": "tocon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "hacha"
+          ],
+          "description": "Parece un nogal pero no estoy seguro.",
+          "sprite": {
+            "path": "./sprites/tronco_cortado.png",
+            "x": 500,
+            "y": 250,
+            "width": 150,
+            "height": 150
+          }
+        },
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "enredadera"
+          ],
+          "description": "Hay un poco de nieve y hojas en él."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "sala",
+          "obstacle": null
+        },
+        {
+          "direction": "EAST",
+          "location": "lago",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "bosque_sur",
+          "obstacle": "enredadera"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "bosque_sur",
+      "name": "bosque sur",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el bosque sur.\r\nAl Norte está el bosque norte y al Oeste esta el jardin.",
+      "sprite": {
+        "path": "./sprites/bosque_sur.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "trampa",
+            "arbusto"
+          ],
+          "description": "Hay un poco de nieve y hojas en él."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "jardin",
+          "obstacle": null
+        },
+        {
+          "direction": "NORTH",
+          "location": "bosque_norte",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "lago",
+      "name": "lago",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el lago congelado.\r\nAl Norte está hay una cueva, al Sur hay una cabaña abandonada, al Oeste esta el bosque norte y al Este esta el sendero este.",
+      "sprite": {
+        "path": "./sprites/lago.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve y hojas en él."
+        },
+        {
+          "name": "cueva",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "puerta_misteriosa"
+          ],
+          "description": "Esta muy oscuro."
+        },
+        {
+          "name": "bote",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "rosario"
+          ],
+          "description": "Si tan solo el lago no estuviera congelado, podria usarlo para pescar.",
+          "sprite": {
+            "path": "./sprites/bote.png",
+            "x": 200,
+            "y": 350,
+            "width": 170,
+            "height": 120
+          }
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "sendero_este",
+          "obstacle": null
+        },
+        {
+          "direction": "NORTH",
+          "location": "cueva",
+          "obstacle": "puerta_misteriosa"
+        },
+        {
+          "direction": "WEST",
+          "location": "bosque_norte",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "cabaña_abandonada",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "cueva",
+      "name": "cueva",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la cueva.",
+      "sprite": {
+        "path": "./sprites/cueva.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [],
+      "npcs": [
+        "rey"
+      ],
+      "connections": [
+        {
+          "direction": "SOUTH",
+          "location": "lago",
+          "obstacle": null
+        }
+      ],
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "MOVE",
+          "onTrigger": "En la cueva se encuentra el rey. En el momento en que lo ves, todo termina de cobrar sentido, si la cueva cumple los deseos…\r\ndebe estar cumpliendo tu único deseo… encontrar a tu verdadera familia.\r\n-Hijo mío, veo que has entendido que lo que corre por nuestras venas es una bendición y no una maldición.\r\nEstoy orgulloso de que nos hayamos reencontrado y que por fin puedas reclamar la verdadera forma que pertenece a mi primogénito.\r\nJuntos, se dirigen al castillo, y sabes que continuarás con su reinado,\r\nacechando en las noches de luna llena para saciar el infinito apetito que conlleva la criatura en la que te has convertido",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cabaña_abandonada",
+      "name": "cabaña abandonada",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la cabaña abandonada.\r\nHay una mesa y un armario.\r\nAl Norte está el lago.",
+      "sprite": {
+        "path": "./sprites/cabaña_abandonada.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "juguete"
+          ],
+          "description": "Está en muy malas condiciones"
+        },
+        {
+          "name": "armario",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay ropa de mujer dentro. Vestidos refinados de alta costura mezclados con blusas plebeyas.\r\n¿Alguien habra usado esta cabaña para esconderse?",
+          "sprite": {
+            "path": "./sprites/armario.png",
+            "x": 200,
+            "y": 40,
+            "width": 180,
+            "height": 240
+          }
+        },
+        {
+          "name": "mesa",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "invitacion",
+            "diario"
+          ],
+          "description": "Parece maciza",
+          "sprite": {
+            "path": "./sprites/mesa2.png",
+            "x": 700,
+            "y": 230,
+            "width": 180,
+            "height": 180
+          }
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "lago",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "sendero_este",
+      "name": "sendero este",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el sendero este.\r\nHay un buzón.\r\nAl Oeste está el lago y al Este la cabaña del cazador.",
+      "sprite": {
+        "path": "./sprites/sendero_este.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve y hojas en él."
+        },
+        {
+          "name": "buzon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay algunas cartas en su interior.",
+          "sprite": {
+            "path": "./sprites/buzon.png",
+            "x": 800,
+            "y": 70,
+            "width": 70,
+            "height": 110
+          }
+        }
+      ],
+      "npcs": [
+        "cazador"
+      ],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "lago",
+          "obstacle": null
+        },
+        {
+          "direction": "EAST",
+          "location": "cabaña_cazador",
+          "obstacle": "cazador"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "cabaña_cazador",
+      "name": "cabaña cazador",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la cabaña del cazador.\r\nHay una mesa y un sillón.\r\nAl Oeste está el sendero este.",
+      "sprite": {
+        "path": "./sprites/cabaña_cazador.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay una alfombra de piel de oso. Es intimidante..."
+        },
+        {
+          "name": "mesa",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "carta"
+          ],
+          "description": "Esta cubierta de herramientas ensangrentadas. Espero que sea sangre animal.",
+          "sprite": {
+            "path": "./sprites/mesa.png",
+            "x": 650,
+            "y": 200,
+            "width": 200,
+            "height": 200
+          }
+        },
+        {
+          "name": "sillon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "libro"
+          ],
+          "description": "No me sentaría en él.",
+          "sprite": {
+            "path": "./sprites/sillon.png",
+            "x": 350,
+            "y": 150,
+            "width": 180,
+            "height": 180
+          }
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "sendero_este",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "jardin",
+      "name": "jardin",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el jardin.\r\nHay un buzón.\r\nAl Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.",
+      "sprite": {
+        "path": "./sprites/jardin.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "aconito"
+          ],
+          "description": "Hay un poco de nieve y hojas en él"
+        },
+        {
+          "name": "cabaña",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "puerta"
+          ],
+          "description": "Es mi cabaña."
+        },
+        {
+          "name": "buzon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Está vacio.",
+          "sprite": {
+            "path": "./sprites/buzon.png",
+            "x": 340,
+            "y": 260,
+            "width": 70,
+            "height": 110
+          }
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "sala",
+          "obstacle": "puerta"
+        },
+        {
+          "direction": "SOUTH",
+          "location": "sendero_sur",
+          "obstacle": null
+        },
+        {
+          "direction": "WEST",
+          "location": "invernadero",
+          "obstacle": null
+        },
+        {
+          "direction": "EAST",
+          "location": "bosque_sur",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "invernadero",
+      "name": "invernadero",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el invernadero.\r\nHay una mesa y una planta.\r\nAl Este está el jardin.",
+      "sprite": {
+        "path": "./sprites/invernadero.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve y hojas en él"
+        },
+        {
+          "name": "mesa",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "cuenco"
+          ],
+          "description": "Esta llena de tierra y suciedad.",
+          "sprite": {
+            "path": "./sprites/mesa2.png",
+            "x": 500,
+            "y": 250,
+            "width": 200,
+            "height": 200
+          }
+        },
+        {
+          "name": "planta",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "frutillas"
+          ],
+          "description": "Tiene unas frutillas en su interior.",
+          "sprite": {
+            "path": "./sprites/planta_de_frutillas.png",
+            "x": 220,
+            "y": 250,
+            "width": 120,
+            "height": 100
+          }
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "jardin",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "sendero_sur",
+      "name": "sendero_sur",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el sendero sur.\r\nHay un cartel.\r\nAl Norte está el jardin y  al Sur el pueblo.",
+      "sprite": {
+        "path": "./sprites/sendero_sur.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "piedras"
+          ],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "arbol",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "cartel"
+          ],
+          "description": "Es un gran arbol con muchas ramas. Parece tener muchos años aquí."
+        }
+      ],
+      "npcs": [],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "jardin",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "pueblo",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "pueblo",
+      "name": "pueblo",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el pueblo.\r\nHay un cantero y un campesino.\r\nAl Norte esta el sendero sur, al Sur esta la plaza y al Oeste esta la iglesia.",
+      "sprite": {
+        "path": "./sprites/pueblo.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "cantero",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "planta"
+          ],
+          "description": "Tiene plantas muy coloridas.",
+          "sprite": {
+            "path": "./sprites/cantero.png",
+            "x": 300,
+            "y": 350,
+            "width": 100,
+            "height": 80
+          }
+        }
+      ],
+      "npcs": [
+        "campesino"
+      ],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "sendero_sur",
+          "obstacle": null
+        },
+        {
+          "direction": "WEST",
+          "location": "iglesia",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "plaza",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "plaza",
+      "name": "plaza",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la plaza.\r\nHay una fuente, un banco y un hombre corpulento.\r\nAl Este está el bar, al Oeste esta el mercado, al Norte esta el pueblo y al Sur esta el camino real.",
+      "sprite": {
+        "path": "./sprites/plaza.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "fuente",
+          "gender": "FEMALE",
+          "number": "SINGULAR",
+          "items": [
+            "monedas"
+          ],
+          "description": "Es una obra de arte.",
+          "sprite": {
+            "path": "./sprites/fuente.png",
+            "x": 340,
+            "y": 0,
+            "width": 300,
+            "height": 300
+          }
+        },
+        {
+          "name": "banco",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Es un bonito banco de madera con detalles en metal.",
+          "sprite": {
+            "path": "./sprites/banco.png",
+            "x": 600,
+            "y": 20,
+            "width": 180,
+            "height": 180
+          }
+        }
+      ],
+      "npcs": [
+        "gorila"
+      ],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "pueblo",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "camino_real",
+          "obstacle": null
+        },
+        {
+          "direction": "WEST",
+          "location": "mercado",
+          "obstacle": null
+        },
+        {
+          "direction": "EAST",
+          "location": "bar",
+          "obstacle": "gorila"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "iglesia",
+      "name": "iglesia",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Estás en la iglesia.\r\nHay un altar y un anciano.\r\nAl Oeste está el cementerio y al Este el pueblo.",
+      "sprite": {
+        "path": "./sprites/iglesia.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "altar",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "biblia"
+          ],
+          "description": "",
+          "sprite": {
+            "path": "./sprites/altar.png",
+            "x": 180,
+            "y": 200,
+            "width": 180,
+            "height": 180
+          }
+        }
+      ],
+      "npcs": [
+        "anciano"
+      ],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "cementerio",
+          "obstacle": "anciano"
+        },
+        {
+          "direction": "EAST",
+          "location": "pueblo",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "cementerio",
+      "name": "cementerio",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el cementerio.\r\nHay una lapida, una fosa y un medico.\r\nAl Este esta la iglesia.",
+      "sprite": {
+        "path": "./sprites/cementerio.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "lapida",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "",
+          "sprite": {
+            "path": "./sprites/lapida.png",
+            "x": 600,
+            "y": 150,
+            "width": 180,
+            "height": 180
+          }
+        },
+        {
+          "name": "fosa",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "pala"
+          ],
+          "description": "Parece que alguien va a ser enterrado aquí.",
+          "sprite": {
+            "path": "./sprites/fosa.png",
+            "x": 150,
+            "y": 300,
+            "width": 300,
+            "height": 150
+          }
+        }
+      ],
+      "npcs": [
+        "brujo"
+      ],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "iglesia",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "mercado",
+      "name": "mercado",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el mercado.\r\nHay un puesto con un mercader vendiendo y un cajón.\r\nAl Este esta la plaza.",
+      "sprite": {
+        "path": "./sprites/mercado.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "puesto",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "daga"
+          ],
+          "description": "Hay un mercader que vende articulos.",
+          "sprite": {
+            "path": "./sprites/puesto.png",
+            "x": 200,
+            "y": 0,
+            "width": 450,
+            "height": 450
+          }
+        },
+        {
+          "name": "cajon",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "No tiene nada especial.",
+          "sprite": {
+            "path": "./sprites/cajon.png",
+            "x": 50,
+            "y": 250,
+            "width": 200,
+            "height": 200
+          }
+        }
+      ],
+      "npcs": [
+        "mercader"
+      ],
+      "connections": [
+        {
+          "direction": "EAST",
+          "location": "plaza",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "bar",
+      "name": "bar",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el bar.\r\nSe supone que esta noche se celebra la fiesta de la luna llena pero aparentemente los invitados todavia no llegaron.\r\nHay una barra y un borracho.\r\nAl Oeste esta la plaza.",
+      "sprite": {
+        "path": "./sprites/bar.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "nota_extraña"
+          ],
+          "description": "Hay cenizas de tabaco y botellas rotas."
+        },
+        {
+          "name": "barra",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "vino"
+          ],
+          "description": "Hay mucha cerveza volcada.",
+          "sprite": {
+            "path": "./sprites/barra.png",
+            "x": 325,
+            "y": 200,
+            "width": 350,
+            "height": 110
+          }
+        }
+      ],
+      "npcs": [
+        "borracho"
+      ],
+      "connections": [
+        {
+          "direction": "WEST",
+          "location": "plaza",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "camino_real",
+      "name": "camino real",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el camino real.\r\nHay un busto del rey en un pedestal.\r\nAl Norte esta la plaza y al Sur esta el salon real.",
+      "sprite": {
+        "path": "./sprites/camino_real.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Hay un poco de nieve"
+        },
+        {
+          "name": "pedestal",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [
+            "busto"
+          ],
+          "description": "Es un podestal majestuoso de marmol tallado a mano.",
+          "sprite": {
+            "path": "./sprites/pedestal.png",
+            "x": 700,
+            "y": 140,
+            "width": 120,
+            "height": 120
+          }
+        }
+      ],
+      "npcs": [
+        "guardia"
+      ],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "plaza",
+          "obstacle": null
+        },
+        {
+          "direction": "SOUTH",
+          "location": "salon_real",
+          "obstacle": "guardia"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "id": "salon_real",
+      "name": "salon real",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estás en el camino real.\r\nHay un trono.\r\nAl Sur esta el camino real.",
+      "sprite": {
+        "path": "./sprites/salon_real.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
+      "places": [
+        {
+          "name": "suelo",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "Esta decorado con alfombras elegantes y mucho lujo."
+        },
+        {
+          "name": "trono",
+          "gender": "MALE",
+          "number": "SINGULAR",
+          "items": [],
+          "description": "El rey esta parado al lado del trono y te mira con sus ojos frios."
+        }
+      ],
+      "npcs": [
+        "rey"
+      ],
+      "connections": [
+        {
+          "direction": "NORTH",
+          "location": "camino_real",
+          "obstacle": null
+        }
+      ],
+      "triggers": []
+    }
+  ],
+  "npcs": [
+    {
+      "id": "cazador",
+      "name": "cazador",
+      "description": "Es un hombre de mediana edad y bastante corpulento.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/cazador.png",
+        "x": 850,
+        "y": 20,
+        "width": 140,
+        "height": 240
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "trampa",
+          "onTrigger": "Te dejo pasar, pero pasa rápido.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "cazador",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "sendero_este"
+            }
+          ]
+        },
+        {
+          "type": "ITEM",
+          "thing": "hacha",
+          "onTrigger": "¿ Por qué me atacas ? Ahora verás. ",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_HP",
+              "thing": "-50"
+            }
+          ]
+        }
+      ],
+      "talk": "No dejaré pasar a ningún desconocido a mi cabaña, la última vez que lo hice intentaron robarme mi único rifle de caza.\r\nQuizás podría ganarme su confianza con algún presente."
+    },
+    {
+      "id": "borracho",
+      "name": "borracho",
+      "description": "Parece un hombre bastante pasado de copas.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/borracho.png",
+        "x": 700,
+        "y": 100,
+        "width": 130,
+        "height": 200
+      },
+      "triggers": [],
+      "talk": " ¡Hic! Sho se que el shey ese algo esconde, creeme ¡Hic! muchacho, tengo un don para estas cosas ¡ Burp ! ¡ Salud !."
+    },
+    {
+      "id": "campesino",
+      "name": "campesino",
+      "description": "Es un simple campesino, parece simpático.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/campesino.png",
+        "x": 400,
+        "y": 250,
+        "width": 100,
+        "height": 150
+      },
+      "triggers": [],
+      "talk": " ¿ Y tu que haces por aquí ? ¿ No sabes que en las noches de luna llena en este pueblo pasan cosas extrañas ? \r\n"
+    },
+    {
+      "id": "mercader",
+      "name": "mercader",
+      "description": "Es un hombre mayor.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/mercader.png",
+        "x": 370,
+        "y": 80,
+        "width": 100,
+        "height": 160
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "monedas",
+          "onTrigger": "Aquí tienes esta bella daga de plata, en una noche como esta puede serte útil...",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "daga",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "daga",
+              "destinationType": "PLACE",
+              "parentId": "mercado",
+              "actionDestination": "puesto"
+            }
+          ]
+        }
+      ],
+      "talk": "'Por un precio justo, puedo darte algo útil.'"
+    },
+    {
+      "id": "gorila",
+      "name": "gorila",
+      "description": "Es un guardaespaldas imponente, da miedo, no creo que me deje pasar.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/gorila.png",
+        "x": 890,
+        "y": 70,
+        "width": 100,
+        "height": 180
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "invitacion",
+          "onTrigger": "Puedes pasar, apúrate...",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "gorila",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "plaza"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "invitacion",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ],
+      "talk": " ¿ Estás en la lista ? - El gorila me mira fijamente ..."
+    },
+    {
+      "id": "brujo",
+      "name": "brujo",
+      "description": "Tiene un aspecto extraño, parece estar haciendo un ritual o algo así .",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/brujo.png",
+        "x": 40,
+        "y": 100,
+        "width": 150,
+        "height": 220
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "pocion",
+          "onTrigger": "‘Así que has decidido terminar con esto. Has traído lo que te he pedido, bebe esta poción y líbrate de la bestia.’\r\nBebes de la preparación y tiene un gusto terrible. Sientes nauseas, corres a vomitar y te desmayas.\r\nCuando te despiertas, ves la mirada del brujo sobre ti.\r\n‘La poción te ha curado y eres libre de la bestia aunque la criatura que te mordió sigue suelta por ahí … ’",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
+        }
+      ],
+      "talk": "Sé que te han atacado y tienes una maldición en tus hombros.\r\nPara preparar la cura debes unir la sangre de un hombre lobo y la planta a la que mas le temen.\r\nCuando juntes eso, ven aquí y te curaré de tu enfermedad."
+    },
+    {
+      "id": "rey",
+      "name": "rey",
+      "description": "Es el gobernante absoluto de este pueblo.\r\nSu mirada es despectiva y tiene aires de grandeza.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/rey.png",
+        "x": 550,
+        "y": 150,
+        "width": 100,
+        "height": 200
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "daga",
+          "onTrigger": "Al ver al rey, no puedes evitar pensar en cómo pudo arrebatarte tu vida de esta manera y no lo dudas.\r\nLe intentas clavar la daga, pero como es un guerrero hábil, te esquiva y te golpea con una fuerza descomunal.\r\n‘Se suponía que deberías estar orgulloso de lo que somos, Hijo mío. En vez de eso, te avergüenzas de nuestra verdadera forma e intentas asesinarme en mi propio trono.\r\nNo tengo otra opción más que deshacerme de tal deshonra.’\r\nVes unas garras clavándose en tu pecho y sientes como tu vida se te escurre entre tus brazos.",
+          "afterTrigger": [
+            {
+              "action": "ENDGAME"
+            }
+          ]
+        }
+      ],
+      "talk": "Su sorpresa se dibuja en su cara. Parece que no tiene intenciones de hablar"
+    },
+    {
+      "id": "anciano",
+      "name": "anciano",
+      "description": "Parece fiel a sus creencias.",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/anciano.png",
+        "x": 100,
+        "y": 70,
+        "width": 100,
+        "height": 180
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "rosario",
+          "onTrigger": "'Oh, Él siempre nos ilumina'",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "anciano",
+              "actionDestination": "WEST",
+              "destinationType": "CONNECTION",
+              "parentId": "iglesia"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "rosario",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ],
+      "talk": "'Dios nos ilumina a todos de distinta manera pero siempre elige el camino correcto para todos nosotros.' Parece un anciano loco."
+    },
+    {
+      "id": "guardia",
+      "name": "guardia",
+      "description": "Es un guardia muy fuerte, dispuesto a matarme si lo hago enojar.",
+      "sprite": {
+        "path": "./sprites/guardia.png",
+        "x": 300,
+        "y": 150,
+        "width": 220,
+        "height": 300
+      },
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "frutillas",
+          "onTrigger": "Por fin podré hacer mi mermelada favorita.\r\nPasa antes que me arrepienta renacuajo.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "guardia",
+              "actionDestination": "SOUTH",
+              "destinationType": "CONNECTION",
+              "parentId": "camino_real"
+            }
+          ]
+        }
+      ],
+      "talk": "'Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.\r\nAunque, lo podríamos negociar por lo más dulce del valle.' Dice el guardia."
+    }
+  ],
+  "items": [
+    {
+      "id": "fotografia",
+      "name": "fotografia",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una fotografia de una mujer con su hijo.",
+      "sprite": {
+        "path": "./sprites/fotografia.png",
+        "x": 550,
+        "y": 250,
+        "width": 70,
+        "height": 70
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la fotografía.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "fotografia",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "fotografia",
+              "actionDestination": "mesa",
+              "parentId": "sala",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cama",
+      "name": "cama",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Puede servirme para descansar.",
+      "sprite": {
+        "path": "./sprites/cama.png",
+        "x": 760,
+        "y": 220,
+        "width": 230,
+        "height": 130
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "USE",
+          "onTrigger": "Te sientes descansado.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_HP",
+              "thing": "+100"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tronco",
+      "name": "tronco",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Parece de abeto.",
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el tronco.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "tronco",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "tronco",
+              "actionDestination": "chimenea",
+              "parentId": "sala",
+              "destinationType": "PLACE"
+            }
+          ]
+        },
+        {
+          "type": "ITEM",
+          "thing": "trapo",
+          "onTrigger": "Usaste trapo en tronco.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "tronco",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "trapo",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "ADD",
+              "thing": "tronco_con_trapo",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ],
+      "sprite": {
+        "path": "./sprites/tronco.png",
+        "x": 380,
+        "y": 240,
+        "width": 50,
+        "height": 30
+      }
+    },
+    {
+      "id": "tronco_con_trapo",
+      "name": "tronco con trapo",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Es un tronco con un trapo atado en un extremo.",
+      "sprite": {
+        "path": "./sprites/tronco_trapo.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "nafta",
+          "onTrigger": "Lo empapaste con nafta.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "tronco_con_trapo",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "nafta",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "ADD",
+              "thing": "antorcha_apagada",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "antorcha_apagada",
+      "name": "antorcha apagada",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Debo encontrar una manera de encenderla.",
+      "sprite": {
+        "path": "./sprites/antorcha_apagada.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "fosforos",
+          "onTrigger": "Lo encendiste.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "antorcha_apagada",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "fosforos",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "ADD",
+              "thing": "antorcha_encendida",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "antorcha_encendida",
+      "name": "antorcha encendida",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "¿Podría quemar algo con ella?",
+      "sprite": {
+        "path": "./sprites/antorcha_encendida.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "triggers": []
+    },
+    {
+      "id": "llave",
+      "name": "llave",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Está algo oxidada y parece muy débil.\r\n.",
+      "sprite": {
+        "path": "./sprites/llave.png",
+        "x": 680,
+        "y": 195,
+        "width": 30,
+        "height": 30
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la llave.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "llave",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "llave",
+              "actionDestination": "inodoro",
+              "parentId": "baño",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "CHANGE_DESCRIPTION",
+              "thing": "Parece que pierde agua.\r\nNo pienso volver a meter la mano ahí.",
+              "actionDestination": "inodoro",
+              "parentId": "baño",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "botiquin",
+      "name": "botiquin",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Puede ayudarme si tengo una herida de gravedad.",
+      "sprite": {
+        "path": "./sprites/botiquin.png",
+        "x": 325,
+        "y": 125,
+        "width": 40,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el botiquin.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "botiquin",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "botiquin",
+              "actionDestination": "lavamanos",
+              "parentId": "baño",
+              "destinationType": "PLACE"
+            }
+          ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "USE",
+          "onTrigger": "Te sientes un poco mejor.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "botiquin",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "CHANGE_HP",
+              "thing": "+50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vendas",
+      "name": "vendas",
+      "gender": "FEMALE",
+      "number": "PLURAL",
+      "description": "Podría servirme para vendar alguna herida.",
+      "sprite": {
+        "path": "./sprites/vendas.png",
+        "x": 375,
+        "y": 135,
+        "width": 40,
+        "height": 40
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste las vendas.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "vendas",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "vendas",
+              "actionDestination": "lavamanos",
+              "parentId": "baño",
+              "destinationType": "PLACE"
+            }
+          ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "USE",
+          "onTrigger": "Te sientes un poquito mejor.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "vendas",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "CHANGE_HP",
+              "thing": "+25"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "martillo",
+      "name": "martillo",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Estuvo desde siempre en esta cabaña pero nunca lo utilicé.",
+      "sprite": {
+        "path": "./sprites/martillo.png",
+        "x": 310,
+        "y": 148,
+        "width": 50,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el martillo.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "martillo",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "martillo",
+              "actionDestination": "estante",
+              "parentId": "despensa",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nafta",
+      "name": "bidon de nafta",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Todavia le queda un poco de nafta dentro.",
+      "sprite": {
+        "path": "./sprites/nafta.png",
+        "x": 560,
+        "y": 240,
+        "width": 60,
+        "height": 80
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el bidon de nafta.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "nafta",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "nafta",
+              "actionDestination": "mesa",
+              "parentId": "despensa",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fosforos",
+      "name": "fosforos",
+      "gender": "MALE",
+      "number": "PLURAL",
+      "description": "Estan algo humedos pero sirven.",
+      "sprite": {
+        "path": "./sprites/fosforos.png",
+        "x": 730,
+        "y": 190,
+        "width": 50,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste los fósforos.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "fosforos",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "fosforos",
+              "actionDestination": "cajon",
+              "parentId": "cocina",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trapo",
+      "name": "trapo",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Está algo sucio.",
+      "sprite": {
+        "path": "./sprites/trapo.png",
+        "x": 850,
+        "y": 200,
+        "width": 70,
+        "height": 70
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el trapo.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "trapo",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "trapo",
+              "actionDestination": "mesada",
+              "parentId": "cocina",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "frutillas",
+      "name": "frutillas",
+      "gender": "FEMALE",
+      "number": "PLURAL",
+      "description": "Parecen ser muy dulces.",
+      "sprite": {
+        "path": "./sprites/frutillas.png",
+        "x": 250,
+        "y": 240,
+        "width": 50,
+        "height": 40
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste las frutillas.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "frutillas",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "frutillas",
+              "actionDestination": "planta",
+              "parentId": "invernadero",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cuenco",
+      "name": "cuenco",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Es un simple cuenco de madera.",
+      "sprite": {
+        "path": "./sprites/cuenco.png",
+        "x": 560,
+        "y": 285,
+        "width": 60,
+        "height": 40
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el cuenco.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "cuenco",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "cuenco",
+              "actionDestination": "mesa",
+              "parentId": "invernadero",
+              "destinationType": "PLACE"
+            }
+          ]
+        },
+        {
+          "type": "ITEM",
+          "thing": "daga",
+          "onTrigger": "Hacés un corte en tu mano y dejás gotear sangre en el cuenco.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "sangre",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "cuenco",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aconito",
+      "name": "flor de aconito",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es un flor muy bella.",
+      "sprite": {
+        "path": "./sprites/aconito.png",
+        "x": 640,
+        "y": 260,
+        "width": 70,
+        "height": 110
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "pala",
+          "onTrigger": "Juntaste aconito.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "aconito",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "aconito",
+              "actionDestination": "suelo",
+              "parentId": "jardin",
+              "destinationType": "PLACE"
+            }
+          ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Está demasiado enterrado como para sacarlo solo con mis manos.",
+          "afterTrigger": []
+        }
+      ]
+    },
+    {
+      "id": "hacha",
+      "name": "hacha",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "A pesar de haber esta a la intemperie, se mantiene intacta.",
+      "sprite": {
+        "path": "./sprites/hacha.png",
+        "x": 530,
+        "y": 250,
+        "width": 100,
+        "height": 80
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el hacha.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "hacha",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "hacha",
+              "actionDestination": "tocon",
+              "parentId": "bosque_norte",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rosario",
+      "name": "rosario",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Parece tallado a mano.",
+      "sprite": {
+        "path": "./sprites/rosario.png",
+        "x": 250,
+        "y": 380,
+        "width": 70,
+        "height": 70
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el rosario.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "rosario",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "rosario",
+              "actionDestination": "bote",
+              "parentId": "lago",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "carta",
+      "name": "carta",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "'Amigo, ten cuidado, algo ataca a las cabras las noches de luna llena, solo puedo rezar para que no sean nada mas que cabras ...'\r\n¿Qué criatura sera de la que habla?",
+      "sprite": {
+        "path": "./sprites/carta.png",
+        "x": 720,
+        "y": 240,
+        "width": 40,
+        "height": 30
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la carta.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "carta",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "carta",
+              "actionDestination": "mesa",
+              "parentId": "cabaña_cazador",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "libro",
+      "name": "libro",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Parece un libro de cuentos infantiles. 'Zacarias y la puerta misteriosa'\r\n'El niño se acercó a la cueva y dijo las palabras mágicas, y delante de él, la puerta se abrió y sus deseos se cumplieron'.\r\nDemasiado infantil para seguir ...",
+      "sprite": {
+        "path": "./sprites/libro.png",
+        "x": 390,
+        "y": 215,
+        "width": 50,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el libro.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "libro",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "libro",
+              "actionDestination": "sillon",
+              "parentId": "cabaña_cazador",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "juguete",
+      "name": "juguete",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Es un osito sin un ojo. El niño que lo tuvo no lo cuidó demasiado, no se por que pero lo siento familiar.",
+      "sprite": {
+        "path": "./sprites/juguete.png",
+        "x": 600,
+        "y": 200,
+        "width": 80,
+        "height": 80
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el juguete.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "juguete",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "juguete",
+              "actionDestination": "suelo",
+              "parentId": "cabaña_abandonada",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invitacion",
+      "name": "invitacion",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Parece ser una invitacion a alguna fiesta. en ella se lee:\r\n'Esta usted invitado a la fiesta de la luna llena.'",
+      "sprite": {
+        "path": "./sprites/invitacion.png",
+        "x": 730,
+        "y": 240,
+        "width": 50,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la invitacion.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "invitacion",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "invitacion",
+              "actionDestination": "mesa",
+              "parentId": "cabaña_abandonada",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diario",
+      "name": "diario",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Es un diario muy viejo y desgastado. La única entrada legible dice:\r\n'Desde hace un tiempo mi esposo no es lo que solía ser, cada vez esta más tirano y temo por nuestras vidas.\r\nNi bien nazcas, mi amado hijo, te llevaré a un lugar donde estés seguro.'",
+      "sprite": {
+        "path": "./sprites/diario_reina.png",
+        "x": 790,
+        "y": 220,
+        "width": 50,
+        "height": 70
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el diario.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "diario",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "diario",
+              "actionDestination": "mesa",
+              "parentId": "cabaña_abandonada",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trampa",
+      "name": "trampa",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una trampa que se ve bien pero parece peligrosa.",
+      "sprite": {
+        "path": "./sprites/trampa_oso.png",
+        "x": 520,
+        "y": 290,
+        "width": 130,
+        "height": 130
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la trampa.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "trampa",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "trampa",
+              "actionDestination": "suelo",
+              "parentId": "bosque_sur",
+              "destinationType": "PLACE"
+            },
+            {
+              "action": "CHANGE_HP",
+              "thing": "-30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arbusto",
+      "name": "arbusto",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "¿Debería juntarlo por si me es util?",
+      "sprite": {
+        "path": "./sprites/arbusto.png",
+        "x": 130,
+        "y": 270,
+        "width": 130,
+        "height": 130
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Auch, el arbusto tiene espinas.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_HP",
+              "thing": "-30"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enredadera",
+      "name": "enredadera",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una gran enredadera cubierta de espinas que no me deja pasar.",
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Auch, me hice daño, quizás podría deshacerme de ella de alguna forma.",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_HP",
+              "thing": "-30"
+            }
+          ]
+        },
+        {
+          "type": "ITEM",
+          "thing": "antorcha_encendida",
+          "onTrigger": "Arde maldita.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "antorcha_encendida",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "enredadera",
+              "actionDestination": "SOUTH",
+              "parentId": "bosque_norte",
+              "destinationType": "CONNECTION"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "enredadera",
+              "actionDestination": "suelo",
+              "parentId": "bosque_norte",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "puerta_misteriosa",
+      "name": "puerta misteriosa",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "No tiene cerradura y parece tener un hilo de luz que apunta hacia el suroeste.\r\n",
+      "sprite": {
+        "path": "./sprites/puerta_magica.png",
+        "x": 200,
+        "y": 170,
+        "width": 100,
+        "height": 100
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "nota_extraña",
+          "onTrigger": "la puerta desapareció y no puedo ver que hay en su interior.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "nota_extraña",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "puerta_misteriosa",
+              "actionDestination": "NORTH",
+              "parentId": "lago",
+              "destinationType": "CONNECTION"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "puerta_misteriosa",
+              "actionDestination": "cueva",
+              "parentId": "lago",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "piedras",
+      "name": "piedras",
+      "gender": "FEMALE",
+      "number": "PLURAL",
+      "description": "Son demasiado pesadas para moverlas. No tienen ninguna utilidad.",
+      "sprite": {
+        "path": "./sprites/piedras.png",
+        "x": 300,
+        "y": 250,
+        "width": 200,
+        "height": 150
+      },
+      "triggers": []
+    },
+    {
+      "id": "cartel",
+      "name": "cartel",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "'Bienvenido al pueblo de Telihold'",
+      "sprite": {
+        "path": "./sprites/cartel.png",
+        "x": 500,
+        "y": 250,
+        "width": 180,
+        "height": 180
+      },
+      "triggers": []
+    },
+    {
+      "id": "planta",
+      "name": "planta",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es bonita.",
+      "triggers": []
+    },
+    {
+      "id": "biblia",
+      "name": "biblia",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Hay un versiculo resaltado en ella.\r\nIsaías 34:14\r\nLas fieras del desierto se encontrarán con las hienas, el macho cabrío llamará a los de su especie;\r\nsí, el monstruo nocturno se establecerá allí, y encontrará para sí lugar de reposo.",
+      "sprite": {
+        "path": "./sprites/biblia.png",
+        "x": 250,
+        "y": 210,
+        "width": 50,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la biblia.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "biblia",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "biblia",
+              "actionDestination": "altar",
+              "parentId": "iglesia",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pala",
+      "name": "pala",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Esta un poco oxidada pero puede servirme para algo.",
+      "sprite": {
+        "path": "./sprites/pala.png",
+        "x": 200,
+        "y": 280,
+        "width": 100,
+        "height": 100
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste la pala.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "pala",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "pala",
+              "actionDestination": "fosa",
+              "parentId": "cementerio",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "monedas",
+      "name": "monedas",
+      "gender": "FEMALE",
+      "number": "PLURAL",
+      "description": "Son 7 monedas de oro.",
+      "sprite": {
+        "path": "./sprites/monedas.png",
+        "x": 400,
+        "y": 200,
+        "width": 30,
+        "height": 30
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste las monedas. Al parecer los deseos de los demas no son importantes para ti ...",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "monedas",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "monedas",
+              "actionDestination": "fuente",
+              "parentId": "plaza",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vino",
+      "name": "vino",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "En la etiqueta se lee: ´Cosecha de 1#56´.",
+      "sprite": {
+        "path": "./sprites/vino.png",
+        "x": 340,
+        "y": 150,
+        "width": 25,
+        "height": 60
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Juntaste el vino.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "vino",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "vino",
+              "actionDestination": "barra",
+              "parentId": "bar",
+              "destinationType": "PLACE"
+            }
+          ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "USE",
+          "onTrigger": "Creo que no debería haber tomado esto. No me siento bien",
+          "afterTrigger": [
+            {
+              "action": "CHANGE_HP",
+              "thing": "-18"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "vino",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "daga",
+      "name": "daga",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Tiene una hoja muy filosa con grabados artesanales ¿Será de plata?",
+      "sprite": {
+        "path": "./sprites/daga.png",
+        "x": 500,
+        "y": 220,
+        "width": 50,
+        "height": 50
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "No puedo llevarme esto sin pagar.",
+          "afterTrigger": []
+        }
+      ]
+    },
+    {
+      "id": "nota_extraña",
+      "name": "nota extraña",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "En ella se encuentra escritas las palabras: ORTZIMUGA ATARAXIA KALON.",
+      "sprite": {
+        "path": "./sprites/nota_extraña.png",
+        "x": 500,
+        "y": 330,
+        "width": 40,
+        "height": 40
+      },
+      "triggers": [
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Que nota mas extraña ¿Quien habrá dejado esto aquí?",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "nota_extraña",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "nota_extraña",
+              "actionDestination": "suelo",
+              "parentId": "bar",
+              "destinationType": "PLACE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "busto",
+      "name": "busto",
+      "gender": "MALE",
+      "number": "SINGULAR",
+      "description": "Es una representacion un poco irreal del todopoderoso rey.",
+      "sprite": {
+        "path": "./sprites/busto.png",
+        "x": 720,
+        "y": 35,
+        "width": 80,
+        "height": 120
+      },
+      "triggers": []
+    },
+    {
+      "id": "pocion",
+      "name": "pocion",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una mezcla asquerosa de hierbas y mi sangre.Jamás bebería esto",
+      "sprite": {
+        "path": "./sprites/pocion.png",
+        "x": 720,
+        "y": 35,
+        "width": 80,
+        "height": 120
+      },
+      "triggers": []
+    },
+    {
+      "id": "puerta",
+      "name": "puerta",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Una puerta sólida cerrada con llave que impide el paso.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "llave",
+          "onTrigger": "La llave se ha roto.\r\nMejor busco otra manera de salir.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "llave",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ventana",
+      "name": "ventana",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Hay una ventana. El hielo del exterior la está bloqueando.\r\nCon un buen golpe podría abrirla.",
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "martillo",
+          "onTrigger": "El golpe fue muy fuerte y el vidrio estalló.Ahora puedo salir de la cabaña.",
+          "afterTrigger": [
+            {
+              "action": "REMOVE",
+              "thing": "ventana",
+              "actionDestination": "EAST",
+              "destinationType": "CONNECTION",
+              "parentId": "sala"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sangre",
+      "name": "sangre",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es un cuenco lleno de mi sangre.",
+      "sprite": {
+        "path": "./sprites/cuenco_sangre.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "triggers": [
+        {
+          "type": "ITEM",
+          "thing": "aconito",
+          "onTrigger": "La poción esta lista.",
+          "afterTrigger": [
+            {
+              "action": "ADD",
+              "thing": "pocion",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "aconito",
+              "destinationType": "INVENTORY"
+            },
+            {
+              "action": "REMOVE",
+              "thing": "sangre",
+              "destinationType": "INVENTORY"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "selectedPlayer": {
+    "name": "Genn Greymane",
+    "gender": "MALE",
+    "settings": {
+      "initialLocation": "sala",
+      "initialHealthPoints": 50
+    },
+    "items": []
+  },
+  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\nTienes una mordida extraña, quizás deberías vendarte antes de continuar …",
+  "map": {
+    "path": "./sprites/mapa.png",
+    "x": 15,
+    "y": 15,
+    "width": 945,
+    "height": 625
+  }
+}

@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.google.gson.*;
 import helpers.*;
-import enums.Directions;
-import enums.Genders;
+import enums.Direction;
+import enums.Gender;
 import models.*;
 
 class KhoeliTest {
@@ -36,27 +36,26 @@ class KhoeliTest {
 	void testMoveToExistingLocation() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
 		Location initialLocation = selectedPlayer.getCurrentLocation();
-		String result = selectedPlayer.move(Directions.SOUTH);
+		String result = selectedPlayer.move(Direction.SOUTH);
 		selectedAdventure.getSelectedPlayer().getInventory().add(selectedAdventure.findItem("pico"));
 		assertTrue(selectedPlayer.getInventory().contains(selectedAdventure.findItem("pico")));
 		assertEquals("Es una piedra enorme que te impide pasar mientras este ahí", result);
 		assertEquals(initialLocation, selectedPlayer.getCurrentLocation());
 		assertEquals("la piedra se rompió pero el pico tambien porque era muy debil",
 				selectedPlayer.use(selectedAdventure.findItem("pico"), selectedAdventure.findItem("piedra")));
-		assertNull(initialLocation.findObstacle(Directions.SOUTH));
+		assertNull(initialLocation.findObstacle(Direction.SOUTH));
 		assertFalse(selectedPlayer.getInventory().contains(selectedAdventure.findItem("pico")));
-		assertEquals("Estas en una cueva, al norte esta el descampado", selectedPlayer.move(Directions.SOUTH));
+		assertEquals("Estas en una cueva, al norte esta el descampado", selectedPlayer.move(Direction.SOUTH));
 	}
 
 	@Test
 	void testMoveToNonExistingLocation() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
 		Location initialLocation = selectedPlayer.getCurrentLocation();
-		String result = selectedPlayer.move(Directions.EAST);
+		String result = selectedPlayer.move(Direction.EAST);
 		assertEquals("No hay nada al este", result);
 		assertEquals(initialLocation, selectedPlayer.getCurrentLocation());
 	}
-
 
 	@Test
 	void testPickUpExistingItem() {
@@ -122,8 +121,8 @@ class KhoeliTest {
 	@Test
 	void testCustomizeCharacter() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
-		selectedPlayer.customize("Julia", Genders.FEMALE);
-		assertEquals(Genders.FEMALE, selectedPlayer.getGender());
+		selectedPlayer.customize("Julia", Gender.FEMALE);
+		assertEquals(Gender.FEMALE, selectedPlayer.getGender());
 		assertEquals("Julia", selectedPlayer.getName());
 	}
 
@@ -131,11 +130,10 @@ class KhoeliTest {
 	void testEndgame() {
 		Playable selectedPlayer = selectedAdventure.getSelectedPlayer();
 		Location mercia = selectedAdventure.findLocation("bar");
-		String result = selectedPlayer.move(Directions.NORTH);
+		String result = selectedPlayer.move(Direction.NORTH);
 		assertEquals(mercia, selectedPlayer.getCurrentLocation());
-		assertEquals(
-				"Estas en un bar llamado Mercia, al sur esta el descampadoPasaste una noche muy divertida con tus amigos. THE END",
-				result);
+		assertEquals("Estas en un bar llamado Mercia, al sur esta el descampado" + System.lineSeparator()
+				+ "Pasaste una noche muy divertida con tus amigos. THE END", result);
 	}
 //
 //	@Test
@@ -212,6 +210,6 @@ class KhoeliTest {
 		Item item1 = selectedAdventure.findItem("espada_vieja");
 		Item item2 = selectedAdventure.findItem("piedra");
 
-		assertEquals("no se puede usar espada vieja con piedra", selectedPlayer.use(item1, item2));
+		assertEquals("No puedo hacer eso", selectedPlayer.use(item1, item2));
 	}
 }

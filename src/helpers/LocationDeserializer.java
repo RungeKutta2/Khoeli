@@ -12,12 +12,12 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import enums.Genders;
-import enums.Numbers;
-import models.AfterTrigger;
-import models.Connection;
+import enums.Gender;
+import enums.Number;
 import models.Location;
+import models.NonPlayable;
 import models.Place;
+import models.Sprite;
 import models.Trigger;
 
 public class LocationDeserializer implements JsonDeserializer<Location> {
@@ -30,24 +30,28 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 
 		gsonBuilder.registerTypeAdapter(Place.class, new PlaceDeserializer());
 		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
+		gsonBuilder.registerTypeAdapter(Sprite.class, new SpriteDeserializer());
+		gsonBuilder.registerTypeAdapter(NonPlayable.class, new NonPlayableDeserializer());
 
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
-		
+
 		String id = jobject.get("id").getAsString();
 		String name = jobject.get("name").getAsString();
-		Genders gender = Genders.valueOf(jobject.get("gender").getAsString());
-		Numbers number = Numbers.valueOf(jobject.get("number").getAsString());
+		Gender gender = Gender.valueOf(jobject.get("gender").getAsString());
+		Number number = Number.valueOf(jobject.get("number").getAsString());
 		String description = jobject.get("description").getAsString();
 		List<Place> places = gson.fromJson(jobject.get("places").getAsJsonArray(), new TypeToken<List<Place>>() {
 		}.getType());
 		List<String> npcs = gson.fromJson(jobject.get("npcs").getAsJsonArray(), new TypeToken<List<String>>() {
 		}.getType());
-        List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(), new TypeToken<List<Trigger>>(){}.getType());
+		List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(),
+				new TypeToken<List<Trigger>>() {
+				}.getType());
+		Sprite sprite = gson.fromJson(jobject.get("sprite"), Sprite.class);
 
-		Location location = new Location(id, name, gender, number, description, places, npcs,triggers);
+		return new Location(id, name, gender, number, description, places, npcs, triggers, sprite);
 
-		return location;
 	}
 
 }

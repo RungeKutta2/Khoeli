@@ -1,45 +1,45 @@
 package interfaces;
 
-import enums.Genders;
-import enums.Numbers;
+import enums.Gender;
+import enums.Number;
 
 public interface Observable {
 
 	String lookAt();
-	default String getDefineArticle(Genders gender,Numbers number) {
-        String result;
-        if (gender.equals(Genders.MALE)) {
-            if (number.equals(Numbers.SINGULAR)) {
-                result = "El";
-            } else {
-                result = "Los";
-            }
-        } else {
-            if (number.equals(Numbers.SINGULAR)) {
-                result = "La";
-            } else {
-                result = "Las";
-            }
-        }
-        return result;
-    }
+	
+	default String getDefinedArticle(Gender gender,Number number) {
+		String result;
+		if (gender.equals(Gender.MALE)) {
+			if (number.equals(Number.SINGULAR)) {
+				result = "el";
+			} else {
+				result = "los";
+			}
+		} else {
+			if (number.equals(Number.SINGULAR)) {
+				result = "la";
+			} else {
+				result = "las";
+			}
+		}
+		return result;
+	}
 
-    default String getUndefineArticle(Genders gender,Numbers number) {
-        String result;
-        if (gender.equals(Genders.MALE)) {
-            if (number.equals(Numbers.SINGULAR)) {
-                result = "Un";
-            } else {
-                result = "Unos";
-            }
-        } else {
-            if (number.equals(Numbers.SINGULAR)) {
-                result = "Una";
-            } else {
-                result = "Unas";
-            }
-        }
-        return result;
-    }
-
+	default String getUndefinedArticle(Gender gender,Number number) {
+		String result;
+		if (gender.equals(Gender.MALE)) {
+			if (number.equals(Number.SINGULAR)) {
+				result = "un";
+			} else {
+				result = "unos";
+			}
+		} else {
+			if (number.equals(Number.SINGULAR)) {
+				result = "una";
+			} else {
+				result = "unas";
+			}
+		}
+		return result;
+	}
 }

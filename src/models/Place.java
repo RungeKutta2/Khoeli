@@ -1,38 +1,51 @@
 package models;
-import java.text.Normalizer;
+
 import java.util.List;
-import enums.Types;
-import enums.Genders;
-import enums.Numbers;
+import java.util.Optional;
+
+import enums.TriggerType;
+import enums.Gender;
+import enums.Number;
 import interfaces.Observable;
 import interfaces.Triggerable;
 
-public class Place implements Triggerable, Observable{
+public class Place implements Triggerable, Observable {
 	private String name;
-	private Genders gender;
-	private Numbers number;
+	private Gender gender;
+	private Number number;
 	private Inventory items;
 	private String description;
 	private List<Trigger> triggers;
+	private Sprite sprite;
 
-	public Place(String name, Genders gender, Numbers number, List<String> items, String description) {
+	
+	public Place(String name, Gender gender, Number number, List<String> items, String description, Sprite sprite) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
 		this.items = setItems(items);
 		this.description = description;
+		this.items.setEmptyInventoryDescription(
+				"No hay nada útil en " + getDefinedArticle(this.gender, this.number) + " " + name);
+		this.items.setFullInventoryDescription(
+				"En " + getDefinedArticle(this.gender, this.number) + " " + name + " hay:\n");
+		this.sprite = sprite;
 	}
-	
-	private Inventory setItems(List<String> items){
+
+	private Inventory setItems(List<String> items) {
 		Inventory inventory = new Inventory();
 		for (String itemId : items) {
 			inventory.add(Adventure.getSelectedAdventure().findItem(itemId));
 		}
-		
+
 		return inventory;
 	}
-	
 
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	
 	public String getName() {
 		return name;
 	}
@@ -42,23 +55,23 @@ public class Place implements Triggerable, Observable{
 	}
 
 	@Override
-	public String executeTrigger(Types type, String thing) {
-		Trigger foundTrigger = null;
-		int i = 0;
-		if(triggers != null) {
-			while (foundTrigger == null && i < triggers.size()) {
-				if (triggers.get(i).getType().equals(type) && triggers.get(i).getThing().equals(thing)) {
-					foundTrigger = triggers.get(i);
-				}
-				i++;
-			}
-		}
+	public String executeTrigger(TriggerType type, String thing) {
+		Trigger foundTrigger = findTrigger(type, thing);
 		String result = "";
-		if(foundTrigger!= null) {
-			result  = foundTrigger.getOnTrigger();
-			foundTrigger.executeAfterTriggers();
+		if (foundTrigger != null) {
+			result = foundTrigger.execute();
 		}
 		return result;
+	}
+
+	private Trigger findTrigger(TriggerType type, String thing) {
+		Trigger found = null;
+		if (type != null && thing != null) {
+			Optional<Trigger> result = triggers.stream()
+					.filter(x -> x.getType().equals(type) && x.getThing().equals(thing)).findFirst();
+			found = result.isPresent() ? result.get() : null;
+		}
+		return found;
 	}
 
 	public Item findItem(String id) {
@@ -70,14 +83,18 @@ public class Place implements Triggerable, Observable{
 		return null;
 
 	}
-	
+	@Override
 	public void changeDescription(String thing) {
 		description = thing;
 	}
 
 	@Override
 	public String lookAt() {
-		return   description + System.lineSeparator() +"En " + getDefineArticle(gender, number) + " " + name + " hay:" + System.lineSeparator() + items.lookAt();
+		String inventoryDescription = description + System.lineSeparator()
+				+ (items.isEmpty() ? items.getEmptyInventoryDefaultDescription()
+						: (items.getFullInventoryDefaultDescription() + items.lookAt()));
+
+		return inventoryDescription;
 	}
 
 }

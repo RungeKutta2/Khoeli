@@ -1,19 +1,24 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import enums.Genders;
-import enums.Numbers;
 import interfaces.Observable;
 
-public class Inventory implements Observable {
+public class Inventory implements Observable, Iterable<Item> {
 	private List<Item> items;
+	private String emptyInventoryDescription;
+	private String fullInventoryDescription;
 
+	
+	
 	public Inventory() {
 		items = new ArrayList<Item>();
 	}
 
+	
+	
 	public void add(Item item) {
 		items.add(item);
 	}
@@ -31,7 +36,7 @@ public class Inventory implements Observable {
 		StringBuilder sb = new StringBuilder();
 		for (Item item : items) {
 			sb.append("- ");
-			sb.append(getUndefineArticle(item.getGender(), item.getNumber()) + " ");
+			sb.append(getUndefinedArticle(item.getGender(), item.getNumber()) + " ");
 			sb.append(item.getName());
 			sb.append(System.lineSeparator());
 		}
@@ -40,5 +45,36 @@ public class Inventory implements Observable {
 			sb.delete(last, sb.length());
 		}
 		return sb.toString();
+	}
+
+	public int size() {
+		return items.size();
+	}
+
+	public boolean isEmpty() {
+		return items.isEmpty();
+	}
+
+	public void setEmptyInventoryDescription(String emptyInventoryDescription) {
+		this.emptyInventoryDescription = emptyInventoryDescription;
+	}
+
+	public String getEmptyInventoryDefaultDescription() {
+		return emptyInventoryDescription;
+	}
+	
+	public void setFullInventoryDescription(String fullInventoryDescription) {
+		this.fullInventoryDescription = fullInventoryDescription;
+	}
+
+	public String getFullInventoryDefaultDescription() {
+		return fullInventoryDescription;
+	}
+
+
+
+	@Override
+	public Iterator<Item> iterator() {
+		return items.iterator();
 	}
 }
