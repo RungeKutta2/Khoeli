@@ -2872,6 +2872,21 @@
       "triggers": []
     },
     {
+      "id": "pocion",
+      "name": "pocion",
+      "gender": "FEMALE",
+      "number": "SINGULAR",
+      "description": "Es una mezcla asquerosa de hierbas y mi sangre.Jamás bebería esto",
+      "sprite": {
+        "path": "./sprites/pocion.png",
+        "x": 720,
+        "y": 35,
+        "width": 80,
+        "height": 120
+      },
+      "triggers": []
+    },
+    {
       "id": "puerta",
       "name": "puerta",
       "gender": "FEMALE",
