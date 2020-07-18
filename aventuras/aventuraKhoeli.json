@@ -108,9 +108,9 @@
           "sprite": {
             "path": "./sprites/inodoro.png",
             "x": 600,
-            "y": 180,
+            "y": 100,
             "width": 200,
-            "height": 170
+            "height": 220
           },
           "description": "Parece que pierde agua.\r\n¿Debería meter la mano allí?"
         },
@@ -129,6 +129,13 @@
             "botiquin",
             "vendas"
           ],
+          "sprite": {
+            "path": "./sprites/lavabo.png",
+            "x": 300,
+            "y": 130,
+            "width": 130,
+            "height": 150
+          },
           "description": "Está realmente sucio y cubierto por musgo."
         }
       ],
@@ -155,6 +162,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Estás en la cocina.\r\nA tu alrededor hay una mesada con un cajon.\r\nAl Sur está la sala, al Oeste está la despensa.",
+      "sprite": {
+        "path": "./sprites/cocina.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "mesada",
@@ -202,7 +216,7 @@
       "name": "despensa",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la despensa.\r\nA tu alrededor hay un estante y una mesa.\r\nEste está la cocina.",
+      "description": "Estás en la despensa.\r\nA tu alrededor hay un estante y una mesa.\r\nAl este está la cocina.",
       "places": [
         {
           "name": "mesa",
@@ -267,6 +281,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estás en el bosque norte.\r\nHay un tronco cortado.\r\nOeste está la sala, al Este esta el lago y al sur esta el bosque sur.",
+      "sprite": {
+        "path": "./sprites/bosque_norte.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "tronco_cortado",
@@ -275,7 +296,14 @@
           "items": [
             "hacha"
           ],
-          "description": "Parece un nogal pero no estoy seguro."
+          "description": "Parece un nogal pero no estoy seguro.",
+          "sprite": {
+            "path": "./sprites/tronco_cortado.png",
+            "x": 500,
+            "y": 250,
+            "width": 150,
+            "height": 150
+          }
         },
         {
           "name": "suelo",
@@ -313,6 +341,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estás en el bosque sur.\r\nAl Norte está el bosque norte y al Oeste esta el jardin.",
+      "sprite": {
+        "path": "./sprites/bosque_sur.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -370,7 +405,14 @@
           "items": [
             "rosario"
           ],
-          "description": "Si tan solo el lago no estuviera congelado, podria usarlo para pescar."
+          "description": "Si tan solo el lago no estuviera congelado, podria usarlo para pescar.",
+          "sprite": {
+            "path": "./sprites/bote.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         }
       ],
       "npcs": [],
@@ -404,6 +446,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Estás en la cueva.",
+      "sprite": {
+        "path": "./sprites/cueva.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [],
       "npcs": [],
       "connections": [
@@ -421,6 +470,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Estás en la cabaña abandonada.\r\nHay una mesa y un armario.\r\nAl Norte está el lago.",
+      "sprite": {
+        "path": "./sprites/cabaña_abandonada.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -436,7 +492,14 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Hay ropa de mujer dentro. Vestidos refinados de alta costura mezclados con blusas plebeyas.\r\n¿Alguien habra usado esta cabaña para esconderse?"
+          "description": "Hay ropa de mujer dentro. Vestidos refinados de alta costura mezclados con blusas plebeyas.\r\n¿Alguien habra usado esta cabaña para esconderse?",
+          "sprite": {
+            "path": "./sprites/armario.png",
+            "x": 200,
+            "y": 40,
+            "width": 180,
+            "height": 240
+          }
         },
         {
           "name": "mesa",
@@ -446,7 +509,14 @@
             "invitacion",
             "diario"
           ],
-          "description": "Parece maciza"
+          "description": "Parece maciza",
+          "sprite": {
+            "path": "./sprites/mesa2.png",
+            "x": 700,
+            "y": 230,
+            "width": 180,
+            "height": 180
+          }
         }
       ],
       "npcs": [],
@@ -528,7 +598,14 @@
           "items": [
             "libro"
           ],
-          "description": "No me sentaría en él."
+          "description": "No me sentaría en él.",
+          "sprite": {
+            "path": "./sprites/sillon.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         }
       ],
       "npcs": [],
@@ -547,6 +624,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estás en el jardin.\r\nHay un buzón.\r\nAl Este está el bosque sur, al Oeste esta el invernadero, al Sur esta el sendero sur y al Norte esta la sala.",
+      "sprite": {
+        "path": "./sprites/jardin.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -571,7 +655,14 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Está vacio."
+          "description": "Está vacio.",
+          "sprite": {
+            "path": "./sprites/buzon.png",
+            "x": 340,
+            "y": 260,
+            "width": 70,
+            "height": 110
+          }
         }
       ],
       "npcs": [],
@@ -605,6 +696,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estás en el invernadero.\r\nHay una mesa y una planta.\r\nAl Este está el jardin.",
+      "sprite": {
+        "path": "./sprites/invernadero.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -620,7 +718,14 @@
           "items": [
             "cuenco"
           ],
-          "description": "Esta llena de tierra y suciedad."
+          "description": "Esta llena de tierra y suciedad.",
+          "sprite": {
+            "path": "./sprites/mesa2.png",
+            "x": 500,
+            "y": 250,
+            "width": 200,
+            "height": 200
+          }
         },
         {
           "name": "planta",
@@ -629,7 +734,14 @@
           "items": [
             "frutillas"
           ],
-          "description": "Tiene unas frutillas en su interior."
+          "description": "Tiene unas frutillas en su interior.",
+          "sprite": {
+            "path": "./sprites/planta_de_frutillas.png",
+            "x": 220,
+            "y": 250,
+            "width": 120,
+            "height": 100
+          }
         }
       ],
       "npcs": [],
@@ -648,6 +760,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estás en el sendero sur.\r\nHay un cartel.\r\nAl Norte está el jardin y  al Sur el pueblo.",
+      "sprite": {
+        "path": "./sprites/sendero_sur.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -750,14 +869,28 @@
           "items": [
             "monedas"
           ],
-          "description": "Es una obra de arte."
+          "description": "Es una obra de arte.",
+          "sprite": {
+            "path": "./sprites/fuente.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         },
         {
           "name": "banco",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": "Es un bonito banco de madera con detalles en metal."
+          "description": "Es un bonito banco de madera con detalles en metal.",
+          "sprite": {
+            "path": "./sprites/banco.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         }
       ],
       "npcs": [
@@ -793,6 +926,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Estás en la iglesia.\r\nHay un altar y un anciano.\r\nAl Oeste está el cementerio y al Este el pueblo.",
+      "sprite": {
+        "path": "./sprites/iglesia.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "places": [
         {
           "name": "suelo",
@@ -808,7 +948,14 @@
           "items": [
             "biblia"
           ],
-          "description": ""
+          "description": "",
+          "sprite": {
+            "path": "./sprites/altar.png",
+            "x": 180,
+            "y": 200,
+            "width": 180,
+            "height": 180
+          }
         }
       ],
       "npcs": [
@@ -889,7 +1036,9 @@
           "name": "puesto",
           "gender": "MALE",
           "number": "SINGULAR",
-          "items": [],
+          "items": [
+            "daga"
+          ],
           "description": "Hay un mercader que vende articulos."
         },
         {
@@ -930,8 +1079,17 @@
           "name": "barra",
           "gender": "MALE",
           "number": "SINGULAR",
-          "items": [],
-          "description": "Hay mucha cerveza volcada."
+          "items": [
+            "vino"
+          ],
+          "description": "Hay mucha cerveza volcada.",
+          "sprite": {
+            "path": "./sprites/barra.png",
+            "x": 200,
+            "y": 250,
+            "width": 180,
+            "height": 80
+          }
         }
       ],
       "npcs": [
@@ -1069,6 +1227,13 @@
       "description": "Parece un hombre bastante pasado de copas.",
       "gender": "MALE",
       "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/borracho.png",
+        "x": 500,
+        "y": 250,
+        "width": 100,
+        "height": 180
+      },
       "triggers": [],
       "talk": " ¡Hic! Sho se que el shey ese algo esconde, creeme ¡Hic! muchacho, tengo un don para estas cosas ¡ Burp ! ¡ Salud !."
     },
@@ -1078,6 +1243,13 @@
       "description": "Es un simple campesino, parece simpático.",
       "gender": "MALE",
       "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/campesino.png",
+        "x": 500,
+        "y": 250,
+        "width": 180,
+        "height": 180
+      },
       "triggers": [],
       "talk": " ¿ Y tu que haces por aquí ? ¿ No sabes que en las noches de luna llena en este pueblo pasan cosas extrañas ? \r\n"
     },
@@ -1087,6 +1259,13 @@
       "description": "Es un hombre mayor.",
       "gender": "MALE",
       "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/mercader.png",
+        "x": 500,
+        "y": 250,
+        "width": 120,
+        "height": 180
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1185,6 +1364,13 @@
       "description": "Parece fiel a sus creencias.",
       "gender": "MALE",
       "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/anciano.png",
+        "x": 100,
+        "y": 70,
+        "width": 100,
+        "height": 180
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1235,6 +1421,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Es una fotografia de una mujer con su hijo.",
+      "sprite": {
+        "path": "./sprites/fotografia.png",
+        "x": 550,
+        "y": 250,
+        "width": 70,
+        "height": 70
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1417,6 +1610,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Está algo oxidada y parece muy débil.\r\n.",
+      "sprite": {
+        "path": "./sprites/llave.png",
+        "x": 680,
+        "y": 195,
+        "width": 30,
+        "height": 30
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1452,6 +1652,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Puede ayudarme si tengo una herida de gravedad.",
+      "sprite": {
+        "path": "./sprites/botiquin.png",
+        "x": 325,
+        "y": 125,
+        "width": 40,
+        "height": 50
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1496,6 +1703,13 @@
       "gender": "FEMALE",
       "number": "PLURAL",
       "description": "Podría servirme para vendar alguna herida.",
+      "sprite": {
+        "path": "./sprites/vendas.png",
+        "x": 375,
+        "y": 135,
+        "width": 40,
+        "height": 40
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1610,6 +1824,13 @@
       "gender": "MALE",
       "number": "PLURAL",
       "description": "Estan algo humedos pero sirven.",
+      "sprite": {
+        "path": "./sprites/fosforos.png",
+        "x": 500,
+        "y": 250,
+        "width": 80,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1638,6 +1859,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Está algo sucio.",
+      "sprite": {
+        "path": "./sprites/trapo.png",
+        "x": 300,
+        "y": 250,
+        "width": 80,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1666,6 +1894,13 @@
       "gender": "FEMALE",
       "number": "PLURAL",
       "description": "Parecen ser muy dulces.",
+      "sprite": {
+        "path": "./sprites/frutilla.png",
+        "x": 220,
+        "y": 250,
+        "width": 50,
+        "height": 50
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1694,6 +1929,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Es un simple cuenco de madera.",
+      "sprite": {
+        "path": "./sprites/cuenco.png",
+        "x": 560,
+        "y": 285,
+        "width": 60,
+        "height": 40
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1739,6 +1981,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Es un flor muy bella.",
+      "sprite": {
+        "path": "./sprites/aconito.png",
+        "x": 640,
+        "y": 260,
+        "width": 70,
+        "height": 110
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1767,6 +2016,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "A pesar de haber esta a la intemperie, se mantiene intacta.",
+      "sprite": {
+        "path": "./sprites/hacha.png",
+        "x": 530,
+        "y": 250,
+        "width": 100,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1851,6 +2107,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Parece un libro de cuentos infantiles. 'Zacarias y la puerta misteriosa'\r\n'El niño se acercó a la cueva y dijo las palabras mágicas, y delante de él, la puerta se abrió y sus deseos se cumplieron'.\r\nDemasiado infantil para seguir ...",
+      "sprite": {
+        "path": "./sprites/libro.png",
+        "x": 500,
+        "y": 250,
+        "width": 80,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1879,6 +2142,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Es un osito sin un ojo. El niño que lo tuvo no lo cuidó demasiado, no se por que pero lo siento familiar.",
+      "sprite": {
+        "path": "./sprites/juguete.png",
+        "x": 600,
+        "y": 200,
+        "width": 80,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1963,6 +2233,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Es una trampa que se ve bien pero parece peligrosa.",
+      "sprite": {
+        "path": "./sprites/trampa_oso.png",
+        "x": 520,
+        "y": 290,
+        "width": 130,
+        "height": 130
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1992,9 +2269,16 @@
     {
       "id": "arbusto",
       "name": "arbusto",
-      "gender": "FEMALE",
+      "gender": "MALE",
       "number": "SINGULAR",
       "description": "¿Debería juntarlo por si me es util?",
+      "sprite": {
+        "path": "./sprites/arbusto.png",
+        "x": 130,
+        "y": 270,
+        "width": 130,
+        "height": 130
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2134,6 +2418,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Esta un poco oxidada pero puede servirme para algo.",
+      "sprite": {
+        "path": "./sprites/pala.png",
+        "x": 500,
+        "y": 250,
+        "width": 180,
+        "height": 180
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2190,6 +2481,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "En la etiqueta se lee: ´Cosecha de 1#56´.",
+      "sprite": {
+        "path": "./sprites/vino.png",
+        "x": 200,
+        "y": 200,
+        "width": 40,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2234,6 +2532,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Tiene una hoja muy filosa con grabados artesanales ¿Será de plata?",
+      "sprite": {
+        "path": "./sprites/daga.png",
+        "x": 500,
+        "y": 250,
+        "width": 50,
+        "height": 50
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2359,7 +2664,7 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "baño",
+      "initialLocation": "sala",
       "initialHealthPoints": 100
     },
     "items": []
