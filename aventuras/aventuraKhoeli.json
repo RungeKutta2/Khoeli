@@ -1121,7 +1121,7 @@
       "name": "mercado",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el mercado.\r\nHay un puesto y un cajón.\r\nAl Este esta la plaza.",
+      "description": "Estás en el mercado.\r\nHay un puesto con un mercader vendiendo y un cajón.\r\nAl Este esta la plaza.",
       "places": [
         {
           "name": "suelo",
@@ -1422,7 +1422,7 @@
           ]
         }
       ],
-      "talk": " Por un precio justo, puedo darte algo útil."
+      "talk": "'Por un precio justo, puedo darte algo útil.'"
     },
     {
       "id": "gorila",
@@ -1458,7 +1458,7 @@
           ]
         }
       ],
-      "talk": " ¿ Estás en la lista ? "
+      "talk": " ¿ Estás en la lista ? - El gorila me mira fijamente ..."
     },
     {
       "id": "brujo",
@@ -1548,7 +1548,7 @@
           ]
         }
       ],
-      "talk": "Dios nos ilumina a todos de distinta manera pero siempre elige el camino correcto para todos nosotros."
+      "talk": "'Dios nos ilumina a todos de distinta manera pero siempre elige el camino correcto para todos nosotros.' Parece un anciano loco."
     },
     {
       "id": "guardia",
@@ -1579,7 +1579,7 @@
           ]
         }
       ],
-      "talk": "Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.\r\nAunque, lo podríamos negociar por lo más dulce del valle."
+      "talk": "'Pequeña rata, tengo órdenes estrictas de no dejar pasar a nadie.\r\nAunque, lo podríamos negociar por lo más dulce del valle.' Dice el guardia."
     }
   ],
   "items": [
