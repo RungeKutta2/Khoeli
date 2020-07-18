@@ -418,8 +418,8 @@
             "path": "./sprites/bote.png",
             "x": 500,
             "y": 250,
-            "width": 180,
-            "height": 180
+            "width": 150,
+            "height": 100
           }
         }
       ],
@@ -831,7 +831,14 @@
           "items": [
             "planta"
           ],
-          "description": "Tiene plantas muy coloridas."
+          "description": "Tiene plantas muy coloridas.",
+          "sprite": {
+            "path": "./sprites/cantero.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 80
+          }
         }
       ],
       "npcs": [
@@ -2108,6 +2115,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "'Amigo, ten cuidado, algo ataca a las cabras las noches de luna llena, solo puedo rezar para que no sean nada mas que cabras ...'\r\n¿Qué criatura sera de la que habla?",
+      "sprite": {
+        "path": "./sprites/carta.png",
+        "x": 300,
+        "y": 250,
+        "width": 50,
+        "height": 50
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2209,9 +2223,9 @@
       "sprite": {
         "path": "./sprites/invitacion.png",
         "x": 730,
-        "y": 230,
-        "width": 40,
-        "height": 60
+        "y": 240,
+        "width": 50,
+        "height": 50
       },
       "triggers": [
         {
@@ -2241,6 +2255,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Es un diario muy viejo y desgastado. La única entrada legible dice:\r\n'Desde hace un tiempo mi esposo no es lo que solía ser, cada vez esta más tirano y temo por nuestras vidas.\r\nNi bien nazcas, mi amado hijo, te llevaré a un lugar donde estés seguro.'",
+      "sprite": {
+        "path": "./sprites/diario_reina.png",
+        "x": 790,
+        "y": 220,
+        "width": 50,
+        "height": 70
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2374,6 +2395,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "No tiene cerradura y parece tener un hilo de luz que apunta hacia el suroeste.\r\n",
+      "sprite": {
+        "path": "./sprites/puerta_magica.png",
+        "x": 500,
+        "y": 250,
+        "width": 150,
+        "height": 150
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -2410,6 +2438,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "'Bienvenido al pueblo de Telihold'",
+      "sprite": {
+        "path": "./sprites/cartel.png",
+        "x": 500,
+        "y": 250,
+        "width": 180,
+        "height": 180
+      },
       "triggers": []
     },
     {
@@ -2707,7 +2742,7 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "cocina",
+      "initialLocation": "lago",
       "initialHealthPoints": 100
     },
     "items": []
