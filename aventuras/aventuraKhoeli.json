@@ -1725,7 +1725,7 @@
       "number": "SINGULAR",
       "description": "Es un tronco con un trapo atado en un extremo.",
       "sprite": {
-        "path": "./sprites/antorcha_apagada.png",
+        "path": "./sprites/tronco_trapo.png",
         "x": 0,
         "y": 0,
         "width": 80,
