@@ -7,6 +7,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -32,6 +36,8 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
@@ -64,8 +70,11 @@ public class Console extends JFrame {
 	private JTextField input;
 	private JScrollPane scrollpane;
 	private DrawPanel gameGraphics;
+	
 	private JToolBar toolbar;
-
+	private JButton guardarpartida;
+	private JButton abriraventura;
+	
 	private ArrayList<String> recent_used;
 	private int recent_used_id = 0;
 	private int recent_used_max = 10;
@@ -88,23 +97,56 @@ public class Console extends JFrame {
 		toolbar = new JToolBar();
 		gameGraphics = new DrawPanel();
 		
-		setTitle("Console");
+		setTitle("Khoeli");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		guardarpartida = new JButton();
+		guardarpartida.setText("Guardar");
+		guardarpartida.setBorderPainted(false);
+		guardarpartida.setFocusPainted(false);
+		guardarpartida.setMargin(new Insets(5, 10, 5, 10));
+		guardarpartida.setFont(new Font("Arial", Font.PLAIN, 12));
+		guardarpartida.setEnabled(false);
+		
+		guardarpartida.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveAdventure();
+			}
+		});
+		
+		abriraventura = new JButton();
+		abriraventura.setText("Seleccionar aventura");
+		abriraventura.setBorderPainted(false);
+		abriraventura.setFocusPainted(false);
+		abriraventura.setMargin(new Insets(5, 10, 5, 10));
+		abriraventura.setFont(new Font("Arial", Font.PLAIN, 12));
+		
+		abriraventura.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectAdventure();
+			}
+		});
 		
 		toolbar.setSize(1000,50);
-		toolbar.setBackground(Color.YELLOW);
+		toolbar.setFloatable(false);
+		toolbar.add(abriraventura);
+		toolbar.add(guardarpartida);
 		
 		console = new JTextPane();
 		console.setEditable(false);
 		console.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
 		console.setForeground(Color.WHITE);
-		console.setSize(1000, 200);
+		console.setSize(980, 200);
 		console.getStyledDocument();
 
 		scrollpane = new JScrollPane();
 		scrollpane.setBorder(null);
 		scrollpane.setOpaque(false);
+		scrollpane.setSize(980,200);
 
 		recent_used = new ArrayList<String>();
 		recent_used_id = 0;
@@ -115,13 +157,15 @@ public class Console extends JFrame {
 		scrollpane.setViewportView(console);
 		scrollpane.getViewport().setOpaque(false);
 
+		
 		input = new JTextField();
 		input.setEditable(true);
 		input.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
-		input.setSize(1000,50);
+		input.setSize(990,50);
 		input.setCaretColor(Color.WHITE);
 		input.setForeground(Color.WHITE);
 		input.setOpaque(false);
+		input.setEnabled(false);
 
 		input.addActionListener(new ActionListener() {
 
@@ -136,8 +180,9 @@ public class Console extends JFrame {
 
 				Command comando = Parser.parse(text);
 
+				selectedAdventure.appendRequest(text);
 				if (comando != null) {
-					selectedAdventure.appendRequest(text);
+					
 					String result = parser.execute(selectedAdventure, comando);
 					selectedAdventure.appendResponse(result);
 					final char[] var = { '.', '\n' };
@@ -150,20 +195,12 @@ public class Console extends JFrame {
 							print("Felicidades! has llegado al final. Te esperamos en tu proxima aventura.");
 						}
 
-						int dialogResult = JOptionPane.showConfirmDialog(null,
-								"\r\n¿Desea guardar su recorrido en la aventura?\r\n", "Khoeli",
-								JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-						SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-						Date date = new Date(System.currentTimeMillis());
-						if (dialogResult == JOptionPane.YES_OPTION) {
-							parser.execute(selectedAdventure, new Command(Action.SAVE.toString(),
-									selectedAdventure.getSelectedPlayer().getName() + " - " + formatter.format(date),
-									null));
-						}
 						input.setEnabled(false);
 					}
 				} else {
-					print("Acción incorrecta. Intente nuevamente.");
+					String result = "Acción incorrecta. Intente nuevamente."; 
+					print(result);
+					selectedAdventure.appendResponse(result);
 				}
 
 			}
@@ -208,19 +245,61 @@ public class Console extends JFrame {
 			}
 		});
 
-		add(toolbar, BorderLayout.NORTH);
-		add(input, BorderLayout.SOUTH);
-		add(scrollpane, BorderLayout.CENTER);
-		add(gameGraphics, BorderLayout.NORTH);
+		setLayout(new GridBagLayout());
 		
+		GridBagConstraints toolbarConstraints = new GridBagConstraints();
+		toolbarConstraints.gridx = 0;
+		toolbarConstraints.gridy = 0;
+		toolbarConstraints.ipadx = 1000;
+		toolbarConstraints.anchor = GridBagConstraints.NORTH;
+		add(toolbar, toolbarConstraints );
+		
+		GridBagConstraints gameGraphicsConstraints = new GridBagConstraints();
+		gameGraphicsConstraints.gridx = 0;
+		gameGraphicsConstraints.gridy = 1;
+		gameGraphicsConstraints.ipadx = 1000;
+		gameGraphicsConstraints.ipady = 440;
+		gameGraphicsConstraints.anchor = GridBagConstraints.NORTH;
+		add(gameGraphics, gameGraphicsConstraints);
+		
+		GridBagConstraints scrollpaneConstraints = new GridBagConstraints();
+		scrollpaneConstraints.gridx = 0;
+		scrollpaneConstraints.gridy = 2;
+		scrollpaneConstraints.ipadx = 973;
+		scrollpaneConstraints.ipady = 163;
+		scrollpaneConstraints.anchor = GridBagConstraints.NORTH;
+		add(scrollpane, scrollpaneConstraints);
+
+		GridBagConstraints inputConstraints = new GridBagConstraints();
+		inputConstraints.gridx = 0;
+		inputConstraints.gridy = 3;
+		inputConstraints.ipadx = 986;
+		inputConstraints.anchor = GridBagConstraints.NORTH;
+		add(input, inputConstraints);
 
 		getContentPane().setBackground(new Color(52, 52, 52));
-		setSize(1000, 700);
+		setSize(1000, 720);
 		setLocationRelativeTo(null);
 		setResizable(false);
 
 	}
 
+	public static void main(String[] args) {
+		
+		File path = new File( "./partidas guardadas/");
+		if (!path.exists()) {
+			path.mkdirs();
+		}
+		
+		Console console = new Console ();
+		console.setVisible(true);
+
+	}
+	
+	private void clear() {
+		console.setText("");
+	}
+	
 	private void print(String text) {
 
 		if (text.length() > 0) {
@@ -247,17 +326,34 @@ public class Console extends JFrame {
 		reader.close();
 	}
 
+	public void saveAdventure() {
+		JFileChooser selectorArchivos = new JFileChooser();
+		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		selectorArchivos.setCurrentDirectory(new File("./partidas guardadas/"));
+		selectorArchivos.setDialogTitle("Guardar aventura");
+		selectorArchivos.setFileFilter(new FileNameExtensionFilter("Archivo de texto","TXT"));
+		int result = selectorArchivos.showSaveDialog(null);
+		
+		if(result == JFileChooser.APPROVE_OPTION ) {
+			parser.execute(selectedAdventure, new Command(Action.SAVE.toString(),
+					selectorArchivos.getSelectedFile().getName(),
+					null));
+		}
+	}
+	
 	public void selectAdventure() {
 
 		JFileChooser selectorArchivos = new JFileChooser();
 		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
+		selectorArchivos.setDialogTitle("Seleccionar aventura");
 		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
-		selectorArchivos.showOpenDialog(null);
-		if (selectorArchivos.getSelectedFile() == null) {
+		selectorArchivos.setFileFilter(new FileNameExtensionFilter("JSON file","JSON"));
+		int result = selectorArchivos.showOpenDialog(null);
+		
+		if (result != JFileChooser.APPROVE_OPTION) {
 			Component frame = null;
 			JOptionPane.showMessageDialog(frame,
-					"No seleccionó ninguna aventura! Ejecute de nuevo el programa y seleccione una aventura válida.",
+					"No seleccionó ninguna aventura! Intente nuevamente.",
 					"Error!", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -266,6 +362,13 @@ public class Console extends JFrame {
 
 		try {
 			setSelectedAdventure(archivo.getPath());
+			input.setEnabled(true);
+			guardarpartida.setEnabled(true);
+			clear();
+			startAdventure();
+			
+			
+			
 		} catch (IOException e) {
 			System.err.println("archivo de aventura invalido");
 		}
@@ -273,10 +376,14 @@ public class Console extends JFrame {
 
 	public void startAdventure() {
 		print("Bienvenido a Khoeli!\r\nPuedes usar los siguientes comandos:\r\n-IR\r\n-MIRAR\r\n-HABLAR\r\n-USAR\r\n");
-		print("Ingrese su nombre (si no ingresa nada, el nombre será " + selectedAdventure.getSelectedPlayer().getName()
+
+
+		String name = JOptionPane.showInputDialog("Ingrese su nombre (si no ingresa nada, el nombre será " + selectedAdventure.getSelectedPlayer().getName()
 				+ "):");
-
-
+		
+		if (!name.isEmpty()) {
+			selectedAdventure.getSelectedPlayer().setName(name);
+		}
 		print(selectedAdventure.getWelcomeMessage());
 		print("\n");
 		print(selectedAdventure.getSelectedPlayer().getCurrentLocation().getDescription());
@@ -296,8 +403,6 @@ public class Console extends JFrame {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;
-//			Dimension currentDimension = new Dimension(800, 600);
-//			g2.scale(currentDimension.getWidth() / 800, currentDimension.getHeight() / 450);
 
 			if (selectedAdventure != null) {
 				Sprite locationSprite = selectedAdventure.getSelectedPlayer().getCurrentLocation().getSprite();

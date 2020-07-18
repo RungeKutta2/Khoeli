@@ -80,11 +80,7 @@ public class Khoeli {
 		
 		Console console = new Console ();
 		console.setVisible(true);
-		
-		console.selectAdventure();
-		console.startAdventure();
-		
-		//khoeli.play();
+
 	}
 
 	private void play() {
