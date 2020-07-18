@@ -14,7 +14,14 @@
           "items": [
             "fotografia"
           ],
-          "description": "Parece hecha de madera noble."
+          "description": "Parece hecha de madera noble.",
+          "sprite": {
+            "path": "./sprites/mesa.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         },
         {
           "name": "suelo",
@@ -45,10 +52,10 @@
           "description": "No tengo forma de volver a encenderla.",
           "sprite": {
             "path": "./sprites/chimenea.png",
-            "x": 100,
-            "y": 100,
-            "width": 50,
-            "height": 350
+            "x": 300,
+            "y": 30,
+            "width": 200,
+            "height": 250
           }
         }
       ],
@@ -77,7 +84,7 @@
       ],
       "triggers": [],
       "sprite": {
-        "path": "./sprites/cabaña.png",
+        "path": "./sprites/sala_de_estar.png",
         "x": 0,
         "y": 0,
         "width": 1000,
@@ -98,6 +105,13 @@
           "items": [
             "llave"
           ],
+          "sprite": {
+            "path": "./sprites/inodoro.png",
+            "x": 600,
+            "y": 180,
+            "width": 200,
+            "height": 170
+          },
           "description": "Parece que pierde agua.\r\n¿Debería meter la mano allí?"
         },
         {
@@ -118,6 +132,13 @@
           "description": "Está realmente sucio y cubierto por musgo."
         }
       ],
+      "sprite": {
+        "path": "./sprites/baño.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "npcs": [],
       "connections": [
         {
@@ -190,7 +211,14 @@
           "items": [
             "nafta"
           ],
-          "description": "Parece no estar balanceada. Creo que tiene una pata defectuosa."
+          "description": "Parece no estar balanceada. Creo que tiene una pata defectuosa.",
+          "sprite": {
+            "path": "./sprites/mesa.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         },
         {
           "name": "suelo",
@@ -206,9 +234,23 @@
           "items": [
             "martillo"
           ],
-          "description": "Parece estar firme.Está lleno de polvo"
+          "description": "Parece estar firme.Está lleno de polvo",
+          "sprite": {
+            "path": "./sprites/estante.png",
+            "x": 300,
+            "y": 30,
+            "width": 180,
+            "height": 180
+          }
         }
       ],
+      "sprite": {
+        "path": "./sprites/despensa.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      },
       "npcs": [],
       "connections": [
         {
@@ -1221,6 +1263,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Puede servirme para descansar.",
+      "sprite": {
+        "path": "./sprites/cama.png",
+        "x": 760,
+        "y": 220,
+        "width": 230,
+        "height": 130
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1286,10 +1335,10 @@
       ],
       "sprite": {
         "path": "./sprites/tronco.png",
-        "x": 100,
-        "y": 200,
-        "width": 40,
-        "height": 20
+        "x": 380,
+        "y": 240,
+        "width": 50,
+        "height": 30
       }
     },
     {
@@ -1491,6 +1540,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Estuvo desde siempre en esta cabaña pero nunca lo utilicé.",
+      "sprite": {
+        "path": "./sprites/martillo.png",
+        "x": 310,
+        "y": 148,
+        "width": 50,
+        "height": 50
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -1519,6 +1575,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Todavia le queda un poco de nafta dentro.",
+      "sprite": {
+        "path": "./sprites/nafta.png",
+        "x": 560,
+        "y": 240,
+        "width": 60,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2296,7 +2359,7 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "sala",
+      "initialLocation": "baño",
       "initialHealthPoints": 100
     },
     "items": []
