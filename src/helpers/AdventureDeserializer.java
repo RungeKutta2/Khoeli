@@ -31,6 +31,7 @@ public class AdventureDeserializer implements JsonDeserializer<Adventure> {
 		gsonBuilder.registerTypeAdapter(Playable.class, new PlayableDeserializer());
 		gsonBuilder.registerTypeAdapter(Connection.class, new ConnectionDeserializer());
 		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
+		gsonBuilder.registerTypeAdapter(Item.class, new ItemDeserializer());
 
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();

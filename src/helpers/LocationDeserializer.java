@@ -16,6 +16,7 @@ import enums.Gender;
 import enums.Number;
 import models.Location;
 import models.Place;
+import models.Sprite;
 import models.Trigger;
 
 public class LocationDeserializer implements JsonDeserializer<Location> {
@@ -28,10 +29,11 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 
 		gsonBuilder.registerTypeAdapter(Place.class, new PlaceDeserializer());
 		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
+		gsonBuilder.registerTypeAdapter(Sprite.class, new SpriteDeserializer());
 
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
-		
+
 		String id = jobject.get("id").getAsString();
 		String name = jobject.get("name").getAsString();
 		Gender gender = Gender.valueOf(jobject.get("gender").getAsString());
@@ -41,11 +43,13 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		}.getType());
 		List<String> npcs = gson.fromJson(jobject.get("npcs").getAsJsonArray(), new TypeToken<List<String>>() {
 		}.getType());
-        List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(), new TypeToken<List<Trigger>>(){}.getType());
+		List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(),
+				new TypeToken<List<Trigger>>() {
+				}.getType());
+		Sprite sprite = gson.fromJson(jobject.get("sprite"), Sprite.class);
 
-		Location location = new Location(id, name, gender, number, description, places, npcs,triggers);
+		return new Location(id, name, gender, number, description, places, npcs, triggers, sprite);
 
-		return location;
 	}
 
 }

@@ -1,8 +1,13 @@
 package models;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.imageio.ImageIO;
 
 import enums.TriggerType;
 import enums.Direction;
@@ -22,9 +27,10 @@ public class Location implements Observable, Triggerable {
 	private List<NonPlayable> npcs;
 	private List<Connection> connections;
 	private List<Trigger> triggers;
-
+	private Sprite sprite;
+	
 	public Location(String id, String name, Gender gender, Number number, String description, List<Place> places,
-			List<String> npcs, List<Trigger> triggers) {
+			List<String> npcs, List<Trigger> triggers, Sprite sprite) {
 		this.id = id;
 		this.name = name;
 //		this.gender = gender;
@@ -33,6 +39,7 @@ public class Location implements Observable, Triggerable {
 		this.places = places;
 		this.npcs = setNonPlayable(npcs);
 		this.triggers = triggers;
+		this.sprite = sprite;
 	}
 
 	private List<NonPlayable> setNonPlayable(List<String> npcs) {
@@ -44,6 +51,11 @@ public class Location implements Observable, Triggerable {
 		return npcList;
 	}
 
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	
 	public String getId() {
 		return id;
 	}

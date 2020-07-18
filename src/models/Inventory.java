@@ -1,19 +1,24 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import interfaces.Observable;
 
-public class Inventory implements Observable {
+public class Inventory implements Observable, Iterable<Item> {
 	private List<Item> items;
 	private String emptyInventoryDescription;
 	private String fullInventoryDescription;
 
+	
+	
 	public Inventory() {
 		items = new ArrayList<Item>();
 	}
 
+	
+	
 	public void add(Item item) {
 		items.add(item);
 	}
@@ -64,5 +69,12 @@ public class Inventory implements Observable {
 
 	public String getFullInventoryDefaultDescription() {
 		return fullInventoryDescription;
+	}
+
+
+
+	@Override
+	public Iterator<Item> iterator() {
+		return items.iterator();
 	}
 }

@@ -1,0 +1,51 @@
+Genn Greymane: ir n
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajon.
+Al Sur está la sala, al Oeste está la despensa.
+Genn Greymane: ir o
+Estás en la despensa.
+A tu alrededor hay un estante y una mesa.
+Este está la cocina.
+Genn Greymane: mirar estante
+Parece estar firme.Está lleno de polvo
+En el estante hay:
+- un martillo
+Genn Greymane: agarrar martillo
+Juntaste el martillo.
+Genn Greymane: ir e
+Estás en la cocina.
+A tu alrededor hay una mesada con un cajon.
+Al Sur está la sala, al Oeste está la despensa.
+Genn Greymane: ir s
+Estás en la sala.
+No hay nada fuera de lo normal.
+A tu alrededor hay una mesa, una cama y una chimenea.
+Al Norte está la cocina, al Sur está jardín, al Este está el bosque norte, al Oeste está el baño.
+Genn Greymane: ir e
+Hay una ventana. El hielo del exterior la está bloqueando.
+Con un buen golpe podría abrirla.
+Genn Greymane: mirar ventana 
+Hay una ventana. El hielo del exterior la está bloqueando.
+Con un buen golpe podría abrirla.
+Genn Greymane: usar martillo ventana
+El golpe fue muy fuerte y el vidrio estalló.Ahora puedo salir de la cabaña.
+Genn Greymane: ir e
+Estás en el bosque norte.
+Hay un tronco cortado.
+Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.
+Genn Greymane: mirar suelo
+Hay un poco de nieve y hojas en él.
+En el suelo hay:
+- una enredadera
+Genn Greymane: agarrar enredadera 
+Auch, me hice daño, quizás podría deshacerme de ella de alguna forma.
+Genn Greymane: mirar suelo
+Hay un poco de nieve y hojas en él.
+En el suelo hay:
+- una enredadera
+Genn Greymane: agarrar enredadera 
+Auch, me hice daño, quizás podría deshacerme de ella de alguna forma.
+Genn Greymane: agarrar enredadera 
+Auch, me hice daño, quizás podría deshacerme de ella de alguna forma.
+Genn Greymane: agarrar enredadera 
+Auch, me hice daño, quizás podría deshacerme de ella de alguna forma.

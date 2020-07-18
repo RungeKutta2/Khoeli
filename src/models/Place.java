@@ -1,7 +1,12 @@
 package models;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
+import javax.imageio.ImageIO;
 
 import enums.TriggerType;
 import enums.Gender;
@@ -16,8 +21,10 @@ public class Place implements Triggerable, Observable {
 	private Inventory items;
 	private String description;
 	private List<Trigger> triggers;
+	private Sprite sprite;
 
-	public Place(String name, Gender gender, Number number, List<String> items, String description) {
+	
+	public Place(String name, Gender gender, Number number, List<String> items, String description, Sprite sprite) {
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
@@ -27,6 +34,7 @@ public class Place implements Triggerable, Observable {
 				"No hay nada útil en " + getDefinedArticle(this.gender, this.number) + " " + name);
 		this.items.setFullInventoryDescription(
 				"En " + getDefinedArticle(this.gender, this.number) + " " + name + " hay:\n");
+		this.sprite = sprite;
 	}
 
 	private Inventory setItems(List<String> items) {
@@ -38,6 +46,11 @@ public class Place implements Triggerable, Observable {
 		return inventory;
 	}
 
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+	
 	public String getName() {
 		return name;
 	}

@@ -1,7 +1,12 @@
 package models;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
+import javax.imageio.ImageIO;
 
 import enums.TriggerType;
 import enums.Gender;
@@ -18,14 +23,20 @@ public class Item implements Triggerable, Observable, Obstacle {
 	private Number number;
 	private String description;
 	private List<Trigger> triggers;
+	private Sprite sprite;
 
-	public Item(String id, String name, Gender gender, Number number, String description, List<Trigger> triggers) {
+	public Item(String id, String name, Gender gender, Number number, String description, List<Trigger> triggers,Sprite sprite) {
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.number = number;
 		this.description = description;
 		this.triggers = triggers;
+		this.sprite = sprite;
+	}
+
+	public Sprite getSprite() {
+		return sprite;
 	}
 
 	public String getDescription() {

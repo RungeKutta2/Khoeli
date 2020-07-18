@@ -14,33 +14,34 @@ import com.google.gson.reflect.TypeToken;
 
 import enums.Gender;
 import enums.Number;
+import enums.TriggerType;
 import models.Item;
-import models.Place;
+import models.Playable;
 import models.Sprite;
 import models.Trigger;
+import models.aftertrigger.AfterTriggerRequest;
 
-public class PlaceDeserializer implements JsonDeserializer<Place> {
+public class ItemDeserializer implements JsonDeserializer<Item>{
 
 	@Override
-	public Place deserialize(JsonElement json, Type type, JsonDeserializationContext context)
-			throws JsonParseException {
-
+	public Item deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
+		
 		GsonBuilder gsonBuilder = new GsonBuilder();
-		gsonBuilder.registerTypeAdapter(Item.class, new ItemDeserializer());
+		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
 		gsonBuilder.registerTypeAdapter(Sprite.class, new SpriteDeserializer());
-
-		JsonObject jobject = json.getAsJsonObject();
+		
+		JsonObject jobject = arg0.getAsJsonObject();
 		Gson gson = gsonBuilder.create();
-
+		
+		String id = jobject.get("id").getAsString();
 		String name = jobject.get("name").getAsString();
 		Gender gender = Gender.valueOf(jobject.get("gender").getAsString());
 		Number number = Number.valueOf(jobject.get("number").getAsString());
-		List<String> items = gson.fromJson(jobject.get("items").getAsJsonArray(), new TypeToken<List<String>>() {
-		}.getType());
 		String description = jobject.get("description").getAsString();
+		List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(), new TypeToken<List<Trigger>>(){}.getType());
 		Sprite sprite = gson.fromJson(jobject.get("sprite"), Sprite.class);
-
-		return new Place(name, gender, number, items, description, sprite);
+		
+		return new Item(id, name, gender, number, description, triggers, sprite);
 	}
-
+	
 }

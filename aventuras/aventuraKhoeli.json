@@ -42,7 +42,14 @@
           "items": [
             "tronco"
           ],
-          "description": "No tengo forma de volver a encenderla."
+          "description": "No tengo forma de volver a encenderla.",
+          "sprite": {
+            "path": "./sprites/chimenea.png",
+            "x": 100,
+            "y": 100,
+            "width": 50,
+            "height": 350
+          }
         }
       ],
       "npcs": [],
@@ -68,7 +75,14 @@
           "obstacle": "ventana"
         }
       ],
-      "triggers": []
+      "triggers": [],
+      "sprite": {
+        "path": "./sprites/cabaña.png",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 450
+      }
     },
     {
       "id": "baño",
@@ -1269,7 +1283,14 @@
             }
           ]
         }
-      ]
+      ],
+      "sprite": {
+        "path": "./sprites/tronco.png",
+        "x": 100,
+        "y": 200,
+        "width": 40,
+        "height": 20
+      }
     },
     {
       "id": "tronco_con_trapo",
