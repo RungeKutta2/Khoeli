@@ -177,7 +177,14 @@
           "items": [
             "trapo"
           ],
-          "description": "Han pasado sus mejores épocas."
+          "description": "Han pasado sus mejores épocas.",
+          "sprite": {
+            "path": "./sprites/mesada.png",
+            "x": 700,
+            "y": 150,
+            "width": 300,
+            "height": 300
+          }
         },
         {
           "name": "suelo",
@@ -995,7 +1002,14 @@
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [],
-          "description": ""
+          "description": "",
+          "sprite": {
+            "path": "./sprites/lapida.png",
+            "x": 500,
+            "y": 250,
+            "width": 180,
+            "height": 180
+          }
         },
         {
           "name": "fosa",
@@ -1296,6 +1310,13 @@
       "description": "Es un guardaespaldas imponente, da miedo, no creo que me deje pasar.",
       "gender": "MALE",
       "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/gorila.png",
+        "x": 100,
+        "y": 70,
+        "width": 100,
+        "height": 180
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1325,6 +1346,13 @@
       "description": "Tiene un aspecto extraño, parece estar haciendo un ritual o algo así .",
       "gender": "MALE",
       "number": "SINGULAR",
+      "sprite": {
+        "path": "./sprites/brujo.png",
+        "x": 500,
+        "y": 250,
+        "width": 100,
+        "height": 180
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1827,10 +1855,10 @@
       "description": "Estan algo humedos pero sirven.",
       "sprite": {
         "path": "./sprites/fosforos.png",
-        "x": 500,
-        "y": 250,
-        "width": 80,
-        "height": 80
+        "x": 730,
+        "y": 190,
+        "width": 50,
+        "height": 50
       },
       "triggers": [
         {
@@ -1862,10 +1890,10 @@
       "description": "Está algo sucio.",
       "sprite": {
         "path": "./sprites/trapo.png",
-        "x": 300,
-        "y": 250,
-        "width": 80,
-        "height": 80
+        "x": 850,
+        "y": 200,
+        "width": 70,
+        "height": 70
       },
       "triggers": [
         {
@@ -1896,11 +1924,11 @@
       "number": "PLURAL",
       "description": "Parecen ser muy dulces.",
       "sprite": {
-        "path": "./sprites/frutilla.png",
-        "x": 220,
-        "y": 250,
+        "path": "./sprites/frutillas.png",
+        "x": 250,
+        "y": 240,
         "width": 50,
-        "height": 50
+        "height": 40
       },
       "triggers": [
         {
@@ -2178,6 +2206,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Parece ser una invitacion a alguna fiesta. en ella se lee:\r\n'Esta usted invitado a la fiesta de la luna llena.'",
+      "sprite": {
+        "path": "./sprites/invitacion.png",
+        "x": 730,
+        "y": 230,
+        "width": 40,
+        "height": 60
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2391,6 +2426,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Hay un versiculo resaltado en ella.\r\nIsaías 34:14\r\nLas fieras del desierto se encontrarán con las hienas, el macho cabrío llamará a los de su especie;\r\nsí, el monstruo nocturno se establecerá allí, y encontrará para sí lugar de reposo.",
+      "sprite": {
+        "path": "./sprites/biblia.png",
+        "x": 250,
+        "y": 210,
+        "width": 50,
+        "height": 50
+      },
       "triggers": [
         {
           "type": "ACTION",
@@ -2665,7 +2707,7 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "sala",
+      "initialLocation": "cocina",
       "initialHealthPoints": 100
     },
     "items": []
