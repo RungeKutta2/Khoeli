@@ -14,17 +14,16 @@ import com.google.gson.reflect.TypeToken;
 
 import enums.Gender;
 import enums.Number;
-import enums.TriggerType;
 import models.Item;
+import models.NonPlayable;
 import models.Sprite;
 import models.Trigger;
-import models.aftertrigger.AfterTriggerRequest;
 
-public class ItemDeserializer implements JsonDeserializer<Item>{
+public class NonPlayableDeserializer implements JsonDeserializer<NonPlayable>{
 
 	@Override
-	public Item deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
-		
+	public NonPlayable deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2)
+			throws JsonParseException {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
 		gsonBuilder.registerTypeAdapter(Sprite.class, new SpriteDeserializer());
@@ -39,8 +38,10 @@ public class ItemDeserializer implements JsonDeserializer<Item>{
 		String description = jobject.get("description").getAsString();
 		List<Trigger> triggers = gson.fromJson(jobject.get("triggers").getAsJsonArray(), new TypeToken<List<Trigger>>(){}.getType());
 		Sprite sprite = gson.fromJson(jobject.get("sprite"), Sprite.class);
+		String talk = jobject.get("talk").getAsString();
 		
-		return new Item(id, name, gender, number, description, triggers, sprite);
+		return new NonPlayable(id, name, description, gender, number, triggers, talk, sprite);
+		
 	}
-	
+
 }

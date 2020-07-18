@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.JToolBar;
 import javax.swing.UIManager;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -55,13 +56,15 @@ import models.parser.TalkTo;
 import models.parser.Use;
 
 public class Console extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextPane console;
 	private JTextField input;
 	private JScrollPane scrollpane;
 	private DrawPanel gameGraphics;
-
-	private StyledDocument document;
-	private boolean trace;
+	private JToolBar toolbar;
 
 	private ArrayList<String> recent_used;
 	private int recent_used_id = 0;
@@ -82,20 +85,22 @@ public class Console extends JFrame {
 		}
 
 		
-		
+		toolbar = new JToolBar();
 		gameGraphics = new DrawPanel();
+		
 		setTitle("Console");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		trace = false;
-
+		
+		toolbar.setSize(1000,50);
+		toolbar.setBackground(Color.YELLOW);
+		
 		console = new JTextPane();
 		console.setEditable(false);
 		console.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
 		console.setForeground(Color.WHITE);
 		console.setSize(1000, 200);
-		//1366x768
-		document = console.getStyledDocument();
+		console.getStyledDocument();
 
 		scrollpane = new JScrollPane();
 		scrollpane.setBorder(null);
@@ -112,6 +117,8 @@ public class Console extends JFrame {
 
 		input = new JTextField();
 		input.setEditable(true);
+		input.setFont(new Font("Bookman Old Style", Font.PLAIN, 14));
+		input.setSize(1000,50);
 		input.setCaretColor(Color.WHITE);
 		input.setForeground(Color.WHITE);
 		input.setOpaque(false);
@@ -155,6 +162,8 @@ public class Console extends JFrame {
 						}
 						input.setEnabled(false);
 					}
+				} else {
+					print("Acción incorrecta. Intente nuevamente.");
 				}
 
 			}
@@ -162,19 +171,6 @@ public class Console extends JFrame {
 		});
 
 		input.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_UP) {
@@ -200,11 +196,23 @@ public class Console extends JFrame {
 				}
 
 			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+
+			}
 		});
 
+		add(toolbar, BorderLayout.NORTH);
 		add(input, BorderLayout.SOUTH);
 		add(scrollpane, BorderLayout.CENTER);
 		add(gameGraphics, BorderLayout.NORTH);
+		
 
 		getContentPane().setBackground(new Color(52, 52, 52));
 		setSize(1000, 700);
@@ -243,8 +251,6 @@ public class Console extends JFrame {
 
 		JFileChooser selectorArchivos = new JFileChooser();
 		selectorArchivos.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-		JFrame ventana = new JFrame();
 
 		selectorArchivos.setCurrentDirectory(new File("./aventuras/"));
 		selectorArchivos.showOpenDialog(null);
@@ -315,6 +321,15 @@ public class Console extends JFrame {
 						}
 
 					}
+				}
+				
+				for (NonPlayable npc : selectedAdventure.getSelectedPlayer().getCurrentLocation().getNpcs()) {
+					Sprite npcSprite = npc.getSprite();
+					if (npcSprite != null) {
+						g2.drawImage(npcSprite.getImage(), npcSprite.getX(), npcSprite.getY(),
+								npcSprite.getWidth(), npcSprite.getHeight(), null);
+					}
+
 				}
 			}
 

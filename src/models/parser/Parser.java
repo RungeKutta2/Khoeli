@@ -39,7 +39,7 @@ public abstract class Parser {
 		try {
 			comando = new Command(parsed[0], parsed[1], parsed.length == 3 ? parsed[2] : null);
 		} catch (Exception e) {
-			System.out.println("Acción incorrecta, intente nuevamente.");
+			
 		}
 		return comando;
 	}

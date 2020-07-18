@@ -15,6 +15,7 @@ import com.google.gson.reflect.TypeToken;
 import enums.Gender;
 import enums.Number;
 import models.Location;
+import models.NonPlayable;
 import models.Place;
 import models.Sprite;
 import models.Trigger;
@@ -30,6 +31,7 @@ public class LocationDeserializer implements JsonDeserializer<Location> {
 		gsonBuilder.registerTypeAdapter(Place.class, new PlaceDeserializer());
 		gsonBuilder.registerTypeAdapter(Trigger.class, new TriggerDeserializer());
 		gsonBuilder.registerTypeAdapter(Sprite.class, new SpriteDeserializer());
+		gsonBuilder.registerTypeAdapter(NonPlayable.class, new NonPlayableDeserializer());
 
 		JsonObject jobject = json.getAsJsonObject();
 		Gson gson = gsonBuilder.create();

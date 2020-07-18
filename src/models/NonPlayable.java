@@ -18,9 +18,10 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 //	private Numbers number;
 	private String talk;
 	private List<Trigger> triggers;
+	private Sprite sprite;
 
 	public NonPlayable(String id, String name, String description, Gender gender, Number number, List<Trigger> triggers,
-			String talk) {
+			String talk,Sprite sprite) {
 		this.name = name;
 		this.description = description;
 		this.id = id;
@@ -28,8 +29,13 @@ public class NonPlayable implements Triggerable, Observable, Obstacle {
 		this.talk = talk;
 //		this.number = number;
 //		this.gender = gender;
+		this.sprite = sprite;
 	}
 
+	public Sprite getSprite() {
+		return sprite;
+	}
+	
 	public String getDescription() {
 		return description;
 	}
