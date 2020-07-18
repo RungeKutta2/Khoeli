@@ -1599,6 +1599,13 @@
       "gender": "MALE",
       "number": "SINGULAR",
       "description": "Es un tronco con un trapo atado en un extremo.",
+      "sprite": {
+        "path": "./sprites/antorcha_apagada.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1630,6 +1637,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "Debo encontrar una manera de encenderla.",
+      "sprite": {
+        "path": "./sprites/antorcha_apagada.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
       "triggers": [
         {
           "type": "ITEM",
@@ -1661,6 +1675,13 @@
       "gender": "FEMALE",
       "number": "SINGULAR",
       "description": "¿Podría quemar algo con ella?",
+      "sprite": {
+        "path": "./sprites/antorcha_encendida.png",
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
       "triggers": []
     },
     {
