@@ -5,7 +5,7 @@
       "name": "sala",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la sala.\r\nNo hay nada fuera de lo normal.\r\nA tu alrededor hay una mesa, una cama y una chimenea.\r\nAl Norte está la cocina, al Sur está jardín, al Este está el bosque norte, al Oeste está el baño.",
+      "description": "Estás en la sala.\r\nNo hay nada fuera de lo normal.\r\nA tu alrededor hay una mesa, una cama y una chimenea.\r\nAl Norte está la cocina, al Sur está jardín, al Este está el bosque norte y al Oeste está el baño.",
       "places": [
         {
           "name": "mesa",
@@ -216,7 +216,7 @@
       "name": "despensa",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la despensa.\r\nA tu alrededor hay un estante y una mesa.\r\nAl este está la cocina.",
+      "description": "Estás en la despensa.\r\nA tu alrededor hay un estante y una mesa.\r\nAl Este está la cocina.",
       "places": [
         {
           "name": "mesa",
@@ -280,7 +280,7 @@
       "name": "bosque norte",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el bosque norte.\r\nHay un tronco cortado.\r\nOeste está la sala, al Este esta el lago y al sur esta el bosque sur.",
+      "description": "Estás en el bosque norte.\r\nHay un tocón.\r\nOeste está la sala, al Este esta el lago y al sur esta el bosque sur.",
       "sprite": {
         "path": "./sprites/bosque_norte.png",
         "x": 0,
@@ -290,7 +290,8 @@
       },
       "places": [
         {
-          "name": "tronco_cortado",
+          "id": "tronco_cortado",
+          "name": "tocon",
           "gender": "MALE",
           "number": "SINGULAR",
           "items": [
@@ -2037,7 +2038,7 @@
             {
               "action": "REMOVE",
               "thing": "hacha",
-              "actionDestination": "tronco_cortado",
+              "actionDestination": "tocon",
               "parentId": "bosque_norte",
               "destinationType": "PLACE"
             }
@@ -2669,5 +2670,5 @@
     },
     "items": []
   },
-  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\n¡TE ESTÁS DESANGRANDO!"
+  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\nTienes una mordida extraña, quizás deberías vendarte antes de continuar …"
 }
