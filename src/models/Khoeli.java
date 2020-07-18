@@ -339,9 +339,11 @@ public class Khoeli extends JFrame {
 						buttonToolbarMap.setEnabled(false);
 						if (frameMap != null) {
 							frameMap.setVisible(false);
+							frameMap = null;
 						}
 						if (frameInventory != null) {
 							frameInventory.setVisible(false);
+							frameInventory = null;
 						}
 					}
 				} else {
