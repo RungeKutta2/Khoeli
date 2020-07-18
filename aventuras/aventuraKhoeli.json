@@ -161,7 +161,7 @@
       "name": "cocina",
       "gender": "FEMALE",
       "number": "SINGULAR",
-      "description": "Estás en la cocina.\r\nA tu alrededor hay una mesada con un cajon.\r\nAl Sur está la sala, al Oeste está la despensa.",
+      "description": "Estás en la cocina.\r\nA tu alrededor hay una mesada con un cajón.\r\nAl Sur está la sala, al Oeste está la despensa.",
       "sprite": {
         "path": "./sprites/cocina.png",
         "x": 0,
@@ -255,7 +255,7 @@
           "items": [
             "martillo"
           ],
-          "description": "Parece estar firme.Está lleno de polvo",
+          "description": "Parece estar firme. Está lleno de polvo",
           "sprite": {
             "path": "./sprites/estante.png",
             "x": 300,
@@ -287,7 +287,7 @@
       "name": "bosque norte",
       "gender": "MALE",
       "number": "SINGULAR",
-      "description": "Estás en el bosque norte.\r\nHay un tocón.\r\nOeste está la sala, al Este esta el lago y al sur esta el bosque sur.",
+      "description": "Estás en el bosque norte.\r\nHay un tocón.\r\nAl Oeste está la sala, al Este esta el lago y al sur esta el bosque sur.",
       "sprite": {
         "path": "./sprites/bosque_norte.png",
         "x": 0,
@@ -1221,7 +1221,7 @@
           "direction": "SOUTH",
           "location": "salon_real",
           "obstacle": "guardia"
-        }        
+        }
       ],
       "triggers": []
     },
@@ -2143,6 +2143,12 @@
               "destinationType": "PLACE"
             }
           ]
+        },
+        {
+          "type": "ACTION",
+          "thing": "PICK_UP",
+          "onTrigger": "Está demasiado enterrado como para sacarlo solo con mis manos.",
+          "afterTrigger": []
         }
       ]
     },
@@ -2882,5 +2888,12 @@
     },
     "items": []
   },
-  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\nTienes una mordida extraña, quizás deberías vendarte antes de continuar …"
+  "welcomeMessage": "---------------------\r\nEs la noche más fría de los últimos años.\r\nTus ilusiones de ir al pueblo a tomar unas copas se desvanecen con cada nuevo copo de nieve que cae.\r\nSe abre abruptamente la puerta de la cabaña y entra la brisa de la gélida tormenta a apagar el fuego de la chimenea.\r\nNo podés ver nada en la inmensa oscuridad.\r\nEscuchás un fuerte gruñido animal y sentís algo cálido escurrirse por tu cuerpo.\r\nTe desvanecés por un segundo y retomás el control de tu cuerpo.\r\nTodo ha vuelto a la normalidad.\r\nMirás tu brazo derecho...\r\nTienes una mordida extraña, quizás deberías vendarte antes de continuar …",
+  "map": {
+    "path": "./sprites/mapa.png",
+    "x": 15,
+    "y": 15,
+    "width": 945,
+    "height": 625
+  }
 }
