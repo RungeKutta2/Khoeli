@@ -1322,12 +1322,7 @@
       "connections": [
         {
           "direction": "NORTH",
-          "location": "salon_real",
-          "obstacle": null
-        },
-        {
-          "direction": "SOUTH",
-          "location": "plaza",
+          "location": "camino_real",
           "obstacle": null
         }
       ],
@@ -1730,7 +1725,7 @@
       "number": "SINGULAR",
       "description": "Es un tronco con un trapo atado en un extremo.",
       "sprite": {
-        "path": "./sprites/antorcha_apagada.png",
+        "path": "./sprites/tronco_trapo.png",
         "x": 0,
         "y": 0,
         "width": 80,
@@ -2993,7 +2988,7 @@
     "name": "Genn Greymane",
     "gender": "MALE",
     "settings": {
-      "initialLocation": "lago",
+      "initialLocation": "sala",
       "initialHealthPoints": 50
     },
     "items": []
